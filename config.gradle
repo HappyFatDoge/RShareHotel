@@ -1,23 +1,23 @@
 ext {
 
     android = [
-            compileSdkVersion: 27,
-            buildToolsVersion: "28.0.2",
-            minSdkVersion    : 16,
-            targetSdkVersion : 27,
+            compileSdkVersion: 28,
+            buildToolsVersion: "28.0.3",
+            minSdkVersion    : 18,
+            targetSdkVersion : 28,
             versionCode      : 1,
-            versionName      : "1.0.0"
+            versionName      : "1.0"
     ]
 
     version = [
-            androidSupportSdkVersion: "27.1.0",
+            androidSupportSdkVersion: "28.0.0",
             retrofitSdkVersion      : "2.4.0",
             dagger2SdkVersion       : "2.15",
             glideSdkVersion         : "4.6.1",
-            butterknifeSdkVersion   : "8.8.1",
+            butterknifeSdkVersion   : "10.1.0",
             rxlifecycleSdkVersion   : "1.0",
             rxlifecycle2SdkVersion  : "2.2.1",
-            espressoSdkVersion      : "3.0.1",
+            espressoSdkVersion      : "3.0.2",
             canarySdkVersion        : "1.5.4"
     ]
 
@@ -98,7 +98,7 @@ ext {
             //test
             "junit"                    : "junit:junit:4.12",
             "androidJUnitRunner"       : "android.support.test.runner.AndroidJUnitRunner",
-            "runner"                   : "com.android.support.test:runner:1.0.1",
+            "runner"                   : "com.android.support.test:runner:1.0.2",
             "espresso-core"            : "com.android.support.test.espresso:espresso-core:${version["espressoSdkVersion"]}",
             "espresso-contrib"         : "com.android.support.test.espresso:espresso-contrib:${version["espressoSdkVersion"]}",
             "espresso-intents"         : "com.android.support.test.espresso:espresso-intents:${version["espressoSdkVersion"]}",
