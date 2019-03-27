@@ -1,5 +1,5 @@
 <resources>
-    <string name="public_app_name">ArmsComponent</string>
+    <string name="public_app_name">shareHotel</string>
     <string name="public_module_name">app</string>
     <string name="public_loading">加载中</string>
     <string name="public_name_zhihu">知乎日报</string>
