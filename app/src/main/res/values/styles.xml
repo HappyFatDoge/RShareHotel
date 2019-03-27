@@ -1,5 +1,6 @@
 <resources>
     <style name="SplashTheme" parent="public_AppTheme">
+        <item name="android:background">@drawable/layer_splash_bg</item>
         <item name="android:windowIsTranslucent">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>

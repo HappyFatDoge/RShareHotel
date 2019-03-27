@@ -3,6 +3,10 @@
 
     //App组件中的String
     <string name="public_exit_tips">再按一次退出shareHotel</string>
+    <string name="public_home_tab">主页</string>
+    <string name="public_message_tab">消息</string>
+    <string name="public_order_tab">订单</string>
+    <string name="public_personal_tab">我的</string>
 
     <string name="public_module_name">app</string>
     <string name="public_loading">加载中</string>

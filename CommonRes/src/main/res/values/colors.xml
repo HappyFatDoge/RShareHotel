@@ -6,6 +6,9 @@
 
     <color name="public_toolbar_color">#7c63e7</color>        <!--actionBar的背景颜色-->
 
+    <color name="public_text_selected">#9fa0a0</color>
+    <color name="public_text_unSelected">#c9c9ca</color>
+
     <color name="public_white">#FFFFFF</color>
     <color name="public_black">#000000</color>
     <color name="public_color_transparent">#00000000</color>
