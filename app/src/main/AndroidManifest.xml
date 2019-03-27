@@ -2,57 +2,78 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.guet.sharehotel">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/> <!-- 允许联网 -->
+    <uses-permission android:name="android.permission.INTERNET"/> <!-- 获取GSM（2g）、WCDMA（联通3g）等网络状态的信息 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/> <!-- 获取wifi网络状态的信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/> <!-- 保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/> <!-- 获取sd卡写的权限，用于文件上传和下载 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> <!-- 允许读取手机状态 用于创建BmobInstallation -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/> <!-- 百度地图基础定位权限 -->
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <!-- <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> -->
+    <uses-permission android:name="android.permission.CAMERA"/> <!-- 打电话 -->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
-        android:name="com.jess.arms.base.BaseApplication"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/public_app_name"
-        android:supportsRtl="true"
-        android:theme="@style/public_AppTheme">
-        <activity android:name="com.example.guet.sharehotel.mvp.view.activity.SplashActivity"
-                  android:theme="@style/SplashTheme"
-                  android:configChanges="orientation|screenSize"
-                  android:screenOrientation="portrait"
-            >
+            android:name="com.jess.arms.base.BaseApplication"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/public_app_name"
+            android:supportsRtl="true"
+            android:theme="@style/public_AppTheme">
+        <activity
+                android:name=".mvp.view.activity.SplashActivity"
+                android:configChanges="orientation|screenSize"
+                android:screenOrientation="portrait"
+                android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.VIEW"></action>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.example.guet.sharehotel.mvp.view.activity.MainActivity"
-                  android:configChanges="orientation|screenSize"
-                  android:screenOrientation="portrait"
-            />
-        <!-- autolayout meta
+        <activity
+                android:name=".mvp.view.activity.HomeActivity"
+                android:configChanges="orientation|screenSize"
+                android:screenOrientation="portrait"/>
+        <!--
+ autolayout meta
         配置设计图的宽高,配合AutoLauout控件使用,在设计图尺寸以外的其它尺寸手机上,也能达到和设计图一样的效果
         注意: 本框架并不强制你使用 AutoLayout,如果你不想使用 AutoLayout,就不要配置下面的 meta-data
         -->
         <meta-data
-            android:name="design_width"
-            android:value="1080"/>
+                android:name="design_width"
+                android:value="1080"/>
         <meta-data
-            android:name="design_height"
-            android:value="1920"/>
-
-        <!-- 每个业务组件需要声明两个 ConfigModule, CommonSDK 的 ConfigModule 和 业务组件自己的 ConfigModule
+                android:name="design_height"
+                android:value="1920"/>
+        <!--
+ 每个业务组件需要声明两个 ConfigModule, CommonSDK 的 ConfigModule 和 业务组件自己的 ConfigModule
         CommonSDK 的 ConfigModule 含有有每个组件都可共用的配置信息, 业务组件自己的 ConfigModule 含有自己独有的配置
         信息, 这样即可重用代码, 又可以允许每个组件可自行管理自己独有的配置信息, 如果业务组件没有独有的配置信息则只需要
-        声明 CommonSDK 的 ConfigModule -->
+        声明 CommonSDK 的 ConfigModule
+        -->
         <meta-data
-            android:name="com.example.commonsdk.core.GlobalConfiguration"
-            android:value="ConfigModule"/>
+                android:name="com.example.commonsdk.core.GlobalConfiguration"
+                android:value="ConfigModule"/>
         <meta-data
-            android:name="com.example.guet.sharehotel.app.GlobalConfiguration"
-            android:value="ConfigModule"/>
-
+                android:name="com.example.guet.sharehotel.app.GlobalConfiguration"
+                android:value="ConfigModule"/>
     </application>
 
 </manifest>

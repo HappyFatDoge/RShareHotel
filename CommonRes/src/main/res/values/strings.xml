@@ -1,5 +1,9 @@
 <resources>
     <string name="public_app_name">shareHotel</string>
+
+    //App组件中的String
+    <string name="public_exit_tips">再按一次退出shareHotel</string>
+
     <string name="public_module_name">app</string>
     <string name="public_loading">加载中</string>
     <string name="public_name_zhihu">知乎日报</string>
