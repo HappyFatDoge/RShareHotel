@@ -13,37 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package me.jessyan.armscomponent.zhihu.di.module;
+package com.example.commonservice.zhihu.service;
 
-import android.app.Dialog;
+import com.alibaba.android.arouter.facade.template.IProvider;
 
-import com.jess.arms.di.scope.ActivityScope;
-
-import dagger.Binds;
-import dagger.Module;
-import dagger.Provides;
-import com.example.commonres.dialog.ProgresDialog;
-import me.jessyan.armscomponent.zhihu.mvp.contract.DetailContract;
-import me.jessyan.armscomponent.zhihu.mvp.model.ZhihuModel;
+import com.example.commonservice.zhihu.bean.ZhihuInfo;
 
 /**
  * ================================================
- * 展示 Module 的用法
+ * 向外提供服务的接口, 在此接口中声明一些具有特定功能的方法提供给外部, 即可让一个组件与其他组件或宿主进行交互
  *
- * @see <a href="https://github.com/JessYanCoding/MVPArms/wiki#2.4.5">Module wiki 官方文档</a>
- * Created by JessYan on 25/04/2016 11:10
+ * @see <a href="https://github.com/JessYanCoding/ArmsComponent/wiki#2.2.3.2">CommonService wiki 官方文档</a>
+ * Created by JessYan on 2018/4/27 14:16
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-@Module
-public abstract class DetailModule {
-    @Binds
-    abstract DetailContract.Model bindZhihuModel(ZhihuModel model);
-
-    @ActivityScope
-    @Provides
-    static Dialog provideDialog(DetailContract.View view){
-        return new ProgresDialog(view.getActivity());
-    }
+public interface ZhihuInfoService extends IProvider {
+    ZhihuInfo getInfo();
 }

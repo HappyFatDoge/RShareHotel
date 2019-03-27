@@ -29,8 +29,8 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-import com.joker.commonsdk.core.RouterHub;
-import com.joker.commonsdk.utils.HtmlUtil;
+import com.example.commonsdk.core.RouterHub;
+import com.example.commonsdk.utils.HtmlUtil;
 
 import javax.inject.Inject;
 

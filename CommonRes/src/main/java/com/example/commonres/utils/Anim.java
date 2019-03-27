@@ -13,37 +13,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package me.jessyan.armscomponent.zhihu.di.module;
+package com.example.commonres.utils;
 
-import android.app.Dialog;
+import android.app.Activity;
+import android.view.View;
+import android.widget.ImageView;
 
-import com.jess.arms.di.scope.ActivityScope;
+import com.example.commonres.R;
 
-import dagger.Binds;
-import dagger.Module;
-import dagger.Provides;
-import com.example.commonres.dialog.ProgresDialog;
-import me.jessyan.armscomponent.zhihu.mvp.contract.DetailContract;
-import me.jessyan.armscomponent.zhihu.mvp.model.ZhihuModel;
 
 /**
  * ================================================
- * 展示 Module 的用法
- *
- * @see <a href="https://github.com/JessYanCoding/MVPArms/wiki#2.4.5">Module wiki 官方文档</a>
- * Created by JessYan on 25/04/2016 11:10
+ * 动画工具类
+ * <p>
+ * Created by JessYan on 27/04/2017 21:40
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-@Module
-public abstract class DetailModule {
-    @Binds
-    abstract DetailContract.Model bindZhihuModel(ZhihuModel model);
+public class Anim {
+    public static void exit(Activity obj) {
+        obj.overridePendingTransition(R.anim.public_translate_left_to_center, R.anim.public_translate_center_to_right);
+    }
 
-    @ActivityScope
-    @Provides
-    static Dialog provideDialog(DetailContract.View view){
-        return new ProgresDialog(view.getActivity());
+    public static void in(Activity obj) {
+        obj.overridePendingTransition(R.anim.public_translate_right_to_center, R.anim.public_translate_center_to_left);
+    }
+
+    public static void cleanAnim(ImageView animView) {
+        if (animView == null)
+            return;
+        animView.setImageResource(0);
+        animView.clearAnimation();
+        animView.setVisibility(View.GONE);
     }
 }

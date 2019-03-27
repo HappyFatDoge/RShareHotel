@@ -13,37 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package me.jessyan.armscomponent.zhihu.di.module;
+package com.example.commonres.dialog;
 
 import android.app.Dialog;
+import android.content.Context;
+import android.support.annotation.NonNull;
 
-import com.jess.arms.di.scope.ActivityScope;
+import com.example.commonres.R;
 
-import dagger.Binds;
-import dagger.Module;
-import dagger.Provides;
-import com.example.commonres.dialog.ProgresDialog;
-import me.jessyan.armscomponent.zhihu.mvp.contract.DetailContract;
-import me.jessyan.armscomponent.zhihu.mvp.model.ZhihuModel;
 
 /**
  * ================================================
- * 展示 Module 的用法
- *
- * @see <a href="https://github.com/JessYanCoding/MVPArms/wiki#2.4.5">Module wiki 官方文档</a>
- * Created by JessYan on 25/04/2016 11:10
+ * Created by JessYan on 16/04/2018 17:01
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-@Module
-public abstract class DetailModule {
-    @Binds
-    abstract DetailContract.Model bindZhihuModel(ZhihuModel model);
-
-    @ActivityScope
-    @Provides
-    static Dialog provideDialog(DetailContract.View view){
-        return new ProgresDialog(view.getActivity());
+public class ProgresDialog extends Dialog {
+    public ProgresDialog(@NonNull Context context) {
+        super(context, R.style.public_dialog_progress);
+        setContentView(R.layout.public_dialog_porgress);
+        setCanceledOnTouchOutside(false);
     }
 }

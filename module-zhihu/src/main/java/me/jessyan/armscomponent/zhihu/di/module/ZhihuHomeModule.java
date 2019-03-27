@@ -29,7 +29,7 @@ import java.util.List;
 import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
-import com.joker.commonsdk.core.RouterHub;
+import com.example.commonsdk.core.RouterHub;
 import me.jessyan.armscomponent.zhihu.app.ZhihuConstants;
 import me.jessyan.armscomponent.zhihu.mvp.contract.ZhihuHomeContract;
 import me.jessyan.armscomponent.zhihu.mvp.model.ZhihuModel;

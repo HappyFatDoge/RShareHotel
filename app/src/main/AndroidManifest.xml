@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.joker.app">
+          package="com.example.guet.sharehotel">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -17,7 +17,7 @@
         android:label="@string/public_app_name"
         android:supportsRtl="true"
         android:theme="@style/public_AppTheme">
-        <activity android:name=".mvp.view.activity.SplashActivity"
+        <activity android:name="com.example.guet.sharehotel.mvp.view.activity.SplashActivity"
                   android:theme="@style/SplashTheme"
                   android:configChanges="orientation|screenSize"
                   android:screenOrientation="portrait"
@@ -27,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.view.activity.MainActivity"
+        <activity android:name="com.example.guet.sharehotel.mvp.view.activity.MainActivity"
                   android:configChanges="orientation|screenSize"
                   android:screenOrientation="portrait"
             />
@@ -47,10 +47,10 @@
         信息, 这样即可重用代码, 又可以允许每个组件可自行管理自己独有的配置信息, 如果业务组件没有独有的配置信息则只需要
         声明 CommonSDK 的 ConfigModule -->
         <meta-data
-            android:name="com.joker.commonsdk.core.GlobalConfiguration"
+            android:name="com.example.commonsdk.core.GlobalConfiguration"
             android:value="ConfigModule"/>
         <meta-data
-            android:name="com.joker.app.app.GlobalConfiguration"
+            android:name="com.example.guet.sharehotel.app.GlobalConfiguration"
             android:value="ConfigModule"/>
 
     </application>
