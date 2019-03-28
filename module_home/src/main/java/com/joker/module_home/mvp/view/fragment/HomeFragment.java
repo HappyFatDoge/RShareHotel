@@ -1,22 +1,23 @@
 package com.joker.module_home.mvp.view.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.baidu.location.BDAbstractLocationListener;
-import com.baidu.location.BDLocation;
-import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
+import com.bumptech.glide.Glide;
+import com.example.commonres.utils.DateUtil;
 import com.example.commonres.utils.ToastUtil;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
@@ -27,11 +28,13 @@ import com.joker.module_home.di.component.DaggerHomeComponent;
 import com.joker.module_home.di.module.HomeModule;
 import com.joker.module_home.mvp.contract.HomeContract;
 import com.joker.module_home.mvp.presenter.HomePresenter;
-import com.zaaach.citypicker.CityPicker;
-import com.zaaach.citypicker.adapter.OnPickListener;
-import com.zaaach.citypicker.model.City;
-import com.zaaach.citypicker.model.LocateState;
-import com.zaaach.citypicker.model.LocatedCity;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
+import com.youth.banner.loader.ImageLoader;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -43,11 +46,20 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
     @BindView(R2.id.tv_city)
     TextView mCityTextView;
+    @BindView(R2.id.main_search)
+    EditText mSearchTextView;
+    @BindView(R2.id.scan)
+    ImageView mScan;
+    @BindView(R2.id.banner_home)
+    Banner mBanner;
+    @BindView(R2.id.start_time_tv)
+    TextView mStartTimeTextView;
+    @BindView(R2.id.end_time_tv)
+    TextView mEndTimeTextView;
+
 
 
     private LinearLayout mLocationLinearLayout;
-    //定位
-    private LocationClient mLocationClient = null;
 
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
@@ -71,7 +83,32 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        List<Integer> imageList = new ArrayList<>();
+        imageList.add(R.mipmap.b1);
+        imageList.add(R.mipmap.b2);
+        imageList.add(R.mipmap.b3);
+        imageList.add(R.mipmap.b5);
+        imageList.add(R.mipmap.b6);
 
+        //图片轮播
+        mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
+        mBanner.setBannerAnimation(Transformer.Default);
+        mBanner.setViewPagerIsScroll(true);
+        mBanner.setImages(imageList);
+        mBanner.setImageLoader(new ImageLoader() {
+            @Override
+            public void displayImage(Context context, Object path, ImageView imageView) {
+                //具体方法内容自己去选择，次方法是为了减少banner过多的依赖第三方包，所以将这个权限开放给使用者去选择
+                Glide.with(context.getApplicationContext())
+                    .load(path)
+                    .into(imageView);
+            }
+        });
+        mBanner.start();
+
+        //初始化日期
+        mStartTimeTextView.setText(DateUtil.getTomorrow());
+        mEndTimeTextView.setText(DateUtil.getAcquired());
     }
 
 
@@ -80,54 +117,43 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         R2.id.ll_home_entire_rent,R2.id.ll_home_apartment,R2.id.find_tv})
     public void onClick(View view){
         int viewId = view.getId();
-        if (viewId == R.id.locatioin_ll)
-            choiceCity();
+        if (viewId == R.id.locatioin_ll)//选择城市
+            mPresenter.choiceCity(this);
+        else if (viewId == R.id.main_ll_id)//隐藏键盘
+            hideKeyboard(view);
     }
 
 
     /**
-     * 城市定位和选择
+     * 城市选择回调
+     * @param result
+     * @param cityName
      */
-    private void choiceCity() {
-        CityPicker.from(this)
-            .enableAnimation(true)
-            .setAnimationStyle(R.style.DefaultCityPickerAnimation)
-            .setLocatedCity(null)
-            .setOnPickListener(new OnPickListener() {
-                @Override
-                public void onPick(int position, City city) {
-                    if (city != null) {
-                        mCityTextView.setText(city.getName());
-                    }
-                }
+    @Override
+    public void choiceCityResult(Boolean result,String cityName) {
+        if (result)
+            mCityTextView.setText(cityName);
+    }
 
-                @Override
-                public void onLocate() {
-                    //注册定位监听
-                    mLocationClient = new LocationClient(getContext());
-                    mLocationClient.registerLocationListener(new BDAbstractLocationListener() {
-                        @Override
-                        public void onReceiveLocation(BDLocation bdLocation) {
-                            final String province = bdLocation.getProvince();
-                            final String city = bdLocation.getCity();
-                            String city_cut = city.substring(0, city.length() - 1);
-                            String code = bdLocation.getCityCode();
-                            Log.i("HomeFragment", "定位：" + province + city_cut + code);
-                            CityPicker.from(getFragment()).locateComplete(new LocatedCity(city_cut, province, code), LocateState.SUCCESS);
-                        }
-                    });
-                    LocationClientOption option = new LocationClientOption();
-                    option.setIsNeedAddress(true);
-                    mLocationClient.setLocOption(option);
-                    mLocationClient.start();
-                    Log.i(TAG, "开始定位");
-                }
 
-                @Override
-                public void onCancel() {
-                    ToastUtil.makeText(getContext(),"取消选择");
-                }
-            }).show();
+    /**
+     * 取消城市选择回调
+     * @param result
+     */
+    @Override
+    public void cancelChoiceCity(Boolean result) {
+        if (result)
+            ToastUtil.makeText(getContext(),"取消选择");
+    }
+
+    /**
+     * 隐藏键盘
+     */
+    private void hideKeyboard(View v) {
+        InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm.isActive()) {
+            imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
+        }
     }
 
     @Override
@@ -196,10 +222,5 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     @Override
     public void setData(@Nullable Object data) {
 
-    }
-
-    @Override
-    public Fragment getFragment() {
-        return this;
     }
 }

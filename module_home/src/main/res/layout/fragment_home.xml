@@ -60,6 +60,7 @@
                     android:textSize="6pt"/>
 
             <ImageView
+                    android:id="@+id/scan"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/public_25_0dp"
                     android:layout_gravity="center"
