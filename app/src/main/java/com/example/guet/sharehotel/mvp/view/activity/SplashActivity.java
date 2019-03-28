@@ -15,7 +15,6 @@
  */
 package com.example.guet.sharehotel.mvp.view.activity;
 
-import android.Manifest;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -30,8 +29,6 @@ import com.example.commonsdk.utils.Utils;
 import com.example.guet.sharehotel.R;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
-import com.tbruyelle.rxpermissions2.Permission;
-import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -68,8 +65,6 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        //请求权限
-        requestPermissions();
         //获取账户是否已经登录
         automaticLogin();
         Observable.timer(2, TimeUnit.SECONDS)
@@ -79,7 +74,7 @@ public class SplashActivity extends BaseActivity {
                     public void accept(Long aLong) throws Exception {
                         Utils.navigation(SplashActivity.this, RouterHub.APP_HOMEACTIVITY);
                         finish();
-                        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                        overridePendingTransition(R.anim.public_activity_in, R.anim.public_activity_out);
                     }
                 });
     }
@@ -122,31 +117,5 @@ public class SplashActivity extends BaseActivity {
                 }
             });
         }
-    }
-
-    /**
-     * 请求权限
-     */
-    private void requestPermissions(){
-        new RxPermissions(this)
-            .requestEach(Manifest.permission.READ_PHONE_STATE,
-                Manifest.permission.INTERNET,
-                Manifest.permission.ACCESS_NETWORK_STATE,
-                Manifest.permission.ACCESS_WIFI_STATE,
-                Manifest.permission.WAKE_LOCK,
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.CAMERA,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-            .subscribe(new Consumer<Permission>() {
-                @Override
-                public void accept(Permission permission) throws Exception {
-                    if (permission.granted)
-                        Log.d("permission",permission.name + " is accept");
-                    else
-                        Log.d("permission" , permission.name + " is reject");
-                }
-            });
     }
 }

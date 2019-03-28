@@ -25,6 +25,11 @@ android {
 
         multiDexEnabled true
     }
+
+    sourceSets {
+        main.jniLibs.srcDirs = ['libs']
+    }
+
     buildTypes {
         debug {
             buildConfigField "boolean", "LOG_DEBUG", "true"
@@ -81,4 +86,7 @@ dependencies {
     debugImplementation rootProject.ext.dependencies["canary-debug"]
     releaseImplementation rootProject.ext.dependencies["canary-release"]
     testImplementation rootProject.ext.dependencies["canary-release"]
+
+    //城市选择
+    implementation 'com.zaaach:citypicker:2.0.3'
 }

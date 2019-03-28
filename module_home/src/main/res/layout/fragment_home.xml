@@ -1,14 +1,285 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/main_ll_id"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
               tools:ignore="ResourceName">
 
-    <TextView
-            android:id="@+id/module_homeTextview"
+    <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="第一个fragment"/>
+            android:background="@color/public_colorAccent"
+            >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="?android:actionBarSize"
+                android:layout_alignParentTop="true"
+                android:orientation="horizontal">
+
+            <LinearLayout
+                    android:id="@+id/locatioin_ll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical">
+
+                <TextView
+                        android:id="@+id/tv_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/public_10_0dp"
+                        android:maxEms="2"
+                        android:maxLines="1"
+                        android:text="@string/public_home_location"
+                        android:textSize="@dimen/public_font_16sp"
+                        android:textColor="@color/public_black"/>
+
+                <ImageView
+                        android:layout_width="@dimen/public_20_0dp"
+                        android:layout_height="@dimen/public_15_0dp"
+                        android:layout_marginTop="@dimen/public_5_0dp"
+                        android:src="@mipmap/arrow_down"/>
+            </LinearLayout>
+
+
+            <EditText
+                    android:id="@+id/main_search"
+                    android:layout_width="@dimen/public_270_0dp"
+                    android:layout_height="@dimen/public_36_0dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/public_5_0dp"
+                    android:maxLines="1"
+                    android:background="@mipmap/search_main"
+                    android:paddingLeft="@dimen/public_60_0dp"
+                    android:hint="@string/public_home_where_to_live"
+                    android:textColor="@color/public_white"
+                    android:textColorHint="@color/public_text_hint"
+                    android:textSize="6pt"/>
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/public_25_0dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/sao"/>
+
+            <LinearLayout
+                    android:layout_width="@dimen/public_0_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.5">
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <include layout="@layout/fragment_location_date"/>
+
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_1_0dp"
+            android:background="#dddddd"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+        <LinearLayout
+                android:id="@+id/ll_home_entire_rent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@mipmap/allrental"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="民宿"
+                    android:textColor="@color/public_order_normal_text_color"
+                    android:textSize="@dimen/public_font_14sp"/>
+
+        </LinearLayout>
+
+        <Space
+                android:layout_width="45dp"
+                android:layout_height="match_parent"/>
+
+        <LinearLayout
+                android:id="@+id/ll_home_apartment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@mipmap/own"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="酒店公寓"
+                    android:textColor="@color/public_order_normal_text_color"
+                    android:textSize="7pt"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#bfbfbf"/>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:background="@color/public_white">
+
+        <LinearLayout
+                android:id="@+id/ll_home_checkin"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:orientation="horizontal">
+
+            <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="40dp"
+                    android:src="@mipmap/calendar"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="入住："
+                    android:textColor="#15314c"
+                    android:textSize="8pt"/>
+
+            <TextView
+                    android:id="@+id/start_time_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="2018-06-01"
+                    android:textColor="#15314c"
+                    android:textSize="8pt"/>
+
+            <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/right_arrow"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#bfbfbf"/>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:background="@color/public_white">
+
+        <LinearLayout
+                android:id="@+id/ll_home_checkout"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:orientation="horizontal">
+
+            <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="40dp"
+                    android:src="@mipmap/calendar"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="退房："
+                    android:textColor="#15314c"
+                    android:textSize="8pt"/>
+
+            <TextView
+                    android:id="@+id/end_time_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="2018-06-01"
+                    android:textColor="#15314c"
+                    android:textSize="8pt"/>
+
+            <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="50dp"
+                    android:src="@mipmap/right_arrow"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#bfbfbf"/>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#bfbfbf"/>
+
+    <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:background="@color/public_white"/>
+
+
+    <TextView
+            android:id="@+id/find_tv"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="#7d64e7"
+            android:gravity="center"
+            android:text="搜索"
+            android:textColor="@color/public_white"
+            android:textSize="14pt"/>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"/>
 </LinearLayout>

@@ -7,5 +7,11 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(":CommonRes")//因为 CommonRes 依赖了 CommonSDK, 所以如果业务模块需要公共 UI 组件就依赖 CommonRes, 如果不需要就只依赖 CommonSDK
-//    api project(":CommonService")
+//    api project(":citypicker")
+
+    //图片轮播
+    implementation 'com.youth.banner:banner:1.4.10'
+    //城市选择
+    implementation 'com.zaaach:citypicker:2.0.3'
+
 }

@@ -9,7 +9,7 @@ import android.widget.Toast;
  */
 public class ToastUtil {
 
-    private static Toast mToast;
+    public static Toast mToast;
 
 
     /**

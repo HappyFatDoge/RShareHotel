@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.example.guet.sharehotel">
 
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/> <!-- 允许联网 -->
@@ -15,18 +12,12 @@
     <uses-permission android:name="android.permission.WAKE_LOCK"/> <!-- 获取sd卡写的权限，用于文件上传和下载 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> <!-- 允许读取手机状态 用于创建BmobInstallation -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/> <!-- 百度地图基础定位权限 -->
     <!-- 这个权限用于进行网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> <!-- 这个权限用于访问GPS定位 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
     <!-- <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> -->
-    <uses-permission android:name="android.permission.CAMERA"/> <!-- 打电话 -->
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
             android:name="com.jess.arms.base.BaseApplication"
@@ -34,11 +25,11 @@
             android:icon="@mipmap/ic_launcher"
             android:label="@string/public_app_name"
             android:supportsRtl="true"
-            android:theme="@style/public_AppTheme">
+            android:theme="@style/public_AppTheme"
+            tools:replace="android:label">
         <activity
                 android:name=".mvp.view.activity.SplashActivity"
                 android:configChanges="orientation|screenSize"
-                android:screenOrientation="portrait"
                 android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -50,7 +41,8 @@
         <activity
                 android:name=".mvp.view.activity.HomeActivity"
                 android:configChanges="orientation|screenSize"
-                android:screenOrientation="portrait"/>
+                android:screenOrientation="portrait"
+                android:theme="@style/HomeTheme"/>
         <!--
  autolayout meta
         配置设计图的宽高,配合AutoLauout控件使用,在设计图尺寸以外的其它尺寸手机上,也能达到和设计图一样的效果
@@ -74,6 +66,21 @@
         <meta-data
                 android:name="com.example.guet.sharehotel.app.GlobalConfiguration"
                 android:value="ConfigModule"/>
+
+
+        <meta-data
+                android:name="com.baidu.lbsapi.API_KEY"
+                android:value="48EMXulYQ0FXEoOEulfcOb3O3m03Uxse"/>
+
+        <service
+                android:name="com.baidu.location.f"
+                android:enabled="true"
+                android:process=":remote"/>
+
+        <provider
+                android:name="cn.bmob.v3.util.BmobContentProvider"
+                android:authorities="com.example.guet.sharehotel.BmobContentProvider">
+        </provider>
     </application>
 
 </manifest>

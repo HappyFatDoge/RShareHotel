@@ -1,5 +1,6 @@
 package com.example.guet.sharehotel.mvp.view.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.commonres.utils.ToastUtil;
@@ -24,11 +26,14 @@ import com.joker.module_home.mvp.view.fragment.HomeFragment;
 import com.joker.module_message.mvp.view.fragment.MessageFragment;
 import com.joker.module_order.mvp.view.fragment.OrderFragment;
 import com.joker.module_personal.mvp.view.fragment.PersonalFragment;
+import com.tbruyelle.rxpermissions2.Permission;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import io.reactivex.functions.Consumer;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
@@ -66,6 +71,8 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
     public void initData(@Nullable Bundle savedInstanceState) {
         //初始化布局
         initView();
+        //请求权限
+        requestPermissions();
     }
 
     private void initView(){
@@ -91,6 +98,33 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
     private void setTabItems(){
         for (int i = 0; i < 4; ++i)
             mTabLayout.getTabAt(i).setCustomView(tabRes[i]);
+    }
+
+
+    /**
+     * 请求权限
+     */
+    private void requestPermissions(){
+        new RxPermissions(this)
+            .requestEach(Manifest.permission.READ_PHONE_STATE,
+                Manifest.permission.INTERNET,
+                Manifest.permission.ACCESS_NETWORK_STATE,
+                Manifest.permission.ACCESS_WIFI_STATE,
+                Manifest.permission.WAKE_LOCK,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+            .subscribe(new Consumer<Permission>() {
+                @Override
+                public void accept(Permission permission) throws Exception {
+                    if (permission.granted)
+                        Log.d("permission",permission.name + " is accept");
+                    else
+                        Log.d("permission" , permission.name + " is reject");
+                }
+            });
     }
 
 

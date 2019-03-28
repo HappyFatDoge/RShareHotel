@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    
+    <!--toolbar样式属性-->
+    <declare-styleable name="CommonToolBar" tools:ignore="ResourceName">
+        <attr name="title" format="string|reference"></attr>
+        <attr name="backVisible" format="boolean"></attr>
+        <attr name="rightTextViewVisible" format="boolean"></attr>
+        <attr name="rightImageViewVisible" format="reference"></attr>
+        <attr name="rightSrcCompat" format="reference"></attr>
+        <attr name="rightText" format="string|reference"></attr>
+    </declare-styleable>
+    
+    
+</resources>
