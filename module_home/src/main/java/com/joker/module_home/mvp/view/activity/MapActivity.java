@@ -144,9 +144,8 @@ public class MapActivity extends BaseActivity<MapPresenter> implements MapContra
             mLocationClient.stop();
             mLocationClient = null;
         }
+        mMapView.onDestroy();
         super.onDestroy();
-        if (mMapView != null)
-            mMapView.onDestroy();
     }
 
     @Override
