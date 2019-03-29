@@ -21,6 +21,10 @@ import com.joker.module_home.R;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+
+/**
+ * 主页-> 搜索 -> 选择酒店-> 酒店详情 -> 评论
+ */
 @Route(path = RouterHub.HOME_COMMENTACTIVITY)
 public class CommentActivity extends BaseActivity<CommentPresenter> implements CommentContract.View {
 

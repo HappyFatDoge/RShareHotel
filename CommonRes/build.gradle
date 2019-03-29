@@ -13,6 +13,10 @@ android {
         testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
     }
 
+    sourceSets {
+        main.jniLibs.srcDirs = ['libs']
+    }
+
     buildTypes {
         release {
             minifyEnabled false

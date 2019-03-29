@@ -3,6 +3,242 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical">
+              xmlns:joker="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              tools:ignore="ResourceName">
+
+    <com.example.commonres.view.CommonToolBar
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            joker:backVisible="true"
+            joker:rightTextViewVisible="true"
+            joker:rightText="确定"
+            joker:title="筛选">
+    </com.example.commonres.view.CommonToolBar>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="#F7F7F7"
+            android:orientation="vertical">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="住房类型"
+                android:textColor="#0d2E4B"
+                android:textSize="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="10dp"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@mipmap/jiudian"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="10dp"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="民宿"
+                        android:textColor="#0d2E4B"
+                        android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@mipmap/gongyu"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="酒店公寓"
+                        android:textColor="#0d2E4B"
+                        android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="价格区间"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"/>
+
+    <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_50_0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:background="@drawable/activity_filter_chose_selector">
+
+        <RadioButton
+                android:id="@+id/first_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:checked="true"
+                android:layout_weight="1"
+                android:button="@null"
+                android:background="@drawable/price_chose_first_bg_selector"
+                android:text="1000以下"
+                android:textColor="@drawable/price_chose_text_selector"
+                android:textSize="20dp"/>
+
+        <RadioButton
+                android:id="@+id/second_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:background="@drawable/price_chose_second_bg_selector"
+                android:text="1000-2000"
+                android:textColor="@drawable/price_chose_text_selector"
+                android:textSize="20dp"/>
+
+        <RadioButton
+                android:id="@+id/third_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:button="@null"
+                android:background="@drawable/price_chose_third_bg_selector"
+                android:text="2000以上"
+                android:textColor="@drawable/price_chose_text_selector"
+                android:textSize="20dp"/>
+    </RadioGroup>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp">
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:background="#D1D7DC">
+        </View>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="13dp">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="房屋设施"
+                    android:textColor="#000000"
+                    android:textSize="17dp"
+                    android:layout_marginLeft="10dp"/>
+
+            <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="15dp"
+                    android:background="@mipmap/right_arrow"
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/imageView"/>
+
+        </LinearLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:background="#D1D7DC">
+        </View>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="13dp">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="户型"
+                    android:textColor="#000000"
+                    android:textSize="17dp"
+                    android:layout_marginLeft="10dp"/>
+
+            <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="15dp"
+                    android:background="@mipmap/right_arrow"
+                    android:layout_marginRight="20dp"/>
+
+        </LinearLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:background="#D1D7DC">
+        </View>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="13dp">
+
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="长期续租"
+                    android:textColor="#000000"
+                    android:textSize="17dp"
+                    android:layout_marginLeft="10dp"/>
+
+            <ImageView
+                    android:id="@+id/iv_cqxz"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:background="@mipmap/circle1"
+                    android:clickable="true"
+                    android:layout_marginRight="20dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
