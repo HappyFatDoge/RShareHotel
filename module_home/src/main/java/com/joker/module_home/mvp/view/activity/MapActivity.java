@@ -60,7 +60,6 @@ public class MapActivity extends BaseActivity<MapPresenter> implements MapContra
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
-        SDKInitializer.initialize(getApplicationContext());//初始化SDK
         DaggerMapComponent
             .builder()
             .appComponent(appComponent)
@@ -146,7 +145,8 @@ public class MapActivity extends BaseActivity<MapPresenter> implements MapContra
             mLocationClient = null;
         }
         super.onDestroy();
-        mMapView.onDestroy();
+        if (mMapView != null)
+            mMapView.onDestroy();
     }
 
     @Override

@@ -20,6 +20,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.multidex.MultiDex;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.example.guet.sharehotel.BuildConfig;
 import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.utils.ArmsUtils;
@@ -68,6 +69,8 @@ public class AppLifecyclesImpl implements AppLifecycles {
         Bmob.initialize(application,"16565db562fea312a73203bcc8a818c6");
 
         initImageLoader(application);
+
+        SDKInitializer.initialize(application);//初始化百度定位SDK
     }
 
     @Override
