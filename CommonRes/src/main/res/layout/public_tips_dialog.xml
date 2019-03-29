@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@drawable/public_tips_dialog_shape"
+        android:layout_gravity="center"
+        android:paddingLeft="@dimen/public_15_0dp"
+        android:paddingRight="@dimen/public_15_0dp"
+        android:layout_marginLeft="@dimen/public_5_0dp"
+        android:layout_marginRight="@dimen/public_5_0dp">
+
+
+    <TextView
+            android:id="@+id/title"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/public_10_0dp"
+            android:paddingBottom="@dimen/public_4_0dp"
+            android:text="?attr/TipsTitleText"
+            android:textSize="@dimen/public_font_20sp"/>
+
+    <TextView
+            android:id="@+id/tipsContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="@dimen/public_4_0dp"
+            android:paddingBottom="@dimen/public_4_0dp"
+            android:text="?attr/TipsContent"
+            android:textColor="@color/public_black"
+            android:textSize="@dimen/public_font_14sp"/>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_1_0dp"
+            android:background="@color/public_gray"></View>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <Button
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@color/public_white"
+                android:text="取消"
+                android:textSize="@dimen/public_font_16sp"/>
+
+        <View
+                android:layout_width="@dimen/public_1_0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/public_10_0dp"
+                android:layout_marginBottom="@dimen/public_10_0dp"
+                android:background="@color/public_gray"></View>
+
+        <Button
+                android:id="@+id/confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@color/public_white"
+                android:text="确定"
+                android:textColor="@color/public_colorAccent"
+                android:textSize="@dimen/public_font_16sp"/>
+
+    </LinearLayout>
+</LinearLayout>

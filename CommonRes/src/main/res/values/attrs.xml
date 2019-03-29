@@ -10,6 +10,14 @@
         <attr name="rightSrcCompat" format="reference"></attr>
         <attr name="rightText" format="string|reference"></attr>
     </declare-styleable>
-    
-    
+
+
+
+    <!--提示dialog属性-->
+    <declare-styleable name="TipsDialog" tools:ignore="ResourceName">
+        <attr name="TipsTitleAppearance" format="reference"></attr>
+        <attr name="TipsTitleText" format="reference|string"></attr>
+        <attr name="TipsContent" format="reference|string" ></attr>
+        <attr name="ConfirmButtonText" format="reference|string"></attr>
+    </declare-styleable>
 </resources>

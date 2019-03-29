@@ -1,15 +1,14 @@
 package com.example.commonres.utils;
 
 import android.content.Context;
-import android.widget.Toast;
+
+import com.jess.arms.utils.ArmsUtils;
 
 /**
  * @author ZCB 2575490085@qq.com
  * Created on 2019/3/27.
  */
 public class ToastUtil {
-
-    public static Toast mToast;
 
 
     /**
@@ -18,11 +17,7 @@ public class ToastUtil {
      * @param string
      */
     public static void makeText(Context context, String string) {
-        if (mToast == null) {
-            mToast = Toast.makeText(context, string, Toast.LENGTH_SHORT);
-        }
-        mToast.setText(string);
-        mToast.show();
+        ArmsUtils.makeText(context,string);
     }
 
 
@@ -33,6 +28,6 @@ public class ToastUtil {
      */
     public static void makeText(Context context, int resId) {
         String messing = context.getResources().getString(resId);
-        makeText(context,messing);
+        ArmsUtils.makeText(context,messing);
     }
 }

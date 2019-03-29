@@ -43,7 +43,7 @@ public interface RouterHub {
      * 组名
      */
     String APP = "/app";//宿主 App 组件
-    String ZHIHU = "/zhihu";//知乎组件
+    String HOME = "/home";//Home组件
 
     /**
      * 服务组件, 用于给每个组件暴露特有的服务
@@ -59,10 +59,12 @@ public interface RouterHub {
 
 
     /**
-     * 知乎分组
+     * Home分组
      */
-    String ZHIHU_SERVICE_ZHIHUINFOSERVICE = ZHIHU + SERVICE + "/ZhihuInfoService";
-
-    String ZHIHU_HOMEACTIVITY = ZHIHU + "/HomeActivity";
-    String ZHIHU_DETAILACTIVITY = ZHIHU + "/DetailActivity";
+    String HOME_FINDACTIVITY = HOME + "/FindActivity";
+    String HOME_HOTELSELECTEDINFOACTIVITY = HOME + "/HotelSelectedInfoActivity";
+    String HOME_FILTERHOTELACTIVITY = HOME + "/FilterHotelActivity";
+    String HOME_COMMENTACTIVITY = HOME + "/CommentActivity";
+    String HOME_MAPACTIVITY = HOME + "/MapActivity";
+    String HOME_ORDERDETAILACTIVITY = HOME + "/OrderDetailActivity";
 }

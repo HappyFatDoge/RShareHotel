@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:joker="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              tools:ignore="ResourceName">
+
+    <com.example.commonres.view.CommonToolBar
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            joker:title="酒店详情"
+            joker:backVisible="true">
+    </com.example.commonres.view.CommonToolBar>
+
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <RelativeLayout
+                android:id="@+id/hotelmessage_RelativeLayout1"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_alignParentTop="true"
+                android:background="@mipmap/hotel7">
+
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/main_bottom_groups"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                        android:id="@+id/hotellinearlayout1"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:background="@android:color/transparent"
+                        android:orientation="vertical"
+                        android:paddingBottom="10dp">
+
+
+                    <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="8dp"
+                            android:paddingTop="10dp">
+
+                        <TextView
+                                android:id="@+id/tv_hotel_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:paddingLeft="10dp"
+                                android:lines="1"
+                                android:ellipsize="end"
+                                android:text="幸福公寓"
+                                android:textColor="#ffffff"
+                                android:textSize="20sp"/>
+
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:orientation="horizontal">
+
+                        <TextView
+                                android:id="@+id/tv_hotel_commnent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="2dp"
+                                android:text="45"
+                                android:textColor="#ffffff"
+                                android:textSize="15sp"/>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="条评论"
+                                android:textColor="#ffffff"
+                                android:textSize="15sp"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="bottom"
+                        android:layout_toRightOf="@+id/hotellinearlayout1"
+                        android:background="@drawable/textview_border"
+                        android:orientation="vertical"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginRight="@dimen/public_10_0dp">
+
+                    <TextView
+                            android:id="@+id/tv_hotel_grade"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="4.8"
+                            android:textColor="#ffffff"
+                            android:textSize="30sp"/>
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="评分"
+                            android:textColor="#ffffff"
+                            android:textSize="18sp"/>
+
+                    <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                        <TextView
+                                android:id="@+id/tv_hotel_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1314"
+                                android:textColor="#fc5e03"
+                                android:textSize="10pt"/>
+
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="元/日"
+                                android:textSize="10pt"
+                                android:textColor="@color/white"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                    android:id="@+id/main_bottom_groups"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@mipmap/hotelmessage_shadow"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp"
+                    android:weightSum="1">
+
+                <Button
+                        android:id="@+id/hotelmessage_btn_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:background="#00000000"
+                        android:button="@null"
+                        android:drawableTop="@mipmap/hotelmessage_phone"
+                        android:gravity="center"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+
+                        android:text="电话"
+                        android:textColor="#ffffff"/>
+
+                <View
+                        android:layout_width="1dip"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@android:color/white"/>
+
+                <Button
+                        android:id="@+id/hotelmessage_btn_evaluation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:background="#00000000"
+                        android:button="@null"
+                        android:drawableTop="@mipmap/hotelmessage_evaluation"
+                        android:gravity="center"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="评价"
+                        android:textColor="#ffffff"/>
+
+                <View
+                        android:layout_width="1dip"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@android:color/white"/>
+
+                <Button
+                        android:id="@+id/btn_detail_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:background="#00000000"
+                        android:button="@null"
+                        android:drawableTop="@mipmap/hotelmessage_location"
+                        android:gravity="center"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="位置"
+                        android:textColor="#ffffff"/>
+
+                <View
+                        android:layout_width="1dip"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@android:color/white"/>
+
+                <Button
+                        android:id="@+id/btn_detail_colection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:background="#00000000"
+                        android:button="@null"
+                        android:drawableTop="@mipmap/hotelmessage_collection"
+                        android:gravity="center"
+                        android:scaleX="0.8"
+                        android:scaleY="0.8"
+                        android:text="收藏"
+                        android:textColor="#ffffff"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ScrollView
+                android:id="@+id/sv_detail"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/hotelmessage_RelativeLayout1">
+
+            <LinearLayout
+                    android:id="@+id/ll_house_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:orientation="vertical">
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="类型："/>
+
+                    <TextView
+                            android:id="@+id/tv_detail_mode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="55dp"
+                            android:text="合租"
+                            android:textColor="#15314c"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="户型："/>
+
+                    <TextView
+                            android:id="@+id/tv_detail_house_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:text="2室1厅1卫"
+                            android:textColor="#15314c"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="面积："/>
+
+                    <TextView
+                            android:id="@+id/tv_detail_area"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3dp"
+                            android:text="65"
+                            android:textColor="#15314c"/>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="m²"
+                            android:textColor="#15314c"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="地址："/>
+
+                    <TextView
+                            android:id="@+id/tv_detail_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="七星区爱情公寓13栋520号"
+                            android:textColor="#15314c"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="房子可用起始时间："/>
+
+                    <TextView
+                            android:id="@+id/tv_detail_start_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2019-03-25 00:00:00"
+                            android:textColor="#15314c"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="房子可用结束时间："/>
+
+                    <TextView
+                            android:id="@+id/tv_detail_end_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2019-03-26 00:00:00"
+                            android:textColor="#15314c"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="其它："/>
+
+                    <TextView
+                            android:id="@+id/tv_detail_description"
+                            android:layout_width="270dp"
+                            android:layout_height="wrap_content"
+                            android:text="次卧出租，房子3人合租，目前只有1个人，只要男生合租，"
+                            android:textColor="#15314c"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+        <LinearLayout
+                android:id="@+id/hotelmessage_linearlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sv_detail"
+                android:orientation="horizontal"
+                >
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:id="@+id/refrigeration_iv1"
+                        android:layout_width="36dp"
+                        android:layout_height="27dp"
+                        android:layout_gravity="center"
+                        android:background="@mipmap/tv"
+                        android:orientation="vertical"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:paddingTop="5dp"
+                        android:text="电视"
+                        android:textColor="#999999"
+                        android:textSize="13dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:id="@+id/refrigeration_iv2"
+                        android:layout_width="32dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center"
+                        android:background="@mipmap/hotelmessage_wifi"
+                        android:orientation="vertical"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:paddingTop="15dp"
+                        android:text="wifi"
+                        android:textColor="#999999"
+                        android:textSize="13dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:id="@+id/refrigeration_iv3"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:background="@mipmap/ice_box"
+                        android:orientation="vertical"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:paddingTop="6dp"
+                        android:text="冰箱"
+                        android:textColor="#999999"
+                        android:textSize="13dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:id="@+id/refrigeration_iv4"
+                        android:layout_width="27dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:background="@mipmap/ac"
+                        android:orientation="vertical"/>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:paddingTop="15dp"
+                        android:text="空调"
+                        android:textColor="#999999"
+                        android:textSize="13dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:id="@+id/refrigeration_iv5"
+                        android:layout_width="24dp"
+                        android:layout_height="6dp"
+                        android:layout_gravity="center"
+                        android:background="@mipmap/hotelmessage_more"
+                        android:orientation="vertical"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <Button
+                android:id="@+id/bt_hotel_book"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/public_20_0dp"
+                android:layout_marginRight="@dimen/public_20_0dp"
+                android:layout_above="@+id/end"
+                android:background="@drawable/button_common_selector"
+                android:text="立即预定"
+                android:textColor="@color/white"/>
+
+        <View
+                android:id="@+id/end"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/public_20_0dp"></View>
+    </RelativeLayout>
+
+</LinearLayout>

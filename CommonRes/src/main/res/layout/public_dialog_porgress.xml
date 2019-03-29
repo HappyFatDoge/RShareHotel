@@ -6,7 +6,7 @@
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_gravity="center"
         android:layout_width="@dimen/public_width_240px"
-        android:layout_height="@dimen/public_height_160px"
+        android:layout_height="@dimen/public_75_0dp"
         android:background="@drawable/public_shape_gray_corner_12px"
         android:gravity="center"
         android:orientation="vertical">

@@ -50,8 +50,8 @@ import io.reactivex.functions.Consumer;
 @Route(path = RouterHub.APP_SPLASHACTIVITY)
 public class SplashActivity extends BaseActivity {
 
-    private String account;
-    private boolean isLogin;
+    private static String account;
+    private static boolean isLogin;
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -85,8 +85,9 @@ public class SplashActivity extends BaseActivity {
      */
     private void automaticLogin() {
         final SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
-        account = sp.getString("Account", "");
-        isLogin = sp.getBoolean("isLogin",false);
+//        account = sp.getString("Account", "");
+//        isLogin = sp.getBoolean("isLogin",false);
+        account = "15113109045";
         isLogin = true;
         if (account != ""){
             //获取User
@@ -110,6 +111,7 @@ public class SplashActivity extends BaseActivity {
                             LoginUtil loginUtil = LoginUtil.getInstance();
                             loginUtil.setUser(list.get(0));
                             loginUtil.setLogin(isLogin);
+                            Log.d("账户",String.valueOf(loginUtil.getUser().getAccount()));
                         }
                     } else {
                         Log.i("MainActivity", e.toString());

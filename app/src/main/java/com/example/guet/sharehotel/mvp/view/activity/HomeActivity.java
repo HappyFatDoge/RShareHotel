@@ -22,6 +22,7 @@ import com.example.guet.sharehotel.mvp.view.adapter.HomeViewPagerAdapter;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
+import com.jess.arms.utils.RxLifecycleUtils;
 import com.joker.module_home.mvp.view.fragment.HomeFragment;
 import com.joker.module_message.mvp.view.fragment.MessageFragment;
 import com.joker.module_order.mvp.view.fragment.OrderFragment;
@@ -113,9 +114,11 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
                 Manifest.permission.WAKE_LOCK,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.CAMERA,
+                Manifest.permission.CALL_PHONE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION)
+            .compose(RxLifecycleUtils.bindToLifecycle(getView()))
             .subscribe(new Consumer<Permission>() {
                 @Override
                 public void accept(Permission permission) throws Exception {
@@ -164,5 +167,10 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
             ToastUtil.makeText(this,R.string.public_exit_tips);
         }else
             super.onBackPressed();
+    }
+
+    @Override
+    public HomeContract.View getView() {
+        return this;
     }
 }

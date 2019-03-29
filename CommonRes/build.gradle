@@ -35,4 +35,10 @@ dependencies {
     //bmob-sdk：Bmob的android sdk包，包含了Bmob的数据存储、文件等服务，以下是最新的bmob-sdk:
     //3.5.5：请务必查看下面注释[1]
     api 'cn.bmob.android:bmob-sdk:3.7.0'
+    //日期选择
+    implementation 'com.prolificinteractive:material-calendarview:1.4.3'
+
+    api project(":library")
+
+    api 'com.squareup.okio:okio:2.1.0'
 }

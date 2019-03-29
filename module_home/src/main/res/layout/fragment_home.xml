@@ -22,8 +22,9 @@
             <LinearLayout
                     android:id="@+id/locatioin_ll"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical">
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical">
 
                 <TextView
                         android:id="@+id/tv_city"
@@ -40,37 +41,35 @@
                 <ImageView
                         android:layout_width="@dimen/public_20_0dp"
                         android:layout_height="@dimen/public_15_0dp"
-                        android:layout_marginTop="@dimen/public_5_0dp"
                         android:src="@mipmap/arrow_down"/>
             </LinearLayout>
 
 
             <EditText
                     android:id="@+id/main_search"
-                    android:layout_width="@dimen/public_270_0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/public_36_0dp"
+                    android:layout_weight="1"
                     android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/public_5_0dp"
                     android:maxLines="1"
-                    android:background="@mipmap/search_main"
+                    android:background="@drawable/search_main"
                     android:paddingLeft="@dimen/public_60_0dp"
                     android:hint="@string/public_home_where_to_live"
                     android:textColor="@color/public_white"
                     android:textColorHint="@color/public_text_hint"
                     android:textSize="6pt"/>
 
-            <ImageView
-                    android:id="@+id/scan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/public_25_0dp"
-                    android:layout_gravity="center"
-                    android:src="@mipmap/sao"/>
 
             <LinearLayout
-                    android:layout_width="@dimen/public_0_0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="0.5">
+                    android:layout_width="@dimen/public_60_0dp"
+                    android:layout_height="match_parent">
+                <ImageView
+                        android:id="@+id/scan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/public_25_0dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/sao"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -273,7 +272,9 @@
             android:id="@+id/find_tv"
             android:layout_width="match_parent"
             android:layout_height="46dp"
-            android:background="#7d64e7"
+            android:layout_marginLeft="@dimen/public_20_0dp"
+            android:layout_marginRight="@dimen/public_20_0dp"
+            android:background="@drawable/search_bg"
             android:gravity="center"
             android:text="搜索"
             android:textColor="@color/public_white"

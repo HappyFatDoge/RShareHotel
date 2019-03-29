@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:joker="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              tools:ignore="ResourceName">
+
+    <com.example.commonres.view.CommonToolBar
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            joker:backVisible="true"
+            joker:title="搜索结果"
+            joker:rightTextViewVisible="true"
+            joker:rightText="筛选">
+    </com.example.commonres.view.CommonToolBar>
+
+    <com.yyydjk.library.DropDownMenu
+            android:id="@+id/ddm_find_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            joker:dddividerColor="@color/gray"
+            joker:ddmaskColor="@color/mask_color"
+            joker:ddmenuBackgroundColor="@color/white"
+            joker:ddmenuMenuHeightPercent="0.5"
+            joker:ddmenuSelectedIcon="@mipmap/tab_up"
+            joker:ddmenuTextSize="8pt"
+            joker:ddmenuUnselectedIcon="@mipmap/tab_down"
+            joker:ddtextSelectedColor="@color/drop_down_selected"
+            joker:ddtextUnselectedColor="@color/drop_down_unselected"
+            joker:ddunderlineColor="@color/gray">
+    </com.yyydjk.library.DropDownMenu>
+
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+</LinearLayout>

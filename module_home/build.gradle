@@ -13,5 +13,7 @@ dependencies {
     implementation 'com.youth.banner:banner:1.4.10'
     //城市选择
     implementation 'com.zaaach:citypicker:2.0.3'
+    // 筛选框
+    implementation 'com.github.dongjunkun:DropDownMenu:1.0.4'
 
 }

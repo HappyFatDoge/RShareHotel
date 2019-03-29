@@ -35,4 +35,15 @@
         <!--是否模糊-->
         <item name="android:backgroundDimEnabled">true</item>
     </style>
+
+
+    <!--提示dialog-->
+    <style name="public_tips_dialog" parent="android:Theme.DeviceDefault.Light.Dialog">
+        <item name="TipsTitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="TipsTitleText">提示</item>
+        <item name="TipsContent">提示</item>
+        <item name="android:windowBackground">@color/public_color_transparent</item>
+        <item name="android:windowFrame">@null</item>
+    </style>
+
 </resources>

@@ -15,10 +15,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.bumptech.glide.Glide;
+import com.example.commonres.dialog.MaterialCalendarDialog;
+import com.example.commonres.utils.DateTimeHelper;
 import com.example.commonres.utils.DateUtil;
 import com.example.commonres.utils.ToastUtil;
+import com.example.commonsdk.core.RouterHub;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -33,7 +38,11 @@ import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.loader.ImageLoader;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -41,7 +50,9 @@ import butterknife.OnClick;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
-
+/**
+ * 主页
+ */
 public class HomeFragment extends BaseFragment<HomePresenter> implements HomeContract.View {
 
     @BindView(R2.id.tv_city)
@@ -59,11 +70,22 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
 
 
+    private Date mCheckInDate;
+    private Date mCheckOutDate;
+
+
     private LinearLayout mLocationLinearLayout;
 
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
         return fragment;
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mBanner.startAutoPlay();
     }
 
     @Override
@@ -121,6 +143,16 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             mPresenter.choiceCity(this);
         else if (viewId == R.id.main_ll_id)//隐藏键盘
             hideKeyboard(view);
+        else if (viewId == R.id.ll_home_checkin) //入住时间选择dialog
+            showDateChoiceDialog(true);
+        else if (viewId == R.id.ll_home_checkout)//退房时间选择dialog
+            showDateChoiceDialog(false);
+        else if (viewId == R.id.ll_home_entire_rent)//民宿
+            searchHouse("House");
+        else if (viewId == R.id.ll_home_apartment)//酒店公寓
+            searchHouse("HotelApartment");
+        else if (viewId == R.id.find_tv)//搜索
+            searchHouse("All");
     }
 
 
@@ -145,6 +177,73 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         if (result)
             ToastUtil.makeText(getContext(),"取消选择");
     }
+
+
+    /**
+     * 选择日期dialog
+     */
+    private void showDateChoiceDialog(final boolean isCheckInDate) {
+        MaterialCalendarDialog calendarDialog = MaterialCalendarDialog.getInstance(getContext(), null);
+        calendarDialog.setOnOkClickLitener(new MaterialCalendarDialog.OnOkClickLitener() {
+            @Override
+            public void onOkClick(Date date) {
+                if (isCheckInDate) {
+                    mCheckInDate = date;
+                    mStartTimeTextView.setText(DateTimeHelper.formatToString(date, "yyyy-MM-dd"));
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTime(date);
+                    calendar.add(Calendar.DAY_OF_MONTH, 1);
+                    mEndTimeTextView.setText(DateTimeHelper.formatToString(calendar.getTime(), "yyyy-MM-dd"));
+                } else {
+                    if (mCheckInDate == null) {
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        try {
+                            mCheckInDate = sdf.parse(DateUtil.getTomorrow());
+                            mStartTimeTextView.setText(DateTimeHelper.formatToString(mCheckInDate, "yyyy-MM-dd"));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    mCheckOutDate = date;
+                    if (mCheckOutDate.getTime() > mCheckInDate.getTime()) {
+                        mEndTimeTextView.setText(DateTimeHelper.formatToString(date, "yyyy-MM-dd"));
+                    } else {
+                        Toast.makeText(getContext(), "重新选择退房日期", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+            }
+
+        });
+        calendarDialog.show(getChildFragmentManager(), TAG);
+
+    }
+
+
+    /**
+     * 搜索房子
+     * @param searchMode
+     */
+    private void searchHouse(String searchMode) {
+        ARouter.getInstance()
+            .build(RouterHub.HOME_FINDACTIVITY)
+            .withString("City",mCityTextView.getText().toString().trim())
+            .withString("Search",mSearchTextView.getText().toString().trim())
+            .withString("CheckInDate",mStartTimeTextView.getText().toString().trim())
+            .withString("CheckOutDate",mEndTimeTextView.getText().toString().trim())
+            .withString("SearchMode",searchMode)
+            .navigation(getContext());
+//        Intent intent = new Intent(getActivity(), FindActivity.class);
+//        intent.putExtra("City", mCityTextView.getText().toString().trim());
+//        intent.putExtra("Search", mSearchTextView.getText().toString().trim());
+//        intent.putExtra("CheckInDate", mStartTimeTextView.getText().toString().trim());
+//        intent.putExtra("CheckOutDate", mEndTimeTextView.getText().toString().trim());
+//        intent.putExtra("SearchMode", searchMode);
+//        startActivity(intent);
+    }
+
+
 
     /**
      * 隐藏键盘
