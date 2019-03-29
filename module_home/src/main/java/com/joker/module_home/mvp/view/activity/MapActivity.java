@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
@@ -114,6 +115,21 @@ public class MapActivity extends BaseActivity<MapPresenter> implements MapContra
             finish();
     }
 
+    private LocationClientOption InitLocOption() {
+        LocationClientOption option = new LocationClientOption();
+        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);//默认高精度定位模式
+        option.setCoorType("bd0911");//默认gcj02，设置返回的定位结果坐标系
+        //option.setScanSpan(5000);
+        option.setIsNeedAddress(true);
+        option.setIsNeedLocationDescribe(true);
+        option.setIsNeedLocationPoiList(true);
+        option.setOpenGps(true);
+        option.setLocationNotify(true);
+        option.setIgnoreKillProcess(true);
+        option.SetIgnoreCacheException(true);
+        option.setEnableSimulateGps(false);
+        return option;
+    }
 
     @Override
     public void showLoading() {
