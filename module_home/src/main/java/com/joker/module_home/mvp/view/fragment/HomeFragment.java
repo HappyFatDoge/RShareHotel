@@ -68,13 +68,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     @BindView(R2.id.end_time_tv)
     TextView mEndTimeTextView;
 
-
-
     private Date mCheckInDate;
     private Date mCheckOutDate;
-
-
-    private LinearLayout mLocationLinearLayout;
 
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
@@ -234,13 +229,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             .withString("CheckOutDate",mEndTimeTextView.getText().toString().trim())
             .withString("SearchMode",searchMode)
             .navigation(getContext());
-//        Intent intent = new Intent(getActivity(), FindActivity.class);
-//        intent.putExtra("City", mCityTextView.getText().toString().trim());
-//        intent.putExtra("Search", mSearchTextView.getText().toString().trim());
-//        intent.putExtra("CheckInDate", mStartTimeTextView.getText().toString().trim());
-//        intent.putExtra("CheckOutDate", mEndTimeTextView.getText().toString().trim());
-//        intent.putExtra("SearchMode", searchMode);
-//        startActivity(intent);
     }
 
 
