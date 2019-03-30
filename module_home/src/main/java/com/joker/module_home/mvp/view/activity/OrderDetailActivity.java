@@ -1,9 +1,13 @@
 package com.joker.module_home.mvp.view.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +16,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.commonres.beans.Hotel;
 import com.example.commonres.beans.Order;
+import com.example.commonres.beans.User;
 import com.example.commonres.dialog.TipsDialog;
 import com.example.commonres.utils.ImageUtil;
 import com.example.commonres.utils.ToastUtil;
@@ -70,10 +75,10 @@ public class OrderDetailActivity
     @BindView(R2.id.tv_order_detail_all_money)
     TextView totalPrice;
 
-    private TipsDialog tipsDialog;
-
     private Order order;
     private Hotel hotel;
+    private User owner;//住宅所有者
+    private User payer;//预定用户
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -94,6 +99,8 @@ public class OrderDetailActivity
     public void initData(@Nullable Bundle savedInstanceState) {
         order = (Order) getIntent().getSerializableExtra("Order");
         hotel = order.getHotel();
+        owner = hotel.getHost();
+        payer = order.getUser();
 
         initView();//初始化控件
     }
@@ -119,9 +126,9 @@ public class OrderDetailActivity
         //退房时间
         checkOutDate.setText(order.getCheckOutTime().getDate());
         //订房用户名字
-        userName.setText(order.getUser().getName());
+        userName.setText(payer.getName());
         //订房用户电话
-        userTel.setText(order.getUser().getAccount());
+        userTel.setText(payer.getAccount());
         //订单号
         orderNum.setText(order.getObjectId());
         //订单创建时间
@@ -133,13 +140,35 @@ public class OrderDetailActivity
     }
 
 
-    @OnClick(R2.id.back)
+    @OnClick({R2.id.back,R2.id.bt_order_detail_pay,
+            R2.id.chat_with_owner,R2.id.connect_owner})
     public void onClick(View view){
         int viewId = view.getId();
         if (viewId == R.id.back)//返回
             quitOrderDetail();
         else if (viewId == R.id.bt_order_detail_pay)//付款
             payOrder();
+        else if (viewId == R.id.chat_with_owner)//与住宅所有者进行聊天，后期可做
+            ToastUtil.makeText(this, "与" + owner.getAccount() + "聊天");
+        else if (viewId == R.id.connect_owner) {//与住宅所有者通话
+            TipsDialog tipsDialog = new TipsDialog(this);
+            tipsDialog.show();
+            tipsDialog.setTitle("联系");
+            tipsDialog.setTipsContent("拨打房主电话？");
+            tipsDialog.setOnConfirmListener(new TipsDialog.OnConfirmListener() {
+                @Override
+                public void onConfirm() {
+                    tipsDialog.dismiss();
+                    callOwnerPhone();
+                }
+            });
+            tipsDialog.setRCancelListener(new TipsDialog.OnRCancelListener() {
+                @Override
+                public void onCancel() {
+                    tipsDialog.dismiss();
+                }
+            });
+        }
     }
 
 
@@ -152,7 +181,7 @@ public class OrderDetailActivity
      * 退出订单详情界面，提示是否进行付款再退出
      */
     private void quitOrderDetail(){
-        tipsDialog = new TipsDialog(this);
+        TipsDialog tipsDialog = new TipsDialog(this);
         tipsDialog.show();
         tipsDialog.setTitle("提示");
         tipsDialog.setTipsContent("订单尚未付款，确定退出？");
@@ -175,7 +204,7 @@ public class OrderDetailActivity
      * 订单付款
      */
     private void payOrder(){
-        tipsDialog = new TipsDialog(this);
+        TipsDialog tipsDialog = new TipsDialog(this);
         tipsDialog.show();
         tipsDialog.setTitle("确认付款");
         tipsDialog.setTipsContent("￥" + order.getPrice().toString());
@@ -207,6 +236,21 @@ public class OrderDetailActivity
         if (result){
             Utils.navigation(this, RouterHub.HOME_PAYSUCCESSACTIVITY);
             killMyself();
+        }
+    }
+
+
+    /**
+     * 打电话
+     */
+    private void callOwnerPhone(){
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+            Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + owner.getAccount()));
+            this.startActivity(callIntent);
+        } else {
+            Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + owner.getAccount()));
+            this.startActivity(callIntent);
         }
     }
 
