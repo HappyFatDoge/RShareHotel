@@ -341,8 +341,8 @@ public class FindActivity extends BaseActivity<FindPresenter> implements FindCon
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         hideLoading();
+        super.onDestroy();
     }
 
     @Override
