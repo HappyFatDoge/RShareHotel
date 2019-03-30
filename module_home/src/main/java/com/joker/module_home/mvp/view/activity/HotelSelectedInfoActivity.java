@@ -164,7 +164,7 @@ public class HotelSelectedInfoActivity
         }else if (viewId == R.id.hotelmessage_btn_evaluation){//查看评价
             ARouter.getInstance()
                 .build(RouterHub.HOME_COMMENTACTIVITY)
-                .withString("HotelId", mHotel.getObjectId())
+                .withSerializable("Hotel", mHotel)
                 .navigation(this);
         }else if (viewId == R.id.btn_detail_colection){
             //收藏与取消收藏
