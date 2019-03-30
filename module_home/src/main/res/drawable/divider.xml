@@ -2,10 +2,6 @@
 <shape xmlns:tools="http://schemas.android.com/tools"
        xmlns:android="http://schemas.android.com/apk/res/android"
        tools:ignore="ResourceName">
-
-    <solid
-            android:color="@color/public_colorAccent"></solid>
-
-    <corners
-            android:radius="@dimen/public_20_0dp"></corners>
+    <solid android:color="#f2f2f2"/>
+    <size android:height="1dp"/>
 </shape>

@@ -274,11 +274,11 @@
             android:layout_height="46dp"
             android:layout_marginLeft="@dimen/public_20_0dp"
             android:layout_marginRight="@dimen/public_20_0dp"
-            android:background="@drawable/search_bg"
+            android:background="@drawable/search_button_bg_selector"
             android:gravity="center"
             android:text="搜索"
             android:textColor="@color/public_white"
-            android:textSize="14pt"/>
+            android:textSize="10pt"/>
 
     <TextView
             android:layout_width="match_parent"
