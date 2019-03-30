@@ -24,7 +24,9 @@ import com.joker.module_message.R;
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 
-public class MessageFragment extends BaseFragment<MessagePresenter> implements MessageContract.View {
+public class MessageFragment
+        extends BaseFragment<MessagePresenter>
+        implements MessageContract.View {
 
     public static MessageFragment newInstance() {
         MessageFragment fragment = new MessageFragment();
