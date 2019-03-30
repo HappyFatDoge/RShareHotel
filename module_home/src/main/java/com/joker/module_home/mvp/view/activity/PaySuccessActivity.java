@@ -4,19 +4,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.commonsdk.core.RouterHub;
+import com.example.commonsdk.utils.Utils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 
+import com.joker.module_home.R2;
 import com.joker.module_home.di.component.DaggerPaySuccessComponent;
 import com.joker.module_home.mvp.contract.PaySuccessContract;
 import com.joker.module_home.mvp.presenter.PaySuccessPresenter;
 
 import com.joker.module_home.R;
 
+
+import butterknife.OnClick;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
@@ -55,6 +60,15 @@ public class PaySuccessActivity extends BaseActivity<PaySuccessPresenter> implem
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
 
+    }
+
+    @OnClick(R2.id.bt_pay_success)
+    public void onClick(View view){
+        int viewId = view.getId();
+        if (viewId == R.id.bt_pay_success){
+            Utils.navigation(this, RouterHub.APP_HOMEACTIVITY);
+            killMyself();
+        }
     }
 
     @Override

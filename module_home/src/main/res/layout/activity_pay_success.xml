@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     tools:ignore="ResourceName">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:gravity="center"
+        android:layout_centerInParent="true"
         android:text="付款成功"
         android:textSize="10pt"/>
 
     <Button
         android:id="@+id/bt_pay_success"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/public_100_0dp"
+        android:layout_marginLeft="@dimen/public_20_0dp"
+        android:layout_marginRight="@dimen/public_20_0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#02cf9a"
+        android:background="@drawable/button_common_selector"
         android:text="返回首页"
         android:textSize="10pt"
         android:textColor="@color/white"/>
 
-</LinearLayout>
+</RelativeLayout>

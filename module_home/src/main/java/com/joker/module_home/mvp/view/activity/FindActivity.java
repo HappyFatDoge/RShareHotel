@@ -71,7 +71,7 @@ public class FindActivity extends BaseActivity<FindPresenter> implements FindCon
     private ListDropDownAdapter styleAdapter;
     private ListDropDownAdapter priceAdapter;
     private ListDropDownAdapter modeAdapter;
-    private String style[] = {"不限", "1房0厅1卫", "1房1厅1卫", "2房1厅1卫", "3房1厅1卫", "3房1厅2卫", "4房1厅2卫"};
+    private String style[] = {"不限", "1室0厅1卫", "1室1厅1卫", "2室1厅1卫", "3室1厅1卫", "3室1厅2卫", "4室1厅2卫"};
     private String price[] = {"不限", "1000以下", "1000-2000", "2000-3000", "3000以上"};
     private String mode[] = {"不限", "民宿", "酒店公寓"};
     private String code[] = {"All", "House", "HotelApartment"};
@@ -247,10 +247,9 @@ public class FindActivity extends BaseActivity<FindPresenter> implements FindCon
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             styleAdapter.setCheckItem(position);
             mDropDownMenu.setTabText(position == 0 ? headers[0] : style[position]);
-            String msg = style[position];
             BmobQuery<Hotel> styleQuery = new BmobQuery<>("Hotel");
             if (position == 0) {
-                styleQuery.addWhereNotEqualTo("houseType", "0房0厅0卫");
+                styleQuery.addWhereNotEqualTo("houseType", "0室0厅0卫");
             } else {
                 styleQuery.addWhereEqualTo("houseType", style[position]);
             }

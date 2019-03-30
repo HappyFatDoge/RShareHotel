@@ -127,14 +127,12 @@ public class FindPresenter extends BasePresenter<FindContract.Model, FindContrac
      * @return
      */
     private Integer getSearchTpe(String searchMode) {
-        if (searchMode.equals("HotelApartment")) {
+        if (searchMode.equals("HotelApartment"))
             return 2;
-        } else if (searchMode.equals("House")) {
+        else if (searchMode.equals("House"))
             return 1;
-        } else {
+        else
             return 0;
-        }
-
     }
 
 }
