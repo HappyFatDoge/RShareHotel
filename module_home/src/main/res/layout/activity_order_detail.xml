@@ -26,7 +26,7 @@
 
         <ImageView
                 android:id="@+id/iv_find_hotel"
-                android:layout_width="96dp"
+                android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:scaleType="fitXY"
                 android:layout_marginLeft="20dp"
@@ -113,7 +113,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginRight="15dp"
                         android:text="至"/>
 
                 <TextView
@@ -126,11 +126,7 @@
                         android:textSize="9pt"
                         android:textColor="#0ed7a4"/>
             </LinearLayout>
-
-
         </LinearLayout>
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -358,6 +354,12 @@
                     android:text="268"
                     android:textSize="8pt"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/日"
+                android:textSize="8pt"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -431,9 +433,16 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_1_0dp"
+        android:background="@color/public_gray"></View>
+
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="@dimen/public_10_0dp"
             android:background="@color/white"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
@@ -480,6 +489,7 @@
         <Button
                 android:id="@+id/bt_order_detail_pay"
                 android:layout_width="150dp"
+                android:layout_marginRight="@dimen/public_10_0dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/button_common_selector"
                 android:text="付款"

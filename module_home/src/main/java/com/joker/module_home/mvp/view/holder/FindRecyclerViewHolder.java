@@ -5,6 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.commonres.beans.Hotel;
+import com.example.commonres.utils.ImageUtil;
 import com.jess.arms.base.BaseHolder;
 import com.joker.module_home.R2;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -35,8 +36,6 @@ public class FindRecyclerViewHolder extends BaseHolder<Hotel> {
     @BindView(R2.id.tv_price)
     TextView hotelPrice;
 
-    private DisplayImageOptions mDisplayImageOptions;
-
     public FindRecyclerViewHolder(View itemView) {
         super(itemView);
     }
@@ -46,7 +45,7 @@ public class FindRecyclerViewHolder extends BaseHolder<Hotel> {
         //设置图片
         photo.setScaleType(ImageView.ScaleType.CENTER);
         ImageAware imageAware = new ImageViewAware(photo, false);
-        ImageLoader.getInstance().displayImage(data.getUrl(), imageAware, mDisplayImageOptions);
+        ImageLoader.getInstance().displayImage(data.getUrl(), imageAware, ImageUtil.createOptions());
 
         hotelName.setText(data.getName());
         hotelAddress.setText(data.getAddress());

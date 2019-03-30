@@ -109,12 +109,13 @@ public class HotelSelectedInfoPresenter extends BasePresenter<HotelSelectedInfoC
      * @param mCheckInDate
      * @param mCheckOutDate
      */
-    public void createOrder(User user, Hotel hotel,String mCheckInDate,String mCheckOutDate){
+    public void createOrder(User user, Hotel hotel,String mCheckInDate,String mCheckOutDate,Integer days){
         Order order = new Order();
         order.setUser(user);
         order.setHotel(hotel);
+        order.setDays(days);
         order.setHost(hotel.getHost());
-        order.setPrice(hotel.getPrice());
+        order.setPrice(hotel.getPrice() * days);
         order.setState(1);
         try {
             BmobDate bmobDateIn = new BmobDate(sdf.parse(mCheckInDate));

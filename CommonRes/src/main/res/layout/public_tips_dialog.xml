@@ -56,8 +56,6 @@
         <View
                 android:layout_width="@dimen/public_1_0dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/public_10_0dp"
-                android:layout_marginBottom="@dimen/public_10_0dp"
                 android:background="@color/public_gray"></View>
 
         <Button

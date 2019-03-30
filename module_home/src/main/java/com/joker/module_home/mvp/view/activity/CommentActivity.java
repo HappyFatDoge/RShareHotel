@@ -95,11 +95,11 @@ public class CommentActivity
     @Override
     public void getCommentListResult(Boolean result, List<Comment> list, String tips) {
         ToastUtil.makeText(this,tips);
-        hideLoading();
         if (result)
             commentListAdapter.setItems(list);
         else
             commentListAdapter.setItems(new ArrayList<>());
+        hideLoading();
     }
 
 

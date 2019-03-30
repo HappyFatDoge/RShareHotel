@@ -207,13 +207,13 @@ public class FindActivity extends BaseActivity<FindPresenter> implements FindCon
      */
     @Override
     public void searchResult(Boolean result, List<Hotel> hotelList, String tips) {
-        hideLoading();
         if (result)
             mFindRecyclerViewAdapter.setItems(hotelList);
         else{
             mFindRecyclerViewAdapter.setItems(new ArrayList<>());
             ToastUtil.makeText(this,tips);
         }
+        hideLoading();
     }
 
     @Override

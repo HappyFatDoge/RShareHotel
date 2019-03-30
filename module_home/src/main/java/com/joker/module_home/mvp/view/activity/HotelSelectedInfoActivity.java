@@ -107,7 +107,7 @@ public class HotelSelectedInfoActivity
         mCheckInDate = intent.getStringExtra("CheckInDate");
         mCheckOutDate = intent.getStringExtra("CheckOutDate");
 
-        //天数和房间数
+        //天数
         try {
             mDays = getCountDays(sdf.parse(mCheckInDate), sdf.parse(mCheckOutDate));
         } catch (ParseException e) {
@@ -152,6 +152,7 @@ public class HotelSelectedInfoActivity
             tipsDialog.setOnConfirmListener(new TipsDialog.OnConfirmListener() {
                 @Override
                 public void onConfirm() {
+                    tipsDialog.dismiss();
                     callPhone();
                 }
             });
@@ -180,7 +181,7 @@ public class HotelSelectedInfoActivity
                 .navigation(this);
         }else if (viewId == R.id.bt_hotel_book){//创建订单
             if (LoginUtil.getInstance().isLogin())
-                mPresenter.createOrder(LoginUtil.getInstance().getUser(),mHotel,mCheckInDate,mCheckOutDate);
+                mPresenter.createOrder(LoginUtil.getInstance().getUser(),mHotel,mCheckInDate,mCheckOutDate,mDays);
              else
                 ToastUtil.makeText(this, "请先登录");
         }
@@ -233,6 +234,7 @@ public class HotelSelectedInfoActivity
                 .build(RouterHub.HOME_ORDERDETAILACTIVITY)
                 .withSerializable("Order", order)
                 .navigation(this);
+            killMyself();
         }
     }
 
@@ -253,7 +255,7 @@ public class HotelSelectedInfoActivity
 
 
     /**
-     * 计算可用天数
+     * 计算预定天数
      * @param startDate
      * @param endDate
      * @return

@@ -67,4 +67,5 @@ public interface RouterHub {
     String HOME_COMMENTACTIVITY = HOME + "/CommentActivity";
     String HOME_MAPACTIVITY = HOME + "/MapActivity";
     String HOME_ORDERDETAILACTIVITY = HOME + "/OrderDetailActivity";
+    String HOME_PAYSUCCESSACTIVITY = HOME + "/PaySuccessActivity";
 }
