@@ -19,16 +19,13 @@ import com.example.commonsdk.core.RouterHub;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-
+import com.joker.module_home.R;
 import com.joker.module_home.R2;
 import com.joker.module_home.di.component.DaggerCommentComponent;
 import com.joker.module_home.di.module.CommentModule;
 import com.joker.module_home.mvp.contract.CommentContract;
 import com.joker.module_home.mvp.presenter.CommentPresenter;
-
-import com.joker.module_home.R;
 import com.joker.module_home.mvp.view.adapter.CommentListAdapter;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,12 +44,12 @@ public class CommentActivity
         extends BaseActivity<CommentPresenter>
         implements CommentContract.View {
 
-//    @BindView(R2.id.comment_list)
-//    RecyclerView commentList;
+    @BindView(R2.id.comment_list)
+    RecyclerView commentList;
 
-//    private CommentListAdapter commentListAdapter;
-//    private Hotel mHotel;
-//    private ProgresDialog progresDialog;
+    private CommentListAdapter commentListAdapter;
+    private Hotel mHotel;
+    private ProgresDialog progresDialog;
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -71,22 +68,22 @@ public class CommentActivity
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-//        mHotel = (Hotel) getIntent().getSerializableExtra("Hotel");
-//        initView();//初始化控件
-//
-//        showLoading();
-//        mPresenter.getCommentList(mHotel);
+        mHotel = (Hotel) getIntent().getSerializableExtra("Hotel");
+        initView();//初始化控件
+
+        showLoading();
+        mPresenter.getCommentList(mHotel);
     }
 
     /**
      * 初始化控件
      */
     private void initView(){
-//        commentListAdapter = new CommentListAdapter();
-//        commentList.setLayoutManager(new LinearLayoutManager(this));
-//        commentList.setItemAnimator(new DefaultItemAnimator());
-//        commentList.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.HORIZONTAL));
-//        commentList.setAdapter(commentListAdapter);
+        commentListAdapter = new CommentListAdapter();
+        commentList.setLayoutManager(new LinearLayoutManager(this));
+        commentList.setItemAnimator(new DefaultItemAnimator());
+        commentList.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL));
+        commentList.setAdapter(commentListAdapter);
     }
 
 
@@ -100,10 +97,10 @@ public class CommentActivity
     public void getCommentListResult(Boolean result, List<Comment> list, String tips) {
         ToastUtil.makeText(this,tips);
         hideLoading();
-//        if (result)
-//            commentListAdapter.setItems(list);
-//        else
-//            commentListAdapter.setItems(new ArrayList<>());
+        if (result)
+            commentListAdapter.setItems(list);
+        else
+            commentListAdapter.setItems(new ArrayList<>());
     }
 
 
@@ -116,15 +113,15 @@ public class CommentActivity
 
     @Override
     public void showLoading() {
-//        if (progresDialog == null)
-//            progresDialog = new ProgresDialog(this);
-//        progresDialog.show();
+        if (progresDialog == null)
+            progresDialog = new ProgresDialog(this);
+        progresDialog.show();
     }
 
     @Override
     public void hideLoading() {
-//        if (progresDialog != null)
-//            progresDialog.dismiss();
+        if (progresDialog != null)
+            progresDialog.dismiss();
     }
 
     @Override
@@ -146,7 +143,7 @@ public class CommentActivity
 
     @Override
     protected void onDestroy() {
-//        hideLoading();
+        hideLoading();
         super.onDestroy();
     }
 }
