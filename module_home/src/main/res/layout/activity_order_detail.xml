@@ -492,7 +492,7 @@
                 android:layout_width="150dp"
                 android:layout_marginRight="@dimen/public_10_0dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_common_selector"
+                android:background="@drawable/public_button_common_selector"
                 android:text="付款"
                 android:textSize="10pt"
                 android:textColor="@color/white"/>

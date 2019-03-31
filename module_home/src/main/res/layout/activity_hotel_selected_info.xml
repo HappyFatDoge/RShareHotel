@@ -98,7 +98,7 @@
                         android:layout_height="100dp"
                         android:layout_gravity="bottom"
                         android:layout_toRightOf="@+id/hotellinearlayout1"
-                        android:background="@drawable/textview_border"
+                        android:background="@drawable/public_textview_border"
                         android:orientation="vertical"
                         android:layout_marginBottom="10dp"
                         android:layout_marginRight="@dimen/public_10_0dp">
@@ -543,7 +543,7 @@
                 android:layout_marginLeft="@dimen/public_20_0dp"
                 android:layout_marginRight="@dimen/public_20_0dp"
                 android:layout_above="@+id/end"
-                android:background="@drawable/button_common_selector"
+                android:background="@drawable/public_button_common_selector"
                 android:text="立即预定"
                 android:textColor="@color/white"/>
 
