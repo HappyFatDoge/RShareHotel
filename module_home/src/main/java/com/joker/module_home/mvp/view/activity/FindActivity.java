@@ -21,7 +21,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.commonres.beans.Hotel;
-import com.example.commonres.dialog.ProgresDialog;
+import com.example.commonres.dialog.ProgressDialog;
 import com.example.commonres.utils.ToastUtil;
 import com.example.commonsdk.core.RouterHub;
 import com.example.commonsdk.utils.Utils;
@@ -64,7 +64,7 @@ public class FindActivity extends BaseActivity<FindPresenter> implements FindCon
     @BindView(R2.id.ddm_find_filter)
     DropDownMenu mDropDownMenu;
 
-    private ProgresDialog progressDialog;
+    private ProgressDialog progressDialog;
     private List<View> popupViews = new ArrayList<>();
     private String headers[] = {"户型", "价格", "类型"};
     private String initHeaders[] = {"户型", "价格", "类型"};
@@ -346,7 +346,7 @@ public class FindActivity extends BaseActivity<FindPresenter> implements FindCon
 
     @Override
     public void showLoading() {
-        progressDialog = new ProgresDialog(this);
+        progressDialog = new ProgressDialog(this);
         progressDialog.show();
     }
 

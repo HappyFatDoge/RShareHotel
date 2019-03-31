@@ -29,8 +29,8 @@ import com.example.commonres.R;
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
  */
-public class ProgresDialog extends Dialog {
-    public ProgresDialog(@NonNull Context context) {
+public class ProgressDialog extends Dialog {
+    public ProgressDialog(@NonNull Context context) {
         super(context, R.style.public_dialog_progress);
         setContentView(R.layout.public_dialog_porgress);
         setCanceledOnTouchOutside(false);

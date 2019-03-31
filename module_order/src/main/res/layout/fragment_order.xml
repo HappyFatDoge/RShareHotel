@@ -19,7 +19,7 @@
             joker:tabIndicatorColor="@color/public_tab_text_selected"
             joker:tabSelectedTextColor="@color/public_tab_text_selected"
             joker:tabTextColor="@color/public_white"
-            android:background="@color/public_colorAccent"
+            android:background="@color/public_search_selected"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
     </android.support.design.widget.TabLayout>

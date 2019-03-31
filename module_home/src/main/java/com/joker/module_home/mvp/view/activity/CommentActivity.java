@@ -13,7 +13,7 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.commonres.beans.Comment;
 import com.example.commonres.beans.Hotel;
-import com.example.commonres.dialog.ProgresDialog;
+import com.example.commonres.dialog.ProgressDialog;
 import com.example.commonres.utils.ToastUtil;
 import com.example.commonsdk.core.RouterHub;
 import com.jess.arms.base.BaseActivity;
@@ -48,7 +48,7 @@ public class CommentActivity
 
     private CommentListAdapter commentListAdapter;
     private Hotel mHotel;
-    private ProgresDialog progresDialog;
+    private ProgressDialog progressDialog;
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -112,15 +112,15 @@ public class CommentActivity
 
     @Override
     public void showLoading() {
-        if (progresDialog == null)
-            progresDialog = new ProgresDialog(this);
-        progresDialog.show();
+        if (progressDialog == null)
+            progressDialog = new ProgressDialog(this);
+        progressDialog.show();
     }
 
     @Override
     public void hideLoading() {
-        if (progresDialog != null)
-            progresDialog.dismiss();
+        if (progressDialog != null)
+            progressDialog.dismiss();
     }
 
     @Override

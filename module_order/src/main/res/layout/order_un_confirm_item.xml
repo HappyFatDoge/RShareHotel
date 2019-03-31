@@ -87,6 +87,12 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginRight="@dimen/public_10_0dp"
+            android:layout_marginLeft="@dimen/public_10_0dp"
+            android:layout_height="@dimen/public_1_0dp"
+            android:background="@color/public_gray"></View>
 
         <LinearLayout
                 android:id="@+id/order_detail"
@@ -146,6 +152,14 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginRight="@dimen/public_10_0dp"
+            android:layout_marginLeft="@dimen/public_10_0dp"
+            android:layout_height="@dimen/public_1_0dp"
+            android:background="@color/public_gray"></View>
+
 
         <LinearLayout
                 android:layout_width="match_parent"

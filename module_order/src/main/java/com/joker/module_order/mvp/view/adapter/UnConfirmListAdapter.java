@@ -17,6 +17,9 @@ import java.util.List;
  */
 public class UnConfirmListAdapter extends DefaultAdapter<Order> {
 
+    private PayButtonClickListener payButtonClickListener;
+    private DeleteButtonClickListener deleteButtonClickListener;
+
     public UnConfirmListAdapter(){
         super(new ArrayList<>());
     }
@@ -27,7 +30,7 @@ public class UnConfirmListAdapter extends DefaultAdapter<Order> {
 
     @Override
     public BaseHolder<Order> getHolder(View v, int viewType) {
-        return new UnConfirmListHolder(v);
+        return new UnConfirmListHolder(v,payButtonClickListener,deleteButtonClickListener);
     }
 
     @Override
@@ -44,4 +47,28 @@ public class UnConfirmListAdapter extends DefaultAdapter<Order> {
         notifyDataSetChanged();
     }
 
+    /**
+     * 删除订单item
+     * @param order
+     */
+    public void removeItem(Order order){
+        mInfos.remove(order);
+        notifyDataSetChanged();
+    }
+
+    public interface PayButtonClickListener{
+        void pay(View view, int position);
+    }
+
+    public interface DeleteButtonClickListener{
+        void deleteItem(View view, int position);
+    }
+
+    public void setPayButtonClickListener(PayButtonClickListener payButtonClickListener) {
+        this.payButtonClickListener = payButtonClickListener;
+    }
+
+    public void setDeleteButtonClickListener(DeleteButtonClickListener deleteButtonClickListener) {
+        this.deleteButtonClickListener = deleteButtonClickListener;
+    }
 }

@@ -6,25 +6,54 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.example.commonres.beans.Order;
+import com.example.commonres.dialog.ProgressDialog;
+import com.example.commonres.dialog.TipsDialog;
+import com.example.commonres.utils.LoginUtil;
+import com.example.commonres.utils.ToastUtil;
+import com.example.commonsdk.core.RouterHub;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 
+import com.joker.module_order.R2;
 import com.joker.module_order.di.component.DaggerUnConfirmComponent;
 import com.joker.module_order.di.module.UnConfirmModule;
 import com.joker.module_order.mvp.contract.UnConfirmContract;
 import com.joker.module_order.mvp.presenter.UnConfirmPresenter;
 
 import com.joker.module_order.R;
+import com.joker.module_order.mvp.view.adapter.UnConfirmListAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+/**
+ * 订单Fragment -> 待付款订单Fragment
+ */
+public class UnConfirmFragment extends BaseFragment<UnConfirmPresenter>
+        implements UnConfirmContract.View {
 
-public class UnConfirmFragment extends BaseFragment<UnConfirmPresenter> implements UnConfirmContract.View {
+    @BindView(R2.id.recycler_view)
+    RecyclerView unConfirmList;
+
+    private ProgressDialog progressDialog;
+    private static final Integer STATE_UNCONFIRM = 1;
+    private UnConfirmListAdapter unConfirmListAdapter;
 
     public static UnConfirmFragment newInstance() {
         UnConfirmFragment fragment = new UnConfirmFragment();
@@ -48,17 +77,101 @@ public class UnConfirmFragment extends BaseFragment<UnConfirmPresenter> implemen
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        unConfirmListAdapter = new UnConfirmListAdapter();
+        unConfirmList.setLayoutManager(new LinearLayoutManager(getContext()));
+        unConfirmList.setItemAnimator(new DefaultItemAnimator());
+        unConfirmList.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL));
+        unConfirmList.setAdapter(unConfirmListAdapter);
 
+        unConfirmListAdapter.setPayButtonClickListener(new PayOrderListener());
+        unConfirmListAdapter.setDeleteButtonClickListener(new DeleteOrderListener());
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (LoginUtil.getInstance().isLogin())
+            mPresenter.getUnConfirmOrders(STATE_UNCONFIRM, LoginUtil.getInstance().getUser().getAccount());
+    }
+
+    /**
+     * 获取待付款订单列表结果
+     * @param result
+     * @param tips
+     * @param orderList
+     */
+    @Override
+    public void getUnConfirmOrdersResult(Boolean result, String tips, List<Order> orderList) {
+        Log.d("UnConfirmFragment",tips);
+        if (result)
+            unConfirmListAdapter.setItems(orderList);
+        else
+            unConfirmListAdapter.setItems(new ArrayList<>());
+    }
+
+    /**
+     * 取消订单结果
+     * @param result
+     * @param tips
+     * @param order
+     */
+    @Override
+    public void cancelOrderResult(Boolean result, String tips, Order order) {
+        ToastUtil.makeText(getContext(), tips);
+        if (result)
+            unConfirmListAdapter.removeItem(order);
+    }
+
+    /**
+     * 点击付款按钮，进入订单详情页面，进行付款
+     */
+    class PayOrderListener implements UnConfirmListAdapter.PayButtonClickListener{
+        @Override
+        public void pay(View view, int position) {
+            ARouter.getInstance()
+                    .build(RouterHub.HOME_ORDERDETAILACTIVITY)
+                    .withSerializable("Order", unConfirmListAdapter.getItem(position))
+                    .navigation(getContext());
+        }
+    }
+
+    /**
+     * 删除订单监听器
+     */
+    class DeleteOrderListener implements UnConfirmListAdapter.DeleteButtonClickListener{
+        @Override
+        public void deleteItem(View view, int position) {
+            TipsDialog tipsDialog = new TipsDialog(getContext());
+            tipsDialog.show();
+            tipsDialog.setTitle("取消订单");
+            tipsDialog.setTipsContent("确定取消订单？");
+            tipsDialog.setRCancelListener(new TipsDialog.OnRCancelListener() {
+                @Override
+                public void onCancel() {
+                    tipsDialog.dismiss();
+                }
+            });
+            tipsDialog.setOnConfirmListener(new TipsDialog.OnConfirmListener() {
+                @Override
+                public void onConfirm() {
+                    tipsDialog.dismiss();
+                    mPresenter.cancelOrder(unConfirmListAdapter.getItem(position));
+                }
+            });
+        }
     }
 
     @Override
     public void showLoading() {
-
+        if (progressDialog == null)
+            progressDialog = new ProgressDialog(getContext());
+        progressDialog.show();
     }
 
     @Override
     public void hideLoading() {
-
+        if (progressDialog != null)
+            progressDialog.dismiss();
     }
 
     @Override
