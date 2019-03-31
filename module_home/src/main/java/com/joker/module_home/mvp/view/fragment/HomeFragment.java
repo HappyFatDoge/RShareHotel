@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -128,7 +127,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         mEndTimeTextView.setText(DateUtil.getAcquired());
     }
 
-
     @OnClick({R2.id.locatioin_ll,R2.id.main_ll_id,
         R2.id.ll_home_checkin,R2.id.ll_home_checkout,
         R2.id.ll_home_entire_rent,R2.id.ll_home_apartment,R2.id.find_tv})
@@ -136,8 +134,8 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         int viewId = view.getId();
         if (viewId == R.id.locatioin_ll)//选择城市
             mPresenter.choiceCity(this);
-        else if (viewId == R.id.main_ll_id)//隐藏键盘
-            hideKeyboard(view);
+        else if (viewId == R.id.main_ll_id) //隐藏键盘
+            hideKeyboard(view);//隐藏键盘
         else if (viewId == R.id.ll_home_checkin) //入住时间选择dialog
             showDateChoiceDialog(true);
         else if (viewId == R.id.ll_home_checkout)//退房时间选择dialog
