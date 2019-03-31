@@ -6,6 +6,10 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +18,29 @@ import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 
+import com.joker.module_order.R2;
 import com.joker.module_order.di.component.DaggerHousingComponent;
 import com.joker.module_order.di.module.HousingModule;
 import com.joker.module_order.mvp.contract.HousingContract;
 import com.joker.module_order.mvp.presenter.HousingPresenter;
 
 import com.joker.module_order.R;
+import com.joker.module_order.mvp.view.adapter.HousingListAdapter;
+
+import butterknife.BindView;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+/**
+ * 订单Fragment -> 待入住订单Fragment
+ */
+public class HousingFragment extends BaseFragment<HousingPresenter>
+        implements HousingContract.View {
 
-public class HousingFragment extends BaseFragment<HousingPresenter> implements HousingContract.View {
+    @BindView(R2.id.recycler_view)
+    RecyclerView housingList;
+
+    private HousingListAdapter housingListAdapter;
 
     public static HousingFragment newInstance() {
         HousingFragment fragment = new HousingFragment();
@@ -48,7 +64,59 @@ public class HousingFragment extends BaseFragment<HousingPresenter> implements H
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        housingListAdapter = new HousingListAdapter();
+        housingList.setLayoutManager(new LinearLayoutManager(getContext()));
+        housingList.setItemAnimator(new DefaultItemAnimator());
+        housingList.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.HORIZONTAL));
+        housingList.setAdapter(housingListAdapter);
 
+        housingListAdapter.setCheckInListener(new CheckInListener());
+        housingListAdapter.setMoreOperationListener(new MoreOperationListener());
+    }
+
+
+    /**
+     * 入住事件监听器
+     */
+    class CheckInListener implements HousingListAdapter.CheckInListener{
+        @Override
+        public void checkIn(View view, int position) {
+
+        }
+    }
+
+    /**
+     * 更多操作事件监听器
+     */
+    class MoreOperationListener implements HousingListAdapter.MoreOperationListener{
+        @Override
+        public void operate(View view, int position) {
+
+        }
+    }
+
+    @Override
+    public void showLoading() {
+    }
+
+    @Override
+    public void hideLoading() {
+    }
+
+    @Override
+    public void showMessage(@NonNull String message) {
+        checkNotNull(message);
+        ArmsUtils.snackbarText(message);
+    }
+
+    @Override
+    public void launchActivity(@NonNull Intent intent) {
+        checkNotNull(intent);
+        ArmsUtils.startActivity(intent);
+    }
+
+    @Override
+    public void killMyself() {
     }
 
     /**
@@ -89,33 +157,5 @@ public class HousingFragment extends BaseFragment<HousingPresenter> implements H
      */
     @Override
     public void setData(@Nullable Object data) {
-
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showMessage(@NonNull String message) {
-        checkNotNull(message);
-        ArmsUtils.snackbarText(message);
-    }
-
-    @Override
-    public void launchActivity(@NonNull Intent intent) {
-        checkNotNull(intent);
-        ArmsUtils.startActivity(intent);
-    }
-
-    @Override
-    public void killMyself() {
-
     }
 }

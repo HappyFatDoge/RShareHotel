@@ -85,6 +85,5 @@ public class UnConfirmListHolder extends BaseHolder<Order> {
         orderType.setText(hotel.getMode() + "/" + hotel.getHouseType()
             + "/" + hotel.getArea() + "m²/共" + data.getDays() + "天");
         orderPrice.setText(data.getPrice().toString());
-
     }
 }
