@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +16,34 @@ import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.joker.module_order.R;
+import com.joker.module_order.R2;
 import com.joker.module_order.di.component.DaggerOrderComponent;
 import com.joker.module_order.di.module.OrderModule;
 import com.joker.module_order.mvp.contract.OrderContract;
 import com.joker.module_order.mvp.presenter.OrderPresenter;
+import com.joker.module_order.mvp.view.adapter.OrderFragmentAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+/**
+ * 订单Fragment
+ */
+public class OrderFragment extends BaseFragment<OrderPresenter>
+    implements OrderContract.View {
 
-public class OrderFragment extends BaseFragment<OrderPresenter> implements OrderContract.View {
+    @BindView(R2.id.view_pager)
+    ViewPager viewPager;
+    @BindView(R2.id.tab_layout)
+    TabLayout tabLayout;
+
+    private OrderFragmentAdapter mOrderFragmentAdapter;
+    private String[] tabTexts = {"待付款", "待入住", "待评价", "历史订单"};
+
 
     public static OrderFragment newInstance() {
         OrderFragment fragment = new OrderFragment();
@@ -46,8 +67,56 @@ public class OrderFragment extends BaseFragment<OrderPresenter> implements Order
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        initView();//初始化控件
+    }
+
+
+    /**
+     * 初始化控件
+     */
+    private void initView(){
+        List<Fragment> list = new ArrayList<>();
+        list.add(UnConfirmFragment.newInstance());
+        list.add(HousingFragment.newInstance());
+        list.add(CommentFragment.newInstance());
+        list.add(HistoryOrderFragment.newInstance());
+        mOrderFragmentAdapter = new OrderFragmentAdapter(getChildFragmentManager(),list);
+
+        viewPager.setAdapter(mOrderFragmentAdapter);
+        viewPager.setCurrentItem(0);
+
+        tabLayout.setupWithViewPager(viewPager);
+        for (int i = 0; i < 4; ++ i)
+            tabLayout.getTabAt(i).setText(tabTexts[i]);
+    }
+
+    @Override
+    public void showLoading() {
 
     }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showMessage(@NonNull String message) {
+        checkNotNull(message);
+        ArmsUtils.snackbarText(message);
+    }
+
+    @Override
+    public void launchActivity(@NonNull Intent intent) {
+        checkNotNull(intent);
+        ArmsUtils.startActivity(intent);
+    }
+
+    @Override
+    public void killMyself() {
+
+    }
+
 
     /**
      * 通过此方法可以使 Fragment 能够与外界做一些交互和通信, 比如说外部的 Activity 想让自己持有的某个 Fragment 对象执行一些方法,
@@ -87,33 +156,6 @@ public class OrderFragment extends BaseFragment<OrderPresenter> implements Order
      */
     @Override
     public void setData(@Nullable Object data) {
-
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showMessage(@NonNull String message) {
-        checkNotNull(message);
-        ArmsUtils.snackbarText(message);
-    }
-
-    @Override
-    public void launchActivity(@NonNull Intent intent) {
-        checkNotNull(intent);
-        ArmsUtils.startActivity(intent);
-    }
-
-    @Override
-    public void killMyself() {
 
     }
 }

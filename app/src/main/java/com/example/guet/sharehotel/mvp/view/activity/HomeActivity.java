@@ -38,6 +38,10 @@ import io.reactivex.functions.Consumer;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+
+/**
+ * 主界面
+ */
 @Route(path = RouterHub.APP_HOMEACTIVITY)
 public class HomeActivity extends BaseActivity<HomePresenter> implements HomeContract.View {
 
@@ -108,10 +112,6 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
     private void requestPermissions(){
         new RxPermissions(this)
             .requestEach(Manifest.permission.READ_PHONE_STATE,
-                Manifest.permission.INTERNET,
-                Manifest.permission.ACCESS_NETWORK_STATE,
-                Manifest.permission.ACCESS_WIFI_STATE,
-                Manifest.permission.WAKE_LOCK,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.CAMERA,
                 Manifest.permission.CALL_PHONE,

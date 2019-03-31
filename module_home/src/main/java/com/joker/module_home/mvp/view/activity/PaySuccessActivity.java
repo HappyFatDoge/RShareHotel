@@ -37,6 +37,8 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
  * <a href="https://github.com/JessYanCoding/MVPArms/wiki">See me</a>
  * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
  * ================================================
+ *
+ * 主页->搜索->选择酒店->酒店详情 -> 预定 -> 订单详情 -> 付款 -> 付款成功界面
  */
 
 @Route(path = RouterHub.HOME_PAYSUCCESSACTIVITY)

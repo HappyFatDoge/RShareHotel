@@ -5,9 +5,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.commonres.beans.Comment;
+import com.example.commonres.beans.User;
+import com.example.commonres.utils.ImageUtil;
 import com.jess.arms.base.BaseHolder;
 import com.joker.module_home.R;
 import com.joker.module_home.R2;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.imageaware.ImageAware;
+import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 
 import butterknife.BindView;
 
@@ -32,8 +37,16 @@ public class CommentListHolder extends BaseHolder<Comment> {
 
     @Override
     public void setData(Comment data, int position) {
-        userIcon.setImageResource(R.mipmap.login_head);
-        userName.setText(data.getUser().getAccount());
+        User user = data.getUser();
+        //设置user的头像
+        userIcon.setScaleType(ImageView.ScaleType.CENTER);
+        if (user.getIcon() == null)
+            userIcon.setImageResource(R.mipmap.login_head);
+        else{
+            ImageAware imageAware = new ImageViewAware(userIcon,false);
+            ImageLoader.getInstance().displayImage(user.getIcon(),imageAware, ImageUtil.createOptions());
+        }
+        userName.setText(user.getName());
         commentDate.setText(data.getCreatedAt());
         commentContent.setText(data.getContent());
     }

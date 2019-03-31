@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.commonres.beans.Hotel;
 import com.example.commonres.beans.Order;
 import com.example.commonres.beans.User;
@@ -43,6 +42,9 @@ import butterknife.OnClick;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+/**
+ * 主页->搜索->选择酒店->酒店详情 -> 预定 -> 订单详情
+ */
 @Route(path = RouterHub.HOME_ORDERDETAILACTIVITY)
 public class OrderDetailActivity
         extends BaseActivity<OrderDetailPresenter>

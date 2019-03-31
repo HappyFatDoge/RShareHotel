@@ -13,6 +13,8 @@
 
     <color name="public_colorGreen">#00d39d</color>
 
+    <color name="public_tab_text_selected">#02cf9a</color>
+
     <color name="public_home_text_color">#988067</color>      <!--预订界面字体颜色-->
     <color name="public_operate_background">#f2f2f1</color>   <!---->
     <color name="public_transparent">#B8bdb9b6</color>         <!--输入房间密码，透明activity背景的颜色-->

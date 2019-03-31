@@ -46,6 +46,8 @@ import io.reactivex.functions.Consumer;
  * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
  * <a href="https://github.com/JessYanCoding">Follow me</a>
  * ================================================
+ *
+ * 启动页
  */
 @Route(path = RouterHub.APP_SPLASHACTIVITY)
 public class SplashActivity extends BaseActivity {

@@ -3,12 +3,31 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              xmlns:joker="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               tools:ignore="ResourceName">
 
-    <TextView
-            android:id="@+id/module_order_textview"
+    <com.example.commonres.view.CommonToolBar
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            joker:title="订单">
+    </com.example.commonres.view.CommonToolBar>
+
+    <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            joker:tabIndicatorHeight="@dimen/public_3_0dp"
+            joker:tabIndicatorColor="@color/public_tab_text_selected"
+            joker:tabSelectedTextColor="@color/public_tab_text_selected"
+            joker:tabTextColor="@color/public_white"
+            android:background="@color/public_colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="第三个fragment"/>
+            android:layout_weight="1"/>
+
 </LinearLayout>

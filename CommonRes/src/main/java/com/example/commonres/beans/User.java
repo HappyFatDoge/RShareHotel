@@ -15,6 +15,7 @@ public class User extends BmobObject implements Serializable {
     private String name;
     private String sexy;
     private Boolean faceRegister;
+    private String icon;
 
     public User() {
 
@@ -27,6 +28,15 @@ public class User extends BmobObject implements Serializable {
     public User(String account, String password) {
         this.account = account;
         this.password = password;
+    }
+
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
     public void setAccount(String account) {

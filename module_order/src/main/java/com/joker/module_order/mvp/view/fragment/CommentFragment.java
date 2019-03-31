@@ -1,91 +1,54 @@
-package com.joker.module_message.mvp.view.fragment;
+package com.joker.module_order.mvp.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.commonres.beans.Message;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-import com.joker.module_message.R;
-import com.joker.module_message.R2;
-import com.joker.module_message.di.component.DaggerMessageComponent;
-import com.joker.module_message.di.module.MessageModule;
-import com.joker.module_message.mvp.contract.MessageContract;
-import com.joker.module_message.mvp.presenter.MessagePresenter;
-import com.joker.module_message.mvp.view.adapter.MessageListAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.joker.module_order.di.component.DaggerCommentComponent;
+import com.joker.module_order.di.module.CommentModule;
+import com.joker.module_order.mvp.contract.CommentContract;
+import com.joker.module_order.mvp.presenter.CommentPresenter;
 
-import butterknife.BindView;
+import com.joker.module_order.R;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
-/**
- * 消息Fragment
- */
-public class MessageFragment extends BaseFragment<MessagePresenter>
-        implements MessageContract.View {
 
+public class CommentFragment extends BaseFragment<CommentPresenter> implements CommentContract.View {
 
-    @BindView(R2.id.recycler_view)
-    RecyclerView messageList;
-
-    private MessageListAdapter mMessageListAdapter;
-
-    public static MessageFragment newInstance() {
-        MessageFragment fragment = new MessageFragment();
+    public static CommentFragment newInstance() {
+        CommentFragment fragment = new CommentFragment();
         return fragment;
     }
 
     @Override
     public void setupFragmentComponent(@NonNull AppComponent appComponent) {
-        DaggerMessageComponent
+        DaggerCommentComponent
             .builder()
             .appComponent(appComponent)
-            .messageModule(new MessageModule(this))
+            .commentModule(new CommentModule(this))
             .build()
             .inject(this);
     }
 
     @Override
     public View initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_message, container, false);
+        return inflater.inflate(R.layout.fragment_comment, container, false);
     }
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        mMessageListAdapter = new MessageListAdapter();
 
-        initView();
-    }
-
-    /**
-     * 初始化控件
-     */
-    private void initView(){
-        messageList.setLayoutManager(new LinearLayoutManager(getContext()));
-        messageList.setItemAnimator(new DefaultItemAnimator());
-        messageList.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.HORIZONTAL));
-        messageList.setAdapter(mMessageListAdapter);
-
-        List<Message> list = new ArrayList<Message>();
-        Message message = new Message("1", null, "优惠促销", "双十一优惠重磅来袭!", "这是详细内容", "2018-11-11");
-        Message message1 = new Message("2", null, "系统通知", "您已预订成功!", "这是详细内容", "2018-05-13");
-        list.add(message);
-        list.add(message1);
-        mMessageListAdapter.setItems(list);
     }
 
     /**
