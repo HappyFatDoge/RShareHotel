@@ -39,7 +39,7 @@ public class CommentListHolder extends BaseHolder<Comment> {
     public void setData(Comment data, int position) {
         User user = data.getUser();
         //设置user的头像
-        userIcon.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        userIcon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         if (user.getIcon() != null){
             ImageAware imageAware = new ImageViewAware(userIcon,false);
             ImageLoader.getInstance().displayImage(user.getIcon(),imageAware, ImageUtil.createOptions());
