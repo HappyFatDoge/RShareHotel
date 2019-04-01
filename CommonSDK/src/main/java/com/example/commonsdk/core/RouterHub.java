@@ -83,6 +83,7 @@ public interface RouterHub {
      */
     String ORDER_MOREOPERATIONACTIVITY = ORDER + "/MoreOperationActivity";
     String ORDER_FACEVERIFICATIONACTIVITY = ORDER + "/FaceVerificationActivity";
+    String ORDER_PUBLISHCOMMENTACTIVITY = ORDER + "/PublishCommentActivity";
 
 
     /**

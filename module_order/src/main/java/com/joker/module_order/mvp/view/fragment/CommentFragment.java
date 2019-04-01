@@ -6,25 +6,49 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.example.commonres.beans.Order;
+import com.example.commonres.utils.LoginUtil;
+import com.example.commonsdk.core.RouterHub;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-
+import com.joker.module_order.R;
+import com.joker.module_order.R2;
 import com.joker.module_order.di.component.DaggerCommentComponent;
 import com.joker.module_order.di.module.CommentModule;
 import com.joker.module_order.mvp.contract.CommentContract;
 import com.joker.module_order.mvp.presenter.CommentPresenter;
+import com.joker.module_order.mvp.view.adapter.UnCommentListAdapter;
 
-import com.joker.module_order.R;
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+/**
+ * 订单Fragment -> 待评价订单Fragment
+ */
+public class CommentFragment extends BaseFragment<CommentPresenter>
+    implements CommentContract.View {
 
-public class CommentFragment extends BaseFragment<CommentPresenter> implements CommentContract.View {
+    @BindView(R2.id.recycler_view)
+    RecyclerView unCommentList;
+
+    private UnCommentListAdapter mUnCommentListAdapter;
+    private Order mOrder;
+    private static final Integer STATE_COMMENT = 4;
 
     public static CommentFragment newInstance() {
         CommentFragment fragment = new CommentFragment();
@@ -48,6 +72,84 @@ public class CommentFragment extends BaseFragment<CommentPresenter> implements C
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        mUnCommentListAdapter = new UnCommentListAdapter();
+        unCommentList.setItemAnimator(new DefaultItemAnimator());
+        unCommentList.setLayoutManager(new LinearLayoutManager(getContext()));
+        unCommentList.setAdapter(mUnCommentListAdapter);
+        unCommentList.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.HORIZONTAL));
+
+        mUnCommentListAdapter.setCommentListener(new CommentListener());
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (LoginUtil.getInstance().isLogin())
+            mPresenter.getUnConfirmOrders(STATE_COMMENT,LoginUtil.getInstance().getUser().getAccount());
+    }
+
+    /**
+     * 获取待评论订单列表结果
+     * @param result
+     * @param tips
+     * @param list
+     */
+    @Override
+    public void getUnCommentOrders(Boolean result, String tips, List<Order> list) {
+        Log.d("CommentFragment", tips);
+        if (result)
+            mUnCommentListAdapter.setItems(list);
+        else
+            mUnCommentListAdapter.setItems(new ArrayList<>());
+    }
+
+    /**
+     * 点击评论按钮事件监听器
+     */
+    class CommentListener implements UnCommentListAdapter.CommentListener{
+        @Override
+        public void comment(View view, int position) {
+            mOrder = mUnCommentListAdapter.getItem(position);
+            ARouter.getInstance()
+                .build(RouterHub.ORDER_PUBLISHCOMMENTACTIVITY)
+                .withSerializable("Order",mOrder)
+                .navigation(getActivity(),1);
+        }
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data.getBooleanExtra("Comment", false))
+            mUnCommentListAdapter.removeItem(mOrder);
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showMessage(@NonNull String message) {
+        checkNotNull(message);
+        ArmsUtils.snackbarText(message);
+    }
+
+    @Override
+    public void launchActivity(@NonNull Intent intent) {
+        checkNotNull(intent);
+        ArmsUtils.startActivity(intent);
+    }
+
+    @Override
+    public void killMyself() {
 
     }
 
@@ -89,33 +191,6 @@ public class CommentFragment extends BaseFragment<CommentPresenter> implements C
      */
     @Override
     public void setData(@Nullable Object data) {
-
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showMessage(@NonNull String message) {
-        checkNotNull(message);
-        ArmsUtils.snackbarText(message);
-    }
-
-    @Override
-    public void launchActivity(@NonNull Intent intent) {
-        checkNotNull(intent);
-        ArmsUtils.startActivity(intent);
-    }
-
-    @Override
-    public void killMyself() {
 
     }
 }
