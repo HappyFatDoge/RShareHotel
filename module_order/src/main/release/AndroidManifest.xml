@@ -6,7 +6,10 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 
     <application>
-        <activity android:name=".mvp.view.activity.MoreOperationActivity"
+        <activity android:name=".mvp.view.activity.PublishCommentActivity">
+        </activity>
+        <activity
+                android:name=".mvp.view.activity.MoreOperationActivity"
                 android:windowSoftInputMode="adjustPan">
         </activity>
         <activity android:name=".mvp.view.activity.FaceVerificationActivity">

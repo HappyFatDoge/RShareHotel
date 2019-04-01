@@ -12,7 +12,6 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.commonres.beans.Order;
@@ -132,7 +131,7 @@ public class FaceVerificationActivity extends BaseActivity<FaceVerificationPrese
             } else
                 mPresenter.checkOut(mOrder);
         }else{
-            Toast.makeText(this,"验证失败，请重新验证",Toast.LENGTH_SHORT).show();
+            ToastUtil.makeText(this,"验证失败，请重新验证");
             //开启相机预览
             previceCamera();
         }
@@ -188,7 +187,7 @@ public class FaceVerificationActivity extends BaseActivity<FaceVerificationPrese
         Intent intent = new Intent();
         intent.putExtra("verification",false);
         setResult(1,intent);
-        Toast.makeText(this,"退出识别，取消操作",Toast.LENGTH_SHORT).show();
+        ToastUtil.makeText(this,"退出识别，取消操作");
         this.finish();
     }
 
@@ -246,7 +245,7 @@ public class FaceVerificationActivity extends BaseActivity<FaceVerificationPrese
             Intent intent = new Intent();
             intent.putExtra("verification", false);
             setResult(1, intent);
-            Toast.makeText(this, "退出识别，取消操作", Toast.LENGTH_SHORT).show();
+            ToastUtil.makeText(this,"退出识别，取消操作");
             this.finish();
         }
     }
