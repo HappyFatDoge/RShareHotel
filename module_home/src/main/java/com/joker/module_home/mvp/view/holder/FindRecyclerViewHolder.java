@@ -43,7 +43,7 @@ public class FindRecyclerViewHolder extends BaseHolder<Hotel> {
     @Override
     public void setData(Hotel data, int position) {
         //设置图片
-        photo.setScaleType(ImageView.ScaleType.CENTER);
+        photo.setScaleType(ImageView.ScaleType.FIT_CENTER);
         ImageAware imageAware = new ImageViewAware(photo, false);
         ImageLoader.getInstance().displayImage(data.getUrl(), imageAware, ImageUtil.createOptions());
 

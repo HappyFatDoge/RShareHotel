@@ -55,6 +55,7 @@ public class CommentPresenter extends BasePresenter<CommentContract.Model, Comme
         BmobQuery<Comment> query = new BmobQuery<>("Comment");
         query.setLimit(30);
         query.addWhereEqualTo("hotel", hotel);
+        query.include("user");
         query.findObjects(new FindListener<Comment>() {
             @Override
             public void done(List<Comment> list, BmobException e) {

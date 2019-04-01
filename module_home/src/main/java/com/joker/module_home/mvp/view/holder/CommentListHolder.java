@@ -39,13 +39,12 @@ public class CommentListHolder extends BaseHolder<Comment> {
     public void setData(Comment data, int position) {
         User user = data.getUser();
         //设置user的头像
-        userIcon.setScaleType(ImageView.ScaleType.CENTER);
-        if (user.getIcon() == null)
-            userIcon.setImageResource(R.mipmap.login_head);
-        else{
+        userIcon.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        if (user.getIcon() != null){
             ImageAware imageAware = new ImageViewAware(userIcon,false);
             ImageLoader.getInstance().displayImage(user.getIcon(),imageAware, ImageUtil.createOptions());
-        }
+        }else
+            userIcon.setImageResource(R.mipmap.login_head);
         userName.setText(user.getName());
         commentDate.setText(data.getCreatedAt());
         commentContent.setText(data.getContent());
