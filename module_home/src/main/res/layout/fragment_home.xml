@@ -53,6 +53,7 @@
                     android:layout_gravity="center"
                     android:layout_marginLeft="@dimen/public_5_0dp"
                     android:maxLines="1"
+                    android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
                     android:background="@drawable/search_main"
                     android:paddingLeft="@dimen/public_60_0dp"
                     android:hint="@string/public_home_where_to_live"

@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.example.commonres.dialog.MaterialCalendarDialog;
 import com.example.commonres.utils.DateTimeHelper;
 import com.example.commonres.utils.DateUtil;
+import com.example.commonres.utils.KeyBoardUtil;
 import com.example.commonres.utils.ToastUtil;
 import com.example.commonsdk.core.RouterHub;
 import com.jess.arms.base.BaseFragment;
@@ -135,7 +135,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
         if (viewId == R.id.locatioin_ll)//选择城市
             mPresenter.choiceCity(this);
         else if (viewId == R.id.main_ll_id) //隐藏键盘
-            hideKeyboard(view);//隐藏键盘
+            KeyBoardUtil.hideKeyboard(view);//隐藏键盘
         else if (viewId == R.id.ll_home_checkin) //入住时间选择dialog
             showDateChoiceDialog(true);
         else if (viewId == R.id.ll_home_checkout)//退房时间选择dialog
@@ -229,17 +229,6 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
             .navigation(getContext());
     }
 
-
-
-    /**
-     * 隐藏键盘
-     */
-    private void hideKeyboard(View v) {
-        InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (imm.isActive()) {
-            imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
-        }
-    }
 
     @Override
     public void showLoading() {

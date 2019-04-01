@@ -16,7 +16,7 @@ public class MySelectorBgDecorator implements DayViewDecorator {
     private final Drawable drawable;
 
     public MySelectorBgDecorator(Context context) {
-        drawable = context.getResources().getDrawable(R.drawable.material_calendar_decorator_selected_bg);
+        drawable = context.getResources().getDrawable(R.drawable.public_material_calendar_decorator_selected_bg);
     }
 
     @Override

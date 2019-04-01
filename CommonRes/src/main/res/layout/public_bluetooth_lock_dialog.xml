@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/public_tips_dialog_shape">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="选择对应的门锁"
+                android:textSize="21sp"/>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/public_black"></View>
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/lockList"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:scrollbars="none"
+                android:overScrollMode="never"
+                android:visibility="gone"/>
+
+        <TextView
+                android:id="@+id/lockTips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:gravity="center"
+                android:text="没有配对的设备"
+                android:textColor="@color/public_black"
+                android:textSize="18sp"/>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/public_black"></View>
+
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="其他可用设备"
+                android:textSize="15sp"/>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/public_black"></View>
+
+        <TextView
+                android:id="@+id/bluetoothTips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:gravity="center"
+                android:text="没有可用的设备"
+                android:textColor="@color/public_black"
+                android:textSize="18sp"/>
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/bluetoothList"
+                android:overScrollMode="never"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:scrollbars="none"
+                android:visibility="gone"/>
+
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/public_gray"></View>
+
+
+        <Button
+                android:id="@+id/scan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/public_scan_bt_bg_selector"
+                android:text="扫描设备"
+                android:textSize="18sp"
+                android:textColor="@drawable/public_biaoqianSelecd"/>
+
+</LinearLayout>

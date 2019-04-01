@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="@dimen/public_40_0dp"
+              android:layout_marginRight="@dimen/public_40_0dp"
+              android:background="@drawable/public_tips_dialog_shape">
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="@dimen/public_10_0dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+            <ImageView
+                    android:id="@+id/down_temperature"
+                    android:layout_width="60dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/operate_television_down_voice_or_channel_selector" />
+
+            <TextView
+                    android:id="@+id/temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:text="当前温度:26℃"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/public_15_0dp"/>
+
+            <ImageView
+                    android:id="@+id/up_temperature"
+                    android:layout_width="60dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/operate_television_up_voice_or_channel_selector" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:id="@+id/refrigeration_iv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/operate_air_conditioning_refregeration_selector"
+                        android:orientation="vertical" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="制冷"
+                        android:textColor="#999999"
+                        android:textSize="@dimen/public_15_0dp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:id="@+id/heating_iv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/operate_air_conditioning_heating_selector" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="制热"
+                        android:textColor="#999999"
+                        android:textSize="@dimen/public_15_0dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:id="@+id/dehumidification_iv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/operate_air_conditioning_dehumidification_selector" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="除湿"
+                        android:textColor="#999999"
+                        android:textSize="@dimen/public_15_0dp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:id="@+id/wind_speed_iv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/operate_air_conditioning_wind_speed_selector"
+                        android:orientation="vertical" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="风速"
+                        android:textColor="#999999"
+                        android:textSize="@dimen/public_15_0dp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:id="@+id/automatic_iv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/operate_air_conditioning_automatic_selector" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="自动"
+                        android:textColor="#999999"
+                        android:textSize="@dimen/public_15_0dp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:id="@+id/switch_iv"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/operate_air_conditioning_switch_selector" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="开关"
+                        android:textColor="#999999"
+                        android:textSize="@dimen/public_15_0dp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

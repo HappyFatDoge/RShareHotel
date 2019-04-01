@@ -91,7 +91,7 @@ public class MaterialCalendarDialog extends DialogFragment {
         //设置窗体全屏
         getDialog().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        myView = inflater.inflate(R.layout.dialog_material_calendar, container, false);
+        myView = inflater.inflate(R.layout.public_dialog_material_calendar, container, false);
         return myView;
     }
 

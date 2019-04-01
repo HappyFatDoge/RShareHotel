@@ -46,4 +46,29 @@
         <item name="android:windowFrame">@null</item>
     </style>
 
+
+    <!--蓝牙连接dialog-->
+    <style name="public_bluetooth_lock_dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <!--密码输入dialog-->
+    <style name="public_password_dialog" parent="android:Theme.DeviceDefault.Light.Dialog">
+        <item name="android:windowBackground">@color/public_color_transparent</item>
+        <item name="android:windowFrame">@null</item>
+    </style>
+
+    <!--密码输入框style-->
+    <style name="public_password_editText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@android:color/darker_gray</item>
+        <item name="colorControlActivated">@android:color/darker_gray</item>
+    </style>
+
 </resources>

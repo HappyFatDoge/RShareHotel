@@ -44,6 +44,9 @@ public interface RouterHub {
      */
     String APP = "/app";//宿主 App 组件
     String HOME = "/home";//Home组件
+    String MESSAGE = "/message";//message组件
+    String ORDER = "/order";//order组件
+    String PERSONAL = "/personal";//personal组件
 
     /**
      * 服务组件, 用于给每个组件暴露特有的服务
@@ -68,4 +71,24 @@ public interface RouterHub {
     String HOME_MAPACTIVITY = HOME + "/MapActivity";
     String HOME_ORDERDETAILACTIVITY = HOME + "/OrderDetailActivity";
     String HOME_PAYSUCCESSACTIVITY = HOME + "/PaySuccessActivity";
+
+    /**
+     * Message分组
+     */
+
+
+
+    /**
+     * Order分组
+     */
+    String ORDER_MOREOPERATIONACTIVITY = ORDER + "/MoreOperationActivity";
+    String ORDER_FACEVERIFICATIONACTIVITY = ORDER + "/FaceVerificationActivity";
+
+
+    /**
+     * Personal分组
+     */
+    String PERSONAL_FACEREGISTERACTIVITY = PERSONAL + "/FaceRegisterActivity";
+
+
 }
