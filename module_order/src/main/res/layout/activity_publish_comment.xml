@@ -22,6 +22,7 @@
             android:background="@android:drawable/editbox_background_normal"
             android:enabled="true"
             android:gravity="top"
+            android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
             android:hint="请写下你的评论~"
             android:inputType="textMultiLine"
             android:maxLines="10"
