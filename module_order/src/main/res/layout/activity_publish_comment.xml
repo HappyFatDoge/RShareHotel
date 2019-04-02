@@ -279,7 +279,6 @@
                             android:background="@mipmap/comment_no_like"
                             android:onClick="click"
                             android:tag="5"/>
-
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>

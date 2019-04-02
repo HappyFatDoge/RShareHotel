@@ -86,7 +86,7 @@ public class PublishCommentActivity extends BaseActivity<PublishCommentPresenter
             int index = Integer.parseInt(tag);
             LinearLayout layout = (LinearLayout) view.getParent();
             int layoutId = layout.getId();
-            if (layoutId == R.id.environment_comment_ll){
+            if (layoutId == R.id.environment_comment_ll){//周围环境评分
                 for (int i = 0; i < environmentScore.getChildCount(); i++) {
                     ImageView imageView = (ImageView) environmentScore.getChildAt(i);
                     if (i < index) {
@@ -95,7 +95,7 @@ public class PublishCommentActivity extends BaseActivity<PublishCommentPresenter
                     } else
                         imageView.setImageResource(R.mipmap.comment_no_like);
                 }
-            }else if (layoutId == R.id.hotel_condition_comment_ll){
+            }else if (layoutId == R.id.hotel_condition_comment_ll){//房子状况评分
                 for (int i = 0; i < hotelConditionScore.getChildCount(); i++) {
                     ImageView imageView = (ImageView) hotelConditionScore.getChildAt(i);
                     if (i < index) {
@@ -104,7 +104,7 @@ public class PublishCommentActivity extends BaseActivity<PublishCommentPresenter
                     } else
                         imageView.setImageResource(R.mipmap.comment_no_like);
                 }
-            }else if (layoutId == R.id.service_comment_ll) {
+            }else if (layoutId == R.id.service_comment_ll) {//服务态度评分
                 for (int i = 0; i < serviceScore.getChildCount(); i++) {
                     ImageView imageView = (ImageView) serviceScore.getChildAt(i);
                     if (i < index) {
