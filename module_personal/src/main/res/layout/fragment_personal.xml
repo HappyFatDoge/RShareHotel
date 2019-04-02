@@ -80,7 +80,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingTop="@dimen/public_10_0dp"
+                    android:paddingTop="@dimen/public_20_0dp"
                     android:paddingBottom="@dimen/public_10_0dp"
                     android:background="@color/public_white"
                     android:orientation="horizontal">

@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.commonres.utils.LoginUtil;
 import com.example.commonres.utils.ToastUtil;
 import com.example.commonsdk.core.RouterHub;
@@ -27,6 +26,8 @@ import com.joker.module_personal.di.component.DaggerPersonalComponent;
 import com.joker.module_personal.di.module.PersonalModule;
 import com.joker.module_personal.mvp.contract.PersonalContract;
 import com.joker.module_personal.mvp.presenter.PersonalPresenter;
+import com.joker.module_personal.mvp.view.activity.LoginActivity;
+import com.joker.module_personal.mvp.view.activity.SettingActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -97,13 +98,18 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter>
     public void onClick(View view){
         int viewId = view.getId();
         if (viewId == R.id.right){//设置
-            ARouter.getInstance()
-                .build(RouterHub.PERSONAL_SETTINGACTIVITY)
-                .navigation(getActivity(), 2);
+            //ARouter不支持在fragment调用此方式
+//            ARouter.getInstance()
+//                .build(RouterHub.PERSONAL_SETTINGACTIVITY)
+//                .navigation(getActivity(), 2);
+            Intent intent = new Intent(getActivity(), SettingActivity.class);
+            startActivityForResult(intent, 2);
         }else if (viewId == R.id.user_name_tv){//登录
-            ARouter.getInstance()
-                .build(RouterHub.PERSONAL_LOGINACTIVITY)
-                .navigation(getActivity(), 1);
+//            ARouter.getInstance()
+//                .build(RouterHub.PERSONAL_LOGINACTIVITY)
+//                .navigation(getActivity(), 1);
+            Intent login_intent = new Intent(getActivity(), LoginActivity.class);
+            startActivityForResult(login_intent, 1);
         }else if (viewId == R.id.one_key_to_check_out_linear_layout){//一键退房
 
         }else if (viewId == R.id.customer_service_linear_layout)//客服
@@ -166,6 +172,7 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter>
                 }
                 break;
             case 2://退出当前账号
+                Log.d("data",String.valueOf(data.getBooleanExtra("Logout",false)));
                 if (data.getBooleanExtra("Logout", false)) {
                     Log.i(TAG, "退出登录");
                     loginUtil.setLogin(false);

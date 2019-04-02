@@ -18,6 +18,7 @@ package com.example.commonres.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.widget.TextView;
 
 import com.example.commonres.R;
 
@@ -30,9 +31,17 @@ import com.example.commonres.R;
  * ================================================
  */
 public class ProgressDialog extends Dialog {
+
+    private TextView text;
+
     public ProgressDialog(@NonNull Context context) {
         super(context, R.style.public_dialog_progress);
         setContentView(R.layout.public_dialog_porgress);
         setCanceledOnTouchOutside(false);
+        text = findViewById(R.id.txt_load);
+    }
+
+    public void setText(String tips){
+        text.setText(tips);
     }
 }

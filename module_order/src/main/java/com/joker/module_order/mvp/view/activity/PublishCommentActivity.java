@@ -144,7 +144,7 @@ public class PublishCommentActivity extends BaseActivity<PublishCommentPresenter
     @Override
     public void publishCommentResult(Boolean result, String tips) {
         if (result){
-            ToastUtil.makeText(this, tips);
+//            ToastUtil.makeText(this, tips);
             Intent intent = new Intent();
             intent.putExtra("Comment", true);
             setResult(1,intent);

@@ -15,10 +15,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.commonres.beans.Order;
 import com.example.commonres.utils.LoginUtil;
-import com.example.commonsdk.core.RouterHub;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -28,6 +26,7 @@ import com.joker.module_order.di.component.DaggerCommentComponent;
 import com.joker.module_order.di.module.CommentModule;
 import com.joker.module_order.mvp.contract.CommentContract;
 import com.joker.module_order.mvp.presenter.CommentPresenter;
+import com.joker.module_order.mvp.view.activity.PublishCommentActivity;
 import com.joker.module_order.mvp.view.adapter.UnCommentListAdapter;
 
 import java.util.ArrayList;
@@ -111,10 +110,9 @@ public class CommentFragment extends BaseFragment<CommentPresenter>
         @Override
         public void comment(View view, int position) {
             mOrder = mUnCommentListAdapter.getItem(position);
-            ARouter.getInstance()
-                .build(RouterHub.ORDER_PUBLISHCOMMENTACTIVITY)
-                .withSerializable("Order",mOrder)
-                .navigation(getActivity(),1);
+            Intent intent = new Intent(getContext(), PublishCommentActivity.class);
+            intent.putExtra("Order", mOrder);
+            startActivityForResult(intent,1);
         }
     }
 

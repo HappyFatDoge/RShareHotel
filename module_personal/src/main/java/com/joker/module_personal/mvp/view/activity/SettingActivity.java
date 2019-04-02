@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.commonres.utils.CheckVersion;
 import com.example.commonres.utils.ClearDataManagerUtil;
 import com.example.commonres.utils.LoginUtil;
@@ -78,8 +79,9 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
             Utils.navigation(this, RouterHub.PERSONAL_ABOUTUSACTIVITY);
         else if (viewId == R.id.ll_change_password){//修改密码
             if (LoginUtil.getInstance().isLogin()) {
-                Utils.navigation(this, RouterHub.PERSONAL_MODIFYPSSSWORDACTIVITY);
-                killMyself();
+                ARouter.getInstance()
+                    .build(RouterHub.PERSONAL_MODIFYPSSSWORDACTIVITY)
+                    .navigation(this,1);
             }
             else
                 ToastUtil.makeText(this, "请先登录");
@@ -94,16 +96,34 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
             cacheTextView.setText("OK");
             ToastUtil.makeText(this, "清理完成");
         }else if (viewId == R.id.login_out){//退出登录
-            SharedPreferences.Editor editor = getSharedPreferences("login",MODE_PRIVATE).edit();
-            editor.putBoolean("isLogin", false);
-            editor.commit();
-            Intent back = new Intent();
-            back.putExtra("Logout", true);
-            setResult(2,back);
-            killMyself();
+            if (LoginUtil.getInstance().isLogin()) {
+                SharedPreferences.Editor editor = getSharedPreferences("login", MODE_PRIVATE).edit();
+                editor.putBoolean("isLogin", false);
+                editor.commit();
+                Intent back = new Intent();
+                back.putExtra("Logout", true);
+                setResult(2, back);
+                ToastUtil.makeText(this, "退出登录");
+                killMyself();
+            }else
+                ToastUtil.makeText(this, "尚未登录");
         }
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode){
+            case 1://修改密码返回结果
+                if (data.getBooleanExtra("modify",false)){
+                    Intent back = new Intent();
+                    back.putExtra("Logout", true);
+                    setResult(2, back);
+                    killMyself();
+                }
+        }
+    }
 
     @Override
     public void showLoading() {

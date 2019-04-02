@@ -3,6 +3,11 @@
           package="com.joker.module_personal">
 
     <application>
+        <activity android:name=".mvp.view.activity.ModifyPasswordActivity"
+                android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity android:name=".mvp.view.activity.AboutUsActivity">
+        </activity>
         <activity android:name=".mvp.view.activity.ConfirmOrderActivity">
         </activity>
         <activity android:name=".mvp.view.activity.MyHouseActivity">
