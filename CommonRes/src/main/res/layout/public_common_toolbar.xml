@@ -3,7 +3,7 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="?android:actionBarSize"
+              android:layout_height="@dimen/public_45_0dp"
         android:background="@color/public_colorAccent">
 
     <ImageView
@@ -28,16 +28,16 @@
             android:gravity="center"
             android:text="消息"
             android:textColor="@color/public_white"
-            android:textSize="@dimen/public_font_20sp"/>
+            android:textSize="@dimen/public_font_18sp"/>
 
     <TextView
             android:id="@+id/right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|right"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="@dimen/public_20_0dp"
             android:gravity="center"
             android:text="设置"
             android:textColor="@color/public_white"
-            android:textSize="@dimen/public_font_18sp"/>
+            android:textSize="@dimen/public_font_16sp"/>
 </FrameLayout>

@@ -9,7 +9,7 @@
 
     <com.example.commonres.view.CommonToolBar
             android:layout_width="match_parent"
-            android:layout_height="?android:actionBarSize"
+            android:layout_height="@dimen/public_45_0dp"
             joker:title="人脸识别"
             joker:backVisible="true">
     </com.example.commonres.view.CommonToolBar>
@@ -27,8 +27,10 @@
 
         <Button
                 android:id="@+id/face_verification"
-                android:layout_width="350dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/public_20_0dp"
+                android:layout_marginRight="@dimen/public_20_0dp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="30dp"

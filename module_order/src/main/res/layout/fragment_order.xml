@@ -9,7 +9,7 @@
 
     <com.example.commonres.view.CommonToolBar
             android:layout_width="match_parent"
-            android:layout_height="?android:actionBarSize"
+            android:layout_height="@dimen/public_45_0dp"
             joker:title="订单">
     </com.example.commonres.view.CommonToolBar>
 

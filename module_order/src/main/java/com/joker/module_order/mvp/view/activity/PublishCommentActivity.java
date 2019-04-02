@@ -120,7 +120,7 @@ public class PublishCommentActivity extends BaseActivity<PublishCommentPresenter
             Intent intent = new Intent();
             intent.putExtra("Comment", false);
             setResult(1, intent);
-            finish();
+            killMyself();
         }else if (viewId == R.id.tv_publish_comment){//提交评论
             String commentContent = commentContentView.getText().toString().trim();
             if (commentContent.equals(""))
@@ -148,9 +148,19 @@ public class PublishCommentActivity extends BaseActivity<PublishCommentPresenter
             Intent intent = new Intent();
             intent.putExtra("Comment", true);
             setResult(1,intent);
-            finish();
+            killMyself();
         }else
             Log.d("PublishComment", tips);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        Intent intent = new Intent();
+        intent.putExtra("Comment", false);
+        setResult(1, intent);
+        killMyself();
     }
 
     @Override

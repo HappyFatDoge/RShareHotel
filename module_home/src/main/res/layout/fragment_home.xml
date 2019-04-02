@@ -10,12 +10,14 @@
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="@dimen/public_5_0dp"
+            android:paddingBottom="@dimen/public_5_0dp"
             android:background="@color/public_colorAccent"
             >
 
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="?android:actionBarSize"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:orientation="horizontal">
 

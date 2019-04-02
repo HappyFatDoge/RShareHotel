@@ -9,7 +9,7 @@
 
     <com.example.commonres.view.CommonToolBar
             android:layout_width="match_parent"
-            android:layout_height="?android:actionBarSize"
+            android:layout_height="@dimen/public_45_0dp"
             joker:title="订单详情"
             joker:backVisible="true">
     </com.example.commonres.view.CommonToolBar>
@@ -455,8 +455,7 @@
 
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:paddingTop="@dimen/public_10_0dp"
+            android:layout_height="wrap_content"
             android:background="@color/white"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
@@ -465,6 +464,9 @@
         <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/public_5_0dp"
+                android:layout_marginBottom="@dimen/public_5_0dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -492,7 +494,8 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="线上支付"/>
+                    android:text="线上支付"
+                    android:textSize="6pt"/>
         </LinearLayout>
 
         <Space
@@ -502,19 +505,16 @@
 
         <Button
                 android:id="@+id/bt_order_detail_pay"
-                android:layout_width="150dp"
+                android:layout_width="120dp"
                 android:layout_marginRight="@dimen/public_10_0dp"
+                android:layout_marginTop="@dimen/public_5_0dp"
+                android:layout_marginBottom="@dimen/public_5_0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/public_button_common_selector"
                 android:text="付款"
                 android:textSize="10pt"
                 android:textColor="@color/white"/>
     </LinearLayout>
-
-    <View
-        android:layout_alignParentBottom="true"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/public_10_0dp"></View>
 
 
 </LinearLayout>
