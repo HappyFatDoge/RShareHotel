@@ -24,18 +24,20 @@ public class BluetoothBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        String action = intent.getAction();
-        //进行蓝牙设备扫描
-        if (BluetoothDevice.ACTION_FOUND.equals(action)) {
-            BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-            if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
-                bluetoothLockDialog.addOtherDevice(new LockBean(device.getName(),device.getAddress()));
+        if (bluetoothLockDialog != null) {
+            String action = intent.getAction();
+            //进行蓝牙设备扫描
+            if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
+                    bluetoothLockDialog.addOtherDevice(new LockBean(device.getName(), device.getAddress()));
+                }
+            } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
+                //扫描完成
+                if (bluetoothLockDialog.getDeviceCount() == 0)
+                    bluetoothLockDialog.addNoOtherDevice();
+                bluetoothLockDialog.endScan();
             }
-        } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
-            //扫描完成
-            if (bluetoothLockDialog.getDeviceCount() == 0)
-                bluetoothLockDialog.addNoOtherDevice();
-            bluetoothLockDialog.endScan();
         }
     }
 }
