@@ -121,7 +121,7 @@ public class PublishCommentActivity extends BaseActivity<PublishCommentPresenter
             intent.putExtra("Comment", false);
             setResult(1, intent);
             finish();
-        }else if (viewId == R.id.tv_publish_comment){
+        }else if (viewId == R.id.tv_publish_comment){//提交评论
             String commentContent = commentContentView.getText().toString().trim();
             if (commentContent.equals(""))
                 ToastUtil.makeText(this,"评论内容不能为空");
