@@ -12,7 +12,6 @@ import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -170,7 +169,7 @@ public class HotelSelectedInfoActivity
         }else if (viewId == R.id.btn_detail_colection){
             //收藏与取消收藏
             if (!LoginUtil.getInstance().isLogin()) {
-                Toast.makeText(this, "请先登录", Toast.LENGTH_SHORT).show();
+                ToastUtil.makeText(this, "请先登录");
             } else
                 mPresenter.setCollect(mHotel,LoginUtil.getInstance().getUser(),isCollect);
         }else if (viewId == R.id.btn_detail_location){

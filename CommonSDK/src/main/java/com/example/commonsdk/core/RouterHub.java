@@ -90,6 +90,19 @@ public interface RouterHub {
      * Personal分组
      */
     String PERSONAL_FACEREGISTERACTIVITY = PERSONAL + "/FaceRegisterActivity";
+    String PERSONAL_SETTINGACTIVITY = PERSONAL + "/SettingActivity";
+    String PERSONAL_LOGINACTIVITY = PERSONAL + "/LoginActivity";
+    String PERSONAL_CUSTOMERSERVICEACTIVITY = PERSONAL + "/CustomerServiceActivity";
+    String PERSONAL_WALLETACTIVITY = PERSONAL + "/WalletActivity";
+    String PERSONAL_COLLECTIONACTIVITY = PERSONAL + "/CollectionActivity";
+    String PERSONAL_COUPONACTIVITY = PERSONAL + "/CouponActivity";
+    String PERSONAL_CREDITSCOREACTIVITY = PERSONAL + "/CreditScoreActivity";
+    String PERSONAL_POSTHOUSEACTIVITY = PERSONAL + "/PostHouseActivity";
+    String PERSONAL_MYHOUSEACTIVITY = PERSONAL + "/MyHouseActivity";
+    String PERSONAL_COMFIRMORDERACTIVITY = PERSONAL + "/ConfirmOrderActivity";
+    String PERSONAL_ABOUTUSACTIVITY = PERSONAL + "/AboutUsActivity";
+    String PERSONAL_MODIFYPSSSWORDACTIVITY = PERSONAL + "/ModifyPasswordActivity";
+
 
 
 }
