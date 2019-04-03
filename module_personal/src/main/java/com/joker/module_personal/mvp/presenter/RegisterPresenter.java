@@ -12,16 +12,20 @@ import com.jess.arms.http.imageloader.ImageLoader;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobSMS;
+import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.QueryListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
+import cn.bmob.v3.listener.UploadBatchListener;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 
 import javax.inject.Inject;
 
+import com.joker.module_personal.R;
 import com.joker.module_personal.mvp.contract.RegisterContract;
+import com.joker.module_personal.mvp.util.ResImagePathUtil;
 
 import java.util.List;
 
@@ -49,9 +53,12 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.Model, Reg
     @Inject
     AppManager mAppManager;
 
+    private String defaultPath;
+
     @Inject
     public RegisterPresenter(RegisterContract.Model model, RegisterContract.View rootView) {
         super(model, rootView);
+        defaultPath = ResImagePathUtil.getPath(rootView.getViewResources(), R.mipmap.login_head);
     }
 
     @Override
@@ -95,54 +102,85 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.Model, Reg
      * @param password
      * @param code
      */
-    public void createAccount(String account,String name,String password,String code){
+    public void createAccount(String account,String name,String password,String code, String icon){
         //验证验证码是否正确
         if (code != null) {
             BmobSMS.verifySmsCode(account, code, new UpdateListener() {
                 @Override
                 public void done(BmobException e) {
                     if (e == null) {//验证通过
-                        BmobQuery<User> query = new BmobQuery<>();
-                        //查询Bmob中account字段叫account的数据
-                        query.addWhereEqualTo("account", account);
-                        query.setLimit(1);      //只需返回一个数据，因为也只有一条数据
-                        //执行查询方法
-                        query.findObjects(new FindListener<User>() {
-                            @Override
-                            public void done(List<User> object, BmobException e) {
-                                if (e == null) {
-                                    if (object.size() == 0)  {//保存注册信息，创建账号
-                                        final User user = new User();
-                                        user.setName(name);
-                                        user.setAccount(account);
-                                        user.setPassword(password);
-                                        user.setFaceRegister(false);
-                                        user.save(new SaveListener<String>() {
-                                            @Override
-                                            public void done(String s, BmobException e) {
-                                                if (e == null)
-                                                    mRootView.createAccountResult(true,"注册成功，请进行人脸注册",user);
-                                                else
-                                                    mRootView.createAccountResult(false,"用户注册失败", null);
-                                            }
-                                        });
-                                    } else {
-                                        User user = object.get(0);
-                                        //获得account的信息
-                                        if (account == object.get(0).getAccount())
-                                            mRootView.createAccountResult(false,"账户已存在", null);
+                        //上传头像图片
+//                        if (!icon.equals(defaultPath)) {
+                            String[] pathArray = {icon};
+                            BmobFile.uploadBatch(pathArray, new UploadBatchListener() {
+                                @Override
+                                public void onSuccess(List<BmobFile> list, List<String> list1) {
+                                    if (list1.size() == 1) {
+                                        Log.i("RegisterActivity", "上传头像成功");
+                                        createAccount(account, name, password, list1.get(0));
                                     }
-
-                                } else
-                                    mRootView.createAccountResult(false,"服务器繁忙，用户注册失败", null);
-                            }
-                        });
-
+                                }
+                                @Override
+                                public void onProgress(int i, int i1, int i2, int i3) {
+                                }
+                                @Override
+                                public void onError(int i, String s) {
+                                    mRootView.createAccountResult(false, "头像上传失败", null);
+                                }
+                            });
+//                        }
                     } else //验证失败
                         mRootView.createAccountResult(false,"验证码错误", null);
                 }
             });
         } else
             mRootView.createAccountResult(false,"请输入验证码", null);
+    }
+
+
+    /**
+     * 创建账户
+     * @param account
+     * @param name
+     * @param password
+     * @param icon
+     */
+    private void createAccount(String account, String name,String password,String icon){
+        BmobQuery<User> query = new BmobQuery<>();
+        //查询Bmob中account字段叫account的数据
+        query.addWhereEqualTo("account", account);
+        query.setLimit(1);      //只需返回一个数据，因为也只有一条数据
+        //执行查询方法
+        query.findObjects(new FindListener<User>() {
+            @Override
+            public void done(List<User> object, BmobException e) {
+                if (e == null) {
+                    if (object.size() == 0)  {//保存注册信息，创建账号
+                        final User user = new User();
+                        user.setName(name);
+                        user.setAccount(account);
+                        user.setPassword(password);
+                        user.setIcon(icon);
+                        user.setFaceRegister(false);
+                        user.save(new SaveListener<String>() {
+                            @Override
+                            public void done(String s, BmobException e) {
+                                if (e == null)
+                                    mRootView.createAccountResult(true,"注册成功，请进行人脸注册",user);
+                                else
+                                    mRootView.createAccountResult(false,"用户注册失败", null);
+                            }
+                        });
+                    } else {
+                        User user = object.get(0);
+                        //获得account的信息
+                        if (account == user.getAccount())
+                            mRootView.createAccountResult(false,"账户已存在", null);
+                    }
+
+                } else
+                    mRootView.createAccountResult(false,"服务器繁忙，用户注册失败", null);
+            }
+        });
     }
 }

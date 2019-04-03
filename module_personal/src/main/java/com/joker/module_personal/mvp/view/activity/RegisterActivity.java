@@ -1,6 +1,8 @@
 package com.joker.module_personal.mvp.view.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,6 +19,7 @@ import com.example.commonres.utils.ImageUtil;
 import com.example.commonres.utils.LoginUtil;
 import com.example.commonres.utils.ToastUtil;
 import com.example.commonsdk.core.RouterHub;
+import com.example.commonsdk.utils.Utils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -39,6 +42,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.internal.Util;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
@@ -126,8 +130,22 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter>
         ToastUtil.makeText(this, tips);
         if (result){
             LoginUtil.getInstance().setUser(user);
+            LoginUtil.getInstance().setLogin(true);
+            //保存登录信息
+            SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("Account", user.getAccount());
+            editor.putBoolean("isLogin", true);
+            editor.commit();
+            Utils.navigation(this, RouterHub.PERSONAL_FACEREGISTERACTIVITY);
+            killMyself();
         }else
             registerButton.setClickable(true);
+    }
+
+    @Override
+    public Resources getViewResources() {
+        return this.getResources();
     }
 
 
@@ -137,8 +155,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter>
         int viewId = view.getId();
         if (viewId == R.id.back)//返回
             killMyself();
-        else if (viewId == R.id.set_user_icon_layout){
-            //选择照片
+        else if (viewId == R.id.set_user_icon_layout){//选择照片
             Intent intent = new Intent(this, PhotoSelectorActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             intent.putExtra("limit", 1);//number是选择图片的数量
@@ -157,7 +174,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter>
                 if (password.equals(confirmPaw)){
                     ToastUtil.makeText(this,"账户注册中...");
                     registerButton.setClickable(false);
-                    mPresenter.createAccount(tel,name,password,code);
+                    mPresenter.createAccount(tel,name,password,code,userIconPath);
                 }else{
                     ToastUtil.makeText(this,"两次输入密码不一致");
                     passwordTextView.setText("");
