@@ -92,6 +92,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter>
     public void onClick(View view){
         int viewId = view.getId();
         if (viewId == R.id.back_iv) {//返回
+            KeyBoardUtil.hideKeyboard(loginLayout);
             Intent back = new Intent();
             back.putExtra("Login", false);
             setResult(1, back);
@@ -99,7 +100,10 @@ public class LoginActivity extends BaseActivity<LoginPresenter>
         }else if (viewId == R.id.btn_login) {//登录
             String account = loginAccount.getText().toString();
             String password = loginPassword.getText().toString();
-            mPresenter.login(account, password);
+            if (!account.equals("") && !password.equals(""))
+                mPresenter.login(account, password);
+            else
+                ToastUtil.makeText(this,"账户/密码不能为空");
         }else if (viewId == R.id.register_btn){//注册
             Utils.navigation(this,RouterHub.PERSONAL_REGISTERACTIVITY);
             killMyself();
@@ -112,6 +116,14 @@ public class LoginActivity extends BaseActivity<LoginPresenter>
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent back = new Intent();
+        back.putExtra("Login", false);
+        setResult(1, back);
+        super.onBackPressed();
+    }
+
     /**
      * 登录结果
      * @param result
@@ -121,6 +133,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter>
     @Override
     public void loginResult(Boolean result, String tips, User user) {
         ToastUtil.makeText(this, tips);
+        KeyBoardUtil.hideKeyboard(loginLayout);
         if (result) {//登录成功
             LoginUtil.getInstance().setUser(user);
             String account = loginAccount.getText().toString();

@@ -3,7 +3,8 @@
     package="com.joker.module_personal">
 
     <application>
-        <activity android:name=".mvp.view.activity.RegisterActivity"></activity>
+        <activity android:name=".mvp.view.activity.RegisterActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".mvp.view.activity.ModifyPasswordActivity"
             android:windowSoftInputMode="adjustPan"></activity>
@@ -24,6 +25,24 @@
         <meta-data
             android:name="com.joker.module_personal.app.GlobalConfiguration"
             android:value="ConfigModule" />
+
+
+        <!--图片选择器-->
+        <!--选择图片-->
+        <activity android:name="com.zzti.fengyongge.imagepicker.PhotoSelectorActivity"></activity>
+        <!--预览图片-->
+        <activity android:name="com.zzti.fengyongge.imagepicker.PhotoPreviewActivity"></activity>
+
+        <!-- targetSDKVersion >= 24时才需要添加这个provider，provider的authorities属性的值为${applicationId}.fileprovider，请开发者根据自己的${applicationId}来设置这个值 -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.guet.sharehotel.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>
