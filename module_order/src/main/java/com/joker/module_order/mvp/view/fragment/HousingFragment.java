@@ -39,6 +39,7 @@ import com.joker.module_order.di.component.DaggerHousingComponent;
 import com.joker.module_order.di.module.HousingModule;
 import com.joker.module_order.mvp.contract.HousingContract;
 import com.joker.module_order.mvp.presenter.HousingPresenter;
+import com.joker.module_order.mvp.view.activity.FaceVerificationActivity;
 import com.joker.module_order.mvp.view.adapter.HousingListAdapter;
 import com.joker.module_order.mvp.view.receiver.BluetoothBroadcastReceiver;
 
@@ -245,13 +246,12 @@ public class HousingFragment extends BaseFragment<HousingPresenter>
 
                             ToastUtil.makeText(getContext(), "进行人脸验证");
                             //进行人脸验证
-                            ARouter.getInstance()
-                                .build(RouterHub.ORDER_FACEVERIFICATIONACTIVITY)
-                                .withString("userId", mOrder.getUser().getAccount())
-                                .withSerializable("order",mOrder)
-                                .withString("lockAddress", lockAddress)
-                                .withBoolean("checkOut", false)
-                                .navigation(getActivity(),1);
+                            Intent intent = new Intent(getContext(), FaceVerificationActivity.class);
+                            intent.putExtra("userId",mOrder.getUser().getAccount());
+                            intent.putExtra("order",mOrder);
+                            intent.putExtra("lockAddress",lockAddress);
+                            intent.putExtra("checkOut",false);
+                            startActivityForResult(intent,1);
                             break;
                         case BluetoothChatService.STATE_CONNECTING:
                             ToastUtil.makeText(getContext(),"连接中...");
