@@ -79,9 +79,8 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
             Utils.navigation(this, RouterHub.PERSONAL_ABOUTUSACTIVITY);
         else if (viewId == R.id.ll_change_password){//修改密码
             if (LoginUtil.getInstance().isLogin()) {
-                ARouter.getInstance()
-                    .build(RouterHub.PERSONAL_MODIFYPSSSWORDACTIVITY)
-                    .navigation(this,1);
+                Intent intent = new Intent(SettingActivity.this, ModifyPasswordActivity.class);
+                startActivityForResult(intent, 1);
             }
             else
                 ToastUtil.makeText(this, "请先登录");
@@ -93,7 +92,7 @@ public class SettingActivity extends BaseActivity<SettingPresenter>
 
         }else if (viewId == R.id.clear_data_linear_layout){//清理缓存
             ClearDataManagerUtil.clearAllCache(this);
-            cacheTextView.setText("OK");
+            cacheTextView.setText("0K");
             ToastUtil.makeText(this, "清理完成");
         }else if (viewId == R.id.login_out){//退出登录
             if (LoginUtil.getInstance().isLogin()) {

@@ -161,7 +161,7 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter>
         switch (resultCode) {
             case 1://登录返回
                 if (data.getBooleanExtra("Login", false)) {
-                    String account = data.getExtras().getString("Account");
+                    String account = data.getStringExtra("Account");
                     userName.setText(account);//设置显示用户账号
                     userName.setClickable(false);//设置账号不可点击
 //            userIcon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
@@ -172,7 +172,6 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter>
                 }
                 break;
             case 2://退出当前账号
-                Log.d("data",String.valueOf(data.getBooleanExtra("Logout",false)));
                 if (data.getBooleanExtra("Logout", false)) {
                     Log.i(TAG, "退出登录");
                     loginUtil.setLogin(false);

@@ -102,6 +102,7 @@ public interface RouterHub {
     String PERSONAL_COMFIRMORDERACTIVITY = PERSONAL + "/ConfirmOrderActivity";
     String PERSONAL_ABOUTUSACTIVITY = PERSONAL + "/AboutUsActivity";
     String PERSONAL_MODIFYPSSSWORDACTIVITY = PERSONAL + "/ModifyPasswordActivity";
+    String PERSONAL_REGISTERACTIVITY = PERSONAL + "/RegisterActivity";
 
 
 
