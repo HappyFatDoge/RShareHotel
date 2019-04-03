@@ -17,6 +17,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.commonres.beans.User;
 import com.example.commonres.utils.FaceAPIUtils;
 import com.example.commonres.utils.LoginUtil;
+import com.example.commonres.utils.ToastUtil;
 import com.example.commonres.utils.WindowSizeUtil;
 import com.example.commonsdk.core.RouterHub;
 import com.jess.arms.base.BaseActivity;
@@ -45,8 +46,6 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 public class FaceRegisterActivity extends BaseActivity<FaceRegisterPresenter>
         implements FaceRegisterContract.View {
 
-    @BindView(R2.id.face_register)
-    Button faceRegisterButton;
     @BindView(R2.id.surfaceView)
     SurfaceView surfaceView;
 
@@ -145,8 +144,13 @@ public class FaceRegisterActivity extends BaseActivity<FaceRegisterPresenter>
      * @param result
      */
     @Override
-    public void faceRegisterResult(Boolean result) {
-
+    public void faceRegisterResult(Boolean result, String tips) {
+        ToastUtil.makeText(this, tips);
+        if (result)
+            killMyself();
+        else
+            //开启相机预览
+            previceCamera();
     }
 
     class SurfaceHolderCallback implements SurfaceHolder.Callback{

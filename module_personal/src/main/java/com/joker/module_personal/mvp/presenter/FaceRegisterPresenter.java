@@ -1,9 +1,13 @@
 package com.joker.module_personal.mvp.presenter;
 
 import android.app.Application;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.commonres.beans.FaceRegisterBean;
+import com.example.commonres.beans.User;
 import com.example.commonres.utils.Base64Util;
+import com.example.commonres.utils.LoginUtil;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
@@ -14,6 +18,8 @@ import com.trello.rxlifecycle2.RxLifecycle;
 
 import javax.inject.Inject;
 
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.UpdateListener;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -69,15 +75,28 @@ public class FaceRegisterPresenter extends BasePresenter<FaceRegisterContract.Mo
                     @Override
                     public void accept(FaceRegisterBean faceRegisterBean) throws Exception {
                         if (faceRegisterBean.getError_code() == 0 &&
-                                faceRegisterBean.getError_msg().equals("SUCCESS"))
-                            mRootView.faceRegisterResult(true);
-                        else
-                            mRootView.faceRegisterResult(false);
+                                faceRegisterBean.getError_msg().equals("SUCCESS")){
+                            //更新数据，设置人脸注册boolean
+                            User mUser = LoginUtil.getInstance().getUser();
+                            mUser.setFaceRegister(true);
+                            mUser.update(new UpdateListener() {
+                                @Override
+                                public void done(BmobException e) {
+                                    if (e == null)
+                                        mRootView.faceRegisterResult(true, "人脸注册成功");
+                                    else{
+                                        Log.d("data",e.getMessage());
+                                        mRootView.faceRegisterResult(false, "人脸注册失败，请重新注册");
+                                    }
+                                }
+                            });
+                        }else
+                            mRootView.faceRegisterResult(false, "人脸注册失败，请重新注册");
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        mRootView.faceRegisterResult(false);
+                        mRootView.faceRegisterResult(false, "人脸注册失败，请重新注册");
                     }
                 });
 
