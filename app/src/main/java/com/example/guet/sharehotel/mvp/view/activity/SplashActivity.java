@@ -87,10 +87,8 @@ public class SplashActivity extends BaseActivity {
      */
     private void automaticLogin() {
         final SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
-//        account = sp.getString("Account", "");
-//        isLogin = sp.getBoolean("isLogin",false);
-        account = "15113109045";
-        isLogin = true;
+        account = sp.getString("Account", "");
+        isLogin = sp.getBoolean("isLogin",false);
         if (account != ""){
             //获取User
             BmobQuery<User> query = new BmobQuery<>();
