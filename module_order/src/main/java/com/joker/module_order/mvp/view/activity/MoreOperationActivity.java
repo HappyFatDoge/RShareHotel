@@ -200,6 +200,7 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
         }else {
             ToastUtil.makeText(getViewContext(), "您尚未开启wifi进行连接，请先允许开启wifi进行连接");
             requestOpenWifi();
+            connect();
         }
     }
 
@@ -227,6 +228,7 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
         }else {
             ToastUtil.makeText(getViewContext(), "您尚未开启wifi进行连接，请先允许开启wifi进行连接");
             requestOpenWifi();
+            connect();
         }
     }
 
@@ -264,6 +266,7 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
         }else {
             ToastUtil.makeText(getViewContext(), "您尚未开启wifi进行连接，请先允许开启wifi进行连接");
             requestOpenWifi();
+            connect();
         }
     }
 
