@@ -188,12 +188,12 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
             else {
                 if (!isOpenBedRoomLight)
                     //打开卧室灯
-                    mPresenter.sendMessageAndControl(openBedRoomLight, "a",
+                    mPresenter.sendMessageAndControl(openBedRoomLight, "g",
                         "卧室灯开启失败", "卧室灯已开启",
                         mPrintWriterClient,mSocketClient);
                 else
                     //关闭卧室灯
-                    mPresenter.sendMessageAndControl(closeBedRoomLight, "b",
+                    mPresenter.sendMessageAndControl(closeBedRoomLight, "h",
                         "卧室灯关闭失败", "卧室灯已关闭",
                         mPrintWriterClient,mSocketClient);
             }
