@@ -3,6 +3,131 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical">
+              xmlns:joker="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              tools:ignore="ResourceName">
+
+    <com.example.commonres.view.CommonToolBar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_45_0dp"
+            joker:title="钱包"
+            joker:backVisible="true">
+    </com.example.commonres.view.CommonToolBar>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:background="@color/public_colorAccent">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:text="账户余额（元）"
+                android:textColor="@color/white"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="0.00"
+                android:textSize="25pt"
+                android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:layout_marginTop="20dp">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/public_50_0dp"
+                android:gravity="center_vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:clickable="true"
+                android:background="@drawable/public_item_click_selected"
+                android:orientation="horizontal">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:src="@mipmap/pay1"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="充值"
+                    android:textSize="9pt"/>
+
+            <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"/>
+
+            <ImageView
+                    android:layout_width="@dimen/public_15_0dp"
+                    android:layout_height="@dimen/public_20_0dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:src="@mipmap/right1"/>
+
+        </LinearLayout>
+
+        <View
+                android:layout_marginLeft="@dimen/public_20_0dp"
+                android:layout_marginRight="@dimen/public_20_0dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/public_1_0dp"
+                android:background="@color/public_gray"></View>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/public_50_0dp"
+                android:gravity="center_vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:clickable="true"
+                android:background="@drawable/public_item_click_selected"
+                android:orientation="horizontal">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:src="@mipmap/get1"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="提现"
+                    android:textSize="9pt"/>
+
+            <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"/>
+
+            <ImageView
+                    android:layout_width="@dimen/public_15_0dp"
+                    android:layout_height="@dimen/public_20_0dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:src="@mipmap/right1"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
