@@ -185,16 +185,18 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
         if (wifiManager.isWifiEnabled()) {//判断wifi是否开启
             if (!isConnect)
                 connect();//连接wifi服务
-            if (!isOpenBedRoomLight)
-                //打开卧室灯
-                mPresenter.sendMessageAndControl(openBedRoomLight, "a",
-                    "卧室灯开启失败", "卧室灯已开启",
-                    mPrintWriterClient,mSocketClient);
-            else
-                //关闭卧室灯
-                mPresenter.sendMessageAndControl(closeBedRoomLight, "b",
-                    "卧室灯关闭失败", "卧室灯已关闭",
-                    mPrintWriterClient,mSocketClient);
+            else {
+                if (!isOpenBedRoomLight)
+                    //打开卧室灯
+                    mPresenter.sendMessageAndControl(openBedRoomLight, "a",
+                        "卧室灯开启失败", "卧室灯已开启",
+                        mPrintWriterClient,mSocketClient);
+                else
+                    //关闭卧室灯
+                    mPresenter.sendMessageAndControl(closeBedRoomLight, "b",
+                        "卧室灯关闭失败", "卧室灯已关闭",
+                        mPrintWriterClient,mSocketClient);
+            }
         }else {
             ToastUtil.makeText(getViewContext(), "您尚未开启wifi进行连接，请先允许开启wifi进行连接");
             requestOpenWifi();
@@ -210,16 +212,18 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
         if (wifiManager.isWifiEnabled()) {//判断wifi是否开启
             if (!isConnect)
                 connect();//连接wifi服务
-            if (!isOpenLivingRoomLight)
-                //打开客厅灯
-                mPresenter.sendMessageAndControl(openLivingRoomLight, "c",
-                    "客厅灯开启失败", "客厅灯已开启",
-                    mPrintWriterClient,mSocketClient);
-            else
-                //关闭客厅灯
-                mPresenter.sendMessageAndControl(closeLivingRoomLight, "d",
-                    "客厅灯关闭失败", "客厅灯已关闭",
-                    mPrintWriterClient,mSocketClient);
+            else {
+                if (!isOpenLivingRoomLight)
+                    //打开客厅灯
+                    mPresenter.sendMessageAndControl(openLivingRoomLight, "c",
+                        "客厅灯开启失败", "客厅灯已开启",
+                        mPrintWriterClient, mSocketClient);
+                else
+                    //关闭客厅灯
+                    mPresenter.sendMessageAndControl(closeLivingRoomLight, "d",
+                        "客厅灯关闭失败", "客厅灯已关闭",
+                        mPrintWriterClient, mSocketClient);
+            }
         }else {
             ToastUtil.makeText(getViewContext(), "您尚未开启wifi进行连接，请先允许开启wifi进行连接");
             requestOpenWifi();
@@ -245,16 +249,18 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
         if (wifiManager.isWifiEnabled()) {//判断wifi是否开启
             if (!isConnect)
                 connect();//连接wifi服务
-            if (!isOpenFanner)
-                //打开风扇
-                mPresenter.sendMessageAndControl(openFanner, "e",
-                    "风扇开启失败", "风扇已开启",
-                    mPrintWriterClient, mSocketClient);
-            else
-                //关闭风扇
-                mPresenter.sendMessageAndControl(closeFanner, "f",
-                    "风扇关闭失败", "风扇已关闭",
-                    mPrintWriterClient, mSocketClient);
+            else{
+                if (!isOpenFanner)
+                    //打开风扇
+                    mPresenter.sendMessageAndControl(openFanner, "e",
+                        "风扇开启失败", "风扇已开启",
+                        mPrintWriterClient, mSocketClient);
+                else
+                    //关闭风扇
+                    mPresenter.sendMessageAndControl(closeFanner, "f",
+                        "风扇关闭失败", "风扇已关闭",
+                        mPrintWriterClient, mSocketClient);
+            }
         }else {
             ToastUtil.makeText(getViewContext(), "您尚未开启wifi进行连接，请先允许开启wifi进行连接");
             requestOpenWifi();
@@ -335,6 +341,7 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
                 passwordConfirmDialog.dismiss();
                 KeyBoardUtil.hideKeyboard(moreOperationLayout);
                 requestOpenWifi();//请求打开Wifi
+                connect();
             }else {
                 ToastUtil.makeText(getViewContext(), "密码输入错误，请重新输入");
                 passwordConfirmDialog.resetPassword();
@@ -354,7 +361,6 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
      * 连接wifi服务
      */
     private void connect(){
-        isConnect = true;
         mThreadClient = new Thread(mRunnable);
         mThreadClient.start();
     }
@@ -388,12 +394,12 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
     private Runnable mRunnable = new Runnable() {
         public void run() {
             if(wifiIp.length()<=0) {
-                ToastUtil.makeText(getViewContext(),"IP can't be empty!");
+                Log.d("data", "IP can't be empty!");
                 return;
             }
             int start = wifiIp.indexOf(":");
             if( (start == -1) ||(start+1 >= wifiIp.length()) ) {
-                ToastUtil.makeText(getViewContext(),"IP address is error!");
+                Log.d("data", "IP address is error!");
                 return;
             }
             String sIP = wifiIp.substring(0, start);
@@ -409,11 +415,13 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
                 mBufferedReaderClient = mSocketClient.getInputStream();
 
                 mPrintWriterClient = new PrintWriter(mSocketClient.getOutputStream(), true);
-                ToastUtil.makeText(getViewContext(),"connected to server!");
+                Log.d("data", "connected to server!");
             } catch (Exception e) {
-                ToastUtil.makeText(getViewContext(),"connecting IP is error:" + e.toString() + e.getMessage());
+                Log.d("data", "connecting IP is error:" + e.toString() + e.getMessage());
                 return;
             }
+
+            isConnect = true;
 
             byte[] buffer = new byte[1024];
             int count = 0;
