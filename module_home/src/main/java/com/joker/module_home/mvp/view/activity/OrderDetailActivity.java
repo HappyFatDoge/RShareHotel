@@ -1,13 +1,10 @@
 package com.joker.module_home.mvp.view.activity;
 
-import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,24 +15,22 @@ import com.example.commonres.beans.Order;
 import com.example.commonres.beans.User;
 import com.example.commonres.dialog.TipsDialog;
 import com.example.commonres.utils.ImageUtil;
+import com.example.commonres.utils.TelUtil;
 import com.example.commonres.utils.ToastUtil;
 import com.example.commonsdk.core.RouterHub;
 import com.example.commonsdk.utils.Utils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-
+import com.joker.module_home.R;
 import com.joker.module_home.R2;
 import com.joker.module_home.di.component.DaggerOrderDetailComponent;
 import com.joker.module_home.di.module.OrderDetailModule;
 import com.joker.module_home.mvp.contract.OrderDetailContract;
 import com.joker.module_home.mvp.presenter.OrderDetailPresenter;
-
-import com.joker.module_home.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.imageaware.ImageAware;
 import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
-
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -161,7 +156,7 @@ public class OrderDetailActivity
                 @Override
                 public void onConfirm() {
                     tipsDialog.dismiss();
-                    callOwnerPhone();
+                    TelUtil.callPhone(owner.getAccount(), getActivity());
                 }
             });
             tipsDialog.setRCancelListener(new TipsDialog.OnRCancelListener() {
@@ -241,20 +236,11 @@ public class OrderDetailActivity
         }
     }
 
-
-    /**
-     * 打电话
-     */
-    private void callOwnerPhone(){
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
-            Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + owner.getAccount()));
-            this.startActivity(callIntent);
-        } else {
-            Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + owner.getAccount()));
-            this.startActivity(callIntent);
-        }
+    @Override
+    public Activity getActivity() {
+        return this;
     }
+
 
     @Override
     public void showLoading() {

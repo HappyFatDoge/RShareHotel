@@ -3,6 +3,137 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical">
+              xmlns:joker="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              tools:ignore="ResourceName">
+
+    <com.example.commonres.view.CommonToolBar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_45_0dp"
+            joker:title="客服"
+            joker:backVisible="true">
+    </com.example.commonres.view.CommonToolBar>
+
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdge="vertical"
+            android:scrollbars="vertical">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <LinearLayout
+                    android:id="@+id/demestic_linear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/customer_service_card_shape"
+                    android:orientation="horizontal"
+                    >
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="30dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="在国内请拨打：888-888-888"
+                        android:textColor="#feffff"
+                        android:textSize="@dimen/public_14_0dp"/>
+
+
+                <ImageView
+                        android:id="@+id/tel_domestic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/phone"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:id="@+id/abrod_linear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/customer_service_card_shape"
+                    android:orientation="horizontal"
+                    >
+
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="30dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="在国外请拨打：99-88-888888"
+                        android:textColor="#feffff"
+                        android:textSize="@dimen/public_14_0dp"/>
+
+
+                <ImageView
+                        android:id="@+id/tel_foreign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/phone"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:id="@+id/onlie_linear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/customer_service_card_shape"
+                    android:orientation="horizontal">
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="30dp"
+                        android:layout_weight="1"
+                        android:gravity="left"
+                        android:text="24小时人工在线服务"
+                        android:textColor="#feffff"
+                        android:textSize="@dimen/public_14_0dp"
+                        />
+
+
+                <ImageView
+                        android:id="@+id/chat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/online_service"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

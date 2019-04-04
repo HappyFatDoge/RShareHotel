@@ -1,5 +1,7 @@
 package com.joker.module_home.mvp.contract;
 
+import android.app.Activity;
+
 import com.example.commonres.beans.Order;
 import com.jess.arms.mvp.IModel;
 import com.jess.arms.mvp.IView;
@@ -11,6 +13,7 @@ public interface HotelSelectedInfoContract {
         void isCollectResult(Boolean result);
         void setCollectResult(Boolean result ,Boolean isCollect, String tips);
         void orderResult(Boolean result, String tips, Order order);
+        Activity getActivity();
     }
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存
