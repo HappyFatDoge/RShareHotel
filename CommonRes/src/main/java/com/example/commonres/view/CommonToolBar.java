@@ -99,7 +99,7 @@ public class CommonToolBar extends FrameLayout {
         rightImageViewVisible = typedArray.getBoolean(R.styleable.CommonToolBar_rightImageViewVisible,false);
         titleText = typedArray.getString(R.styleable.CommonToolBar_title);
         rightText = typedArray.getString(R.styleable.CommonToolBar_rightText);
-        rightId = typedArray.getResourceId(R.styleable.CommonToolBar_rightSrcCompat,R.drawable.public_loading);
+        rightId = typedArray.getResourceId(R.styleable.CommonToolBar_rightSrcCompat,R.mipmap.left_arrow1);
 
         typedArray.recycle();
     }
