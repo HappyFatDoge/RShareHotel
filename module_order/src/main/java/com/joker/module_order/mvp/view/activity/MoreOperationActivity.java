@@ -183,9 +183,10 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
      */
     private void bedRoomLight(){
         if (wifiManager.isWifiEnabled()) {//判断wifi是否开启
-            if (!isConnect)
+            if (!isConnect) {
+                ToastUtil.makeText(getViewContext(), "尚未进行wifi服务连接，wifi服务连接中...");
                 connect();//连接wifi服务
-            else {
+            } else {
                 if (!isOpenBedRoomLight)
                     //打开卧室灯
                     mPresenter.sendMessageAndControl(openBedRoomLight, "g",
@@ -211,9 +212,10 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
      */
     private void livingRoomLight(){
         if (wifiManager.isWifiEnabled()) {//判断wifi是否开启
-            if (!isConnect)
+            if (!isConnect) {
+                ToastUtil.makeText(getViewContext(), "尚未进行wifi服务连接，wifi服务连接中...");
                 connect();//连接wifi服务
-            else {
+            } else {
                 if (!isOpenLivingRoomLight)
                     //打开客厅灯
                     mPresenter.sendMessageAndControl(openLivingRoomLight, "c",
@@ -249,9 +251,10 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
      */
     private void fanner(){
         if (wifiManager.isWifiEnabled()) {//判断wifi是否开启
-            if (!isConnect)
+            if (!isConnect) {
+                ToastUtil.makeText(getViewContext(), "尚未进行wifi服务连接，wifi服务连接中...");
                 connect();//连接wifi服务
-            else{
+            } else{
                 if (!isOpenFanner)
                     //打开风扇
                     mPresenter.sendMessageAndControl(openFanner, "e",
@@ -445,6 +448,10 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
             super.handleMessage(msg);
             String tips = (String) msg.obj;
             ToastUtil.makeText(getViewContext(),tips);
+//
+//            Toast mToast = Toast.makeText(getViewContext(),tips,Toast.LENGTH_SHORT);
+//            mToast.setText(tips);
+//            mToast.show();
             switch (msg.what){
                 case openBedRoomLight:
                     isOpenBedRoomLight = true;

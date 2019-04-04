@@ -1,6 +1,7 @@
 package com.example.commonres.utils;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.jess.arms.utils.ArmsUtils;
 
@@ -17,7 +18,9 @@ public class ToastUtil {
      * @param string
      */
     public static void makeText(Context context, String string) {
-        ArmsUtils.makeText(context,string);
+        Toast mToast = Toast.makeText(context, string, Toast.LENGTH_SHORT);
+        mToast.setText(string);
+        mToast.show();
     }
 
 
