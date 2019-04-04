@@ -103,6 +103,8 @@ public interface RouterHub {
     String PERSONAL_ABOUTUSACTIVITY = PERSONAL + "/AboutUsActivity";
     String PERSONAL_MODIFYPSSSWORDACTIVITY = PERSONAL + "/ModifyPasswordActivity";
     String PERSONAL_REGISTERACTIVITY = PERSONAL + "/RegisterActivity";
+    String PERSONAL_POSTCLEARORDERACTIVITY = PERSONAL + "/PostClearOrderActivity";
+    String PERSONAL_RECEIVECLEARORDERACTIVITY = PERSONAL + "/ReceiveClearOrderActivity";
 
 
 
