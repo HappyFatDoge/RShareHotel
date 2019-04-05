@@ -60,27 +60,30 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
     //卧室灯状态
     @BindView(R2.id.bedroom_light_status)
     TextView bedRoomLightStatus;
-    //客厅灯状态
-    @BindView(R2.id.living_room_light_status)
-    TextView livingRoomLightStatus;
-    //风扇状态
-    @BindView(R2.id.fanner_status)
-    TextView fannerStatus;
+    //厨房灯状态
+    @BindView(R2.id.kitchen_light_status)
+    TextView kitchenLightStatus;
+    //厕所灯状态
+    @BindView(R2.id.toilet)
+    TextView toiletLightState;
 
 
     private Order mOrder;
     private PasswordConfirmDialog passwordConfirmDialog;
 
     private Boolean isOpenBedRoomLight = false;
-    private Boolean isOpenLivingRoomLight = false;
-    private Boolean isOpenFanner = false;
+    private Boolean isOpenKitchenLight = false;
+    private Boolean isOpenAirConditioning = false;
+    private Boolean isOpenToiletLight = false;
 
     private static final int openBedRoomLight = 1;
     private static final int closeBedRoomLight = 2;
-    private static final int openLivingRoomLight = 3;
-    private static final int closeLivingRoomLight = 4;
-    private static final int openFanner = 5;
-    private static final int closeFanner = 6;
+    private static final int openKitchenLight = 3;
+    private static final int closeKitchenLight = 4;
+    private static final int openAirConditioning = 5;
+    private static final int closeAirConditioning = 6;
+    private static final int openToiletLight = 7;
+    private static final int closeToiletLight = 8;
 
     private String wifiIp ="192.168.1.212:8080";
     private boolean isConnect = false;
@@ -121,17 +124,17 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
         else
             bedRoomLightStatus.setText("开启卧室灯");
 
-        //设置客厅灯状态
-        if (isOpenLivingRoomLight)
-            livingRoomLightStatus.setText("关闭客厅灯");
+        //设置厨房灯状态
+        if (isOpenKitchenLight)
+            kitchenLightStatus.setText("关闭厨房灯");
         else
-            livingRoomLightStatus.setText("开启客厅灯");
+            kitchenLightStatus.setText("开启厨房灯");
 
-        //设置风扇状态
-        if (isOpenFanner)
-            fannerStatus.setText("关闭风扇");
+        //设置厕所灯状态
+        if (isOpenToiletLight)
+            toiletLightState.setText("关闭厕所灯");
         else
-            fannerStatus.setText("开启风扇");
+            toiletLightState.setText("开启厕所灯");
 
         //进行密码输入确认
         showLoading();
@@ -139,8 +142,8 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
 
 
     @OnClick({R2.id.back,R2.id.close_or_open_bedroom_bulb_iv,
-        R2.id.close_or_open_living_room_bulb_iv,R2.id.close_or_open_air_conditioning,
-        R2.id.close_or_open_television,R2.id.close_or_open_fanner,
+        R2.id.close_or_open_kitchen_bulb_iv,R2.id.close_or_open_air_conditioning,
+        R2.id.close_or_open_television,R2.id.close_or_open_toilet_bulb_iv,
         R2.id.close_or_open_water_heater,R2.id.close_or_open_curtain,
         R2.id.close_or_open_window,R2.id.sleep_mode_iv,
         R2.id.electric_iv,R2.id.operate_mode_iv,
@@ -148,18 +151,18 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
     public void onClicked(View view){
         int viewId = view.getId();
         if (viewId == R.id.back)//返回
-            finish();
+            killMyself();
         else if (viewId == R.id.close_or_open_bedroom_bulb_iv)//开/关卧室灯
             bedRoomLight();
-        else if (viewId == R.id.close_or_open_living_room_bulb_iv)//开/关客厅灯
-            livingRoomLight();
+        else if (viewId == R.id.close_or_open_kitchen_bulb_iv)//开/关厨房灯
+            kitchenLight();
         else if (viewId == R.id.close_or_open_air_conditioning)//空调控制
-            airCoditioningControl();
+            airConditioningControl();
+        else if (viewId == R.id.close_or_open_toilet_bulb_iv)//开/关厕所灯
+            toiletLight();
         else if (viewId == R.id.close_or_open_television) {//电视机控制
 
-        }else if (viewId == R.id.close_or_open_fanner)//风扇控制
-            fanner();
-        else if (viewId == R.id.close_or_open_water_heater) {//热水器控制
+        }else if (viewId == R.id.close_or_open_water_heater) {//热水器控制
 
         }else if (viewId == R.id.close_or_open_curtain) {//窗帘布控制
 
@@ -189,12 +192,12 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
             } else {
                 if (!isOpenBedRoomLight)
                     //打开卧室灯
-                    mPresenter.sendMessageAndControl(openBedRoomLight, "g",
+                    mPresenter.sendMessageAndControl(openBedRoomLight, "e",
                         "卧室灯开启失败", "卧室灯已开启",
                         mPrintWriterClient,mSocketClient);
                 else
                     //关闭卧室灯
-                    mPresenter.sendMessageAndControl(closeBedRoomLight, "h",
+                    mPresenter.sendMessageAndControl(closeBedRoomLight, "f",
                         "卧室灯关闭失败", "卧室灯已关闭",
                         mPrintWriterClient,mSocketClient);
             }
@@ -206,26 +209,25 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
     }
 
 
-
     /**
-     * 开/关客厅灯
+     * 开/关厨房灯
      */
-    private void livingRoomLight(){
+    private void kitchenLight(){
         if (wifiManager.isWifiEnabled()) {//判断wifi是否开启
             if (!isConnect) {
                 ToastUtil.makeText(getViewContext(), "尚未进行wifi服务连接，wifi服务连接中...");
                 connect();//连接wifi服务
             } else {
-                if (!isOpenLivingRoomLight)
-                    //打开客厅灯
-                    mPresenter.sendMessageAndControl(openLivingRoomLight, "c",
-                        "客厅灯开启失败", "客厅灯已开启",
-                        mPrintWriterClient, mSocketClient);
+                if (!isOpenKitchenLight)
+                    //打开厨房灯
+                    mPresenter.sendMessageAndControl(openKitchenLight, "c",
+                            "厨房灯开启失败", "厨房灯已开启",
+                            mPrintWriterClient,mSocketClient);
                 else
-                    //关闭客厅灯
-                    mPresenter.sendMessageAndControl(closeLivingRoomLight, "d",
-                        "客厅灯关闭失败", "客厅灯已关闭",
-                        mPrintWriterClient, mSocketClient);
+                    //关闭厨房灯
+                    mPresenter.sendMessageAndControl(closeKitchenLight, "d",
+                            "厨房灯关闭失败", "厨房灯已关闭",
+                            mPrintWriterClient,mSocketClient);
             }
         }else {
             ToastUtil.makeText(getViewContext(), "您尚未开启wifi进行连接，请先允许开启wifi进行连接");
@@ -239,32 +241,64 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
     /**
      * 空调控制
      */
-    private void airCoditioningControl(){
+    private void airConditioningControl(){
         AirConditioningControlDialog dialog = new AirConditioningControlDialog(this);
         dialog.show();
         //设置各种控制
+        dialog.setSwitchListener(new AirConditioningSwitchListener());//空调开关设置
     }
 
 
     /**
-     * 开/关风扇
+     * 空调开关控制
      */
-    private void fanner(){
+    class AirConditioningSwitchListener implements AirConditioningControlDialog.SwitchListener{
+        @Override
+        public void switchOfAirConditioning(View view) {
+            if (wifiManager.isWifiEnabled()) {//判断wifi是否开启
+                if (!isConnect) {
+                    ToastUtil.makeText(getViewContext(), "尚未进行wifi服务连接，wifi服务连接中...");
+                    connect();//连接wifi服务
+                } else {
+                    if (!isOpenAirConditioning)
+                        //打开厨房灯
+                        mPresenter.sendMessageAndControl(openAirConditioning, "g",
+                                "空调开启失败", "空调已开启",
+                                mPrintWriterClient,mSocketClient);
+                    else
+                        //关闭厨房灯
+                        mPresenter.sendMessageAndControl(closeAirConditioning, "h",
+                                "厨房灯关闭失败", "厨房灯已关闭",
+                                mPrintWriterClient,mSocketClient);
+                }
+            }else {
+                ToastUtil.makeText(getViewContext(), "您尚未开启wifi进行连接，请先允许开启wifi进行连接");
+                requestOpenWifi();
+                connect();
+            }
+        }
+    }
+
+
+    /**
+     * 开/关厕所灯
+     */
+    private void toiletLight(){
         if (wifiManager.isWifiEnabled()) {//判断wifi是否开启
             if (!isConnect) {
                 ToastUtil.makeText(getViewContext(), "尚未进行wifi服务连接，wifi服务连接中...");
                 connect();//连接wifi服务
-            } else{
-                if (!isOpenFanner)
-                    //打开风扇
-                    mPresenter.sendMessageAndControl(openFanner, "e",
-                        "风扇开启失败", "风扇已开启",
-                        mPrintWriterClient, mSocketClient);
+            } else {
+                if (!isOpenToiletLight)
+                    //打开厕所灯
+                    mPresenter.sendMessageAndControl(openKitchenLight, "a",
+                            "厕所灯开启失败", "厕所灯已开启",
+                            mPrintWriterClient,mSocketClient);
                 else
-                    //关闭风扇
-                    mPresenter.sendMessageAndControl(closeFanner, "f",
-                        "风扇关闭失败", "风扇已关闭",
-                        mPrintWriterClient, mSocketClient);
+                    //关闭厕所灯
+                    mPresenter.sendMessageAndControl(closeKitchenLight, "b",
+                            "厕所灯关闭失败", "厕所灯已关闭",
+                            mPrintWriterClient,mSocketClient);
             }
         }else {
             ToastUtil.makeText(getViewContext(), "您尚未开启wifi进行连接，请先允许开启wifi进行连接");
@@ -272,6 +306,7 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
             connect();
         }
     }
+
 
 
     /**
@@ -448,10 +483,6 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
             super.handleMessage(msg);
             String tips = (String) msg.obj;
             ToastUtil.makeText(getViewContext(),tips);
-//
-//            Toast mToast = Toast.makeText(getViewContext(),tips,Toast.LENGTH_SHORT);
-//            mToast.setText(tips);
-//            mToast.show();
             switch (msg.what){
                 case openBedRoomLight:
                     isOpenBedRoomLight = true;
@@ -461,21 +492,27 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
                     isOpenBedRoomLight = false;
                     bedRoomLightStatus.setText("开启卧室灯");
                     break;
-                case openLivingRoomLight:
-                    isOpenLivingRoomLight = true;
-                    livingRoomLightStatus.setText("关闭客厅灯");
+                case openKitchenLight:
+                    isOpenKitchenLight = true;
+                    kitchenLightStatus.setText("关闭厨房灯");
                     break;
-                case closeLivingRoomLight:
-                    isOpenLivingRoomLight = false;
-                    livingRoomLightStatus.setText("开启客厅灯");
+                case closeKitchenLight:
+                    isOpenKitchenLight = false;
+                    kitchenLightStatus.setText("开启厨房灯");
                     break;
-                case openFanner:
-                    isOpenFanner = true;
-                    fannerStatus.setText("关闭风扇");
+                case openAirConditioning:
+                    isOpenAirConditioning = true;
                     break;
-                case closeFanner:
-                    isOpenFanner = false;
-                    fannerStatus.setText("开启风扇");
+                case closeAirConditioning:
+                    isOpenAirConditioning = false;
+                    break;
+                case openToiletLight:
+                    isOpenToiletLight = true;
+                    toiletLightState.setText("关闭厕所灯");
+                    break;
+                case closeToiletLight:
+                    isOpenToiletLight = false;
+                    toiletLightState.setText("开启厕所灯");
                     break;
             }
         }
