@@ -74,7 +74,7 @@ public class CollectionListHolder extends BaseHolder<Collection> {
             }
         });
 
-        hotelPrice.setText(hotel.getPrice());
+        hotelPrice.setText(hotel.getPrice().toString());
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

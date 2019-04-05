@@ -52,7 +52,7 @@ public class IntegralRecordListHolder extends BaseHolder<IntegralRecord> {
             integral.setText("+" + data.getIntegral());
         } else {
             integral.setText("-" + data.getIntegral());
-            integral.setTextColor(0xe0456a);
+            integral.setTextColor(0xFFFF0000);
         }
     }
 }

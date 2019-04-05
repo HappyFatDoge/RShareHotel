@@ -131,9 +131,9 @@ public class HistoryOrderFragment extends BaseFragment<HistoryOrderPresenter>
             tipsDialog.show();
             tipsDialog.setTitle("删除");
             tipsDialog.setTipsContent("删除订单？");
-            tipsDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            tipsDialog.setRCancelListener(new TipsDialog.OnRCancelListener() {
                 @Override
-                public void onCancel(DialogInterface dialog) {
+                public void onCancel() {
                     tipsDialog.dismiss();
                 }
             });

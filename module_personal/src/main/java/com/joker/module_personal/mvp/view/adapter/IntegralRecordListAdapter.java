@@ -6,6 +6,7 @@ import com.example.commonres.beans.IntegralRecord;
 import com.jess.arms.base.BaseHolder;
 import com.jess.arms.base.DefaultAdapter;
 import com.joker.module_personal.R;
+import com.joker.module_personal.mvp.view.holder.IntegralRecordListHolder;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class IntegralRecordListAdapter extends DefaultAdapter<IntegralRecord> {
 
     @Override
     public BaseHolder<IntegralRecord> getHolder(View v, int viewType) {
-        return null;
+        return new IntegralRecordListHolder(v);
     }
 
     @Override

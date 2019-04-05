@@ -110,6 +110,7 @@ public class CollectionActivity extends BaseActivity<CollectionPresenter>
      */
     @Override
     public void getCollectionsResult(Boolean result, String tips, List<Collection> list) {
+        hideLoading();
         ToastUtil.makeText(this, tips);
         collectionListAdapter.setItems(list);
     }
