@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.example.commonsdk.core.RouterHub;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -19,7 +21,10 @@ import com.joker.module_personal.R;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
-
+/**
+ * 个人中心Fragment -> 发布房子
+ */
+@Route(path = RouterHub.PERSONAL_POSTHOUSEACTIVITY)
 public class PostHouseActivity extends BaseActivity<PostHousePresenter> implements PostHouseContract.View {
 
     @Override
