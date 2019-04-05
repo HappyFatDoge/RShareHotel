@@ -7,7 +7,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(":CommonRes")//因为 CommonRes 依赖了 CommonSDK, 所以如果业务模块需要公共 UI 组件就依赖 CommonRes, 如果不需要就只依赖 CommonSDK
-//    api project(":CommonService")
+    api project(":module_home")
     //报表
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.1'
     //图片选择器
