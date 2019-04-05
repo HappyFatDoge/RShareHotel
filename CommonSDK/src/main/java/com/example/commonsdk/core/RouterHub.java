@@ -105,6 +105,7 @@ public interface RouterHub {
     String PERSONAL_REGISTERACTIVITY = PERSONAL + "/RegisterActivity";
     String PERSONAL_POSTCLEARORDERACTIVITY = PERSONAL + "/PostClearOrderActivity";
     String PERSONAL_RECEIVECLEARORDERACTIVITY = PERSONAL + "/ReceiveClearOrderActivity";
+    String PERSONAL_INTEGRALRECORDACTIVITY = PERSONAL + "/IntegralRecordActivity";
 
 
 

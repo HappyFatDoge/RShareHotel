@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:joker="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:ignore="ResourceName">
+
+    <com.example.commonres.view.CommonToolBar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_45_0dp"
+        joker:title="积分使用记录"
+        joker:backVisible="true">
+    </com.example.commonres.view.CommonToolBar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/public_colorAccent">
+
+        <com.flyco.tablayout.SegmentTabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            joker:tl_bar_color="@color/public_colorAccent"
+            joker:tl_indicator_color="@color/white"
+            joker:tl_indicator_margin_bottom="2dp"
+            joker:tl_indicator_margin_left="2dp"
+            joker:tl_indicator_margin_right="2dp"
+            joker:tl_indicator_margin_top="2dp"
+            joker:tl_textSelectColor="@color/public_colorAccent"
+            joker:tl_tab_width="80dp"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</LinearLayout>

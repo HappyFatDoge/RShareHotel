@@ -71,4 +71,10 @@
         <item name="colorControlActivated">@android:color/darker_gray</item>
     </style>
 
+    <!--信用积分-关于积分  的弹出框的动画-->
+    <style name="public_popup_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/public_pop_up_choose_bank_card_pay_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/public_pop_up_choose_bank_card_pay_exit_anim</item>
+    </style>
+
 </resources>
