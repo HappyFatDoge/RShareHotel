@@ -1,5 +1,5 @@
 <resources>
-    <string name="public_app_name">sharehotel</string>
+    <string name="public_app_name">Share Hotel</string>
 
     //App组件中的String
     <string name="public_exit_tips">再按一次退出shareHotel</string>
