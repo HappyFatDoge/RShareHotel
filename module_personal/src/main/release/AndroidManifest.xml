@@ -14,7 +14,8 @@
         <activity android:name=".mvp.view.activity.ConfirmOrderActivity" />
         <activity android:name=".mvp.view.activity.MyHouseActivity" />
         <activity android:name=".mvp.view.activity.PostHouseActivity"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan"
+            android:theme="@style/module_personal_post_house_theme"/>
         <activity android:name=".mvp.view.activity.CreditScoreActivity" />
         <activity android:name=".mvp.view.activity.CouponActivity" />
         <activity android:name=".mvp.view.activity.CollectionActivity" />
