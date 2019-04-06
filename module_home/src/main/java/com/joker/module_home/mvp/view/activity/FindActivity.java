@@ -72,7 +72,7 @@ public class FindActivity extends BaseActivity<FindPresenter> implements FindCon
     private ListDropDownAdapter priceAdapter;
     private ListDropDownAdapter modeAdapter;
     private String style[] = {"不限", "1室0厅1卫", "1室1厅1卫", "2室1厅1卫", "3室1厅1卫", "3室1厅2卫", "4室1厅2卫"};
-    private String price[] = {"不限", "1000以下", "1000-2000", "2000-3000", "3000以上"};
+    private String price[] = {"不限", "100以下", "100-300", "300-500", "500以上"};
     private String mode[] = {"不限", "民宿", "酒店公寓"};
     private String code[] = {"All", "House", "HotelApartment"};
     private int codePos = 0;
@@ -280,20 +280,20 @@ public class FindActivity extends BaseActivity<FindPresenter> implements FindCon
             if (position == 0) {
                 priceQuery.addWhereNotEqualTo("price", 0);
             } else if (position == 1) {
-                priceQuery.addWhereLessThan("price", 1000);
+                priceQuery.addWhereLessThan("price", 100);
                 mQueryList.add(priceQuery);
             } else if (position == 2) {
-                priceQuery.addWhereLessThan("price", 2000);
-                priceQuery2.addWhereGreaterThanOrEqualTo("price", 1000);
+                priceQuery.addWhereLessThan("price", 300);
+                priceQuery2.addWhereGreaterThanOrEqualTo("price", 100);
                 mQueryList.add(priceQuery);
                 mQueryList.add(priceQuery2);
             } else if (position == 3) {
-                priceQuery.addWhereLessThan("price", 3000);
-                priceQuery2.addWhereGreaterThanOrEqualTo("price", 2000);
+                priceQuery.addWhereLessThan("price", 500);
+                priceQuery2.addWhereGreaterThanOrEqualTo("price", 300);
                 mQueryList.add(priceQuery);
                 mQueryList.add(priceQuery2);
             } else if (position == 4) {
-                priceQuery.addWhereGreaterThanOrEqualTo("price", 3000);
+                priceQuery.addWhereGreaterThanOrEqualTo("price", 500);
                 mQueryList.add(priceQuery);
             }
             mDropDownMenu.closeMenu();
