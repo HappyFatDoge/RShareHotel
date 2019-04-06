@@ -290,7 +290,9 @@
             </LinearLayout>
 
             <LinearLayout
-
+                android:id="@+id/start_time_layout"
+                android:clickable="true"
+                android:background="@drawable/public_item_click_selected"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
@@ -326,7 +328,9 @@
 
 
             <LinearLayout
-
+                android:id="@+id/end_time_layout"
+                android:clickable="true"
+                android:background="@drawable/public_item_click_selected"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
@@ -390,6 +394,9 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/photo_layout"
+                android:clickable="true"
+                android:background="@drawable/public_item_click_selected"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
