@@ -52,7 +52,8 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 /**
  * 主页
  */
-public class HomeFragment extends BaseFragment<HomePresenter> implements HomeContract.View {
+public class HomeFragment extends BaseFragment<HomePresenter>
+        implements HomeContract.View {
 
     @BindView(R2.id.tv_city)
     TextView mCityTextView;
