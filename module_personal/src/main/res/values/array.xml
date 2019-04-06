@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--hotel mode-->
+    <string-array name="module_personal_hotel_mode">
+        <item>民宿</item>
+        <item>酒店公寓</item>
+    </string-array>
+
+
+    <string-array name="module_personal_hotel_type">
+        <item>1室0厅1卫</item>
+        <item>1室1厅1卫</item>
+        <item>2室1厅1卫</item>
+        <item>2室1厅2卫</item>
+        <item>3室1厅1卫</item>
+        <item>3室1厅2卫</item>
+        <item>4室1厅2卫</item>
+        <item>5室1厅2卫</item>
+    </string-array>
+</resources>
