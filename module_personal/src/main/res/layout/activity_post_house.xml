@@ -19,6 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none"
         android:layout_marginBottom="10dp">
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,6 +56,7 @@
                     android:imeOptions="actionNext"
                     android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
                     android:background="@null"
+                    android:singleLine="true"
                     android:hint="请输入房子名字"
                     android:textSize="8pt"/>
             </LinearLayout>
@@ -84,6 +87,7 @@
                     android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
                     android:imeOptions="actionNext"
                     android:background="@null"
+                    android:singleLine="true"
                     android:hint="请输入门锁物理地址"
                     android:textSize="8pt"/>
             </LinearLayout>
@@ -151,6 +155,7 @@
                     android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
                     android:imeOptions="actionNext"
                     android:background="@null"
+                    android:singleLine="true"
                     android:hint="请输入详细地址"
                     android:textSize="8pt"/>
             </LinearLayout>
@@ -238,6 +243,7 @@
                     android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
                     android:imeOptions="actionNext"
                     android:hint="请输入面积"
+                    android:singleLine="true"
                     android:textColor="@color/public_home_text_color"
                     android:textSize="8pt"/>
 
@@ -281,6 +287,7 @@
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:hint="输入租金"
+                    android:singleLine="true"
                     android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
                     android:textColor="@color/public_home_text_color"
                     android:textSize="8pt"/>
@@ -456,6 +463,19 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/btn_post_house_commit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/public_10_0dp"
+        android:layout_marginBottom="@dimen/public_10_0dp"
+        android:layout_marginLeft="@dimen/public_40_0dp"
+        android:layout_marginRight="@dimen/public_40_0dp"
+        android:background="@drawable/public_button_common_selector"
+        android:text="上传"
+        android:textColor="@color/public_white"
+        android:textSize="8pt"/>
 
 
 </LinearLayout>
