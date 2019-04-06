@@ -52,6 +52,7 @@
                     android:layout_height="match_parent"
                     android:lines="1"
                     android:imeOptions="actionNext"
+                    android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
                     android:background="@null"
                     android:hint="请输入房子名字"
                     android:textSize="8pt"/>
@@ -80,6 +81,7 @@
                     android:layout_width="160dp"
                     android:layout_height="match_parent"
                     android:lines="1"
+                    android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
                     android:imeOptions="actionNext"
                     android:background="@null"
                     android:hint="请输入门锁物理地址"
@@ -87,7 +89,9 @@
             </LinearLayout>
 
             <LinearLayout
-
+                android:id="@+id/city_picker_layout"
+                android:clickable="true"
+                android:background="@drawable/public_item_click_selected"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
@@ -144,6 +148,7 @@
                     android:layout_width="160dp"
                     android:layout_height="match_parent"
                     android:lines="1"
+                    android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
                     android:imeOptions="actionNext"
                     android:background="@null"
                     android:hint="请输入详细地址"
@@ -230,6 +235,7 @@
                     android:gravity="center"
                     android:inputType="number"
                     android:lines="1"
+                    android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
                     android:imeOptions="actionNext"
                     android:hint="请输入面积"
                     android:textColor="@color/public_home_text_color"
@@ -275,6 +281,7 @@
                     android:imeOptions="actionNext"
                     android:inputType="number"
                     android:hint="输入租金"
+                    android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
                     android:textColor="@color/public_home_text_color"
                     android:textSize="8pt"/>
 
@@ -387,6 +394,7 @@
                     android:padding="@dimen/public_10_0dp"
                     android:minLines="4"
                     android:gravity="top"
+                    android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
                     android:background="@null"
                     android:hint="可以写下更详细的房子信息,如楼层、是否有电梯等，或者对合租室友的要求信息等"
                     android:textSize="8pt"

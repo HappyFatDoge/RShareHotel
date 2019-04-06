@@ -66,7 +66,7 @@ public class AppLifecyclesImpl implements AppLifecycles {
         ArmsUtils.obtainAppComponentFromContext(application).extras().put(RefWatcher.class.getName(), BuildConfig.USE_CANARY ? LeakCanary.install(application) : RefWatcher.DISABLED);
 
 
-        Bmob.initialize(application,"16565db562fea312a73203bcc8a818c6");
+        Bmob.initialize(application,"d0df4e393c1aa50f9bbe9991d0f7c0b3");
 
         initImageLoader(application);
 
