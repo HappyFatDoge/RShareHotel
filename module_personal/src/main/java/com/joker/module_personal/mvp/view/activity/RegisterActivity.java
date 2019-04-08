@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.commonres.beans.User;
-import com.example.commonres.utils.ImageUtil;
 import com.example.commonres.utils.LoginUtil;
 import com.example.commonres.utils.ToastUtil;
 import com.example.commonsdk.core.RouterHub;
@@ -23,26 +21,18 @@ import com.example.commonsdk.utils.Utils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-
+import com.joker.module_personal.R;
 import com.joker.module_personal.R2;
 import com.joker.module_personal.di.component.DaggerRegisterComponent;
 import com.joker.module_personal.mvp.contract.RegisterContract;
 import com.joker.module_personal.mvp.presenter.RegisterPresenter;
-
-import com.joker.module_personal.R;
 import com.joker.module_personal.mvp.util.ResImagePathUtil;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.imageaware.ImageAware;
-import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 import com.zzti.fengyongge.imagepicker.PhotoSelectorActivity;
 
-
-import java.io.File;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.internal.Util;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
@@ -168,7 +158,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter>
             String tel = userTel.getText().toString().trim();
             String password = passwordTextView.getText().toString().trim();
             String confirmPaw = confirmPassword.getText().toString().trim();
-            String code = sendVerficationCode.getText().toString().trim();
+            String code = verificationCode.getText().toString().trim();
             if (!name.equals("") && !tel.equals("") &&
                     !password.equals("") && !confirmPaw.equals("")){
                 if (password.equals(confirmPaw)){

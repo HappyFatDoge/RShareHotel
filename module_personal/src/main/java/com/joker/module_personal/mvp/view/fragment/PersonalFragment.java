@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.commonres.utils.ImageUtil;
 import com.example.commonres.utils.LoginUtil;
 import com.example.commonres.utils.ToastUtil;
 import com.example.commonsdk.core.RouterHub;
@@ -28,6 +29,9 @@ import com.joker.module_personal.mvp.contract.PersonalContract;
 import com.joker.module_personal.mvp.presenter.PersonalPresenter;
 import com.joker.module_personal.mvp.view.activity.LoginActivity;
 import com.joker.module_personal.mvp.view.activity.SettingActivity;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.imageaware.ImageAware;
+import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -79,9 +83,9 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter>
         LoginUtil loginUtil = LoginUtil.getInstance();
         if (loginUtil.isLogin()){
             isLogin= true;
-//            userIcon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-//            ImageAware imageAware = new ImageViewAware(userIcon, false);
-//            ImageLoader.getInstance().displayImage(loginUtil.getUser().getIcon(),imageAware, ImageUtil.createOptions());
+            userIcon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            ImageAware imageAware = new ImageViewAware(userIcon, false);
+            ImageLoader.getInstance().displayImage(loginUtil.getUser().getIcon(),imageAware, ImageUtil.createOptions());
             userIcon.setImageResource(R.mipmap.login_head);
             userName.setText(loginUtil.getUser().getName());
             userName.setClickable(false);
@@ -169,9 +173,9 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter>
                     String account = data.getStringExtra("Account");
                     userName.setText(account);//设置显示用户账号
                     userName.setClickable(false);//设置账号不可点击
-//            userIcon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-//            ImageAware imageAware = new ImageViewAware(userIcon, false);
-//            ImageLoader.getInstance().displayImage(loginUtil.getUser().getIcon(),imageAware, ImageUtil.createOptions());
+                    userIcon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                    ImageAware imageAware = new ImageViewAware(userIcon, false);
+                    ImageLoader.getInstance().displayImage(loginUtil.getUser().getIcon(),imageAware, ImageUtil.createOptions());
                     userIcon.setImageResource(R.mipmap.login_head);
                     loginUtil.setLogin(true);
                 }

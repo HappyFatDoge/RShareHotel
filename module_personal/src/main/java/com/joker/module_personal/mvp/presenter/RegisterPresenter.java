@@ -2,13 +2,19 @@ package com.joker.module_personal.mvp.presenter;
 
 import android.app.Application;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.commonres.beans.User;
-import com.jess.arms.integration.AppManager;
 import com.jess.arms.di.scope.ActivityScope;
-import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.http.imageloader.ImageLoader;
+import com.jess.arms.integration.AppManager;
+import com.jess.arms.mvp.BasePresenter;
+import com.joker.module_personal.R;
+import com.joker.module_personal.mvp.contract.RegisterContract;
+import com.joker.module_personal.mvp.util.ResImagePathUtil;
+
+import java.util.List;
+
+import javax.inject.Inject;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobSMS;
@@ -20,14 +26,6 @@ import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadBatchListener;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
-
-import javax.inject.Inject;
-
-import com.joker.module_personal.R;
-import com.joker.module_personal.mvp.contract.RegisterContract;
-import com.joker.module_personal.mvp.util.ResImagePathUtil;
-
-import java.util.List;
 
 
 /**
@@ -110,7 +108,7 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.Model, Reg
                 public void done(BmobException e) {
                     if (e == null) {//验证通过
                         //上传头像图片
-//                        if (!icon.equals(defaultPath)) {
+                        if (!icon.equals(defaultPath)) {
                             String[] pathArray = {icon};
                             BmobFile.uploadBatch(pathArray, new UploadBatchListener() {
                                 @Override
@@ -128,9 +126,10 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.Model, Reg
                                     mRootView.createAccountResult(false, "头像上传失败", null);
                                 }
                             });
-//                        }
+                        }else
+                            createAccount(account, name, password, "http://bmob-cdn-24673.b0.upaiyun.com/2019/04/08/8dd572dc40846af3801beb7c3a3a67c8.png");
                     } else //验证失败
-                        mRootView.createAccountResult(false,"验证码错误", null);
+                        mRootView.createAccountResult(false,"验证码错误" + e.getMessage(), null);
                 }
             });
         } else
