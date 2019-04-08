@@ -125,8 +125,8 @@ public class PostHouseActivity extends BaseActivity<PostHousePresenter>
             startDate.setText(hotel.getStartDate().getDate().split(" ")[0]);
             endDate.setText(hotel.getEndDate().getDate().split(" ")[0]);
             city.setText(hotel.getCity());
-            mModeSpinner.setSelection(1);
-            mHouseTypeSpinner.setSelection(1);
+            mModeSpinner.setSelection(modeIndex(hotel.getMode()));
+            mHouseTypeSpinner.setSelection(styleIndex(hotel.getHouseType()));
         }else {
             startDate.setText(DateUtil.getTomorrow());
             endDate.setText(DateUtil.getAcquired());
@@ -279,6 +279,45 @@ public class PostHouseActivity extends BaseActivity<PostHousePresenter>
         calendarDialog.show(getSupportFragmentManager(), TAG);
 
     }
+
+    /**
+     * 判断hotel类型
+     * @param mode
+     * @return
+     */
+    private int modeIndex(String mode){
+        if (mode.equals("民宿"))
+            return 0;
+        return 1;
+    }
+
+    /**
+     * 判断户型
+     * @param style
+     * @return
+     */
+    private int styleIndex(String style){
+        switch (style){
+            case "1室0厅1卫":
+                return 0;
+            case "1室1厅1卫":
+                return 1;
+            case "2室1厅1卫":
+                return 2;
+            case "2室1厅2卫":
+                return 3;
+            case "3室1厅1卫":
+                return 4;
+            case "3室1厅2卫":
+                return 5;
+            case "4室1厅2卫":
+                return 6;
+            case "5室1厅2卫":
+                return 7;
+        }
+        return 0;
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
