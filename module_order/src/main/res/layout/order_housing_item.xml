@@ -110,6 +110,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:lines="1"
+                android:ellipsize="end"
                 android:text="万达广场金帆精品酒店式公寓"
                 android:textColor="#403d3d"
                 android:textSize="16sp"/>
@@ -187,7 +189,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1套/共1晚"
-
+                    android:lines="1"
+                    android:ellipsize="end"
                     android:textSize="16sp"/>
             </LinearLayout>
 

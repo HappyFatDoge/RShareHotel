@@ -50,7 +50,8 @@
         android:paddingLeft="@dimen/public_20_0dp"
         android:paddingRight="@dimen/public_20_0dp"
         android:maxEms="1"
-        android:maxLines="5"
+        android:maxLines="2"
+        android:ellipsize="end"
         android:text="环境好，住的很舒服，交通还很方便，靠近地铁站 "
         android:textColor="#FF4B4849"
         android:textSize="8pt"/>

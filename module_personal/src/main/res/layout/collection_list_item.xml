@@ -34,6 +34,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:gravity="center_vertical"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -44,6 +45,8 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:text="伊维特国际酒店"
+                    android:lines="1"
+                    android:ellipsize="end"
                     android:textColor="#00213b"
                     android:textSize="14sp"/>
 
@@ -54,6 +57,8 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
                     android:text="新华大街中山路"
+                    android:lines="1"
+                    android:ellipsize="end"
                     android:textColor="#6c7883"
                     android:textSize="13sp"/>
 
@@ -71,6 +76,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="2dp"
+                        android:lines="1"
+                        android:ellipsize="end"
                         android:text="1室0厅1卫/35m²"/>
 
                 </LinearLayout>
