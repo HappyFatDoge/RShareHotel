@@ -163,6 +163,7 @@
                 android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
                 android:layout_height="match_parent"
                 android:background="@null"
+                android:inputType="number"
                 android:hint="输入验证码"
                 android:textColorHint="@color/public_white"/>
 
