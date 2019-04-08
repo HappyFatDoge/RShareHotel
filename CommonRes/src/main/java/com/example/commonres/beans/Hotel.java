@@ -16,13 +16,13 @@ public class Hotel extends BmobObject implements Serializable {
     private BmobDate startDate;
     private BmobDate endDate;
     private Double grade;
-    private Integer price;
+    private Double price;
     private Integer comment;
     private Integer type;
     private Integer rooms;
     private String lockAddress;
 
-    private Integer area;
+    private Double area;
     private String description;
     private String mode;
     private String houseType;
@@ -61,13 +61,6 @@ public class Hotel extends BmobObject implements Serializable {
         this.grade = grade;
     }
 
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
 
     public Integer getComment() {
         return comment;
@@ -126,14 +119,6 @@ public class Hotel extends BmobObject implements Serializable {
         this.url = url;
     }
 
-    public Integer getArea() {
-        return area;
-    }
-
-    public void setArea(Integer area) {
-        this.area = area;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -188,5 +173,21 @@ public class Hotel extends BmobObject implements Serializable {
 
     public void setEndDate(BmobDate endDate) {
         this.endDate = endDate;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Double getArea() {
+        return area;
+    }
+
+    public void setArea(Double area) {
+        this.area = area;
     }
 }

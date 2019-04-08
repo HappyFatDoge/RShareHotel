@@ -1,7 +1,6 @@
 package com.joker.module_order.mvp.presenter;
 
 import android.app.Application;
-import android.util.Log;
 
 import com.example.commonres.beans.Order;
 import com.jess.arms.di.scope.FragmentScope;
@@ -9,9 +8,8 @@ import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
 import com.joker.module_order.mvp.contract.UnConfirmContract;
-import com.joker.module_order.mvp.util.OrderLoaderUtil;
+import com.example.commonres.utils.OrderLoaderUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -82,6 +80,7 @@ public class UnConfirmPresenter extends BasePresenter<UnConfirmContract.Model, U
             public void done(BmobException e) {
                 if (e == null) {
                     order.getHotel().setAvailable(1);
+                    order.getHotel().setType(1);
                     order.getHotel().update(new UpdateListener() {
                         @Override
                         public void done(BmobException e) {

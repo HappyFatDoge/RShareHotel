@@ -134,18 +134,20 @@ public class PostHousePresenter extends BasePresenter<PostHouseContract.Model, P
      * @param description
      * @param mPaths
      */
-    public void postHouse(String houseName, String lockAddress,
+    public void postHouse(Hotel hotel, String houseName, String lockAddress,
                           String city, String houseAddress,
                           String houseMode, String houseType,
-                          String area, String price, String startDate,
+                          Double area, Double price, String startDate,
                           String endDate, String description, List<String> mPaths){
         if (!houseName.equals("") && !lockAddress.equals("")
-                && !price.equals("") && !houseAddress.equals("")
-                && !city.equals("请选择城市") && !area.equals("")) {
-            final Hotel hotel = new Hotel();
+                && price != 0.0 && !houseAddress.equals("")
+                && !city.equals("请选择城市") && area != 0.0) {
+            if (hotel == null)
+                hotel = new Hotel();
             hotel.setName(houseName);
             hotel.setLockAddress(lockAddress);
             hotel.setCity(city);
+            hotel.setType(1);
             hotel.setAddress(houseAddress);
             //设置房子可用起始、结束日期
             try {
@@ -160,8 +162,8 @@ public class PostHousePresenter extends BasePresenter<PostHouseContract.Model, P
             String district = houseAddress.substring(0, 2);
             hotel.setMode(houseMode);
             hotel.setHouseType(houseType);
-            hotel.setArea(Integer.valueOf(area));
-            hotel.setPrice(Integer.valueOf(price));
+            hotel.setArea(area);
+            hotel.setPrice(price);
 
             hotel.setDistrict(district);
             hotel.setComment(0);
@@ -174,14 +176,15 @@ public class PostHousePresenter extends BasePresenter<PostHouseContract.Model, P
             if (mPaths != null && mPaths.size() != 0) {
                 String[] mPathArray = new String[mPaths.size()];
                 mPaths.toArray(mPathArray);
+                Hotel finalHotel = hotel;
                 BmobFile.uploadBatch(mPathArray, new UploadBatchListener() {
                     @Override
                     public void onSuccess(List<BmobFile> list, List<String> list1) {
                         if (list1.size() == mPathArray.length) {
                             Log.i(TAG, "上传相册成功");
 
-                            hotel.setUrl(list1.get(0));
-                            hotel.save(new SaveListener<String>() {
+                            finalHotel.setUrl(list1.get(0));
+                            finalHotel.save(new SaveListener<String>() {
                                 @Override
                                 public void done(String s, BmobException e) {
                                     if (e == null)

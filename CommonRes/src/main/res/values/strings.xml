@@ -1,8 +1,8 @@
 <resources>
-    <string name="public_app_name">Share Hotel</string>
+    <string name="public_app_name">Smart Hotel</string>
 
     //App组件中的String
-    <string name="public_exit_tips">再按一次退出shareHotel</string>
+    <string name="public_exit_tips">再按一次退出Smart Hotel</string>
     <string name="public_home_tab">主页</string>
     <string name="public_message_tab">消息</string>
     <string name="public_order_tab">订单</string>

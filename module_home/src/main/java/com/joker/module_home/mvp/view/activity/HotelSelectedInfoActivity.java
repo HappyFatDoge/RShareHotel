@@ -227,10 +227,10 @@ public class HotelSelectedInfoActivity
     public void orderResult(Boolean result, String tips, Order order) {
         ToastUtil.makeText(this, tips);
         if (result){
-            ARouter.getInstance()
-                .build(RouterHub.HOME_ORDERDETAILACTIVITY)
-                .withSerializable("Order", order)
-                .navigation(this);
+//            ARouter.getInstance()
+//                .build(RouterHub.HOME_ORDERDETAILACTIVITY)
+//                .withSerializable("Order", order)
+//                .navigation(this);
             killMyself();
         }
     }

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
-import com.baidu.location.LocationClient;
+import com.example.commonres.beans.Hotel;
 import com.example.commonres.dialog.MaterialCalendarDialog;
 import com.example.commonres.dialog.ProgressDialog;
 import com.example.commonres.utils.DateTimeHelper;
@@ -22,16 +22,13 @@ import com.example.commonsdk.core.RouterHub;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-
+import com.joker.module_personal.R;
 import com.joker.module_personal.R2;
 import com.joker.module_personal.di.component.DaggerPostHouseComponent;
 import com.joker.module_personal.di.module.PostHouseModule;
 import com.joker.module_personal.mvp.contract.PostHouseContract;
 import com.joker.module_personal.mvp.presenter.PostHousePresenter;
-
-import com.joker.module_personal.R;
 import com.zzti.fengyongge.imagepicker.PhotoSelectorActivity;
-
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -96,6 +93,8 @@ public class PostHouseActivity extends BaseActivity<PostHousePresenter>
 
     private ProgressDialog progressDialog;
 
+    private Hotel hotel;
+
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
         DaggerPostHouseComponent
@@ -113,8 +112,24 @@ public class PostHouseActivity extends BaseActivity<PostHousePresenter>
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        startDate.setText(DateUtil.getTomorrow());
-        endDate.setText(DateUtil.getAcquired());
+        //判断是否为发布中的房子
+        hotel = (Hotel) getIntent().getSerializableExtra("Hotel");
+        if (hotel != null){
+            houseName.setText(hotel.getName());
+            lockAddress.setText(hotel.getLockAddress());
+            houseArea.setText(hotel.getArea().toString());
+            houseAddress.setText(hotel.getAddress());
+            housePrice.setText(hotel.getPrice().toString());
+            houseDesc.setText(hotel.getDescription());
+            startDate.setText(hotel.getStartDate().getDate().split(" ")[0]);
+            endDate.setText(hotel.getEndDate().getDate().split(" ")[0]);
+            city.setText(hotel.getCity());
+            mModeSpinner.setSelection(1);
+            mHouseTypeSpinner.setSelection(1);
+        }else {
+            startDate.setText(DateUtil.getTomorrow());
+            endDate.setText(DateUtil.getAcquired());
+        }
     }
 
 
@@ -144,12 +159,12 @@ public class PostHouseActivity extends BaseActivity<PostHousePresenter>
             String address = houseAddress.getText().toString().trim();
             String houseMode = mModeSpinner.getSelectedItem().toString();
             String houseType = mHouseTypeSpinner.getSelectedItem().toString();
-            String area = houseArea.getText().toString().trim();
-            String price = housePrice.getText().toString().trim();
+            Double area = Double.parseDouble(houseArea.getText().toString().trim());
+            Double price = Double.parseDouble(housePrice.getText().toString().trim());
             String startDateText = startDate.getText().toString();
             String endDateText = endDate.getText().toString();
             String description = houseDesc.getText().toString();
-            mPresenter.postHouse(name, lock, cityText, address,
+            mPresenter.postHouse(hotel,name, lock, cityText, address,
                     houseMode, houseType, area, price, startDateText,
                     endDateText, description, mPaths);
         }

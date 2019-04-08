@@ -1,6 +1,7 @@
-package com.joker.module_order.mvp.util;
+package com.example.commonres.utils;
 
 
+import com.example.commonres.beans.Hotel;
 import com.example.commonres.beans.Order;
 import com.example.commonres.beans.User;
 
@@ -30,5 +31,24 @@ public class OrderLoaderUtil {
         query.setLimit(20);
         return query;
     }
+
+    /**
+     * 获取指定订单
+     * @param hotel
+     * @param account
+     * @return
+     */
+    public static BmobQuery<Order> findOrder(Hotel hotel, String account) {
+
+        BmobQuery<Order> query = new BmobQuery<Order>("Order");
+        query.addWhereEqualTo("hotel", hotel);
+        BmobQuery<User> innerQuery = new BmobQuery<User>("User");
+        innerQuery.addWhereEqualTo("account", account);
+        query.addWhereMatchesQuery("user", "User", innerQuery);
+        query.include("hotel,user");
+        query.setLimit(1);
+        return query;
+    }
+
 
 }

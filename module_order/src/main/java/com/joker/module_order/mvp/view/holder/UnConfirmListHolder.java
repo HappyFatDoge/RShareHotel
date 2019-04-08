@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.example.commonres.beans.Hotel;
 import com.example.commonres.beans.Order;
 import com.example.commonres.utils.OrderStateUtil;
-import com.example.commonres.utils.ToastUtil;
 import com.jess.arms.base.BaseHolder;
 import com.joker.module_order.R2;
 import com.joker.module_order.mvp.view.adapter.UnConfirmListAdapter;
@@ -41,6 +40,10 @@ public class UnConfirmListHolder extends BaseHolder<Order> {
     @BindView(R2.id.tv_order_price)
     TextView orderPrice;
 
+
+    private static final Integer STATUS_BOOK = 2;
+    private static final Integer STATUS_RENT = 3;
+
     private UnConfirmListAdapter.PayButtonClickListener payButtonClickListener;
     private UnConfirmListAdapter.DeleteButtonClickListener deleteButtonClickListener;
 
@@ -61,6 +64,15 @@ public class UnConfirmListHolder extends BaseHolder<Order> {
         Hotel hotel = data.getHotel();
         orderNumber.setText(data.getObjectId());
         orderState.setText(OrderStateUtil.getState(data.getState()));
+
+        if (hotel.getType() == STATUS_BOOK) { // 待房东确认订单
+            pay.setText("待处理");
+            pay.setEnabled(false);
+        } else if (hotel.getType() == STATUS_RENT) {
+            pay.setText("付款");
+            pay.setEnabled(true);
+        }
+
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,6 +82,9 @@ public class UnConfirmListHolder extends BaseHolder<Order> {
                 }
             }
         });
+
+
+
         deleteOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

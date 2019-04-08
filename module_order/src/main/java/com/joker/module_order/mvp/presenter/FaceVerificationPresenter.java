@@ -67,6 +67,7 @@ public class FaceVerificationPresenter extends
                 if (e == null) {
                     Hotel hotel = mOrder.getHotel();
                     hotel.setAvailable(1);
+                    hotel.setType(1);
                     hotel.update(new UpdateListener() {
                         @Override
                         public void done(BmobException e) {

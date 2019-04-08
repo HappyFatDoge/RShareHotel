@@ -14,7 +14,7 @@ public class Order extends BmobObject implements Serializable {
     private User user;
     private Hotel hotel;
     private Integer state;
-    private Integer price;
+    private Double price;
     private BmobDate checkInTime;
     private BmobDate checkOutTime;
     private Integer days;
@@ -65,14 +65,6 @@ public class Order extends BmobObject implements Serializable {
         this.checkOutTime = checkOutTime;
     }
 
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
     public Integer getDays() {
         return days;
     }
@@ -87,6 +79,14 @@ public class Order extends BmobObject implements Serializable {
 
     public void setHost(User host) {
         this.host = host;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }
 

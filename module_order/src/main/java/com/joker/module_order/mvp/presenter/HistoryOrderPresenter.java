@@ -8,7 +8,7 @@ import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
 import com.joker.module_order.mvp.contract.HistoryOrderContract;
-import com.joker.module_order.mvp.util.OrderLoaderUtil;
+import com.example.commonres.utils.OrderLoaderUtil;
 
 import java.util.List;
 
