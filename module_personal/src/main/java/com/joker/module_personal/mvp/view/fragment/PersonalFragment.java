@@ -94,8 +94,7 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter>
         R2.id.customer_service_linear_layout,R2.id.my_wallet_linear_layout,
         R2.id.my_collection_linear_layout,R2.id.coupon_linear_layout,
         R2.id.credit_score_linear_layout,R2.id.post_house_ll,
-        R2.id.ll_center_myhouse,R2.id.ll_personal_comfirm_order,
-        R2.id.post_clear,R2.id.clear_receive})
+        R2.id.ll_center_myhouse,R2.id.post_clear,R2.id.clear_receive})
     public void onClick(View view){
         int viewId = view.getId();
         if (viewId == R.id.right){//设置
@@ -145,11 +144,6 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter>
         }else if (viewId == R.id.ll_center_myhouse){//我的房子
             if (isLogin)
                 Utils.navigation(getContext(), RouterHub.PERSONAL_MYHOUSEACTIVITY);
-            else
-                ToastUtil.makeText(getContext(), "请先登录");
-        }else if (viewId == R.id.ll_personal_comfirm_order){//接单
-            if (isLogin)
-                Utils.navigation(getContext(), RouterHub.PERSONAL_COMFIRMORDERACTIVITY);
             else
                 ToastUtil.makeText(getContext(), "请先登录");
         }else if (viewId == R.id.post_clear){
