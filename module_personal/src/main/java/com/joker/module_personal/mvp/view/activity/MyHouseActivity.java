@@ -1,5 +1,6 @@
 package com.joker.module_personal.mvp.view.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -81,12 +82,23 @@ public class MyHouseActivity extends BaseActivity<MyHousePresenter>
         mMyHouseListAdapter.setEditHotelListener(new EditHotelListener());
         mMyHouseListAdapter.setOperationListener(new OperationListener());
         showLoading();
-        mPresenter.findMyHouse();
 
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        mPresenter.findMyHouse();
+        mMyHouseListAdapter.notifyDataSetChanged();
+    }
+
+    @Override
     public Context getViewContext() {
+        return this;
+    }
+
+    @Override
+    public Activity getActivity() {
         return this;
     }
 
@@ -156,7 +168,7 @@ public class MyHouseActivity extends BaseActivity<MyHousePresenter>
             ARouter.getInstance()
                 .build(RouterHub.PERSONAL_POSTHOUSEACTIVITY)
                 .withSerializable("Hotel",mMyHouseListAdapter.getItem(position))
-                .navigation(getViewContext());
+                .navigation(getActivity(), 1);
         }
     }
 
@@ -193,6 +205,16 @@ public class MyHouseActivity extends BaseActivity<MyHousePresenter>
         }
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode){
+            case 1://编辑发布的房子结果返回
+                if (data.getBooleanExtra("update", false))
+                    mMyHouseListAdapter.notifyDataSetChanged();
+        }
+    }
 
     @OnClick(R2.id.back)
     public void onClick(View view){

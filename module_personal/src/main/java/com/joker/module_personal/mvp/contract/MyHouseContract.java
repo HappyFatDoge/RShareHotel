@@ -1,5 +1,6 @@
 package com.joker.module_personal.mvp.contract;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.example.commonres.beans.Hotel;
@@ -13,6 +14,7 @@ public interface MyHouseContract {
     //对于经常使用的关于UI的方法可以定义到IView中,如显示隐藏进度条,和显示文字消息
     interface View extends IView {
         Context getViewContext();
+        Activity getActivity();
         void findMyHouseResult(Boolean result, String tips, List<Hotel> list);
         void removeHouseResult(Boolean result, String tips, Hotel hotel);
         void receiveOrderResult(Boolean result, String tips, int position);

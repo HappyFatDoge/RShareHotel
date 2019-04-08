@@ -1,11 +1,8 @@
 package com.joker.module_personal.mvp.presenter;
 
 import android.app.Application;
-import android.content.DialogInterface;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
@@ -26,18 +23,13 @@ import com.zaaach.citypicker.model.LocatedCity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import cn.bmob.v3.BmobBatch;
-import cn.bmob.v3.BmobObject;
-import cn.bmob.v3.datatype.BatchResult;
 import cn.bmob.v3.datatype.BmobDate;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.QueryListListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadBatchListener;
@@ -142,8 +134,11 @@ public class PostHousePresenter extends BasePresenter<PostHouseContract.Model, P
         if (!houseName.equals("") && !lockAddress.equals("")
                 && price != 0.0 && !houseAddress.equals("")
                 && !city.equals("请选择城市") && area != 0.0) {
-            if (hotel == null)
+            boolean isPost = false;
+            if (hotel == null) {
                 hotel = new Hotel();
+                isPost = true;
+            }
             hotel.setName(houseName);
             hotel.setLockAddress(lockAddress);
             hotel.setCity(city);
@@ -177,6 +172,7 @@ public class PostHousePresenter extends BasePresenter<PostHouseContract.Model, P
                 String[] mPathArray = new String[mPaths.size()];
                 mPaths.toArray(mPathArray);
                 Hotel finalHotel = hotel;
+                boolean finalIsPost = isPost;
                 BmobFile.uploadBatch(mPathArray, new UploadBatchListener() {
                     @Override
                     public void onSuccess(List<BmobFile> list, List<String> list1) {
@@ -184,17 +180,31 @@ public class PostHousePresenter extends BasePresenter<PostHouseContract.Model, P
                             Log.i(TAG, "上传相册成功");
 
                             finalHotel.setUrl(list1.get(0));
-                            finalHotel.save(new SaveListener<String>() {
-                                @Override
-                                public void done(String s, BmobException e) {
-                                    if (e == null)
-                                        mRootView.postHouseResult(true, "发布出租成功");
-                                    else {
-                                        mRootView.postHouseResult(false, "发布出租失败");
-                                        Log.i(TAG, "发布失败" + e.toString());
+                            if (finalIsPost) {
+                                finalHotel.save(new SaveListener<String>() {
+                                    @Override
+                                    public void done(String s, BmobException e) {
+                                        if (e == null)
+                                            mRootView.postHouseResult(true, "发布出租成功");
+                                        else {
+                                            mRootView.postHouseResult(false, "发布出租失败");
+                                            Log.i(TAG, "发布失败" + e.toString());
+                                        }
                                     }
-                                }
-                            });
+                                });
+                            }else{
+                                finalHotel.update(new UpdateListener() {
+                                    @Override
+                                    public void done(BmobException e) {
+                                        if (e == null)
+                                            mRootView.postHouseResult(true, "发布出租成功");
+                                        else {
+                                            mRootView.postHouseResult(false, "发布出租失败");
+                                            Log.i(TAG, "发布失败" + e.toString());
+                                        }
+                                    }
+                                });
+                            }
                         }
                     }
 

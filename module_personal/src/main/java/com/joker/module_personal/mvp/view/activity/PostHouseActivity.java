@@ -30,6 +30,7 @@ import com.joker.module_personal.mvp.contract.PostHouseContract;
 import com.joker.module_personal.mvp.presenter.PostHousePresenter;
 import com.zzti.fengyongge.imagepicker.PhotoSelectorActivity;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -138,9 +139,14 @@ public class PostHouseActivity extends BaseActivity<PostHousePresenter>
             R2.id.photo_layout,R2.id.btn_post_house_commit})
     public void onClicked(View view){
         int viewId = view.getId();
-        if (viewId == R.id.back) //返回
+        if (viewId == R.id.back) {//返回
+            if (hotel != null){
+                Intent intent = new Intent();
+                intent.putExtra("update", false);
+                setResult(1, intent);
+            }
             killMyself();
-        else if (viewId == R.id.city_picker_layout) //选择城市
+        }else if (viewId == R.id.city_picker_layout) //选择城市
             mPresenter.choiceCity(this);
         else if (viewId == R.id.photo_layout) { //选择图片
             Intent intent = new Intent(this, PhotoSelectorActivity.class);
@@ -159,8 +165,11 @@ public class PostHouseActivity extends BaseActivity<PostHousePresenter>
             String address = houseAddress.getText().toString().trim();
             String houseMode = mModeSpinner.getSelectedItem().toString();
             String houseType = mHouseTypeSpinner.getSelectedItem().toString();
+            DecimalFormat df = new DecimalFormat("0.0");
             Double area = Double.parseDouble(houseArea.getText().toString().trim());
+            area = Double.parseDouble(df.format(area));
             Double price = Double.parseDouble(housePrice.getText().toString().trim());
+            price = Double.parseDouble(df.format(price));
             String startDateText = startDate.getText().toString();
             String endDateText = endDate.getText().toString();
             String description = houseDesc.getText().toString();
@@ -209,10 +218,26 @@ public class PostHouseActivity extends BaseActivity<PostHousePresenter>
     public void postHouseResult(Boolean result, String tips) {
         hideLoading();
         ToastUtil.makeText(this, tips);
-        if (result)
+        if (result) {
+            if (hotel != null){
+                Intent intent = new Intent();
+                intent.putExtra("update", true);
+                setResult(1, intent);
+            }
             killMyself();
+        }
     }
 
+
+    @Override
+    public void onBackPressed() {
+        if (hotel != null){
+            Intent intent = new Intent();
+            intent.putExtra("update", false);
+            setResult(1, intent);
+        }
+        super.onBackPressed();
+    }
 
     /**
      * 选择日期dialog

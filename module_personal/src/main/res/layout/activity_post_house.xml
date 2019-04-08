@@ -234,11 +234,11 @@
 
                 <EditText
                     android:id="@+id/et_posthouse_area"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/public_100_0dp"
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:gravity="center"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:lines="1"
                     android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
                     android:imeOptions="actionNext"
@@ -279,13 +279,13 @@
 
                 <EditText
                     android:id="@+id/et_posthouse_price"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/public_100_0dp"
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:gravity="center"
                     android:lines="1"
                     android:imeOptions="actionNext"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:hint="输入租金"
                     android:singleLine="true"
                     android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
