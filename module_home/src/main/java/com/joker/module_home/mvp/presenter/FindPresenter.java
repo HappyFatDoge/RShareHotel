@@ -4,6 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.example.commonres.beans.Hotel;
+import com.example.commonres.utils.LoginUtil;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
@@ -102,6 +103,7 @@ public class FindPresenter extends BasePresenter<FindContract.Model, FindContrac
     private void executeQuery(BmobQuery<Hotel> query) {
         //query.addQueryKeys("type,name,address,grade,price,comment,url");
         query.setLimit(20);
+        query.addWhereNotEqualTo("host", LoginUtil.getInstance().getUser());
         query.include("host");
         query.findObjects(new FindListener<Hotel>() {
             @Override

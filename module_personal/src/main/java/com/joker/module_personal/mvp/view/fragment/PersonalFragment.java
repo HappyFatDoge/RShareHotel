@@ -86,7 +86,6 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter>
             userIcon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             ImageAware imageAware = new ImageViewAware(userIcon, false);
             ImageLoader.getInstance().displayImage(loginUtil.getUser().getIcon(),imageAware, ImageUtil.createOptions());
-            userIcon.setImageResource(R.mipmap.login_head);
             userName.setText(loginUtil.getUser().getName());
             userName.setClickable(false);
         }
@@ -176,7 +175,6 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter>
                     userIcon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                     ImageAware imageAware = new ImageViewAware(userIcon, false);
                     ImageLoader.getInstance().displayImage(loginUtil.getUser().getIcon(),imageAware, ImageUtil.createOptions());
-                    userIcon.setImageResource(R.mipmap.login_head);
                     loginUtil.setLogin(true);
                 }
                 break;
