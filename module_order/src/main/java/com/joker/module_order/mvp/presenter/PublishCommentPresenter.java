@@ -1,9 +1,6 @@
 package com.joker.module_order.mvp.presenter;
 
 import android.app.Application;
-import android.content.Intent;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.example.commonres.beans.Comment;
 import com.example.commonres.beans.Hotel;
@@ -14,6 +11,7 @@ import com.jess.arms.integration.AppManager;
 import com.jess.arms.mvp.BasePresenter;
 import com.joker.module_order.mvp.contract.PublishCommentContract;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
 import javax.inject.Inject;
@@ -75,8 +73,12 @@ public class PublishCommentPresenter extends BasePresenter<PublishCommentContrac
                         public void done(BmobException e) {
                             if (e == null) {
                                 Hotel hotel = new Hotel();
-                                hotel.setObjectId(mOrder.getHotel().getObjectId());
+                                Hotel oldHotel = mOrder.getHotel();
+                                hotel.setObjectId(oldHotel.getObjectId());
                                 hotel.increment("comment");
+                                Double hotelGrade = (oldHotel.getComment() * oldHotel.getGrade() + grade) / (oldHotel.getComment() + 1);
+                                DecimalFormat df = new DecimalFormat("0.0");
+                                hotel.setGrade(Double.parseDouble(df.format(hotelGrade)));
                                 hotel.update(new UpdateListener() {
                                     @Override
                                     public void done(BmobException e) {
