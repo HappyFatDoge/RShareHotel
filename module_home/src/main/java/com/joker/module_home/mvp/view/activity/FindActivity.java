@@ -74,8 +74,9 @@ public class FindActivity extends BaseActivity<FindPresenter> implements FindCon
     private String style[] = {"不限", "1室0厅1卫", "1室1厅1卫", "2室1厅1卫", "3室1厅1卫", "3室1厅2卫", "4室1厅2卫"};
     private String price[] = {"不限", "100以下", "100-300", "300-500", "500以上"};
     private String mode[] = {"不限", "民宿", "酒店公寓"};
-    private String code[] = {"All", "House", "HotelApartment"};
-    private int codePos = 0;
+    private int styleIndex = 0;
+    private int priceIndex = 0;
+    private int modeIndex = 0;
 
     private FindRecyclerViewAdapter mFindRecyclerViewAdapter;
     private String checkInDate;
@@ -126,9 +127,11 @@ public class FindActivity extends BaseActivity<FindPresenter> implements FindCon
         if (searchMode.equals("House")) {
             modeAdapter.setCheckItem(1);
             initHeaders[2] = mode[1];
+            modeIndex = 1;
         } else if (searchMode.equals("HotelApartment")) {
             modeAdapter.setCheckItem(2);
             initHeaders[2] = mode[2];
+            modeIndex = 2;
         }
 
         //设置下拉筛选
@@ -140,13 +143,6 @@ public class FindActivity extends BaseActivity<FindPresenter> implements FindCon
         mDropDownMenu.setDropDownMenu(Arrays.asList(initHeaders), popupViews, contentView);
 
         showLoading();
-        if (searchMode.equals("House")) {
-            codePos = 1;
-        } else if (searchMode.equals("HotelApartment")) {
-            codePos = 2;
-        } else {
-            codePos = 0;
-        }
     }
 
 
@@ -246,20 +242,17 @@ public class FindActivity extends BaseActivity<FindPresenter> implements FindCon
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             styleAdapter.setCheckItem(position);
+            styleIndex = position;
             mDropDownMenu.setTabText(position == 0 ? headers[0] : style[position]);
-            BmobQuery<Hotel> styleQuery = new BmobQuery<>("Hotel");
-            if (position == 0) {
-                styleQuery.addWhereNotEqualTo("houseType", "0室0厅0卫");
-            } else {
-                styleQuery.addWhereEqualTo("houseType", style[position]);
-            }
             mQueryList = null;
             mQueryList = new ArrayList<>();
-            mQueryList.add(styleQuery);
             mQueryList.add(dateQuery);
+            addPriceQuery();
+            addStyleQuery();
+            addModeQuery();
             mDropDownMenu.closeMenu();
             showLoading();
-            mPresenter.searchHotel(city, search, code[codePos], mQueryList);
+            mPresenter.searchHotel(city, search, mQueryList);
         }
     }
 
@@ -271,34 +264,17 @@ public class FindActivity extends BaseActivity<FindPresenter> implements FindCon
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             priceAdapter.setCheckItem(position);
+            priceIndex = position;
             mDropDownMenu.setTabText(position == 0 ? headers[1] : price[position]);
-            BmobQuery<Hotel> priceQuery = new BmobQuery<>("Hotel");
-            BmobQuery<Hotel> priceQuery2 = new BmobQuery<>("Hotel");
             mQueryList = null;
             mQueryList = new ArrayList<>();
             mQueryList.add(dateQuery);
-            if (position == 0) {
-                priceQuery.addWhereNotEqualTo("price", 0);
-            } else if (position == 1) {
-                priceQuery.addWhereLessThan("price", 100);
-                mQueryList.add(priceQuery);
-            } else if (position == 2) {
-                priceQuery.addWhereLessThan("price", 300);
-                priceQuery2.addWhereGreaterThanOrEqualTo("price", 100);
-                mQueryList.add(priceQuery);
-                mQueryList.add(priceQuery2);
-            } else if (position == 3) {
-                priceQuery.addWhereLessThan("price", 500);
-                priceQuery2.addWhereGreaterThanOrEqualTo("price", 300);
-                mQueryList.add(priceQuery);
-                mQueryList.add(priceQuery2);
-            } else if (position == 4) {
-                priceQuery.addWhereGreaterThanOrEqualTo("price", 500);
-                mQueryList.add(priceQuery);
-            }
+            addPriceQuery();
+            addStyleQuery();
+            addModeQuery();
             mDropDownMenu.closeMenu();
             showLoading();
-            mPresenter.searchHotel(city, search, code[codePos], mQueryList);
+            mPresenter.searchHotel(city, search, mQueryList);
         }
     }
 
@@ -312,14 +288,70 @@ public class FindActivity extends BaseActivity<FindPresenter> implements FindCon
             mQueryList = null;
             mQueryList = new ArrayList<>();
             mQueryList.add(dateQuery);
-            codePos = position;
+            modeIndex = position;
+            addPriceQuery();
+            addStyleQuery();
+            addModeQuery();
             modeAdapter.setCheckItem(position);
             mDropDownMenu.setTabText(position == 0 ? headers[2] : mode[position]);
             mDropDownMenu.closeMenu();
             showLoading();
-            mPresenter.searchHotel(city, search, code[codePos], mQueryList);
+            mPresenter.searchHotel(city, search, mQueryList);
         }
     }
+
+    /**
+     * 添加价格筛选
+     */
+    private void addPriceQuery(){
+        BmobQuery<Hotel> priceQuery = new BmobQuery<>("Hotel");
+        BmobQuery<Hotel> priceQuery2 = new BmobQuery<>("Hotel");
+        if (priceIndex == 0) {
+            priceQuery.addWhereNotEqualTo("price", 0);
+        } else if (priceIndex == 1) {
+            priceQuery.addWhereLessThan("price", 100);
+            mQueryList.add(priceQuery);
+        } else if (priceIndex == 2) {
+            priceQuery.addWhereLessThan("price", 300);
+            priceQuery2.addWhereGreaterThanOrEqualTo("price", 100);
+            mQueryList.add(priceQuery);
+            mQueryList.add(priceQuery2);
+        } else if (priceIndex == 3) {
+            priceQuery.addWhereLessThan("price", 500);
+            priceQuery2.addWhereGreaterThanOrEqualTo("price", 300);
+            mQueryList.add(priceQuery);
+            mQueryList.add(priceQuery2);
+        } else if (priceIndex == 4) {
+            priceQuery.addWhereGreaterThanOrEqualTo("price", 500);
+            mQueryList.add(priceQuery);
+        }
+    }
+
+    /**
+     * 添加户型筛选
+     */
+    private void addStyleQuery(){
+        BmobQuery<Hotel> styleQuery = new BmobQuery<>("Hotel");
+        if (styleIndex == 0) {
+            styleQuery.addWhereNotEqualTo("houseType", "0室0厅0卫");
+        } else {
+            styleQuery.addWhereEqualTo("houseType", style[styleIndex]);
+        }
+        mQueryList.add(styleQuery);
+    }
+
+    /**
+     * 添加类型筛选
+     */
+    private void addModeQuery(){
+        BmobQuery<Hotel> modeQuery = new BmobQuery<>("Hotel");
+        if (modeIndex == 1)
+            modeQuery.addWhereEqualTo("mode", "民宿");
+        else if (modeIndex == 2)
+            modeQuery.addWhereEqualTo("mode", "酒店公寓");
+        mQueryList.add(modeQuery);
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -335,7 +367,10 @@ public class FindActivity extends BaseActivity<FindPresenter> implements FindCon
         mQueryList = null;
         mQueryList = new ArrayList<>();
         mQueryList.add(dateQuery);
-        mPresenter.searchHotel(city, search, searchMode, mQueryList);
+        addModeQuery();
+        addPriceQuery();
+        addStyleQuery();
+        mPresenter.searchHotel(city, search, mQueryList);
     }
 
     @Override

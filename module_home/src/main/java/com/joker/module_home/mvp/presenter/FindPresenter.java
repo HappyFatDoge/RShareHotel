@@ -51,13 +51,11 @@ public class FindPresenter extends BasePresenter<FindContract.Model, FindContrac
      * 获取得到指定时间段内，以及其他搜索条件的hotel列表
      * @param city
      * @param condition
-     * @param searchMode
      * @param queryList
      */
-    public void searchHotel(String city, String condition, String searchMode, List<BmobQuery> queryList){
+    public void searchHotel(String city, String condition, List<BmobQuery> queryList){
 
         Log.i("FindActivity", "获取数据");
-        Integer type = getSearchTpe(searchMode);
         BmobQuery<Hotel> city_query = new BmobQuery<Hotel>("Hotel");
         city_query.addWhereEqualTo("city", city);
         BmobQuery<Hotel> avaiable_query = new BmobQuery<>("Hotel");
@@ -68,16 +66,6 @@ public class FindPresenter extends BasePresenter<FindContract.Model, FindContrac
         }
         list_query.add(city_query);
         list_query.add(avaiable_query);
-        if (type == 1) {
-            BmobQuery<Hotel> type_query = new BmobQuery<>("Hotel");
-            type_query.addWhereEqualTo("mode", "民宿");
-            list_query.add(type_query);
-        }
-        if (type == 2) {
-            BmobQuery<Hotel> type_query = new BmobQuery<>("Hotel");
-            type_query.addWhereEqualTo("mode", "酒店公寓");
-            list_query.add(type_query);
-        }
 
         BmobQuery final_query = new BmobQuery<>("Hotel");
         Log.i("城市", city);
@@ -121,20 +109,6 @@ public class FindPresenter extends BasePresenter<FindContract.Model, FindContrac
             }
         });
 
-    }
-
-    /**
-     * hotel 类型获取
-     * @param searchMode
-     * @return
-     */
-    private Integer getSearchTpe(String searchMode) {
-        if (searchMode.equals("HotelApartment"))
-            return 2;
-        else if (searchMode.equals("House"))
-            return 1;
-        else
-            return 0;
     }
 
 }
