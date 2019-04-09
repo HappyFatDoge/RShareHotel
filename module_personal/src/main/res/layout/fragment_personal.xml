@@ -19,7 +19,7 @@
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:background="#7c63e7"
+            android:background="@color/public_colorAccent"
             android:orientation="horizontal">
 
 
@@ -31,7 +31,7 @@
         <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/login_bg"
+                android:background="@mipmap/user_login_bg"
                 android:orientation="vertical">
 
             <ImageView

@@ -104,8 +104,8 @@ public class HomeFragment extends BaseFragment<HomePresenter>
         imageList.add(R.mipmap.b1);
         imageList.add(R.mipmap.b2);
         imageList.add(R.mipmap.b3);
+        imageList.add(R.mipmap.b4);
         imageList.add(R.mipmap.b5);
-        imageList.add(R.mipmap.b6);
 
         //图片轮播
         mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
@@ -129,8 +129,7 @@ public class HomeFragment extends BaseFragment<HomePresenter>
     }
 
     @OnClick({R2.id.locatioin_ll,R2.id.main_ll_id,
-        R2.id.ll_home_checkin,R2.id.ll_home_checkout,
-        R2.id.ll_home_entire_rent,R2.id.ll_home_apartment,R2.id.find_tv})
+        R2.id.ll_home_checkin,R2.id.ll_home_checkout,R2.id.find_tv})
     public void onClick(View view){
         int viewId = view.getId();
         if (viewId == R.id.locatioin_ll)//选择城市
@@ -141,10 +140,6 @@ public class HomeFragment extends BaseFragment<HomePresenter>
             showDateChoiceDialog(true);
         else if (viewId == R.id.ll_home_checkout)//退房时间选择dialog
             showDateChoiceDialog(false);
-        else if (viewId == R.id.ll_home_entire_rent)//民宿
-            searchHouse("House");
-        else if (viewId == R.id.ll_home_apartment)//酒店公寓
-            searchHouse("HotelApartment");
         else if (viewId == R.id.find_tv)//搜索
             searchHouse("All");
     }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="public_colorPrimary">#7c63e7</color>
+    <color name="public_colorPrimary">#2196F3</color>
     <color name="public_colorPrimaryDark">#000000</color>
-    <color name="public_colorAccent">#7c63e7</color>
+    <color name="public_colorAccent">#2196F3</color>
 
-    <color name="public_toolbar_color">#7c63e7</color>        <!--actionBar的背景颜色-->
+    <color name="public_toolbar_color">#2196F3</color>        <!--actionBar的背景颜色-->
 
     <color name="public_text_selected">#9fa0a0</color>
     <color name="public_text_unSelected">#c9c9ca</color>
@@ -60,7 +60,7 @@
     <!--标签钱选中颜色-->
     <drawable name="public_biaoqianSelecd">#29a1f7</drawable>
 
-    <color name="public_drop_down_selected">#7B1FA2</color>
+    <color name="public_drop_down_selected">#2196F3</color>
     <color name="public_drop_down_unselected">#111111</color>
 
     <color name="public_mask_color">#88888888</color>
@@ -68,10 +68,12 @@
     <color name="public_un_press_color">#9C27B0</color>
     <color name="public_gray">#cccccc</color>
 
-    <color name="public_price_selected">#7D63E8</color>
+    <color name="public_price_selected">#58ACF0</color>
     <color name="public_price_unselected">#fffefe</color>
 
-    <color name="public_search_selected">#7c53e7</color>
+    <color name="public_search_selected">#58ACF0</color>
+
+    <color name="public_login_bg">#7EBEF3</color>
 
 
 

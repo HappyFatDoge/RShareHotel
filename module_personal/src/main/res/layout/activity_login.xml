@@ -4,7 +4,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              android:background="#aabdfc"
+              android:background="@color/public_login_bg"
               android:id="@+id/login_layout"
               tools:ignore="ResourceName">
 
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:orientation="vertical"
-        android:background="@mipmap/login_top_bg">
+        android:background="@mipmap/user_login_bg">
 
         <ImageView
             android:id="@+id/back_iv"

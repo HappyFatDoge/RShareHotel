@@ -4,7 +4,7 @@
         <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
             <!-- 填充的颜色 -->
-            <solid android:color="#9ca5e6"/>
+            <solid android:color="#7ED2F8"/>
             <!-- 设置按钮的四个角为弧形 -->
             <!-- android:radius 弧形的半径 -->
             <corners android:radius="10dp"/>
@@ -15,7 +15,7 @@
             <!--创建页面的      账号，密码，验证码的背景-->
 
             <!-- 填充的颜色 -->
-            <solid android:color="#9cb1e6"/>
+            <solid android:color="#89BEE7"/>
             <!-- 设置按钮的四个角为弧形 -->
             <!-- android:radius 弧形的半径 -->
             <corners android:radius="10dp"/>
