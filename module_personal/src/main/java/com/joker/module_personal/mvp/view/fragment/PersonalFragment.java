@@ -149,12 +149,12 @@ public class PersonalFragment extends BaseFragment<PersonalPresenter>
                 Utils.navigation(getContext(), RouterHub.PERSONAL_MYHOUSEACTIVITY);
             else
                 ToastUtil.makeText(getContext(), "请先登录");
-        }else if (viewId == R.id.post_clear){
+        }else if (viewId == R.id.post_clear){//发布清洁订单
             if (isLogin)
                 Utils.navigation(getContext(), RouterHub.PERSONAL_POSTCLEARORDERACTIVITY);
             else
                 ToastUtil.makeText(getContext(), "请先登录");
-        }else if (viewId == R.id.clear_receive){
+        }else if (viewId == R.id.clear_receive){//接收清洁订单
             if (isLogin)
                 Utils.navigation(getContext(), RouterHub.PERSONAL_RECEIVECLEARORDERACTIVITY);
             else
