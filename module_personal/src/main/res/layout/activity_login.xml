@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:orientation="vertical"
-        android:background="@mipmap/user_login_bg">
+        android:background="@mipmap/login_top_bg">
 
         <ImageView
             android:id="@+id/back_iv"
