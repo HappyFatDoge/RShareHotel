@@ -29,6 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/public_20_0dp"
             android:text="用户138****6741"
+            android:lines="1"
+            android:ellipsize="end"
             android:textColor="#4b4849"
             android:textSize="8pt"/>
     </LinearLayout>

@@ -79,6 +79,12 @@
                         android:ellipsize="end"
                         android:textColor="@color/public_money_color"/>
 
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="/日"
+                        android:textColor="#fc5e03"/>
+
             </LinearLayout>
 
 

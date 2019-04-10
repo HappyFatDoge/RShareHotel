@@ -2,6 +2,7 @@
 apply from: "config.gradle"
 buildscript {
     repositories {
+        mavenCentral()
         google()
         jcenter()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }

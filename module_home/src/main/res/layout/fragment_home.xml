@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:id="@+id/main_ll_id"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -43,7 +44,7 @@
                 <ImageView
                         android:layout_width="@dimen/public_20_0dp"
                         android:layout_height="@dimen/public_15_0dp"
-                        android:src="@mipmap/arrow_down"/>
+                        android:src="@mipmap/city_selected"/>
             </LinearLayout>
 
 
@@ -78,7 +79,19 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <include layout="@layout/fragment_location_date"/>
+    <com.stx.xhb.xbanner.XBanner
+            android:id="@+id/banner_home"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_200_0dp"
+            android:layout_marginBottom="@dimen/public_5_0dp"
+            app:isAutoPlay="true"
+            app:AutoPlayTime="2500"
+            app:pageChangeDuration="800"
+            app:isHandLoop="true"
+            app:isClipChildrenMode="true"
+            app:isClipChildrenModeLessThree="true">
+
+    </com.stx.xhb.xbanner.XBanner>
 
 
     <View

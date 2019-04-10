@@ -27,7 +27,7 @@
             joker:ddmenuSelectedIcon="@mipmap/tab_up"
             joker:ddmenuTextSize="8pt"
             joker:ddmenuUnselectedIcon="@mipmap/tab_down"
-            joker:ddtextSelectedColor="@color/drop_down_selected"
+            joker:ddtextSelectedColor="@color/public_colorAccent"
             joker:ddtextUnselectedColor="@color/drop_down_unselected"
             joker:ddunderlineColor="@color/gray">
     </com.yyydjk.library.DropDownMenu>

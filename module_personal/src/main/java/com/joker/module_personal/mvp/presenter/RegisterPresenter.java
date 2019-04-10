@@ -127,7 +127,8 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.Model, Reg
                                 }
                             });
                         }else
-                            createAccount(account, name, password, "http://bmob-cdn-24673.b0.upaiyun.com/2019/04/08/8dd572dc40846af3801beb7c3a3a67c8.png");
+                            createAccount(account, name, password,
+                                "http://bmob-cdn-24673.b0.upaiyun.com/2019/04/10/affb0237409bf33f8055bda61d8a8f5c.png");
                     } else //验证失败
                         mRootView.createAccountResult(false,"验证码错误" + e.getMessage(), null);
                 }

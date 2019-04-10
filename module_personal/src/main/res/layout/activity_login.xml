@@ -19,7 +19,7 @@
             android:layout_width="30dp"
             android:layout_height="25dp"
             android:layout_margin="10dp"
-            android:src="@mipmap/left_arrow"/>
+            android:src="@mipmap/left_arrow1"/>
 
         <ImageView
             android:layout_width="match_parent"

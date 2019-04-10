@@ -378,7 +378,7 @@
                     <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@mipmap/posthouse2"/>
+                            android:src="@mipmap/clear_order"/>
 
 
                     <TextView

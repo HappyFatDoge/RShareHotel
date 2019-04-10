@@ -55,7 +55,7 @@ ext {
             "lottie"                   : "com.airbnb.android:lottie:2.7.0",
             "smartRefreshLayout"       : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-20",
             "smartRefreshHeader"       : "com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-20",
-            "fresco"                   : "com.facebook.fresco:fresco:1.12.1",
+            "fresco"                   : "com.facebook.fresco:fresco:1.13.0",
 
             //rx1
             "rxandroid"                : "io.reactivex:rxandroid:1.2.1",

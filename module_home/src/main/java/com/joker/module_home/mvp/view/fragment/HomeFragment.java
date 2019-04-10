@@ -1,6 +1,5 @@
 package com.joker.module_home.mvp.view.fragment;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
@@ -32,10 +31,8 @@ import com.joker.module_home.di.component.DaggerHomeComponent;
 import com.joker.module_home.di.module.HomeModule;
 import com.joker.module_home.mvp.contract.HomeContract;
 import com.joker.module_home.mvp.presenter.HomePresenter;
-import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
-import com.youth.banner.Transformer;
-import com.youth.banner.loader.ImageLoader;
+import com.stx.xhb.xbanner.XBanner;
+import com.stx.xhb.xbanner.entity.LocalImageInfo;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -62,7 +59,7 @@ public class HomeFragment extends BaseFragment<HomePresenter>
     @BindView(R2.id.scan)
     ImageView mScan;
     @BindView(R2.id.banner_home)
-    Banner mBanner;
+    XBanner mBanner;
     @BindView(R2.id.start_time_tv)
     TextView mStartTimeTextView;
     @BindView(R2.id.end_time_tv)
@@ -100,33 +97,27 @@ public class HomeFragment extends BaseFragment<HomePresenter>
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        List<Integer> imageList = new ArrayList<>();
-        imageList.add(R.mipmap.b1);
-        imageList.add(R.mipmap.b2);
-        imageList.add(R.mipmap.b3);
-        imageList.add(R.mipmap.b4);
-        imageList.add(R.mipmap.b5);
+        List<LocalImageInfo> imageList = new ArrayList<>();
+        imageList.add(new LocalImageInfo(R.mipmap.b1));
+        imageList.add(new LocalImageInfo(R.mipmap.b2));
+        imageList.add(new LocalImageInfo(R.mipmap.b3));
+        imageList.add(new LocalImageInfo(R.mipmap.b4));
+        imageList.add(new LocalImageInfo(R.mipmap.b5));
 
         //图片轮播
-        mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
-        mBanner.setBannerAnimation(Transformer.Default);
-        mBanner.setViewPagerIsScroll(true);
-        mBanner.setImages(imageList);
-        mBanner.setImageLoader(new ImageLoader() {
+        mBanner.setBannerData(imageList);
+        mBanner.loadImage(new XBanner.XBannerAdapter() {
             @Override
-            public void displayImage(Context context, Object path, ImageView imageView) {
-                //具体方法内容自己去选择，次方法是为了减少banner过多的依赖第三方包，所以将这个权限开放给使用者去选择
-                Glide.with(context.getApplicationContext())
-                    .load(path)
-                    .into(imageView);
+            public void loadBanner(XBanner banner, Object model, View view, int position) {
+                Glide.with(getContext()).load(((LocalImageInfo) model).getXBannerUrl()).into((ImageView) view);
             }
         });
-        mBanner.start();
 
         //初始化日期
         mStartTimeTextView.setText(DateUtil.getTomorrow());
         mEndTimeTextView.setText(DateUtil.getAcquired());
     }
+
 
     @OnClick({R2.id.locatioin_ll,R2.id.main_ll_id,
         R2.id.ll_home_checkin,R2.id.ll_home_checkout,R2.id.find_tv})
