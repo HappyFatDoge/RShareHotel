@@ -3,7 +3,12 @@
     package="com.joker.module_personal">
 
     <application>
-        <activity android:name=".mvp.view.activity.IntegralRecordActivity"></activity>
+        <activity android:name=".mvp.view.activity.ReceiveClearOrderActivity"></activity>
+        <activity
+            android:name=".mvp.view.activity.PostClearOrderActivity"
+            android:theme="@style/module_personal_post_house_theme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".mvp.view.activity.IntegralRecordActivity" />
         <activity
             android:name=".mvp.view.activity.RegisterActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -12,9 +17,10 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".mvp.view.activity.AboutUsActivity" />
         <activity android:name=".mvp.view.activity.MyHouseActivity" />
-        <activity android:name=".mvp.view.activity.PostHouseActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/module_personal_post_house_theme"/>
+        <activity
+            android:name=".mvp.view.activity.PostHouseActivity"
+            android:theme="@style/module_personal_post_house_theme"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".mvp.view.activity.CreditScoreActivity" />
         <activity android:name=".mvp.view.activity.CouponActivity" />
         <activity android:name=".mvp.view.activity.CollectionActivity" />
@@ -24,17 +30,13 @@
             android:name=".mvp.view.activity.LoginActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".mvp.view.activity.SettingActivity" />
-        <activity android:name=".mvp.view.activity.FaceRegisterActivity" />
-        <!-- 在组件集成宿主时, 由于宿主已经声明了 CommonSDK 的公有 ConfigModule, 所以在这里只需要声明业务组件自己的 ConfigModule -->
+        <activity android:name=".mvp.view.activity.FaceRegisterActivity" /> <!-- 在组件集成宿主时, 由于宿主已经声明了 CommonSDK 的公有 ConfigModule, 所以在这里只需要声明业务组件自己的 ConfigModule -->
         <meta-data
             android:name="com.joker.module_personal.app.GlobalConfiguration"
-            android:value="ConfigModule" />
-        <!-- 图片选择器 -->
+            android:value="ConfigModule" /> <!-- 图片选择器 -->
         <!-- 选择图片 -->
-        <activity android:name="com.zzti.fengyongge.imagepicker.PhotoSelectorActivity" />
-        <!-- 预览图片 -->
-        <activity android:name="com.zzti.fengyongge.imagepicker.PhotoPreviewActivity" />
-        <!-- targetSDKVersion >= 24时才需要添加这个provider，provider的authorities属性的值为${applicationId}.fileprovider，请开发者根据自己的${applicationId}来设置这个值 -->
+        <activity android:name="com.zzti.fengyongge.imagepicker.PhotoSelectorActivity" /> <!-- 预览图片 -->
+        <activity android:name="com.zzti.fengyongge.imagepicker.PhotoPreviewActivity" /> <!-- targetSDKVersion >= 24时才需要添加这个provider，provider的authorities属性的值为${applicationId}.fileprovider，请开发者根据自己的${applicationId}来设置这个值 -->
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.guet.sharehotel.fileprovider"

@@ -15,11 +15,26 @@
             joker:backVisible="true">
     </com.example.commonres.view.CommonToolBar>
 
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:scrollbars="none"
-            android:overScrollMode="never"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
+        joker:tabIndicatorHeight="@dimen/public_2_0dp"
+        joker:tabIndicatorColor="@color/public_search_selected"
+        joker:tabSelectedTextColor="@color/public_search_selected"
+        joker:tabTextColor="@color/public_black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.design.widget.TabLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_1_0dp"
+        android:background="@color/public_gray">
+    </View>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
 
 </LinearLayout>

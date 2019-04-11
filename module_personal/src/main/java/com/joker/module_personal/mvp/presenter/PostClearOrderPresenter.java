@@ -10,11 +10,22 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.example.commonres.beans.Hotel;
 import com.example.commonres.utils.LoginUtil;
-import com.jess.arms.di.scope.ActivityScope;
-import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
+import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
-import com.joker.module_personal.mvp.contract.PostHouseContract;
+import com.jess.arms.http.imageloader.ImageLoader;
+
+import cn.bmob.v3.datatype.BmobDate;
+import cn.bmob.v3.datatype.BmobFile;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
+import cn.bmob.v3.listener.UploadBatchListener;
+import me.jessyan.rxerrorhandler.core.RxErrorHandler;
+
+import javax.inject.Inject;
+
+import com.joker.module_personal.mvp.contract.PostClearOrderContract;
 import com.zaaach.citypicker.CityPicker;
 import com.zaaach.citypicker.adapter.OnPickListener;
 import com.zaaach.citypicker.model.City;
@@ -26,19 +37,21 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import javax.inject.Inject;
 
-import cn.bmob.v3.datatype.BmobDate;
-import cn.bmob.v3.datatype.BmobFile;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.SaveListener;
-import cn.bmob.v3.listener.UpdateListener;
-import cn.bmob.v3.listener.UploadBatchListener;
-import me.jessyan.rxerrorhandler.core.RxErrorHandler;
-
-
+/**
+ * ================================================
+ * Description:
+ * <p>
+ * Created by MVPArmsTemplate on 04/11/2019 13:39
+ * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
+ * <a href="https://github.com/JessYanCoding">Follow me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArms/wiki">See me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
+ * ================================================
+ */
 @ActivityScope
-public class PostHousePresenter extends BasePresenter<PostHouseContract.Model, PostHouseContract.View> {
+public class PostClearOrderPresenter extends BasePresenter<PostClearOrderContract.Model, PostClearOrderContract.View> {
     @Inject
     RxErrorHandler mErrorHandler;
     @Inject
@@ -48,10 +61,11 @@ public class PostHousePresenter extends BasePresenter<PostHouseContract.Model, P
     @Inject
     AppManager mAppManager;
 
+    private static final int STATE_POST_CLEAR = 4;
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     @Inject
-    public PostHousePresenter(PostHouseContract.Model model, PostHouseContract.View rootView) {
+    public PostClearOrderPresenter(PostClearOrderContract.Model model, PostClearOrderContract.View rootView) {
         super(model, rootView);
     }
 
@@ -113,7 +127,7 @@ public class PostHousePresenter extends BasePresenter<PostHouseContract.Model, P
 
 
     /**
-     * 发布房子
+     * 发布清洁
      * @param houseName
      * @param lockAddress
      * @param city
@@ -127,7 +141,7 @@ public class PostHousePresenter extends BasePresenter<PostHouseContract.Model, P
      * @param description
      * @param mPaths
      */
-    public void postHouse(Hotel hotel, String houseName, String lockAddress,
+    public void postClear(Hotel hotel, String houseName, String lockAddress,
                           String city, String houseAddress,
                           String houseMode, String houseType,
                           String area, String price, String startDate,
@@ -143,7 +157,7 @@ public class PostHousePresenter extends BasePresenter<PostHouseContract.Model, P
             hotel.setName(houseName);
             hotel.setLockAddress(lockAddress);
             hotel.setCity(city);
-            hotel.setType(1);
+            hotel.setType(STATE_POST_CLEAR);
             hotel.setAddress(houseAddress);
             //设置房子可用起始、结束日期
             try {
@@ -154,16 +168,16 @@ public class PostHousePresenter extends BasePresenter<PostHouseContract.Model, P
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-
             hotel.setMode(houseMode);
             hotel.setHouseType(houseType);
+
             DecimalFormat df = new DecimalFormat("0.0");
             hotel.setArea(Double.parseDouble(df.format(Double.parseDouble(area))));
             hotel.setPrice(Double.parseDouble(df.format(Double.parseDouble(price))));
 
             hotel.setComment(0);
             hotel.setGrade(0.0);
-            hotel.setAvailable(1);
+            hotel.setAvailable(0);
             if (!description.equals(""))
                 hotel.setDescription(description);
 
@@ -185,9 +199,9 @@ public class PostHousePresenter extends BasePresenter<PostHouseContract.Model, P
                                     @Override
                                     public void done(String s, BmobException e) {
                                         if (e == null)
-                                            mRootView.postHouseResult(true, "发布出租成功");
+                                            mRootView.postClearResult(true, "发布清洁成功");
                                         else {
-                                            mRootView.postHouseResult(false, "发布出租失败");
+                                            mRootView.postClearResult(false, "发布清洁失败");
                                             Log.i(TAG, "发布失败" + e.toString());
                                         }
                                     }
@@ -197,9 +211,9 @@ public class PostHousePresenter extends BasePresenter<PostHouseContract.Model, P
                                     @Override
                                     public void done(BmobException e) {
                                         if (e == null)
-                                            mRootView.postHouseResult(true, "发布出租成功");
+                                            mRootView.postClearResult(true, "发布清洁成功");
                                         else {
-                                            mRootView.postHouseResult(false, "发布出租失败");
+                                            mRootView.postClearResult(false, "发布清洁失败");
                                             Log.i(TAG, "发布失败" + e.toString());
                                         }
                                     }
@@ -218,11 +232,11 @@ public class PostHousePresenter extends BasePresenter<PostHouseContract.Model, P
                     }
                 });
             } else {
-                mRootView.postHouseResult(false, "请至少选择一张图片");
+                mRootView.postClearResult(false, "请至少选择一张图片");
                 Log.i(TAG, "相册为空");
             }
 
         } else
-            mRootView.postHouseResult(false, "请输入完整信息");
+            mRootView.postClearResult(false, "请输入完整信息");
     }
 }

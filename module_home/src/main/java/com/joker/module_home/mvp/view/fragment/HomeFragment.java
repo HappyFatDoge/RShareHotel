@@ -80,6 +80,13 @@ public class HomeFragment extends BaseFragment<HomePresenter>
         mBanner.startAutoPlay();
     }
 
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mBanner.stopAutoPlay();
+    }
+
     @Override
     public void setupFragmentComponent(@NonNull AppComponent appComponent) {
         DaggerHomeComponent

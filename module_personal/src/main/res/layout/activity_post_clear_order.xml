@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:joker="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:ignore="ResourceName">
+
+    <com.example.commonres.view.CommonToolBar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_45_0dp"
+        joker:title="发布清洁"
+        joker:backVisible="true">
+    </com.example.commonres.view.CommonToolBar>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:layout_marginBottom="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:divider="@drawable/divider"
+            android:orientation="vertical"
+            android:showDividers="beginning|end|middle">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="房子名字"
+                    android:textColor="@color/public_order_normal_text_color"
+                    android:textSize="8pt"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <EditText
+                    android:id="@+id/et_posthouse_name"
+                    android:layout_width="160dp"
+                    android:layout_height="match_parent"
+                    android:lines="1"
+                    android:imeOptions="actionNext"
+                    android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:hint="请输入房子名字"
+                    android:textSize="8pt"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="门锁物理地址"
+                    android:textColor="@color/public_order_normal_text_color"
+                    android:textSize="8pt"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <EditText
+                    android:id="@+id/et_lock_address"
+                    android:layout_width="160dp"
+                    android:layout_height="match_parent"
+                    android:lines="1"
+                    android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
+                    android:imeOptions="actionNext"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:hint="请输入门锁物理地址"
+                    android:textSize="8pt"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/city_picker_layout"
+                android:clickable="true"
+                android:background="@drawable/public_item_click_selected"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="城市"
+                    android:textColor="@color/public_order_normal_text_color"
+                    android:textSize="8pt"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/tv_posthouse_city"
+                    android:layout_width="140dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="请选择城市"
+                    android:textSize="8pt"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/right_arrow1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="详细地址"
+                    android:textColor="@color/public_order_normal_text_color"
+                    android:textSize="8pt"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <EditText
+                    android:id="@+id/et_posthouse_detail_address"
+                    android:layout_width="160dp"
+                    android:layout_height="match_parent"
+                    android:lines="1"
+                    android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
+                    android:imeOptions="actionNext"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:hint="请输入详细地址"
+                    android:textSize="8pt"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="类型"
+                    android:textColor="@color/public_order_normal_text_color"
+                    android:textSize="8pt"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <Spinner
+                    android:id="@+id/spinner_posthouse_mode"
+                    android:layout_width="165dp"
+                    android:layout_height="match_parent"
+                    android:entries="@array/module_personal_hotel_mode"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="户型"
+                    android:textColor="@color/public_order_normal_text_color"
+                    android:textSize="8pt"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <Spinner
+                    android:id="@+id/spinner_posthouse_type"
+                    android:layout_width="165dp"
+                    android:layout_height="match_parent"
+                    android:entries="@array/module_personal_hotel_type"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="面积"
+                    android:textColor="@color/public_order_normal_text_color"
+                    android:textSize="8pt"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <EditText
+                    android:id="@+id/et_posthouse_area"
+                    android:layout_width="@dimen/public_100_0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:lines="1"
+                    android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
+                    android:imeOptions="actionNext"
+                    android:hint="请输入面积"
+                    android:singleLine="true"
+                    android:textColor="@color/public_home_text_color"
+                    android:textSize="8pt"/>
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:clickable="false"
+                    android:text="m²"
+                    android:textColor="@color/public_order_normal_text_color"
+                    android:textSize="8pt"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="预计清洁金额"
+                    android:textColor="@color/public_order_normal_text_color"
+                    android:textSize="8pt"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <EditText
+                    android:id="@+id/et_posthouse_price"
+                    android:layout_width="@dimen/public_100_0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:imeOptions="actionNext"
+                    android:inputType="numberDecimal"
+                    android:hint="输入租金"
+                    android:singleLine="true"
+                    android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
+                    android:textColor="@color/public_home_text_color"
+                    android:textSize="8pt"/>
+
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:clickable="false"
+                    android:text="元/日"
+                    android:textColor="@color/public_order_normal_text_color"
+                    android:textSize="8pt"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/start_time_layout"
+                android:clickable="true"
+                android:background="@drawable/public_item_click_selected"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="清洁起始日期"
+                    android:textColor="@color/public_order_normal_text_color"
+                    android:textSize="8pt"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/tv_posthouse_start_date"
+                    android:layout_width="140dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="请选择起始日期"
+                    android:textSize="8pt"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/right_arrow1"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/end_time_layout"
+                android:clickable="true"
+                android:background="@drawable/public_item_click_selected"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="清洁结束日期"
+                    android:textColor="@color/public_order_normal_text_color"
+                    android:textSize="8pt"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/tv_posthouse_end_date"
+                    android:layout_width="140dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="请选择结束日期"
+                    android:textSize="8pt"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/right_arrow1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="其它"
+                    android:textColor="@color/public_order_normal_text_color"
+                    android:textSize="8pt"/>
+
+                <EditText
+                    android:id="@+id/et_posthouse_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:padding="@dimen/public_10_0dp"
+                    android:minLines="4"
+                    android:gravity="top"
+                    android:textCursorDrawable="@drawable/public_edit_text_cursor_shape"
+                    android:background="@null"
+                    android:hint="可以写下更详细的房子信息,如楼层、是否有电梯等，或者对合租室友的要求信息等"
+                    android:textSize="8pt"
+                    android:textColor="#757676"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/photo_layout"
+                android:clickable="true"
+                android:background="@drawable/public_item_click_selected"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="相册"
+                    android:textColor="@color/public_order_normal_text_color"
+                    android:textSize="8pt"/>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+
+                <FrameLayout
+                    android:layout_width="60dp"
+                    android:layout_height="60dp">
+
+                    <ImageView
+                        android:id="@+id/iv_posthouse_photos"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginRight="20dp"
+                        android:src="@mipmap/images"/>
+
+                    <TextView
+                        android:id="@+id/tv_posthouse_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="0/9"
+                        android:textSize="10pt"
+                        android:textColor="#4052b5"/>
+
+                </FrameLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/right_arrow1"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_post_house_commit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/public_10_0dp"
+        android:layout_marginBottom="@dimen/public_10_0dp"
+        android:layout_marginLeft="@dimen/public_40_0dp"
+        android:layout_marginRight="@dimen/public_40_0dp"
+        android:background="@drawable/public_button_common_selector"
+        android:text="发布"
+        android:textColor="@color/public_white"
+        android:textSize="8pt"/>
+
+
+</LinearLayout>

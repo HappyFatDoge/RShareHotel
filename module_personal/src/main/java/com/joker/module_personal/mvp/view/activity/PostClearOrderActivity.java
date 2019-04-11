@@ -22,13 +22,15 @@ import com.example.commonsdk.core.RouterHub;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-import com.joker.module_personal.R;
+
 import com.joker.module_personal.R2;
-import com.joker.module_personal.di.component.DaggerPostHouseComponent;
-import com.joker.module_personal.di.module.PostHouseModule;
-import com.joker.module_personal.mvp.contract.PostHouseContract;
-import com.joker.module_personal.mvp.presenter.PostHousePresenter;
+import com.joker.module_personal.di.component.DaggerPostClearOrderComponent;
+import com.joker.module_personal.mvp.contract.PostClearOrderContract;
+import com.joker.module_personal.mvp.presenter.PostClearOrderPresenter;
+
+import com.joker.module_personal.R;
 import com.zzti.fengyongge.imagepicker.PhotoSelectorActivity;
+
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -42,12 +44,27 @@ import butterknife.OnClick;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+
 /**
- * 个人中心Fragment -> 发布房子
+ * ================================================
+ * Description:
+ * <p>
+ * Created by MVPArmsTemplate on 04/11/2019 13:39
+ * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
+ * <a href="https://github.com/JessYanCoding">Follow me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArms/wiki">See me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
+ * ================================================
  */
-@Route(path = RouterHub.PERSONAL_POSTHOUSEACTIVITY)
-public class PostHouseActivity extends BaseActivity<PostHousePresenter>
-        implements PostHouseContract.View {
+
+/**
+ * 个人中心Fragment -> 发布清洁
+ */
+@Route(path = RouterHub.PERSONAL_POSTCLEARORDERACTIVITY)
+public class PostClearOrderActivity extends BaseActivity<PostClearOrderPresenter>
+        implements PostClearOrderContract.View {
+
 
     //房子名字
     @BindView(R2.id.et_posthouse_name)
@@ -61,19 +78,19 @@ public class PostHouseActivity extends BaseActivity<PostHousePresenter>
     //house的面积
     @BindView(R2.id.et_posthouse_area)
     EditText houseArea;
-    //日价
+    //预计清洁日价
     @BindView(R2.id.et_posthouse_price)
-    EditText housePrice;
+    EditText clearPrice;
     //其他描述
     @BindView(R2.id.et_posthouse_desc)
     EditText houseDesc;
     //房屋图片数量textView
     @BindView(R2.id.tv_posthouse_num)
     TextView housePhotosNum;
-    //房子可用起始时间
+    //清洁起始时间
     @BindView(R2.id.tv_posthouse_start_date)
     TextView startDate;
-    //房子可用结束时间
+    //清洁结束时间
     @BindView(R2.id.tv_posthouse_end_date)
     TextView endDate;
     //城市
@@ -86,7 +103,6 @@ public class PostHouseActivity extends BaseActivity<PostHousePresenter>
     @BindView(R2.id.spinner_posthouse_type)
     Spinner mHouseTypeSpinner;
 
-
     //可用起始、结束日期
     private Date mStartDate;
     private Date mEndDate;
@@ -98,29 +114,29 @@ public class PostHouseActivity extends BaseActivity<PostHousePresenter>
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
-        DaggerPostHouseComponent
-            .builder()
-            .appComponent(appComponent)
-            .postHouseModule(new PostHouseModule(this))
-            .build()
-            .inject(this);
+        DaggerPostClearOrderComponent
+                .builder()
+                .appComponent(appComponent)
+                .view(this)
+                .build()
+                .inject(this);
     }
 
     @Override
     public int initView(@Nullable Bundle savedInstanceState) {
-        return R.layout.activity_post_house;
+        return R.layout.activity_post_clear_order;
     }
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        //判断是否为发布中的房子
+        //判断是否为发布清洁中的房子
         hotel = (Hotel) getIntent().getSerializableExtra("Hotel");
         if (hotel != null){
             houseName.setText(hotel.getName());
             lockAddress.setText(hotel.getLockAddress());
             houseArea.setText(hotel.getArea().toString());
             houseAddress.setText(hotel.getAddress());
-            housePrice.setText(hotel.getPrice().toString());
+            clearPrice.setText(hotel.getPrice().toString());
             houseDesc.setText(hotel.getDescription());
             startDate.setText(hotel.getStartDate().getDate().split(" ")[0]);
             endDate.setText(hotel.getEndDate().getDate().split(" ")[0]);
@@ -157,7 +173,7 @@ public class PostHouseActivity extends BaseActivity<PostHousePresenter>
             showDateChoiceDialog(true);
         else if (viewId == R.id.end_time_layout)  //选择房子可用结束日期
             showDateChoiceDialog(false);
-        else if (viewId == R.id.btn_post_house_commit) { //提交发布房子
+        else if (viewId == R.id.btn_post_house_commit) { //提交发布清洁
             showLoading();
             String name = houseName.getText().toString().trim();
             String lock = lockAddress.getText().toString().trim();
@@ -166,63 +182,15 @@ public class PostHouseActivity extends BaseActivity<PostHousePresenter>
             String houseMode = mModeSpinner.getSelectedItem().toString();
             String houseType = mHouseTypeSpinner.getSelectedItem().toString();
             String area = houseArea.getText().toString().trim();
-            String price = housePrice.getText().toString().trim();
+            String price = clearPrice.getText().toString().trim();
             String startDateText = startDate.getText().toString();
             String endDateText = endDate.getText().toString();
             String description = houseDesc.getText().toString();
-            mPresenter.postHouse(hotel,name, lock, cityText, address,
+            mPresenter.postClear(hotel,name, lock, cityText, address,
                     houseMode, houseType, area, price, startDateText,
                     endDateText, description, mPaths);
         }
 
-    }
-
-
-    /**
-     * 城市选择回调
-     * @param result
-     * @param cityName
-     */
-    @Override
-    public void choiceCityResult(Boolean result,String cityName) {
-        if (result)
-            city.setText(cityName);
-    }
-
-
-    /**
-     * 取消城市选择回调
-     * @param result
-     */
-    @Override
-    public void cancelChoiceCity(Boolean result) {
-        if (result)
-            ToastUtil.makeText(this,"取消选择");
-    }
-
-    @Override
-    public Context getViewContext() {
-        return this;
-    }
-
-
-    /**
-     * 发布出租结果
-     * @param result
-     * @param tips
-     */
-    @Override
-    public void postHouseResult(Boolean result, String tips) {
-        hideLoading();
-        ToastUtil.makeText(this, tips);
-        if (result) {
-            if (hotel != null){
-                Intent intent = new Intent();
-                intent.putExtra("update", true);
-                setResult(1, intent);
-            }
-            killMyself();
-        }
     }
 
 
@@ -265,7 +233,7 @@ public class PostHouseActivity extends BaseActivity<PostHousePresenter>
                     if (mEndDate.getTime() > mStartDate.getTime()) {
                         endDate.setText(DateTimeHelper.formatToString(date, "yyyy-MM-dd"));
                     } else {
-                        Toast.makeText(getViewContext(), "重新选择房子可用结束日期", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getViewContext(), "重新选择清洁结束日期", Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -275,6 +243,53 @@ public class PostHouseActivity extends BaseActivity<PostHousePresenter>
         });
         calendarDialog.show(getSupportFragmentManager(), TAG);
 
+    }
+
+
+    @Override
+    public Context getViewContext() {
+        return this;
+    }
+
+    /**
+     * 城市选择回调
+     * @param result
+     * @param cityName
+     */
+    @Override
+    public void choiceCityResult(Boolean result,String cityName) {
+        if (result)
+            city.setText(cityName);
+    }
+
+
+    /**
+     * 取消城市选择回调
+     * @param result
+     */
+    @Override
+    public void cancelChoiceCity(Boolean result) {
+        if (result)
+            ToastUtil.makeText(this,"取消选择");
+    }
+
+    /**
+     * 清洁发布结果
+     * @param result
+     * @param tips
+     */
+    @Override
+    public void postClearResult(Boolean result, String tips) {
+        hideLoading();
+        ToastUtil.makeText(this, tips);
+        if (result) {
+            if (hotel != null){
+                Intent intent = new Intent();
+                intent.putExtra("update", true);
+                setResult(1, intent);
+            }
+            killMyself();
+        }
     }
 
     /**
@@ -331,12 +346,13 @@ public class PostHouseActivity extends BaseActivity<PostHousePresenter>
         }
     }
 
+
     @Override
     public void showLoading() {
         if (progressDialog == null)
             progressDialog = new ProgressDialog(this);
         progressDialog.show();
-        progressDialog.setText("上传中...");
+        progressDialog.setText("发布中...");
     }
 
     @Override

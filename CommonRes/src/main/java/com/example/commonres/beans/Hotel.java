@@ -28,7 +28,6 @@ public class Hotel extends BmobObject implements Serializable {
     private String houseType;
 
     private String url;
-    private String district;
     private String city;
     private Integer available;
     private User host;
@@ -77,14 +76,6 @@ public class Hotel extends BmobObject implements Serializable {
 
     public void setType(Integer type) {
         this.type = type;
-    }
-
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
     }
 
     public String getCity() {

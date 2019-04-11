@@ -40,6 +40,9 @@ public class MyHouseListHolder extends BaseHolder<Hotel> {
     private static final Integer STATUS_POST = 1;
     private static final Integer STATUS_BOOK = 2;
     private static final Integer STATUS_RENT = 3;
+    private static final Integer STATUS_POST_CLEAN = 4;
+    private static final Integer STATUS_ORDER_CLEAN = 5;
+    private static final Integer STATUS_CLEANING = 6;
 
     private MyHouseListAdapter.EditHotelListener mEditHotelListener;
     private MyHouseListAdapter.OperationListener mOperationListener;
@@ -77,7 +80,20 @@ public class MyHouseListHolder extends BaseHolder<Hotel> {
             status.setText("出租中...");
             status.setEnabled(false);
             edit.setEnabled(false);
+        }else if (data.getType() == STATUS_POST_CLEAN){
+            status.setText("撤回");
+            status.setEnabled(true);
+            edit.setEnabled(true);
+        }else if (data.getType() == STATUS_ORDER_CLEAN){
+            status.setText("待确认");
+            status.setEnabled(true);
+            edit.setEnabled(false);
+        } else if (data.getType() == STATUS_CLEANING) {
+            status.setText("清洁中...");
+            status.setEnabled(false);
+            edit.setEnabled(false);
         }
+
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
