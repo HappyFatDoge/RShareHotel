@@ -58,10 +58,10 @@
                 android:orientation="horizontal">
 
             <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/public_30_0dp"
+                    android:layout_height="@dimen/public_30_0dp"
                     android:layout_marginLeft="20dp"
-                    android:src="@mipmap/pay1"/>
+                    android:background="@mipmap/pay1"/>
 
             <TextView
                     android:layout_width="wrap_content"
@@ -102,15 +102,15 @@
                 android:orientation="horizontal">
 
             <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/public_30_0dp"
+                    android:layout_height="@dimen/public_30_0dp"
                     android:layout_marginLeft="20dp"
                     android:src="@mipmap/get1"/>
 
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="15dp"
                     android:text="提现"
                     android:textSize="9pt"/>
 

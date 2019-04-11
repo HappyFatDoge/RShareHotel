@@ -48,7 +48,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="40dp"
                     android:text="当前可用积分"
-                    android:textColor="#7c63e7"
+                    android:textColor="@color/public_colorAccent"
                     android:textSize="12sp"/>
 
 
@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="800"
-                    android:textColor="#7c63e7"
+                    android:textColor="@color/public_colorAccent"
                     android:textSize="70sp"/>
 
 
@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="可抵：￥8.00"
-                    android:textColor="#7c63e7"
+                    android:textColor="@color/public_colorAccent"
                     android:textSize="12sp"/>
 
 
