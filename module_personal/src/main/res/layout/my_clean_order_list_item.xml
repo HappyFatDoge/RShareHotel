@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_history_order_num"
                     android:layout_toRightOf="@id/tv_housing_state"
-                    android:text="正在入住"
+                    android:text="正在清洁"
                     android:textColor="#02cf9a"
                     android:textSize="14sp"/>
 
@@ -75,7 +75,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/public_button_common_selector"
-                android:text="开锁入住"
+                android:text="开锁清洁"
                 android:textColor="@color/public_white"
                 android:textSize="16sp"/>
 
@@ -85,7 +85,7 @@
                 android:layout_height="35dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/public_button_common_selector"
-                android:text="更多"
+                android:text="完成"
                 android:textColor="@color/public_white"
                 android:textSize="16sp"/>
 
@@ -125,7 +125,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="入住："/>
+                    android:text="起始："/>
 
                 <TextView
                     android:id="@+id/tv_housing_order_checkin"
@@ -139,7 +139,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="退房："/>
+                    android:text="结束："/>
 
                 <TextView
                     android:id="@+id/tv_housing_order_checkout"
@@ -202,7 +202,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="金额："
+                    android:text="佣金："
                     android:textColor="#403d3d"
                     android:textSize="16sp"/>
 

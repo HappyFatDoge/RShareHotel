@@ -6,19 +6,40 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.commonres.beans.CleanOrder;
+import com.example.commonres.beans.Hotel;
+import com.example.commonres.beans.Order;
+import com.example.commonres.utils.LoginUtil;
+import com.example.commonres.utils.ToastUtil;
 import com.jess.arms.base.BaseFragment;
+import com.jess.arms.base.DefaultAdapter;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 
+import com.joker.module_personal.R2;
 import com.joker.module_personal.di.component.DaggerPostCleanOrderListComponent;
 import com.joker.module_personal.mvp.contract.PostCleanOrderListContract;
 import com.joker.module_personal.mvp.presenter.PostCleanOrderListPresenter;
 
 import com.joker.module_personal.R;
+import com.joker.module_personal.mvp.view.adapter.PostCleanOrderListAdapter;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import butterknife.BindView;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
@@ -35,8 +56,19 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
  * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
  * ================================================
  */
+
+/**
+ * 个人中心Fragment -> 清洁接单 -> 被发布的清洁列表fragment
+ */
 public class PostCleanOrderListFragment extends BaseFragment<PostCleanOrderListPresenter>
         implements PostCleanOrderListContract.View {
+
+    @BindView(R2.id.recycler_view)
+    RecyclerView postCleanOrderList;
+
+    private PostCleanOrderListAdapter postCleanOrderListAdapter;
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    private Integer mDays;
 
     public static PostCleanOrderListFragment newInstance() {
         PostCleanOrderListFragment fragment = new PostCleanOrderListFragment();
@@ -60,9 +92,93 @@ public class PostCleanOrderListFragment extends BaseFragment<PostCleanOrderListP
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        postCleanOrderListAdapter = new PostCleanOrderListAdapter();
+        postCleanOrderList.setLayoutManager(new LinearLayoutManager(getContext()));
+        postCleanOrderList.setAdapter(postCleanOrderListAdapter);
+        postCleanOrderList.setItemAnimator(new DefaultItemAnimator());
+        postCleanOrderList.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.HORIZONTAL));
 
+        postCleanOrderListAdapter.setReceiveOrderListener(new ReceiveOrderListener());
+        //设置点击item，进入发布清洁的详情界面
+        postCleanOrderListAdapter.setOnItemClickListener(new DefaultAdapter.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(View view, int viewType, Object data, int position) {
+
+            }
+        });
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        mPresenter.findRentHouse();
+    }
+
+    /**
+     * 点击接单，接受清洁订单
+     */
+    class ReceiveOrderListener implements PostCleanOrderListAdapter.ReceiveOrderListener{
+        @Override
+        public void receive(View view, int position) {
+            Hotel hotel = postCleanOrderListAdapter.getItem(position);
+            try {
+                mDays = getCountDays(sdf.parse(hotel.getStartDate().getDate()),sdf.parse(hotel.getEndDate().getDate()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            mPresenter.receiveOrder(LoginUtil.getInstance().getUser(), hotel, mDays);
+        }
+    }
+
+
+    /**
+     * 接单结果
+     * @param result
+     * @param tips
+     * @param hotel
+     */
+    @Override
+    public void orderResult(Boolean result, String tips, Hotel hotel) {
+        ToastUtil.makeText(getContext(), tips);
+        if (result)
+            postCleanOrderListAdapter.removeItem(hotel);
+    }
+
+
+    /**
+     * 加载发布的订单
+     * @param result
+     * @param tips
+     * @param hotel
+     */
+    @Override
+    public void findRentHouseResult(Boolean result, String tips, List<Hotel> hotel) {
+        Log.d(TAG, tips);
+        postCleanOrderListAdapter.setItems(hotel);
+    }
+
+    /**
+     * 计算预定天数
+     * @param startDate
+     * @param endDate
+     * @return
+     */
+    public Integer getCountDays(Date startDate, Date endDate) {
+        Calendar fromCalendar = Calendar.getInstance();
+        fromCalendar.setTime(startDate);
+        fromCalendar.set(Calendar.HOUR_OF_DAY, 0);
+        fromCalendar.set(Calendar.MINUTE, 0);
+        fromCalendar.set(Calendar.SECOND, 0);
+        fromCalendar.set(Calendar.MILLISECOND, 0);
+        Calendar toCalendar = Calendar.getInstance();
+        toCalendar.setTime(endDate);
+        toCalendar.set(Calendar.HOUR_OF_DAY, 0);
+        toCalendar.set(Calendar.MINUTE, 0);
+        toCalendar.set(Calendar.SECOND, 0);
+        toCalendar.set(Calendar.MILLISECOND, 0);
+
+        return (int) ((toCalendar.getTime().getTime() - fromCalendar.getTime().getTime()) / (1000 * 60 * 60 * 24));
+    }
 
 
     @Override

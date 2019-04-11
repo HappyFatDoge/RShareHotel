@@ -6,9 +6,12 @@
     android:orientation="vertical"
     tools:ignore="ResourceName">
 
-    <TextView
-        android:id="@+id/module_personal_textview2"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:scrollbars="none"
+        android:overScrollMode="never"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView2" />
+        android:layout_height="match_parent"/>
+
+
 </LinearLayout>

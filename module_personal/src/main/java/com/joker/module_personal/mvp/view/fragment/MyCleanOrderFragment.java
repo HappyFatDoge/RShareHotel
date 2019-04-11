@@ -6,19 +6,33 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.commonres.beans.CleanOrder;
+import com.example.commonres.utils.LoginUtil;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 
+import com.joker.module_personal.R2;
 import com.joker.module_personal.di.component.DaggerMyCleanOrderComponent;
 import com.joker.module_personal.mvp.contract.MyCleanOrderContract;
 import com.joker.module_personal.mvp.presenter.MyCleanOrderPresenter;
 
 import com.joker.module_personal.R;
+import com.joker.module_personal.mvp.view.adapter.MyCleanOrderListAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
@@ -35,7 +49,17 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
  * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
  * ================================================
  */
-public class MyCleanOrderFragment extends BaseFragment<MyCleanOrderPresenter> implements MyCleanOrderContract.View {
+
+/**
+ * 个人中心Fragment -> 清洁接单 -> 接受的清洁列表fragment
+ */
+public class MyCleanOrderFragment extends BaseFragment<MyCleanOrderPresenter>
+        implements MyCleanOrderContract.View {
+
+    @BindView(R2.id.recycler_view)
+    RecyclerView myCleanOrderList;
+
+    MyCleanOrderListAdapter myCleanOrderListAdapter;
 
     public static MyCleanOrderFragment newInstance() {
         MyCleanOrderFragment fragment = new MyCleanOrderFragment();
@@ -59,9 +83,39 @@ public class MyCleanOrderFragment extends BaseFragment<MyCleanOrderPresenter> im
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        myCleanOrderListAdapter = new MyCleanOrderListAdapter();
+        myCleanOrderList.setLayoutManager(new LinearLayoutManager(getContext()));
+        myCleanOrderList.setAdapter(myCleanOrderListAdapter);
+        myCleanOrderList.setItemAnimator(new DefaultItemAnimator());
+        myCleanOrderList.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.HORIZONTAL));
 
+        //设置开锁进入房子清洁监听事件以及完成清洁监听事件
+//        myCleanOrderListAdapter.setCleaningListener();
+//        myCleanOrderListAdapter.setEndCleanListened();
     }
 
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mPresenter.getCleanOrders(1, LoginUtil.getInstance().getUser().getAccount());
+    }
+
+
+    /**
+     * 加载订单
+     * @param result
+     * @param tips
+     * @param list
+     */
+    @Override
+    public void getCleanOrdersResult(Boolean result, String tips, List<CleanOrder> list) {
+        Log.d("HousingFragment", tips);
+        if (result)
+            myCleanOrderListAdapter.setItems(list);
+        else
+            myCleanOrderListAdapter.setItems(new ArrayList<>());
+    }
 
     @Override
     public void showLoading() {
@@ -126,4 +180,5 @@ public class MyCleanOrderFragment extends BaseFragment<MyCleanOrderPresenter> im
     @Override
     public void setData(@Nullable Object data) {
     }
+
 }
