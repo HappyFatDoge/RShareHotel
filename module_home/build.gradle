@@ -7,7 +7,6 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(":CommonRes")//因为 CommonRes 依赖了 CommonSDK, 所以如果业务模块需要公共 UI 组件就依赖 CommonRes, 如果不需要就只依赖 CommonSDK
-//    api project(":citypicker")
 
     //图片轮播
     implementation 'com.github.xiaohaibin:XBanner:1.6.5'
