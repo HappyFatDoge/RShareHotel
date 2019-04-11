@@ -1,22 +1,35 @@
-package com.joker.module_home.mvp.presenter;
+package com.joker.module_order.mvp.presenter;
 
 import android.app.Application;
 
 import com.example.commonres.beans.Hotel;
 import com.example.commonres.beans.Order;
-import com.jess.arms.di.scope.ActivityScope;
-import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
+import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
-import com.joker.module_home.mvp.contract.OrderDetailContract;
-
-import javax.inject.Inject;
+import com.jess.arms.http.imageloader.ImageLoader;
 
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 
+import javax.inject.Inject;
 
+import com.joker.module_order.mvp.contract.OrderDetailContract;
+
+
+/**
+ * ================================================
+ * Description:
+ * <p>
+ * Created by MVPArmsTemplate on 04/11/2019 16:04
+ * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
+ * <a href="https://github.com/JessYanCoding">Follow me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArms/wiki">See me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
+ * ================================================
+ */
 @ActivityScope
 public class OrderDetailPresenter extends BasePresenter<OrderDetailContract.Model, OrderDetailContract.View> {
     @Inject
@@ -69,5 +82,4 @@ public class OrderDetailPresenter extends BasePresenter<OrderDetailContract.Mode
             }
         });
     }
-
 }

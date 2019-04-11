@@ -1,4 +1,4 @@
-package com.joker.module_order.mvp.view.activity;
+package com.joker.module_personal.mvp.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,12 +22,14 @@ import com.example.commonsdk.core.RouterHub;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-import com.joker.module_order.R;
-import com.joker.module_order.R2;
-import com.joker.module_order.di.component.DaggerFaceVerificationComponent;
-import com.joker.module_order.di.module.FaceVerificationModule;
-import com.joker.module_order.mvp.contract.FaceVerificationContract;
-import com.joker.module_order.mvp.presenter.FaceVerificationPresenter;
+
+import com.joker.module_personal.R2;
+import com.joker.module_personal.di.component.DaggerFaceVerificationComponent;
+import com.joker.module_personal.mvp.contract.FaceVerificationContract;
+import com.joker.module_personal.mvp.presenter.FaceVerificationPresenter;
+
+import com.joker.module_personal.R;
+
 
 import java.io.IOException;
 
@@ -36,12 +38,26 @@ import butterknife.OnClick;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+
 /**
- * 订单Fragment -> 待入住订单Fragment -> 人脸验证
+ * ================================================
+ * Description:
+ * <p>
+ * Created by MVPArmsTemplate on 04/11/2019 16:22
+ * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
+ * <a href="https://github.com/JessYanCoding">Follow me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArms/wiki">See me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
+ * ================================================
  */
-@Route(path = RouterHub.ORDER_FACEVERIFICATIONACTIVITY)
+
+/**
+ * 人脸验证
+ */
+@Route(path = RouterHub.PERSONAL_FACEVERIFICATIONACTIVITY)
 public class FaceVerificationActivity extends BaseActivity<FaceVerificationPresenter>
-    implements FaceVerificationContract.View {
+        implements FaceVerificationContract.View {
 
     @BindView(R2.id.face_verification)
     Button verification;
@@ -59,11 +75,11 @@ public class FaceVerificationActivity extends BaseActivity<FaceVerificationPrese
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
         DaggerFaceVerificationComponent
-            .builder()
-            .appComponent(appComponent)
-            .faceVerificationModule(new FaceVerificationModule(this))
-            .build()
-            .inject(this);
+                .builder()
+                .appComponent(appComponent)
+                .view(this)
+                .build()
+                .inject(this);
     }
 
     @Override
@@ -96,7 +112,7 @@ public class FaceVerificationActivity extends BaseActivity<FaceVerificationPrese
         int surfaceWidth = WindowSizeUtil.getWidth(this) - 400;
         int surfaceHeight = (int) (surfaceWidth * WindowSizeUtil.getProportion(this));
         RelativeLayout.LayoutParams layoutParams = new
-            RelativeLayout.LayoutParams(surfaceWidth,surfaceHeight);
+                RelativeLayout.LayoutParams(surfaceWidth,surfaceHeight);
         int left = (WindowSizeUtil.getWidth(this ) - surfaceWidth) / 2;
         int top = (WindowSizeUtil.getHeight(this) - surfaceHeight) / 2 - 150;
         layoutParams.setMargins(left , top , 0 , 0);
@@ -268,7 +284,7 @@ public class FaceVerificationActivity extends BaseActivity<FaceVerificationPrese
             @Override
             public void onPictureTaken(byte[] bytes, Camera camera) {
                 mPresenter.verification(accessToken,bytes,"BASE64",
-                    "0","LOW","NORMAL",userId,1);
+                        "0","LOW","NORMAL",userId,1);
 
             }
         });

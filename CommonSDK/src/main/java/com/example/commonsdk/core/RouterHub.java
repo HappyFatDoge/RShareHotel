@@ -69,7 +69,6 @@ public interface RouterHub {
     String HOME_FILTERHOTELACTIVITY = HOME + "/FilterHotelActivity";
     String HOME_COMMENTACTIVITY = HOME + "/CommentActivity";
     String HOME_MAPACTIVITY = HOME + "/MapActivity";
-    String HOME_ORDERDETAILACTIVITY = HOME + "/OrderDetailActivity";
     String HOME_PAYSUCCESSACTIVITY = HOME + "/PaySuccessActivity";
 
     /**
@@ -82,8 +81,8 @@ public interface RouterHub {
      * Order分组
      */
     String ORDER_MOREOPERATIONACTIVITY = ORDER + "/MoreOperationActivity";
-    String ORDER_FACEVERIFICATIONACTIVITY = ORDER + "/FaceVerificationActivity";
     String ORDER_PUBLISHCOMMENTACTIVITY = ORDER + "/PublishCommentActivity";
+    String ORDER_ORDERDETAILACTIVITY = ORDER + "/OrderDetailActivity";
 
 
     /**
@@ -105,6 +104,7 @@ public interface RouterHub {
     String PERSONAL_POSTCLEARORDERACTIVITY = PERSONAL + "/PostClearOrderActivity";
     String PERSONAL_RECEIVECLEARORDERACTIVITY = PERSONAL + "/ReceiveClearOrderActivity";
     String PERSONAL_INTEGRALRECORDACTIVITY = PERSONAL + "/IntegralRecordActivity";
+    String PERSONAL_FACEVERIFICATIONACTIVITY = PERSONAL + "/FaceVerificationActivity";
 
 
 

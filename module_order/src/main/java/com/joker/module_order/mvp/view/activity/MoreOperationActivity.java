@@ -330,7 +330,7 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
                 //若未进行人脸注册，先进行人脸注册
                 if (LoginUtil.getInstance().getUser().getFaceRegister()){
                     ARouter.getInstance()
-                        .build(RouterHub.ORDER_FACEVERIFICATIONACTIVITY)
+                        .build(RouterHub.PERSONAL_FACEVERIFICATIONACTIVITY)
                         .withString("userId", mOrder.getUser().getAccount())
                         .withSerializable("order",mOrder)
                         .withString("lockAddress", "")

@@ -129,7 +129,7 @@ public class UnConfirmFragment extends BaseFragment<UnConfirmPresenter>
         @Override
         public void pay(View view, int position) {
             ARouter.getInstance()
-                    .build(RouterHub.HOME_ORDERDETAILACTIVITY)
+                    .build(RouterHub.ORDER_ORDERDETAILACTIVITY)
                     .withSerializable("Order", unConfirmListAdapter.getItem(position))
                     .navigation(getContext());
         }

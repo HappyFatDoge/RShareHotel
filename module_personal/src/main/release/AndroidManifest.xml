@@ -3,7 +3,8 @@
     package="com.joker.module_personal">
 
     <application>
-        <activity android:name=".mvp.view.activity.ReceiveClearOrderActivity"></activity>
+        <activity android:name=".mvp.view.activity.FaceVerificationActivity"></activity>
+        <activity android:name=".mvp.view.activity.ReceiveClearOrderActivity" />
         <activity
             android:name=".mvp.view.activity.PostClearOrderActivity"
             android:theme="@style/module_personal_post_house_theme"

@@ -1,4 +1,4 @@
-package com.joker.module_order.mvp.presenter;
+package com.joker.module_personal.mvp.presenter;
 
 import android.app.Application;
 import android.util.Log;
@@ -8,16 +8,10 @@ import com.example.commonres.beans.FaceVerificationBean;
 import com.example.commonres.beans.Hotel;
 import com.example.commonres.beans.Order;
 import com.example.commonres.utils.Base64Util;
-import com.jess.arms.di.scope.ActivityScope;
-import com.jess.arms.http.imageloader.ImageLoader;
 import com.jess.arms.integration.AppManager;
+import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
-import com.jess.arms.utils.RxLifecycleUtils;
-import com.joker.module_order.mvp.contract.FaceVerificationContract;
-
-import java.util.List;
-
-import javax.inject.Inject;
+import com.jess.arms.http.imageloader.ImageLoader;
 
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
@@ -27,10 +21,28 @@ import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 
+import javax.inject.Inject;
 
+import com.jess.arms.utils.RxLifecycleUtils;
+import com.joker.module_personal.mvp.contract.FaceVerificationContract;
+
+import java.util.List;
+
+
+/**
+ * ================================================
+ * Description:
+ * <p>
+ * Created by MVPArmsTemplate on 04/11/2019 16:22
+ * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
+ * <a href="https://github.com/JessYanCoding">Follow me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArms/wiki">See me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
+ * ================================================
+ */
 @ActivityScope
-public class FaceVerificationPresenter extends
-    BasePresenter<FaceVerificationContract.Model, FaceVerificationContract.View> {
+public class FaceVerificationPresenter extends BasePresenter<FaceVerificationContract.Model, FaceVerificationContract.View> {
     @Inject
     RxErrorHandler mErrorHandler;
     @Inject
@@ -107,40 +119,40 @@ public class FaceVerificationPresenter extends
 
 
         mModel.verification(accessToken, Base64Util.encode(imageByte),
-            imageType,groupList,qualityControl,livenessControl,userId,maxUserNum)
-            .map(new Function<FaceVerificationBean, List<FaceUser>>() {
-                @Override
-                public List<FaceUser> apply(FaceVerificationBean faceVerificationBean) throws Exception {
-                    if (faceVerificationBean.getError_code() == 0 &&
-                        faceVerificationBean.getError_msg().equals("SUCCESS"))
-                        return faceVerificationBean.getResult().getUser_list();
-                    return null;
-                }
-            })
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
-            .subscribe(new Consumer<List<FaceUser>>() {
-                @Override
-                public void accept(List<FaceUser> faceUsers) throws Exception {
-                    if (faceUsers == null)
-                        mRootView.verificationResult(false);
-                    else {
-                        for (FaceUser user: faceUsers){
-                            if (user.getScore() >= 80){
-                                Log.d("data", user.getUser_id());
-                                mRootView.verificationResult(true);
-                                return;
+                imageType,groupList,qualityControl,livenessControl,userId,maxUserNum)
+                .map(new Function<FaceVerificationBean, List<FaceUser>>() {
+                    @Override
+                    public List<FaceUser> apply(FaceVerificationBean faceVerificationBean) throws Exception {
+                        if (faceVerificationBean.getError_code() == 0 &&
+                                faceVerificationBean.getError_msg().equals("SUCCESS"))
+                            return faceVerificationBean.getResult().getUser_list();
+                        return null;
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(RxLifecycleUtils.bindToLifecycle(mRootView))
+                .subscribe(new Consumer<List<FaceUser>>() {
+                    @Override
+                    public void accept(List<FaceUser> faceUsers) throws Exception {
+                        if (faceUsers == null)
+                            mRootView.verificationResult(false);
+                        else {
+                            for (FaceUser user: faceUsers){
+                                if (user.getScore() >= 80){
+                                    Log.d("data", user.getUser_id());
+                                    mRootView.verificationResult(true);
+                                    return;
+                                }
                             }
+                            mRootView.verificationResult(false);
                         }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
                         mRootView.verificationResult(false);
                     }
-                }
-            }, new Consumer<Throwable>() {
-                @Override
-                public void accept(Throwable throwable) throws Exception {
-                    mRootView.verificationResult(false);
-                }
-            });
+                });
     }
 }

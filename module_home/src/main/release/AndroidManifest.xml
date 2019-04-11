@@ -4,7 +4,6 @@
 
     <application>
         <activity android:name=".mvp.view.activity.PaySuccessActivity"></activity>
-        <activity android:name=".mvp.view.activity.OrderDetailActivity"></activity>
         <activity android:name=".mvp.view.activity.MapActivity"></activity>
         <activity android:name=".mvp.view.activity.CommentActivity"></activity>
         <activity android:name=".mvp.view.activity.FilterHotelActivity"></activity>

@@ -39,9 +39,9 @@ import com.joker.module_order.di.component.DaggerHousingComponent;
 import com.joker.module_order.di.module.HousingModule;
 import com.joker.module_order.mvp.contract.HousingContract;
 import com.joker.module_order.mvp.presenter.HousingPresenter;
-import com.joker.module_order.mvp.view.activity.FaceVerificationActivity;
 import com.joker.module_order.mvp.view.adapter.HousingListAdapter;
 import com.joker.module_order.mvp.view.receiver.BluetoothBroadcastReceiver;
+import com.joker.module_personal.mvp.view.activity.FaceVerificationActivity;
 
 import java.util.ArrayList;
 import java.util.List;

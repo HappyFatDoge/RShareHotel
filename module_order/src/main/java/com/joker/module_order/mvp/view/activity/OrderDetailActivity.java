@@ -1,4 +1,4 @@
-package com.joker.module_home.mvp.view.activity;
+package com.joker.module_order.mvp.view.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -22,28 +22,42 @@ import com.example.commonsdk.utils.Utils;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
-import com.joker.module_home.R;
-import com.joker.module_home.R2;
-import com.joker.module_home.di.component.DaggerOrderDetailComponent;
-import com.joker.module_home.di.module.OrderDetailModule;
-import com.joker.module_home.mvp.contract.OrderDetailContract;
-import com.joker.module_home.mvp.presenter.OrderDetailPresenter;
+import com.joker.module_order.R2;
+import com.joker.module_order.di.component.DaggerOrderDetailComponent;
+import com.joker.module_order.mvp.contract.OrderDetailContract;
+import com.joker.module_order.mvp.presenter.OrderDetailPresenter;
+
+import com.joker.module_order.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.imageaware.ImageAware;
 import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
+
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+
 /**
- * 主页->搜索->选择酒店->酒店详情 -> 预定 -> 订单详情
+ * ================================================
+ * Description:
+ * <p>
+ * Created by MVPArmsTemplate on 04/11/2019 16:04
+ * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
+ * <a href="https://github.com/JessYanCoding">Follow me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArms">Star me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArms/wiki">See me</a>
+ * <a href="https://github.com/JessYanCoding/MVPArmsTemplate">模版请保持更新</a>
+ * ================================================
  */
-@Route(path = RouterHub.HOME_ORDERDETAILACTIVITY)
-public class OrderDetailActivity
-        extends BaseActivity<OrderDetailPresenter>
+/**
+ * 订单Fragment -> 待付款订单Fragment -> 付款，订单详情页面
+ */
+@Route(path = RouterHub.ORDER_ORDERDETAILACTIVITY)
+public class OrderDetailActivity extends BaseActivity<OrderDetailPresenter>
         implements OrderDetailContract.View {
+
 
     @BindView(R2.id.iv_find_hotel)
     ImageView hotelIcon;
@@ -76,15 +90,14 @@ public class OrderDetailActivity
     private Hotel hotel;
     private User owner;//住宅所有者
     private User payer;//预定用户
-
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
         DaggerOrderDetailComponent
-            .builder()
-            .appComponent(appComponent)
-            .orderDetailModule(new OrderDetailModule(this))
-            .build()
-            .inject(this);
+                .builder()
+                .appComponent(appComponent)
+                .view(this)
+                .build()
+                .inject(this);
     }
 
     @Override
@@ -101,6 +114,7 @@ public class OrderDetailActivity
 
         initView();//初始化控件
     }
+
 
     /**
      * 初始化控件
@@ -240,7 +254,6 @@ public class OrderDetailActivity
     public Activity getActivity() {
         return this;
     }
-
 
     @Override
     public void showLoading() {
