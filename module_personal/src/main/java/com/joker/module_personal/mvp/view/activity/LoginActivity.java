@@ -86,12 +86,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter>
         });
     }
 
-    @OnClick({R2.id.back_iv,R2.id.btn_login,
+    @OnClick({R2.id.back,R2.id.btn_login,
             R2.id.register_btn,R2.id.forget_password,
             R2.id.login_by_qq,R2.id.login_by_wechat})
     public void onClick(View view){
         int viewId = view.getId();
-        if (viewId == R.id.back_iv) {//返回
+        if (viewId == R.id.back) {//返回
             KeyBoardUtil.hideKeyboard(loginLayout);
             Intent back = new Intent();
             back.putExtra("Login", false);

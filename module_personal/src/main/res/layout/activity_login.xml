@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:background="#aabdfc"
-              android:id="@+id/login_layout"
-              tools:ignore="ResourceName">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:joker="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/public_login_bg"
+    android:id="@+id/login_layout"
+    tools:ignore="ResourceName">
 
-    <LinearLayout
+    <com.example.commonres.view.CommonToolBar
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="vertical"
-        android:background="@mipmap/login_top_bg">
+        android:layout_height="@dimen/public_45_0dp"
+        joker:title="用户登录"
+        joker:backVisible="true">
+    </com.example.commonres.view.CommonToolBar>
 
-        <ImageView
-            android:id="@+id/back_iv"
-            android:layout_width="30dp"
-            android:layout_height="25dp"
-            android:layout_margin="10dp"
-            android:src="@mipmap/left_arrow1"/>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@mipmap/login_sharehotel"/>
-    </LinearLayout>
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="@dimen/public_20_0dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/login_head"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/public_20_0dp"
         android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_1_0dp"
+            android:background="@color/public_white"></View>
 
         <LinearLayout
             android:layout_width="match_parent"
