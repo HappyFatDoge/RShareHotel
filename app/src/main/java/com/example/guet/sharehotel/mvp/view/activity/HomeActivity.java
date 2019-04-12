@@ -24,6 +24,7 @@ import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.jess.arms.utils.RxLifecycleUtils;
 import com.joker.module_home.mvp.view.fragment.HomeFragment;
+import com.joker.module_low_carbon.mvp.view.fragment.LowCarbonFragment;
 import com.joker.module_message.mvp.view.fragment.MessageFragment;
 import com.joker.module_order.mvp.view.fragment.OrderFragment;
 import com.joker.module_personal.mvp.view.fragment.PersonalFragment;
@@ -54,8 +55,8 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
     private long mPressedTime;
     private List<Fragment> mFragmentList;
     private HomeViewPagerAdapter mHomeViewPagerAdapter;
-    private int[] tabRes = {R.layout.home_tab_layout,R.layout.message_tab_layout,
-        R.layout.order_tab_layout,R.layout.personal_tab_layout};
+    private int[] tabRes = {R.layout.home_tab_layout,R.layout.low_carbon_tab_layout,
+        R.layout.order_tab_layout,R.layout.message_tab_layout,R.layout.personal_tab_layout};
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -84,8 +85,9 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
         //fragment列表
         mFragmentList = new ArrayList<>();
         mFragmentList.add(HomeFragment.newInstance());
-        mFragmentList.add(MessageFragment.newInstance());
+        mFragmentList.add(LowCarbonFragment.newInstance());
         mFragmentList.add(OrderFragment.newInstance());
+        mFragmentList.add(MessageFragment.newInstance());
         mFragmentList.add(PersonalFragment.newInstance());
 
         mHomeViewPagerAdapter = new HomeViewPagerAdapter(getSupportFragmentManager(),mFragmentList);
@@ -101,7 +103,7 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
      * 设置tab item的view
      */
     private void setTabItems(){
-        for (int i = 0; i < 4; ++i)
+        for (int i = 0; i < 5; ++i)
             mTabLayout.getTabAt(i).setCustomView(tabRes[i]);
     }
 

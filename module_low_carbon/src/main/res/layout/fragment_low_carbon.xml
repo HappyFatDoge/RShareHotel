@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:joker="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              tools:ignore="ResourceName">
+
+    <com.example.commonres.view.CommonToolBar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_45_0dp"
+            joker:title="低碳">
+    </com.example.commonres.view.CommonToolBar>
+
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:overScrollMode="never">
+
+        <LinearLayout
+                android:id="@+id/low_carbon_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+            <!--日期  ， 天气 ， 空气质量-->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/public_20_0dp"
+                    android:layout_marginLeft="@dimen/public_20_0dp"
+                    android:layout_marginRight="@dimen/public_20_0dp"
+                    android:layout_marginTop="@dimen/public_30_0dp"
+                    android:background="@drawable/low_carbon_bg"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
+
+                <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@mipmap/low_carbon_calendar" />
+
+                <TextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="8/14"
+                        android:textColor="@color/public_white"
+                        android:textSize="16dp" />
+
+                <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="27dp"
+                        android:src="@mipmap/light_rain" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:text="30°"
+                        android:textColor="@color/public_white"
+                        android:textSize="16dp" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:text="小雨"
+                        android:textColor="@color/public_white"
+                        android:textSize="16dp" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="空气质量:优"
+                        android:textColor="@color/public_white"
+                        android:textSize="16dp" />
+
+            </LinearLayout>
+
+
+            <!--用电量 ， 用水量  ， 排行榜-->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/public_10_0dp"
+                    android:paddingBottom="@dimen/public_20_0dp"
+                    android:paddingTop="@dimen/public_20_0dp"
+                    android:layout_weight="2.0"
+                    android:background="#f0ece5"
+                    android:orientation="horizontal">
+
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="bottom"
+                        android:layout_weight="1.5"
+                        android:orientation="vertical">
+
+
+                    <!--用电量-->
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                        <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="20dp" />
+
+                        <LinearLayout
+                                android:layout_width="60dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="20dp"
+                                android:background="@mipmap/power_consumption"
+
+                                >
+
+                            <TextView
+                                    android:id="@+id/electricity_consumption_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="4°"
+                                    android:textColor="@color/public_white"
+                                    android:textSize="17dp" />
+
+
+                        </LinearLayout>
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="20dp"
+                                android:text="用电量"
+                                android:textColor="#abadc2"
+                                android:textSize="15dp"
+
+                                />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="bottom"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="55dp"
+                            android:layout_gravity="center" />
+
+                    <LinearLayout
+                            android:layout_width="60dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:background="@mipmap/water_comsumption"
+
+                            >
+
+                        <TextView
+                                android:id="@+id/water_consumption_tv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="4升"
+                                android:textColor="@color/public_white"
+                                android:textSize="17dp"
+
+                                />
+
+                    </LinearLayout>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:text="用水量"
+                            android:textColor="#adc2e2"
+                            android:textSize="15dp"
+
+                            />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="bottom"
+                        android:layout_weight="1.5"
+                        android:orientation="vertical">
+
+                    <LinearLayout
+                            android:layout_width="60dp"
+                            android:layout_height="150dp"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="20dp"
+                            android:background="@mipmap/ranking_list"
+                            >
+                        <TextView
+                                android:id="@+id/low_carbon_ranking_tv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="30元"
+                                android:textColor="@color/public_white"
+                                android:textSize="17dp"
+
+                                />
+                    </LinearLayout>
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="20dp"
+                            android:text="一次性物品消耗"
+                            android:textColor="#dfcaa8"
+                            android:textSize="15dp"
+
+                            />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <!--低碳排行 ， 一键兑换-->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/public_50_0dp"
+                    android:paddingTop="@dimen/public_20_0dp"
+                    android:paddingBottom="@dimen/public_20_0dp"
+                    android:orientation="horizontal">
+
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <LinearLayout
+                            android:id="@+id/low_carbon_ranking_linear_layout"
+                            android:layout_width="130dp"
+                            android:layout_height="60dp"
+                            android:clickable="true"
+                            android:layout_gravity="center"
+                            android:background="@drawable/low_carbon_ranking_btn_selector"
+                            android:orientation="horizontal">
+
+                        <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/public_15_0dp"
+                                android:background="@mipmap/low_carbon_ranking" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="15dp"
+                                android:text="低碳排行"
+                                android:textColor="@color/public_white"
+                                android:textSize="15dp" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                    <LinearLayout
+                            android:id="@+id/got_integral_linear_layout"
+                            android:layout_width="130dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center"
+                            android:clickable="true"
+                            android:background="@drawable/low_carbon_rule_btn_selector"
+                            android:orientation="horizontal">
+
+
+                        <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="15dp"
+                                android:background="@mipmap/low_carbon_rule" />
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="15dp"
+                                android:text="规则"
+                                android:textColor="@color/public_white"
+                                android:textSize="15dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>
