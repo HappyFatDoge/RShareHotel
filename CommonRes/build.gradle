@@ -42,7 +42,8 @@ dependencies {
     //日期选择
     implementation 'com.prolificinteractive:material-calendarview:1.4.3'
 
-    api project(":library")
+//    api project(":library")
+    api 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
     api 'com.squareup.okio:okio:2.1.0'
 }

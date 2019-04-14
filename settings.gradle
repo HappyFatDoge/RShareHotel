@@ -1,1 +1,1 @@
-include ':app', ':CommonSDK', ':CommonService', ':CommonRes', ':module_home', ':module_message', ':module_order', ':module_personal', ':module_low_carbon', 'library'
+include ':app', ':CommonSDK', ':CommonService', ':CommonRes', ':module_home', ':module_message', ':module_order', ':module_personal', ':module_low_carbon'
