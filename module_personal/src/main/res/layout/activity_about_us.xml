@@ -10,7 +10,7 @@
     <com.example.commonres.view.CommonToolBar
             android:layout_width="match_parent"
             android:layout_height="@dimen/public_45_0dp"
-            joker:title="关于共享租房"
+            joker:title="关于智能共享租房"
             joker:backVisible="true">
     </com.example.commonres.view.CommonToolBar>
 
@@ -33,9 +33,10 @@
                 android:orientation="vertical">
 
             <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/login_sharehotel"/>
+                android:layout_marginTop="@dimen/public_40_0dp"
+                    android:layout_width="@dimen/public_200_0dp"
+                    android:layout_height="@dimen/public_80_0dp"
+                    android:background="@mipmap/about_us_bg"/>
 
         </LinearLayout>
 
@@ -67,7 +68,7 @@
                     android:layout_marginBottom="12dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="12dp"
-                    android:text="共享租房是......"
+                    android:text="智能共享租房是......"
                     android:textColor="@color/public_setting_text_color"
                     android:textSize="@dimen/public_font_15sp"/>
 
@@ -99,7 +100,7 @@
                     android:layout_marginBottom="12dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="12dp"
-                    android:text="微信公众号：共享租房（gongxiangzufang）"
+                    android:text="微信公众号：智能共享租房"
                     android:textColor="@color/public_setting_text_color"
                     android:textSize="@dimen/public_font_15sp"/>
 
@@ -131,7 +132,7 @@
                     android:layout_marginBottom="12dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="12dp"
-                    android:text="新浪微博：@共享租房"
+                    android:text="新浪微博：@智能共享租房"
                     android:textColor="@color/public_setting_text_color"
                     android:textSize="@dimen/public_font_15sp"/>
 
