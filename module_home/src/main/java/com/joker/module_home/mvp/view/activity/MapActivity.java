@@ -1,8 +1,6 @@
 package com.joker.module_home.mvp.view.activity;
 
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,8 +19,6 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
-import com.example.commonres.beans.Hotel;
-import com.example.commonres.utils.ToastUtil;
 import com.example.commonsdk.core.RouterHub;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
@@ -33,9 +29,6 @@ import com.joker.module_home.di.component.DaggerMapComponent;
 import com.joker.module_home.di.module.MapModule;
 import com.joker.module_home.mvp.contract.MapContract;
 import com.joker.module_home.mvp.presenter.MapPresenter;
-
-import java.io.IOException;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -55,9 +48,9 @@ public class MapActivity extends BaseActivity<MapPresenter> implements MapContra
     private BaiduMap mBaiduMap = null;
     private LocationClient mLocationClient = null;
 
-    private Geocoder mGeocoder;
 
-    private Hotel mHotel;
+    private Double latitude;
+    private Double longitude;
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -76,7 +69,8 @@ public class MapActivity extends BaseActivity<MapPresenter> implements MapContra
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
-        mHotel = (Hotel) getIntent().getSerializableExtra("Hotel");
+        latitude = getIntent().getDoubleExtra("Latitude", 0.0);
+        longitude = getIntent().getDoubleExtra("Longitude", 0.0);
         initLocation();
     }
 
@@ -85,21 +79,9 @@ public class MapActivity extends BaseActivity<MapPresenter> implements MapContra
      * 初始化位置
      */
     private void initLocation(){
-        Address address = null;
-        mGeocoder = new Geocoder(this);
-        try {
-            List<Address> list = mGeocoder.getFromLocationName(mHotel.getAddress(), 1);
-            address = list.get(0);
-        } catch (IOException e) {
-            killMyself();
-            e.printStackTrace();
-        } catch (Exception e){
-            ToastUtil.makeText(this, mHotel.getName() + "的地址错误，无法进行定位");
-            killMyself();
-        }
         mBaiduMap = mMapView.getMap();
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
-        final LatLng newlatLng = new LatLng(address.getLatitude(), address.getLongitude());
+        final LatLng newlatLng = new LatLng(latitude, longitude);
         mLocationClient = new LocationClient(getApplicationContext());
 
         BitmapDescriptor bitmapDescriptor = BitmapDescriptorFactory.fromResource(R.mipmap.red_location);

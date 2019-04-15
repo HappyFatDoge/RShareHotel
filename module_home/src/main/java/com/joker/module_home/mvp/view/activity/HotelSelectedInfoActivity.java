@@ -3,6 +3,8 @@ package com.joker.module_home.mvp.view.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -29,10 +31,12 @@ import com.joker.module_home.di.module.HotelSelectedInfoModule;
 import com.joker.module_home.mvp.contract.HotelSelectedInfoContract;
 import com.joker.module_home.mvp.presenter.HotelSelectedInfoPresenter;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -81,6 +85,8 @@ public class HotelSelectedInfoActivity
     private boolean isCollect;
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     private Integer mDays;
+    private Geocoder mGeocoder;
+
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -171,10 +177,23 @@ public class HotelSelectedInfoActivity
             } else
                 mPresenter.setCollect(mHotel,LoginUtil.getInstance().getUser(),isCollect);
         }else if (viewId == R.id.btn_detail_location){
-            //地图
+            //判断hotel的地址是否正确，正确则打开地图
+            Address address = null;
+            mGeocoder = new Geocoder(this);
+            try {
+                List<Address> list = mGeocoder.getFromLocationName(mHotel.getAddress(), 1);
+                if (list.size() == 0){
+                    ToastUtil.makeText(this, mHotel.getName() + "的地址错误，无法进行定位");
+                    return;
+                }
+                address = list.get(0);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             ARouter.getInstance()
                 .build(RouterHub.HOME_MAPACTIVITY)
-                .withSerializable("Hotel", mHotel)
+                .withDouble("Latitude", address.getLatitude())
+                .withDouble("Longitude", address.getLongitude())
                 .navigation(this);
         }else if (viewId == R.id.bt_hotel_book){//创建订单
             if (LoginUtil.getInstance().isLogin())
