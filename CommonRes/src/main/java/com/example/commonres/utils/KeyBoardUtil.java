@@ -19,5 +19,4 @@ public class KeyBoardUtil {
             imm.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
         }
     }
-
 }
