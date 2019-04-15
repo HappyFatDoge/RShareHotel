@@ -11,7 +11,6 @@ import android.view.View;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
@@ -23,6 +22,7 @@ import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.example.commonres.beans.Hotel;
+import com.example.commonres.utils.ToastUtil;
 import com.example.commonsdk.core.RouterHub;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
@@ -91,7 +91,11 @@ public class MapActivity extends BaseActivity<MapPresenter> implements MapContra
             List<Address> list = mGeocoder.getFromLocationName(mHotel.getAddress(), 1);
             address = list.get(0);
         } catch (IOException e) {
+            killMyself();
             e.printStackTrace();
+        } catch (Exception e){
+            ToastUtil.makeText(this, mHotel.getName() + "的地址错误，无法进行定位");
+            killMyself();
         }
         mBaiduMap = mMapView.getMap();
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);

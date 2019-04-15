@@ -18,6 +18,7 @@ public class Order extends BmobObject implements Serializable {
     private BmobDate checkInTime;
     private BmobDate checkOutTime;
     private Integer days;
+    private Integer currentOrder;
 
     private User host;
 
@@ -87,6 +88,14 @@ public class Order extends BmobObject implements Serializable {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Integer getCurrentOrder() {
+        return currentOrder;
+    }
+
+    public void setCurrentOrder(Integer currentOrder) {
+        this.currentOrder = currentOrder;
     }
 }
 

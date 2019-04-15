@@ -8,10 +8,16 @@ import com.example.commonres.beans.FaceVerificationBean;
 import com.example.commonres.beans.Hotel;
 import com.example.commonres.beans.Order;
 import com.example.commonres.utils.Base64Util;
-import com.jess.arms.integration.AppManager;
 import com.jess.arms.di.scope.ActivityScope;
-import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.http.imageloader.ImageLoader;
+import com.jess.arms.integration.AppManager;
+import com.jess.arms.mvp.BasePresenter;
+import com.jess.arms.utils.RxLifecycleUtils;
+import com.joker.module_personal.mvp.contract.FaceVerificationContract;
+
+import java.util.List;
+
+import javax.inject.Inject;
 
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.UpdateListener;
@@ -20,13 +26,6 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
-
-import javax.inject.Inject;
-
-import com.jess.arms.utils.RxLifecycleUtils;
-import com.joker.module_personal.mvp.contract.FaceVerificationContract;
-
-import java.util.List;
 
 
 /**
@@ -73,6 +72,7 @@ public class FaceVerificationPresenter extends BasePresenter<FaceVerificationCon
      */
     public void checkOut(Order mOrder){
         mOrder.setState(4);
+        mOrder.setCurrentOrder(0);
         mOrder.update(new UpdateListener() {
             @Override
             public void done(BmobException e) {

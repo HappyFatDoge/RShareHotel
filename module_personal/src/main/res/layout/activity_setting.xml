@@ -34,7 +34,7 @@
                     android:layout_marginBottom="12dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="12dp"
-                    android:text="关于共享租房"
+                    android:text="关于智能共享租房"
                     android:textColor="@color/public_setting_text_color"
                     android:textSize="@dimen/public_font_15sp"/>
 

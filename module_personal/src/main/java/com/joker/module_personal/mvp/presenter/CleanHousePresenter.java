@@ -6,23 +6,22 @@ import com.example.commonres.beans.Hotel;
 import com.example.commonres.beans.Order;
 import com.example.commonres.utils.LoginUtil;
 import com.example.commonres.utils.OrderLoaderUtil;
-import com.jess.arms.integration.AppManager;
 import com.jess.arms.di.scope.FragmentScope;
-import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.http.imageloader.ImageLoader;
+import com.jess.arms.integration.AppManager;
+import com.jess.arms.mvp.BasePresenter;
+import com.joker.module_personal.mvp.contract.CleanHouseContract;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.UpdateListener;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
-
-import javax.inject.Inject;
-
-import com.joker.module_personal.mvp.contract.CleanHouseContract;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -132,7 +131,7 @@ public class CleanHousePresenter extends BasePresenter<CleanHouseContract.Model,
      * @param position
      */
     public void rejectOrder(Hotel hotel, int position){
-        OrderLoaderUtil.findOrder(hotel, LoginUtil.getInstance().getUser().getAccount())
+        OrderLoaderUtil.findOrder(hotel)
                 .findObjects(new FindListener<Order>() {
                     @Override
                     public void done(List<Order> list, BmobException e) {

@@ -118,6 +118,7 @@ public class HotelSelectedInfoPresenter extends BasePresenter<HotelSelectedInfoC
         order.setHost(hotel.getHost());
         order.setPrice(hotel.getPrice() * days);
         order.setState(1);
+        order.setCurrentOrder(1);
         try {
             BmobDate bmobDateIn = new BmobDate(sdf.parse(mCheckInDate));
             order.setCheckInTime(bmobDateIn);

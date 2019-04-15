@@ -36,18 +36,14 @@ public class OrderLoaderUtil {
     /**
      * 获取指定订单
      * @param hotel
-     * @param account
      * @return
      */
-    public static BmobQuery<Order> findOrder(Hotel hotel, String account) {
+    public static BmobQuery<Order> findOrder(Hotel hotel) {
 
         BmobQuery<Order> query = new BmobQuery<Order>("Order");
         query.addWhereEqualTo("hotel", hotel);
-        BmobQuery<User> innerQuery = new BmobQuery<User>("User");
-        innerQuery.addWhereEqualTo("account", account);
-        query.addWhereMatchesQuery("user", "User", innerQuery);
-        query.include("hotel,user");
-        query.setLimit(1);
+        query.addWhereEqualTo("currentOrder", 1);
+        query.setLimit(10);
         return query;
     }
 

@@ -75,6 +75,13 @@ public class CollectionListHolder extends BaseHolder<Collection> {
         });
 
         hotelPrice.setText(hotel.getPrice().toString());
+        if (hotel.getAvailable() == 1){
+            book.setText("预 定");
+            book.setEnabled(true);
+        }else if (hotel.getAvailable() == 0){
+            book.setText("已预定");
+            book.setEnabled(false);
+        }
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
