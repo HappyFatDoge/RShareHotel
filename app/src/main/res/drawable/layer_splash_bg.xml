@@ -5,10 +5,11 @@
             android:drawable="@color/public_colorAccent"></item>
 
     <item
+            android:width="@dimen/public_250_0dp"
+            android:height="@dimen/public_60_0dp"
+            android:drawable="@mipmap/login_smart_sharetel"
+            android:gravity="bottom|center_horizontal"
             android:bottom="@dimen/public_50_0dp">
-        <bitmap
-                android:gravity="bottom"
-                android:src="@drawable/login_sharehotel"></bitmap>
     </item>
 
 </layer-list>
