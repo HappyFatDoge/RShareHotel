@@ -76,6 +76,8 @@ public class HotelSelectedInfoActivity
     TextView detailEndDate;
     @BindView(R2.id.btn_detail_colection)
     Button mCollectButton;
+    @BindView(R2.id.title)
+    TextView title;
 
     //数据
     private String mCheckInDate;
@@ -122,6 +124,7 @@ public class HotelSelectedInfoActivity
 
 
     private void initView(){
+        title.setText(mHotel.getMode() + "详情");
         hotelName.setText(mHotel.getName());
         hotelComment.setText(mHotel.getComment().toString());
         hotelGrade.setText(mHotel.getGrade().toString());
