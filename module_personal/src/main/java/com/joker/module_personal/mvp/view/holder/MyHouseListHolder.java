@@ -66,7 +66,7 @@ public class MyHouseListHolder extends BaseHolder<Hotel> {
         ImageLoader.getInstance().displayImage(data.getUrl(), imageAware, ImageUtil.createOptions());
         hotelName.setText(data.getName());
         hotelAddress.setText(data.getAddress());
-        hotelPrice.setText(data.getPrice().toString() + "/日");
+        hotelPrice.setText(data.getPrice().toString());
         hotelType.setText(data.getMode() + "/" + data.getHouseType() + "/" + data.getArea() + "M²");
         if (data.getType() == STATUS_POST && data.getAvailable() == 1) {
             status.setText("下架");
