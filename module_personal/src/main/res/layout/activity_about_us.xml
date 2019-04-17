@@ -35,7 +35,7 @@
             <ImageView
                 android:layout_marginTop="@dimen/public_40_0dp"
                     android:layout_width="@dimen/public_200_0dp"
-                    android:layout_height="@dimen/public_80_0dp"
+                    android:layout_height="@dimen/public_55_0dp"
                     android:background="@mipmap/about_us_bg"/>
 
         </LinearLayout>
@@ -152,6 +152,7 @@
     </LinearLayout>
 
     <ScrollView
+            android:layout_marginTop="@dimen/public_30_0dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
