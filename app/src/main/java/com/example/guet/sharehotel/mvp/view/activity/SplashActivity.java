@@ -54,6 +54,7 @@ public class SplashActivity extends BaseActivity {
 
     private static String account;
     private static boolean isLogin;
+    private static String city;
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
@@ -89,6 +90,7 @@ public class SplashActivity extends BaseActivity {
         final SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
         account = sp.getString("Account", "");
         isLogin = sp.getBoolean("isLogin",false);
+        city = sp.getString("City", "深圳");
         if (account != ""){
             //获取User
             BmobQuery<User> query = new BmobQuery<>();
@@ -106,11 +108,13 @@ public class SplashActivity extends BaseActivity {
                             SharedPreferences.Editor editor = sp.edit();
                             editor.putString("Account","");
                             editor.putBoolean("isLogin", false);
+                            editor.putString("City", "深圳");
                             editor.commit();
                         } else {
                             LoginUtil loginUtil = LoginUtil.getInstance();
                             loginUtil.setUser(list.get(0));
                             loginUtil.setLogin(isLogin);
+                            loginUtil.setCity(city);
                             Log.d("账户",String.valueOf(loginUtil.getUser().getAccount()));
                         }
                     } else {

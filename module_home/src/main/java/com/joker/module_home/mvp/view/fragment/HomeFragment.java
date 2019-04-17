@@ -1,6 +1,8 @@
 package com.joker.module_home.mvp.view.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.NonNull;
@@ -20,6 +22,7 @@ import com.example.commonres.dialog.MaterialCalendarDialog;
 import com.example.commonres.utils.DateTimeHelper;
 import com.example.commonres.utils.DateUtil;
 import com.example.commonres.utils.KeyBoardUtil;
+import com.example.commonres.utils.LoginUtil;
 import com.example.commonres.utils.ToastUtil;
 import com.example.commonsdk.core.RouterHub;
 import com.jess.arms.base.BaseFragment;
@@ -68,6 +71,8 @@ public class HomeFragment extends BaseFragment<HomePresenter>
     private Date mCheckInDate;
     private Date mCheckOutDate;
 
+    private SharedPreferences sharedPreferences;
+
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
         return fragment;
@@ -104,6 +109,9 @@ public class HomeFragment extends BaseFragment<HomePresenter>
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+
+        sharedPreferences = getContext().getSharedPreferences("login", Context.MODE_PRIVATE);
+
         List<LocalImageInfo> imageList = new ArrayList<>();
         imageList.add(new LocalImageInfo(R.mipmap.b1));
         imageList.add(new LocalImageInfo(R.mipmap.b2));
@@ -123,6 +131,9 @@ public class HomeFragment extends BaseFragment<HomePresenter>
         //初始化日期
         mStartTimeTextView.setText(DateUtil.getTomorrow());
         mEndTimeTextView.setText(DateUtil.getAcquired());
+
+        String city = sharedPreferences.getString("City", "深圳");
+        mCityTextView.setText(city);
     }
 
 
@@ -150,8 +161,13 @@ public class HomeFragment extends BaseFragment<HomePresenter>
      */
     @Override
     public void choiceCityResult(Boolean result,String cityName) {
-        if (result)
+        if (result) {
             mCityTextView.setText(cityName);
+            LoginUtil.getInstance().setCity(cityName);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("City", cityName);
+            editor.commit();
+        }
     }
 
 

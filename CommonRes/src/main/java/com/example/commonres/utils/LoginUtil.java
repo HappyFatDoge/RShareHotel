@@ -10,6 +10,7 @@ public class LoginUtil {
 
     private User mUser;
     private boolean isLogin;
+    private String city;
 
     private LoginUtil(){
         mUser = new User();
@@ -43,5 +44,13 @@ public class LoginUtil {
 
     public void setLogin(boolean login) {
         isLogin = login;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 }
