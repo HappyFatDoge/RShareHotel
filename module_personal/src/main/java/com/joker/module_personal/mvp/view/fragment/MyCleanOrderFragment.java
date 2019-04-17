@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.example.commonres.beans.CleanOrder;
 import com.example.commonres.utils.LoginUtil;
+import com.example.commonres.utils.ToastUtil;
 import com.jess.arms.base.BaseFragment;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -91,15 +92,29 @@ public class MyCleanOrderFragment extends BaseFragment<MyCleanOrderPresenter>
 
         //设置开锁进入房子清洁监听事件以及完成清洁监听事件
 //        myCleanOrderListAdapter.setCleaningListener();
-//        myCleanOrderListAdapter.setEndCleanListened();
+        myCleanOrderListAdapter.setEndCleanListened(new FinshCleanListener());
     }
 
 
     @Override
     public void onStart() {
         super.onStart();
+//        mPresenter.getCleanOrders(2, LoginUtil.getInstance().getUser().getAccount());
         mPresenter.getCleanOrders(1, LoginUtil.getInstance().getUser().getAccount());
     }
+
+
+    /**
+     * 完成清洁
+     */
+    class FinshCleanListener implements MyCleanOrderListAdapter.EndCleanListened{
+        @Override
+        public void finish(View view, int position) {
+            CleanOrder cleanOrder = myCleanOrderListAdapter.getItem(position);
+            mPresenter.finishClean(cleanOrder);
+        }
+    }
+
 
 
     /**
@@ -115,6 +130,20 @@ public class MyCleanOrderFragment extends BaseFragment<MyCleanOrderPresenter>
             myCleanOrderListAdapter.setItems(list);
         else
             myCleanOrderListAdapter.setItems(new ArrayList<>());
+    }
+
+
+    /**
+     * 完成清洁结果
+     * @param result
+     * @param tips
+     * @param cleanOrder
+     */
+    @Override
+    public void finishCleanResult(Boolean result, String tips, CleanOrder cleanOrder) {
+        ToastUtil.makeText(getContext(), tips);
+        if (result)
+            myCleanOrderListAdapter.removeItem(cleanOrder);
     }
 
     @Override

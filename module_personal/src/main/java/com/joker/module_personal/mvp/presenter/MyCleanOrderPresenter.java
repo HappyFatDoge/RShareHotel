@@ -3,22 +3,22 @@ package com.joker.module_personal.mvp.presenter;
 import android.app.Application;
 
 import com.example.commonres.beans.CleanOrder;
-import com.example.commonres.beans.Order;
+import com.example.commonres.beans.Hotel;
 import com.example.commonres.utils.OrderLoaderUtil;
-import com.jess.arms.integration.AppManager;
 import com.jess.arms.di.scope.FragmentScope;
-import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.http.imageloader.ImageLoader;
-
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
-import me.jessyan.rxerrorhandler.core.RxErrorHandler;
-
-import javax.inject.Inject;
-
+import com.jess.arms.integration.AppManager;
+import com.jess.arms.mvp.BasePresenter;
 import com.joker.module_personal.mvp.contract.MyCleanOrderContract;
 
 import java.util.List;
+
+import javax.inject.Inject;
+
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.UpdateListener;
+import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 
 
 /**
@@ -43,6 +43,10 @@ public class MyCleanOrderPresenter extends BasePresenter<MyCleanOrderContract.Mo
     ImageLoader mImageLoader;
     @Inject
     AppManager mAppManager;
+
+    private static final Integer STATUS_POST_CLEAN = 4;
+    private static final Integer STATUS_ORDER_CLEAN = 5;
+    private static final Integer STATUS_CLEANING = 6;
 
     @Inject
     public MyCleanOrderPresenter(MyCleanOrderContract.Model model, MyCleanOrderContract.View rootView) {
@@ -79,5 +83,34 @@ public class MyCleanOrderPresenter extends BasePresenter<MyCleanOrderContract.Mo
                             mRootView.getCleanOrdersResult(false, "订单加载失败", null);
                     }
                 });
+    }
+
+
+    /**
+     * 完成清洁
+     * @param cleanOrder
+     */
+    public void finishClean(CleanOrder cleanOrder){
+        cleanOrder.setState(3);
+        cleanOrder.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if (e == null){
+                    Hotel hotel = cleanOrder.getHotel();
+                    hotel.setType(STATUS_POST_CLEAN);
+                    hotel.update(new UpdateListener() {
+                        @Override
+                        public void done(BmobException e) {
+                            if (e == null)
+                                mRootView.finishCleanResult(true, "完成清洁", cleanOrder);
+                            else
+                                mRootView.finishCleanResult(false, "完成清洁失败", cleanOrder);
+                        }
+                    });
+                }else
+                    mRootView.finishCleanResult(false, "完成清洁失败", cleanOrder);
+            }
+        });
+
     }
 }

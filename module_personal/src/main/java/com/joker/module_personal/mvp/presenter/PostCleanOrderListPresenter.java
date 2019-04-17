@@ -4,30 +4,25 @@ import android.app.Application;
 
 import com.example.commonres.beans.CleanOrder;
 import com.example.commonres.beans.Hotel;
-import com.example.commonres.beans.Order;
 import com.example.commonres.beans.User;
 import com.example.commonres.utils.LoginUtil;
-import com.example.commonres.utils.OrderLoaderUtil;
-import com.jess.arms.integration.AppManager;
 import com.jess.arms.di.scope.FragmentScope;
-import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.http.imageloader.ImageLoader;
+import com.jess.arms.integration.AppManager;
+import com.jess.arms.mvp.BasePresenter;
+import com.joker.module_personal.mvp.contract.PostCleanOrderListContract;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
 
 import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.datatype.BmobDate;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
-
-import javax.inject.Inject;
-
-import com.joker.module_personal.mvp.contract.PostCleanOrderListContract;
-
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -114,6 +109,7 @@ public class PostCleanOrderListPresenter extends BasePresenter<PostCleanOrderLis
             @Override
             public void done(String objectId, BmobException e) {
                 if (e == null) {
+//                    order.getHotel().setType(STATUS_ORDER_CLEAN);
                     order.getHotel().setType(STATUS_CLEANING);
                     order.getHotel().update(new UpdateListener() {
                         @Override
