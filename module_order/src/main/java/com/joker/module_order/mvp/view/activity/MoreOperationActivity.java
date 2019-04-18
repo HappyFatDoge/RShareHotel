@@ -75,6 +75,7 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
     private Boolean isOpenKitchenLight = false;
     private Boolean isOpenAirConditioning = false;
     private Boolean isOpenToiletLight = false;
+//    private Boolean isOpenTelevision = false;
 
     private static final int openBedRoomLight = 1;
     private static final int closeBedRoomLight = 2;
@@ -161,7 +162,15 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
         else if (viewId == R.id.close_or_open_toilet_bulb_iv)//开/关厕所灯
             toiletLight();
         else if (viewId == R.id.close_or_open_television) {//电视机控制
-
+//            if (!isOpenTelevision) {
+//                ToastUtil.makeText(this, "电视机已开启");
+//                televisionState.setText("关闭电视");
+//                isOpenTelevision = true;
+//            }else{
+//                ToastUtil.makeText(this, "电视机已关闭");
+//                televisionState.setText("开启电视");
+//                isOpenTelevision = false;
+//            }
         }else if (viewId == R.id.close_or_open_water_heater) {//热水器控制
 
         }else if (viewId == R.id.close_or_open_curtain) {//窗帘布控制
@@ -261,14 +270,14 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
                     connect();//连接wifi服务
                 } else {
                     if (!isOpenAirConditioning)
-                        //打开厨房灯
+                        //打开空调
                         mPresenter.sendMessageAndControl(openAirConditioning, "g",
                                 "空调开启失败", "空调已开启",
                                 mPrintWriterClient,mSocketClient);
                     else
-                        //关闭厨房灯
+                        //关闭空调
                         mPresenter.sendMessageAndControl(closeAirConditioning, "h",
-                                "厨房灯关闭失败", "厨房灯已关闭",
+                                "空调关闭失败", "空调已关闭",
                                 mPrintWriterClient,mSocketClient);
                 }
             }else {

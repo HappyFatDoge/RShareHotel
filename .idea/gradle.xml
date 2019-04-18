@@ -3,9 +3,6 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <compositeConfiguration>
-          <compositeBuild compositeDefinitionSource="SCRIPT" />
-        </compositeConfiguration>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
@@ -15,7 +12,11 @@
             <option value="$PROJECT_DIR$/CommonSDK" />
             <option value="$PROJECT_DIR$/CommonService" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/module-zhihu" />
+            <option value="$PROJECT_DIR$/module_home" />
+            <option value="$PROJECT_DIR$/module_low_carbon" />
+            <option value="$PROJECT_DIR$/module_message" />
+            <option value="$PROJECT_DIR$/module_order" />
+            <option value="$PROJECT_DIR$/module_personal" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
