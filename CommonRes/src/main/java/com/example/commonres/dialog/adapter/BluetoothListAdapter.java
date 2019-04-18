@@ -47,6 +47,7 @@ public class BluetoothListAdapter extends DefaultAdapter<LockBean> {
      */
     public void addDevice(LockBean device){
         mInfos.add(device);
+        notifyDataSetChanged();
     }
 
 
@@ -55,5 +56,6 @@ public class BluetoothListAdapter extends DefaultAdapter<LockBean> {
      */
     public void clearDevice(){
         mInfos.clear();
+        notifyDataSetChanged();
     }
 }

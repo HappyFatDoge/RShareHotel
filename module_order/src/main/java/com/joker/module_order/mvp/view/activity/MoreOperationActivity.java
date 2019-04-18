@@ -291,12 +291,12 @@ public class MoreOperationActivity extends BaseActivity<MoreOperationPresenter>
             } else {
                 if (!isOpenToiletLight)
                     //打开厕所灯
-                    mPresenter.sendMessageAndControl(openKitchenLight, "a",
+                    mPresenter.sendMessageAndControl(openToiletLight, "a",
                             "厕所灯开启失败", "厕所灯已开启",
                             mPrintWriterClient,mSocketClient);
                 else
                     //关闭厕所灯
-                    mPresenter.sendMessageAndControl(closeKitchenLight, "b",
+                    mPresenter.sendMessageAndControl(closeToiletLight, "b",
                             "厕所灯关闭失败", "厕所灯已关闭",
                             mPrintWriterClient,mSocketClient);
             }

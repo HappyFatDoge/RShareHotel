@@ -2,6 +2,8 @@ package com.joker.module_order.mvp.view.fragment;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -40,7 +42,6 @@ import com.joker.module_order.di.module.HousingModule;
 import com.joker.module_order.mvp.contract.HousingContract;
 import com.joker.module_order.mvp.presenter.HousingPresenter;
 import com.joker.module_order.mvp.view.adapter.HousingListAdapter;
-import com.joker.module_order.mvp.view.receiver.BluetoothBroadcastReceiver;
 import com.joker.module_personal.mvp.view.activity.FaceVerificationActivity;
 
 import java.util.ArrayList;
@@ -66,7 +67,26 @@ public class HousingFragment extends BaseFragment<HousingPresenter>
     private String mConnectedDeviceName;
     private String lockAddress;
     private BluetoothLockDialog bluetoothLockDialog;
-    private BluetoothBroadcastReceiver mBluetoothBroadcastReceiver;
+    private final BroadcastReceiver mBluetoothBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (bluetoothLockDialog != null) {
+                String action = intent.getAction();
+                //进行蓝牙设备扫描
+                if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                    BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                    if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
+                        bluetoothLockDialog.addOtherDevice(new LockBean(device.getName(), device.getAddress()));
+                    }
+                } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
+                    //扫描完成
+                    if (bluetoothLockDialog.getDeviceCount() == 0)
+                        bluetoothLockDialog.addNoOtherDevice();
+                    bluetoothLockDialog.endScan();
+                }
+            }
+        }
+    };
 
     private static final Integer STATE_HOUSING = 2;
 
@@ -114,8 +134,6 @@ public class HousingFragment extends BaseFragment<HousingPresenter>
 
         housingListAdapter.setCheckInListener(new CheckInListener());
         housingListAdapter.setMoreOperationListener(new MoreOperationListener());
-
-        mBluetoothBroadcastReceiver = new BluetoothBroadcastReceiver(bluetoothLockDialog);
 
         //蓝牙适配
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
