@@ -40,7 +40,7 @@ public class HotelSelectedInfoPresenter extends BasePresenter<HotelSelectedInfoC
 
 
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    private static final Integer STATUS_BOOK = 2;
+    private static final Integer STATUS_RENT = 3;
 
     @Inject
     public HotelSelectedInfoPresenter(HotelSelectedInfoContract.Model model, HotelSelectedInfoContract.View rootView) {
@@ -132,7 +132,7 @@ public class HotelSelectedInfoPresenter extends BasePresenter<HotelSelectedInfoC
             public void done(String objectId, BmobException e) {
                 if (e == null) {
                     order.getHotel().setAvailable(0);
-                    order.getHotel().setType(STATUS_BOOK);
+                    order.getHotel().setType(STATUS_RENT);
                     order.getHotel().update(new UpdateListener() {
                         @Override
                         public void done(BmobException e) {
