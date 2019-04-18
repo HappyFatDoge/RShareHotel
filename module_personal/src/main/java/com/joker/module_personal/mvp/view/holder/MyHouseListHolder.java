@@ -36,6 +36,8 @@ public class MyHouseListHolder extends BaseHolder<Hotel> {
     Button edit;
     @BindView(R2.id.status_button)
     Button status;
+    @BindView(R2.id.price_desc)
+    TextView priceDesc;
 
     private static final Integer STATUS_POST = 1;
     private static final Integer STATUS_BOOK = 2;
@@ -69,26 +71,32 @@ public class MyHouseListHolder extends BaseHolder<Hotel> {
         hotelPrice.setText(data.getPrice().toString());
         hotelType.setText(data.getMode() + "/" + data.getHouseType() + "/" + data.getArea() + "M²");
         if (data.getType() == STATUS_POST && data.getAvailable() == 1) {
+            priceDesc.setText("租金：");
             status.setText("下架");
             status.setEnabled(true);
             edit.setEnabled(true);
         } else if (data.getType() == STATUS_BOOK) {
+            priceDesc.setText("租金：");
             status.setText("待确认");
             status.setEnabled(true);
             edit.setEnabled(false);
         } else if (data.getType() == STATUS_RENT) {
+            priceDesc.setText("租金：");
             status.setText("出租中...");
             status.setEnabled(false);
             edit.setEnabled(false);
         }else if (data.getType() == STATUS_POST_CLEAN){
+            priceDesc.setText("佣金：");
             status.setText("撤回");
             status.setEnabled(true);
             edit.setEnabled(true);
         }else if (data.getType() == STATUS_ORDER_CLEAN){
+            priceDesc.setText("佣金：");
             status.setText("待确认");
             status.setEnabled(true);
             edit.setEnabled(false);
         } else if (data.getType() == STATUS_CLEANING) {
+            priceDesc.setText("佣金：");
             status.setText("清洁中...");
             status.setEnabled(false);
             edit.setEnabled(false);
