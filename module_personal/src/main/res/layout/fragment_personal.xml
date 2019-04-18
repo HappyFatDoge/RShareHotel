@@ -432,7 +432,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="5dp"
-                            android:text="清洁接单"
+                            android:text="清洁平台"
                             android:textColor="#696e6f"
                             android:textSize="10sp"/>
 

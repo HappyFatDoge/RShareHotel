@@ -85,7 +85,7 @@ public class ReceiveClearOrderActivity extends BaseActivity<ReceiveClearOrderPre
 
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setText("被发布待清洁的房子");
-        tabLayout.getTabAt(1).setText("我接的清洁订单");
+        tabLayout.getTabAt(1).setText("我的清洁订单");
     }
 
     @OnClick(R2.id.back)

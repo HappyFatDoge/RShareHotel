@@ -10,7 +10,7 @@
     <com.example.commonres.view.CommonToolBar
         android:layout_width="match_parent"
         android:layout_height="@dimen/public_45_0dp"
-        joker:title="清洁订单"
+        joker:title="清洁平台"
         joker:backVisible="true">
     </com.example.commonres.view.CommonToolBar>
 
