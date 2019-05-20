@@ -40,10 +40,10 @@
 
     <ImageView
             android:id="@+id/ivReady"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/public_250_0dp"
+            android:layout_height="@dimen/public_200_0dp"
             android:layout_marginTop="20dp"
-            android:src="@mipmap/deviceonboarding_airlink_tips" />
+            android:src="@mipmap/airlink" />
 
     <RelativeLayout
             android:layout_width="match_parent"
