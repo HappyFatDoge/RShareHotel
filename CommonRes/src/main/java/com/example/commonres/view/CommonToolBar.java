@@ -2,7 +2,6 @@ package com.example.commonres.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -22,6 +21,7 @@ public class CommonToolBar extends FrameLayout {
     private ImageView back;
     private TextView title;
     private TextView right;
+    private ImageView rightImage;
 
     private boolean backVisible;
     private boolean rightTextViewVisible;
@@ -45,6 +45,7 @@ public class CommonToolBar extends FrameLayout {
         back = this.findViewById(R.id.back);
         title = this.findViewById(R.id.title);
         right = this.findViewById(R.id.right);
+        rightImage = this.findViewById(R.id.right_image);
 
         if (!backVisible)
             back.setVisibility(INVISIBLE);
@@ -67,20 +68,19 @@ public class CommonToolBar extends FrameLayout {
                         mRightListener.clicked(v);
                 }
             });
-        } else {
-            if (rightImageViewVisible) {
-                Drawable drawable = getResources().getDrawable(rightId);
-                right.setCompoundDrawables(drawable, null, null, null);
-                right.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (mRightListener != null)
-                            mRightListener.clicked(v);
-                    }
-                });
-            } else
-                right.setVisibility(INVISIBLE);
-        }
+        } else
+            right.setVisibility(INVISIBLE);
+        if (rightImageViewVisible) {
+            rightImage.setImageResource(rightId);
+            rightImage.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mRightListener != null)
+                        mRightListener.clicked(v);
+                }
+            });
+        } else
+            rightImage.setVisibility(INVISIBLE);
 
         title.setText(titleText);
     }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:ignore="ResourceName">
+
+    <TextView
+            android:id="@+id/tvListViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="30dp"
+            android:text="TextView"
+            android:textColor="@color/public_text_state"
+            android:textSize="12sp" />
+
+    <LinearLayout
+            android:id="@+id/llHaveNotDevice"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tvListViewTitle"
+            android:background="@color/public_white"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="15dp"
+                  android:text="没有设备"
+                  android:textColor="@color/public_text_color" />
+    </LinearLayout>
+
+    <com.example.commonres.view.SlideListView2
+            android:id="@+id/slideListView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tvListViewTitle"
+            android:background="@color/public_white"
+            android:divider="@color/public_gray"
+            android:dividerHeight="@dimen/public_0_5dp"
+            android:listSelector="@drawable/devicelist_item_selector">
+    </com.example.commonres.view.SlideListView2>
+
+</RelativeLayout>

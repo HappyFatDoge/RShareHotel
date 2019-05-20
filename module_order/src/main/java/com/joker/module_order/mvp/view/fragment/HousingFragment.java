@@ -222,8 +222,12 @@ public class HousingFragment extends BaseFragment<HousingPresenter>
         public void operate(View view, int position) {
             mOrder = housingListAdapter.getItem(position);
             //更多操作
+//            ARouter.getInstance()
+//                .build(RouterHub.ORDER_MOREOPERATIONACTIVITY)
+//                .withSerializable("order",mOrder)
+//                .navigation(getContext());
             ARouter.getInstance()
-                .build(RouterHub.ORDER_MOREOPERATIONACTIVITY)
+                .build(RouterHub.ORDER_GOSDEVICELISTACTIVITY)
                 .withSerializable("order",mOrder)
                 .navigation(getContext());
         }

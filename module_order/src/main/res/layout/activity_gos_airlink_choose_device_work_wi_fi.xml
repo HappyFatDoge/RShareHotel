@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:joker="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              tools:ignore="ResourceName">
+
+    <com.example.commonres.view.CommonToolBar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_45_0dp"
+            joker:backVisible="true"
+            joker:title="选择设备工作Wi-Fi">
+    </com.example.commonres.view.CommonToolBar>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:src="@mipmap/device_none" />
+
+        <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请输入Wi-Fi密码，连接您的智能设备"
+                android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+            style="@style/InputBoxStyle"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_below="@+id/linearLayout1"
+            android:layout_marginTop="40dp">
+
+        <EditText
+                android:id="@+id/etSSID"
+                style="@style/EditTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ems="10"
+                android:hint="请选择可用的Wi-Fi网络"
+                android:textColorHint="@color/public_gray"
+                android:textSize="16sp" />
+
+        <RelativeLayout
+                android:id="@+id/rlWiFiList"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+            <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="15dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@mipmap/common_arrow_right" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            style="@style/InputBoxStyle"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:layout_below="@+id/linearLayout1"
+            android:layout_marginTop="12dp">
+
+        <EditText
+                android:id="@+id/etPsw"
+                style="@style/EditTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ems="10"
+                android:hint="请输入Wi-Fi密码"
+                android:inputType="textPassword"
+                android:textColorHint="@color/public_gray"
+                android:textSize="16sp" />
+
+
+        <CheckBox
+                android:id="@+id/cbLaws"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="18dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/checkbox_laws_selector"
+                android:button="@null" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+    </LinearLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:text="提示： 暂不支持5G频道的Wi-Fi网络"
+                android:textColor="@color/public_text_state" />
+
+        <Button
+                android:id="@+id/btnNext"
+                android:background="@drawable/public_button_common_selector"
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="下一步"
+                android:textColor="@color/public_white"
+                android:layout_margin="@dimen/public_20_0dp"/>
+    </RelativeLayout>
+
+</LinearLayout>

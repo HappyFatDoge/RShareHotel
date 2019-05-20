@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="public_colorPrimary">#2196F3</color>
     <color name="public_colorPrimaryDark">#000000</color>
     <color name="public_colorAccent">#2196F3</color>
@@ -74,6 +74,14 @@
     <color name="public_search_selected">#58ACF0</color>
 
     <color name="public_login_bg">#7EBEF3</color>
+
+
+    <color name="public_text_state">#797979</color>
+    <color name="public_text_color">#333333</color>
+    <color name="public_sample_deploy">#007AFE</color>
+    <color name="public_floralwhite">#FFFAF0</color>
+    <color name="public_unbind">#FF3B2F</color>
+    <color name="roundcolor" tools:ignore="ResourceName">#D8D8D8</color>
 
 
 

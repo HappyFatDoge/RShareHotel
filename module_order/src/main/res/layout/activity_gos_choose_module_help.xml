@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:joker="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              tools:ignore="ResourceName">
+
+    <com.example.commonres.view.CommonToolBar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_45_0dp"
+            joker:title="@string/module_help"
+            joker:backVisible="true">
+    </com.example.commonres.view.CommonToolBar>
+
+    <WebView
+            android:id="@+id/webHelp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    </WebView>
+
+</LinearLayout>

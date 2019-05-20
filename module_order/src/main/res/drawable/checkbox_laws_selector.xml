@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android" tools:ignore="ResourceName">
+
+    <!-- 选中状态的背景图片 -->
+    <item android:drawable="@mipmap/common_password_show" android:state_checked="true"/>
+    <!-- 未选中状态的背景图片 -->
+    <item android:drawable="@mipmap/common_password_hide"/>
+
+</selector>

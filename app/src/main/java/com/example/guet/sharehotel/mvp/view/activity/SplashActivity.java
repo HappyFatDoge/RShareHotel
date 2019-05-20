@@ -22,6 +22,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.example.commonres.MessageCenter;
 import com.example.commonres.beans.User;
 import com.example.commonres.utils.LoginUtil;
 import com.example.commonsdk.core.RouterHub;
@@ -68,6 +69,7 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        MessageCenter.getInstance(this);
         //获取账户是否已经登录
         automaticLogin();
         Observable.timer(2, TimeUnit.SECONDS)

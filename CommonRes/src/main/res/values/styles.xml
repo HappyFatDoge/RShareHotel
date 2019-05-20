@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="public_AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -75,6 +75,31 @@
     <style name="public_popup_anim" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/public_pop_up_choose_bank_card_pay_enter_anim</item>
         <item name="android:windowExitAnimation">@anim/public_pop_up_choose_bank_card_pay_exit_anim</item>
+    </style>
+
+    <style name="alert_dialog_style" parent="Theme.AppCompat.Light.Dialog" tools:ignore="ResourceName">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="InputBoxStyle" tools:ignore="ResourceName">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginLeft">18dp</item>
+        <item name="android:layout_marginRight">18dp</item>
+        <item name="android:background">@drawable/public_tips_dialog_shape</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="EditTextStyle" tools:ignore="ResourceName">
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:background">@null</item>
     </style>
 
 </resources>

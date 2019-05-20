@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:joker="http://schemas.android.com/apk/res-auto"
+              android:gravity="center_horizontal"
+              android:background="@color/public_white"
+              android:orientation="vertical"
+              tools:ignore="ResourceName">
+
+    <com.example.commonres.view.CommonToolBar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_45_0dp"
+            joker:title="@string/airlink_ready_title"
+            joker:backVisible="true">
+    </com.example.commonres.view.CommonToolBar>
+
+    <TextView
+            android:id="@+id/tvDeviceTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/power_on"
+            android:textColor="@color/public_text_color"
+            android:textSize="30sp" />
+
+    <TextView
+            android:id="@+id/tvReady"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/common_ready_message"
+            android:textSize="16sp" />
+
+
+    <ImageView
+            android:id="@+id/ivReady"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/deviceonboarding_airlink_tips" />
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        <Button
+                android:id="@+id/btnNext"
+                android:background="@drawable/public_button_common_selector"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="40dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:text="@string/complete"
+                android:textColor="@color/public_white"/>
+    </RelativeLayout>
+
+</LinearLayout>

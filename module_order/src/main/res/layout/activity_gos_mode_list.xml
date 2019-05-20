@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:joker="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              tools:ignore="ResourceName">
+
+    <com.example.commonres.view.CommonToolBar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_45_0dp"
+            joker:title="@string/choose_mode_start"
+            joker:backVisible="true"
+            joker:rightImageViewVisible="true"
+            joker:rightSrcCompat="@mipmap/config_help_button">
+    </com.example.commonres.view.CommonToolBar>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="36dp"
+            android:text="@string/module_type"
+            android:textColor="@color/public_text_state" />
+
+    <ListView
+            android:id="@+id/lvMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_weight="1"/>
+
+
+
+    <Button
+            android:id="@+id/btnOk"
+            android:background="@drawable/public_button_common_selector"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="@dimen/public_30_0dp"
+            android:text="确定"
+            android:textColor="@color/public_white" />
+
+
+</LinearLayout>

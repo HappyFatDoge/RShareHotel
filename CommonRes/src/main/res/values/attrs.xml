@@ -6,7 +6,7 @@
         <attr name="title" format="string|reference"></attr>
         <attr name="backVisible" format="boolean"></attr>
         <attr name="rightTextViewVisible" format="boolean"></attr>
-        <attr name="rightImageViewVisible" format="reference"></attr>
+        <attr name="rightImageViewVisible" format="boolean"></attr>
         <attr name="rightSrcCompat" format="reference"></attr>
         <attr name="rightText" format="string|reference"></attr>
     </declare-styleable>
@@ -19,5 +19,20 @@
         <attr name="TipsTitleText" format="reference|string"></attr>
         <attr name="TipsContent" format="reference|string" ></attr>
         <attr name="ConfirmButtonText" format="reference|string"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="RoundProgressBar" tools:ignore="ResourceName">
+        <attr name="roundColor" format="color" />
+        <attr name="roundProgressColor" format="color" />
+        <attr name="roundWidth" format="dimension"></attr>
+        <attr name="textColor" />
+        <attr name="textSize" />
+        <attr name="max" format="integer"></attr>
+        <attr name="text" format="string"></attr>
+        <attr name="textIsDisplayable" format="boolean"></attr>
+        <attr name="style">
+            <enum name="STROKE" value="0"></enum>
+            <enum name="FILL" value="1"></enum>
+        </attr>
     </declare-styleable>
 </resources>

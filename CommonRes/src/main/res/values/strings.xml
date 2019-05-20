@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="public_app_name">Smart Sharetel</string>
 
     //App组件中的String
@@ -23,7 +23,320 @@
 
     <string name="public_module_name">app</string>
     <string name="public_loading">加载中</string>
-    <string name="public_name_zhihu">知乎日报</string>
-    <string name="public_name_gank">干货集中营</string>
-    <string name="public_name_gold">稀土掘金</string>
+
+    <!-- DeviceListActivity -->
+    <string name="devicelist_title" tools:ignore="ResourceName">我的设备</string>
+    <string name="found_devices" tools:ignore="ResourceName">发现新设备</string>
+    <string name="havenot_device" tools:ignore="ResourceName">没有设备</string>
+    <string name="no_devices" tools:ignore="ResourceName">暂无设备，请添加</string>
+    <string name="remove_bound" tools:ignore="ResourceName">解除绑定</string>
+    <string name="bound_successful" tools:ignore="ResourceName">绑定成功</string>
+    <string name="bound_failed" tools:ignore="ResourceName">绑定失败</string>
+    <string name="doubleclick_logout" tools:ignore="ResourceName">再次点击您将注销登录</string>
+    <string name="doubleclick_back" tools:ignore="ResourceName">再次点击可返回</string>
+    <string name="device_sharing" tools:ignore="ResourceName">共享设备</string>
+    <string name="airlink_config" tools:ignore="ResourceName">一键配置</string>
+    <string name="softap_config" tools:ignore="ResourceName">热点配置</string>
+    <string name="please_login" tools:ignore="ResourceName">请登录后，再进行设备共享</string>
+    <string name="my_device" tools:ignore="ResourceName">常用设备</string>
+    <string name="add_successful" tools:ignore="ResourceName">添加成功</string>
+    <string name="network_error" tools:ignore="ResourceName">请切换至Wi-Fi环境</string>
+
+    <!--    中控页面     -->
+    <string name="device" tools:ignore="ResourceName">设备</string>
+
+    <!-- ChooseDeviceActivity -->
+    <string name="choosedevice" tools:ignore="ResourceName">选择您要连接的设备</string>
+    <string name="nodevice" tools:ignore="ResourceName"><u>没有发现我的设备？</u></string>
+    <string name="itemtext_start" tools:ignore="ResourceName">发现设备</string>
+    <string name="module_help" tools:ignore="ResourceName">模组类型选择技巧</string>
+
+
+    <!-- ChooseDeviceWorkWifi -->
+    <string name="softPsw_hint" tools:ignore="ResourceName">请输入Wi-Fi密码</string>
+    <string name="workwifi_isnull" tools:ignore="ResourceName">确定密码为空吗？</string>
+    <string name="choose_wifi_list_title" tools:ignore="ResourceName">请选择可用的Wi-Fi网络</string>
+
+    <!-- ConfigCountDownActivity -->
+    <string name="configuration_successful" tools:ignore="ResourceName">配置成功</string>
+    <string name="prompt" tools:ignore="ResourceName">提示</string>
+    <string name="cancel_besure" tools:ignore="ResourceName">确定放弃配置吗？</string>
+    <string name="cancel_configuration" tools:ignore="ResourceName">设备正在努力配置中，您确定放弃吗？</string>
+    <string name="cancel" tools:ignore="ResourceName">取消</string>
+    <string name="besure" tools:ignore="ResourceName">确定</string>
+    <string name="open" tools:ignore="ResourceName">需要打开位置信息开关，才能获取wifi列表</string>
+
+    <!-- AitlinkChooseDeviceWorkWifiActivity -->
+    <string name="choose_mode_start" tools:ignore="ResourceName">选择模组类型</string>
+    <string name="configuration_message" tools:ignore="ResourceName">请输入Wi-Fi密码，连接您的智能设备</string>
+    <string name="current_wifi_inconformity" tools:ignore="ResourceName">当前设备工作Wi-Fi与手机连接Wi-Fi不一致，是否继续配置？</string>
+    <string name="five_wifi" tools:ignore="ResourceName">提示： 暂不支持5G频道的Wi-Fi网络</string>
+    <!--<string name="choose_wifi">取消 &#160;| &#160;选择设备工作Wi-Fi</string>-->
+    <string name="choose_wifi" tools:ignore="ResourceName">选择设备工作Wi-Fi</string>
+
+    <!-- GosModeListActivity -->
+    <string name="module_type" tools:ignore="ResourceName">正确选择模组类型，可提高设备配置成功率。您可点击帮助，查看模组类型选择提示。</string>
+    <string name="selece_module_type" tools:ignore="ResourceName">请选择您的设备模组类型</string>
+
+    <!-- AirlinkReadyActivity -->
+    <string name="airlink_ready_title" tools:ignore="ResourceName">设备状态确认</string>
+    <string name="power_on" tools:ignore="ResourceName">通电后按以下提示操作</string>
+    <string name="complete" tools:ignore="ResourceName">我已完成上述操作</string>
+    <string name="common_ready_message" tools:ignore="ResourceName">请将智能设备调试至待连接状态。</string>
+    <string name="model_confirmation" tools:ignore="ResourceName">热点模式设备操作确认</string>
+
+    <!-- AirlinkConfigCountdown -->
+    <string name="search_join" tools:ignore="ResourceName">搜索并连接设备</string>
+    <string name="closer_to" tools:ignore="ResourceName">请尽量使路由器、手机和设备靠近</string>
+    <string name="search_device" tools:ignore="ResourceName">搜索设备</string>
+    <string name="register_gizwits" tools:ignore="ResourceName">设备将注册到机智云</string>
+    <string name="add_complete" tools:ignore="ResourceName">完成设备添加</string>
+
+    <!-- ReadyDeviceActivity -->
+    <string name="add_device" tools:ignore="ResourceName">添加</string>
+    <string name="finished" tools:ignore="ResourceName">已完成上述操作</string>
+    <string name="next" tools:ignore="ResourceName">下一步</string>
+    <string name="configuration_timeout" tools:ignore="ResourceName">配置超时\n自动切换到热点模式</string>
+
+    <!-- FailedConfigActivity -->
+    <string name="please_check" tools:ignore="ResourceName">请按以下情况排除连接问题并重试：</string>
+    <string name="join_failed_title" tools:ignore="ResourceName">配置超时</string>
+    <string name="check_first" tools:ignore="ResourceName">1. 确保您的Wi-Fi账号密码输入正确无误；</string>
+    <string name="check_second" tools:ignore="ResourceName">2. 确保网络正常；</string>
+    <string name="check_third" tools:ignore="ResourceName">3. 确保手机、设备与路由器靠近；</string>
+    <string name="check_fourth" tools:ignore="ResourceName">4. 检查路由器是否设置了限制；</string>
+    <string name="check_fifth" tools:ignore="ResourceName">5. 确保路由器是2.4GHz；</string>
+    <string name="config_again" tools:ignore="ResourceName">重试</string>
+
+    <!-- Error Toast -->
+    <string name="GIZ_SDK_SUCCESS" tools:ignore="ResourceName">执行成功</string>
+    <string name="GIZ_SDK_PARAM_FORM_INVALID" tools:ignore="ResourceName">SDK内部通讯数据格式无效</string>
+    <string name="GIZ_SDK_CLIENT_NOT_AUTHEN" tools:ignore="ResourceName">SDK未启动</string>
+    <string name="GIZ_SDK_CLIENT_VERSION_INVALID" tools:ignore="ResourceName">无效的SDK版本号</string>
+    <string name="GIZ_SDK_UDP_PORT_BIND_FAILED" tools:ignore="ResourceName">UDP端口绑定失败</string>
+    <string name="GIZ_SDK_DAEMON_EXCEPTION" tools:ignore="ResourceName">SDK后台服务发生异常</string>
+    <string name="GIZ_SDK_PARAM_INVALID" tools:ignore="ResourceName">接口参数无效</string>
+    <string name="GIZ_SDK_APPID_LENGTH_ERROR" tools:ignore="ResourceName">AppID长度错误</string>
+    <string name="GIZ_SDK_LOG_PATH_INVALID" tools:ignore="ResourceName">SDK日志路径无效</string>
+    <string name="GIZ_SDK_LOG_LEVEL_INVALID" tools:ignore="ResourceName">日志级别无效</string>
+    <string name="GIZ_SDK_UID_INVALID" tools:ignore="ResourceName">uid参数无效</string>
+    <string name="GIZ_SDK_TOKEN_INVALID" tools:ignore="ResourceName">token参数无效</string>
+    <string name="GIZ_SDK_USER_NOT_LOGIN" tools:ignore="ResourceName">用户未登录</string>
+    <string name="GIZ_SDK_APPID_INVALID" tools:ignore="ResourceName">AppID无效</string>
+    <string name="GIZ_SDK_APP_SECRET_INVALID" tools:ignore="ResourceName">App secret无效</string>
+    <string name="GIZ_SDK_PRODUCT_KEY_INVALID" tools:ignore="ResourceName">产品类别识别码无效</string>
+    <string name="GIZ_SDK_PRODUCT_SECRET_INVALID" tools:ignore="ResourceName">产品秘钥无效</string>
+    <string name="GIZ_SDK_DEVICE_NOT_IN_LAN" tools:ignore="ResourceName">设备不在局域网</string>
+    <string name="GIZ_SDK_PRODUCTKEY_NOT_IN_SPECIAL_LIST" tools:ignore="ResourceName">设备不在指定的产品类型识别码中</string>
+    <string name="GIZ_SDK_PRODUCTKEY_NOT_RELATED_WITH_APPID" tools:ignore="ResourceName">设备的产品类型识别码跟当前AppID未关联</string>
+    <string name="GIZ_SDK_NO_AVAILABLE_DEVICE" tools:ignore="ResourceName">(批量设置设备域名信息时)没有可用设备</string>
+    <string name="GIZ_SDK_DEVICE_CONFIG_SEND_FAILED" tools:ignore="ResourceName">设备配网信息发送失败</string>
+    <string name="GIZ_SDK_DEVICE_CONFIG_IS_RUNNING" tools:ignore="ResourceName">设备正在配网</string>
+    <string name="GIZ_SDK_DEVICE_CONFIG_TIMEOUT" tools:ignore="ResourceName">设备配网超时</string>
+    <string name="GIZ_SDK_DEVICE_DID_INVALID" tools:ignore="ResourceName">设备DID无效</string>
+    <string name="GIZ_SDK_DEVICE_MAC_INVALID" tools:ignore="ResourceName">设备MAC无效</string>
+    <string name="GIZ_SDK_SUBDEVICE_INVALID" tools:ignore="ResourceName">子设备无效</string>
+    <string name="GIZ_SDK_DEVICE_PASSCODE_INVALID" tools:ignore="ResourceName">设备鉴权码无效</string>
+    <string name="GIZ_SDK_DEVICE_NOT_CENTERCONTROL" tools:ignore="ResourceName">不是中控设备</string>
+    <string name="GIZ_SDK_DEVICE_NOT_SUBSCRIBED" tools:ignore="ResourceName">设备还未订阅</string>
+    <string name="GIZ_SDK_DEVICE_NO_RESPONSE" tools:ignore="ResourceName">设备无响应</string>
+    <string name="GIZ_SDK_DEVICE_NOT_READY" tools:ignore="ResourceName">设备还未就绪</string>
+    <string name="GIZ_SDK_DEVICE_NOT_BINDED" tools:ignore="ResourceName">设备还未绑定</string>
+    <string name="GIZ_SDK_DEVICE_CONTROL_WITH_INVALID_COMMAND" tools:ignore="ResourceName">设备控制指令中包含无效指令</string>
+    <string name="GIZ_SDK_DEVICE_GET_STATUS_FAILED" tools:ignore="ResourceName">设备状态查询失败</string>
+    <string name="GIZ_SDK_DEVICE_CONTROL_VALUE_TYPE_ERROR" tools:ignore="ResourceName">设备控制参数类型错误</string>
+    <string name="GIZ_SDK_DEVICE_CONTROL_VALUE_OUT_OF_RANGE" tools:ignore="ResourceName">设备控制参数不在有效范围内</string>
+    <string name="GIZ_SDK_DEVICE_CONTROL_NOT_WRITABLE_COMMAND" tools:ignore="ResourceName">设备控制指令包含不可写指令</string>
+    <string name="GIZ_SDK_BIND_DEVICE_FAILED" tools:ignore="ResourceName">设备绑定失败</string>
+    <string name="GIZ_SDK_UNBIND_DEVICE_FAILED" tools:ignore="ResourceName">设备解绑失败</string>
+    <string name="GIZ_SDK_DNS_FAILED" tools:ignore="ResourceName">域名解析失败</string>
+    <string name="GIZ_SDK_M2M_CONNECTION_SUCCESS" tools:ignore="ResourceName">M2M服务器连接成功</string>
+    <string name="GIZ_SDK_SET_SOCKET_NON_BLOCK_FAILED" tools:ignore="ResourceName">Socket非阻塞设置失败</string>
+    <string name="GIZ_SDK_CONNECTION_TIMEOUT" tools:ignore="ResourceName">连接超时</string>
+    <string name="GIZ_SDK_CONNECTION_REFUSED" tools:ignore="ResourceName">连接被拒绝</string>
+    <string name="GIZ_SDK_CONNECTION_ERROR" tools:ignore="ResourceName">发生网络异常</string>
+    <string name="GIZ_SDK_CONNECTION_CLOSED" tools:ignore="ResourceName">连接被对端关闭</string>
+    <string name="GIZ_SDK_SSL_HANDSHAKE_FAILED" tools:ignore="ResourceName">ssl握手失败</string>
+    <string name="GIZ_SDK_DEVICE_LOGIN_VERIFY_FAILED" tools:ignore="ResourceName">设备登录验证失败</string>
+    <string name="GIZ_SDK_INTERNET_NOT_REACHABLE" tools:ignore="ResourceName">当前外网无法访问</string>
+    <string name="GIZ_SDK_M2M_CONNECTION_FAILED" tools:ignore="ResourceName">M2M服务器连接失败</string>
+    <string name="GIZ_SDK_HTTP_SERVER_NOT_SUPPORT_API" tools:ignore="ResourceName">云服务不支持此API</string>
+    <string name="GIZ_SDK_HTTP_ANSWER_FORMAT_ERROR" tools:ignore="ResourceName">HTTP应答格式错误</string>
+    <string name="GIZ_SDK_HTTP_ANSWER_PARAM_ERROR" tools:ignore="ResourceName">HTTP应答参数错误</string>
+    <string name="GIZ_SDK_HTTP_SERVER_NO_ANSWER" tools:ignore="ResourceName">HTTP服务端无应答</string>
+    <string name="GIZ_SDK_HTTP_REQUEST_FAILED" tools:ignore="ResourceName">HTTP请求失败</string>
+    <string name="GIZ_SDK_OTHERWISE" tools:ignore="ResourceName">保留的错误字</string>
+
+    <string name="GIZ_SDK_MEMORY_MALLOC_FAILED" tools:ignore="ResourceName">内存分配失败</string>
+    <string name="GIZ_SDK_THREAD_CREATE_FAILED" tools:ignore="ResourceName">线程创建失败</string>
+    <string name="GIZ_SDK_JSON_OBJECT_CREATE_FAILED" tools:ignore="ResourceName">Json对象创建失败</string>
+    <string name="GIZ_SDK_JSON_PARSE_FAILED" tools:ignore="ResourceName">Json解析失败</string>
+
+    <string name="GIZ_SDK_SCHEDULER_CREATE_FAILED" tools:ignore="ResourceName">定时任务创建失败</string>
+    <string name="GIZ_SDK_SCHEDULER_DELETE_FAILED" tools:ignore="ResourceName">定时任务删除失败</string>
+    <string name="GIZ_SDK_SCHEDULER_EDIT_FAILED" tools:ignore="ResourceName">定时任务信息编辑失败</string>
+    <string name="GIZ_SDK_SCHEDULER_LIST_UPDATE_FAILED" tools:ignore="ResourceName">定时任务列表更新失败</string>
+    <string name="GIZ_SDK_SCHEDULER_TASK_EDIT_FAILED" tools:ignore="ResourceName">定时任务的任务项编辑失败</string>
+    <string name="GIZ_SDK_SCHEDULER_TASK_LIST_UPDATE_FAILED" tools:ignore="ResourceName">定时任务的任务项列表更新失败</string>
+    <string name="GIZ_SDK_SCHEDULER_ID_INVALID" tools:ignore="ResourceName">定时任务ID无效</string>
+    <string name="GIZ_SDK_SCHEDULER_ENABLE_DISABLE_FAILED" tools:ignore="ResourceName">定时任务开启或关闭失败</string>
+    <string name="GIZ_SDK_SCHEDULER_STATUS_UPDATE_FAILED" tools:ignore="ResourceName">定时任务状态更新失败</string>
+
+    <string name="GIZ_SDK_GROUP_ID_INVALID" tools:ignore="ResourceName">组ID无效</string>
+    <string name="GIZ_SDK_GROUP_PRODUCTKEY_INVALID" tools:ignore="ResourceName">组类型无效</string>
+    <string name="GIZ_SDK_GROUP_CREATE_FAILED" tools:ignore="ResourceName">创建组失败</string>
+    <string name="GIZ_SDK_GROUP_FAILED_DELETE_DEVICE" tools:ignore="ResourceName">删除组设备失败</string>
+    <string name="GIZ_SDK_GROUP_EDIT_FAILED" tools:ignore="ResourceName">编辑组失败</string>
+    <string name="GIZ_SDK_GROUP_FAILED_ADD_DEVICE" tools:ignore="ResourceName">添加组设备失败</string>
+    <string name="GIZ_SDK_GROUP_GET_DEVICE_FAILED" tools:ignore="ResourceName">组设备列表更新失败</string>
+    <string name="GIZ_SDK_SCENE_CREATE_FAILED" tools:ignore="ResourceName">场景创建失败</string>
+    <string name="GIZ_SDK_SCENE_DELETE_FAILED" tools:ignore="ResourceName">场景删除失败</string>
+    <string name="GIZ_SDK_SCENE_EDIT_FAILED" tools:ignore="ResourceName">场景编辑失败</string>
+    <string name="GIZ_SDK_SCENE_LIST_UPDATE_FAILED" tools:ignore="ResourceName">场景列表更新失败</string>
+    <string name="GIZ_SDK_SCENE_ITEM_LIST_EDIT_FAILED" tools:ignore="ResourceName">场景项列表编辑失败</string>
+    <string name="GIZ_SDK_SCENE_ITEM_LIST_UPDATE_FAILED" tools:ignore="ResourceName">场景项列表更新失败</string>
+    <string name="GIZ_SDK_SCENE_ID_INVALID" tools:ignore="ResourceName">场景ID无效</string>
+    <string name="GIZ_SDK_SCENE_RUN_FAILED" tools:ignore="ResourceName">场景执行失败</string>
+    <string name="GIZ_SDK_SCENE_STATUS_UPDATE_FAILED" tools:ignore="ResourceName">场景状态更新失败</string>
+    <string name="GIZ_SDK_JOINT_ACTION_CREATE_FAILED" tools:ignore="ResourceName">联动创建失败</string>
+    <string name="GIZ_SDK_JOINT_ACTION_DELETE_FAILED" tools:ignore="ResourceName">联动删除失败</string>
+    <string name="GIZ_SDK_JOINT_ACTION_VER_UNSUPPORTED" tools:ignore="ResourceName">不支持的联动版本</string>
+    <string name="GIZ_SDK_JOINT_ACTION_INVALID_CONDITION_TYPE" tools:ignore="ResourceName">无效的联动条件类型</string>
+    <string name="GIZ_SDK_JOINT_ACTION_INVALID_RESULT_EVENT_TYPE" tools:ignore="ResourceName">无效的联动结果事件类型</string>
+
+    <string name="GIZ_SDK_DATAPOINT_NOT_DOWNLOAD" tools:ignore="ResourceName">设备数据点配置文件还未下载</string>
+    <string name="GIZ_SDK_DATAPOINT_SERVICE_UNAVAILABLE" tools:ignore="ResourceName">设备数据点配置服务不可用</string>
+    <string name="GIZ_SDK_DATAPOINT_PARSE_FAILED" tools:ignore="ResourceName">设备数据点解析失败</string>
+    <string name="GIZ_SDK_APK_CONTEXT_IS_NULL" tools:ignore="ResourceName">Android context为空，无法启动SDK动</string>
+    <string name="GIZ_SDK_APK_PERMISSION_NOT_SET" tools:ignore="ResourceName">还没有设置必须的访问权限</string>
+    <string name="GIZ_SDK_CHMOD_DAEMON_REFUSED" tools:ignore="ResourceName">无法修改SDK后台服务的执行权限</string>
+    <string name="GIZ_SDK_EXEC_DAEMON_FAILED" tools:ignore="ResourceName">SDK后台服务启动失败</string>
+    <string name="GIZ_SDK_EXEC_CATCH_EXCEPTION" tools:ignore="ResourceName">SDK后台服务尝试启动时发生异常</string>
+    <string name="GIZ_SDK_APPID_IS_EMPTY" tools:ignore="ResourceName">AppID为空无法启动SDK</string>
+    <string name="GIZ_SDK_UNSUPPORTED_API" tools:ignore="ResourceName">此API已废弃，不再提供支持</string>
+    <string name="GIZ_SDK_REQUEST_TIMEOUT" tools:ignore="ResourceName">执行超时</string>
+    <string name="GIZ_SDK_DAEMON_VERSION_INVALID" tools:ignore="ResourceName">SDK后台服务版本无效</string>
+    <string name="GIZ_SDK_PHONE_NOT_CONNECT_TO_SOFTAP_SSID" tools:ignore="ResourceName">手机没有连接设备热点</string>
+    <string name="GIZ_SDK_DEVICE_CONFIG_SSID_NOT_MATCHED" tools:ignore="ResourceName">手机当前Wifi与设备配网SSID不匹配，无法完成设备配网</string>
+    <string name="GIZ_SDK_NOT_IN_SOFTAPMODE" tools:ignore="ResourceName">设备没有在softap配网模式下</string>
+    <string name="GIZ_SDK_RAW_DATA_TRANSMIT" tools:ignore="ResourceName">当前为原始数据透传方式</string>
+    <string name="GIZ_SDK_PRODUCT_IS_DOWNLOADING" tools:ignore="ResourceName">正在下载设备数据点配置文件</string>
+    <string name="GIZ_SDK_START_SUCCESS" tools:ignore="ResourceName">SDK启动成功</string>
+    <string name="GIZ_SDK_NEED_UPDATE_TO_LATEST" tools:ignore="ResourceName">SDK需要升级到最新版本</string>
+    <string name="GIZ_SDK_ONBOARDING_STOPPED" tools:ignore="ResourceName">设备配网被中断</string>
+    <string name="GIZ_SDK_ONBOARDING_WIFI_IS_5G" tools:ignore="ResourceName">当前配网路由是5G</string>
+
+    <string name="GIZ_SDK_WS_HANDSHAKE_FAILED" tools:ignore="ResourceName">websocket握手失败</string>
+    <string name="GIZ_SDK_WS_LOGIN_FAILED" tools:ignore="ResourceName">websocket登录失败</string>
+
+    <string name="GIZ_SDK_OTA_FIRMWARE_IS_LATEST" tools:ignore="ResourceName">当前固件是最新版本，不需要升级</string>
+    <string name="GIZ_SDK_OTA_FIRMWARE_CHECK_UPDATE_FAILED" tools:ignore="ResourceName">固件检查更新失败</string>
+    <string name="GIZ_SDK_OTA_FIRMWARE_DOWNLOAD_OK" tools:ignore="ResourceName">固件下载成功</string>
+    <string name="GIZ_SDK_OTA_FIRMWARE_DOWNLOAD_FAILED" tools:ignore="ResourceName">固件下载失败</string>
+    <string name="GIZ_SDK_OTA_DEVICE_BUSY_IN_UPGRADE" tools:ignore="ResourceName">设备忙，固件正在升级</string>
+    <string name="GIZ_SDK_OTA_PUSH_FAILED" tools:ignore="ResourceName">固件推送失败</string>
+    <string name="GIZ_SDK_OTA_FIRMWARE_VERSION_TOO_LOW" tools:ignore="ResourceName">固件版本过低</string>
+    <string name="GIZ_SDK_OTA_FIRMWARE_CHECK_FAILED" tools:ignore="ResourceName">固件校验失败</string>
+    <string name="GIZ_SDK_OTA_UPGRADE_FAILED" tools:ignore="ResourceName">固件升级失败</string>
+    <string name="GIZ_SDK_OTA_FIRMWARE_VERIFY_SUCCESS" tools:ignore="ResourceName">固件校验成功</string>
+    <string name="GIZ_SDK_OTA_DEVICE_NOT_SUPPORT" tools:ignore="ResourceName">设备不支持手机OTA升级</string>
+
+    <string name="GIZ_SITE_PRODUCTKEY_INVALID" tools:ignore="ResourceName">产品类型标识码无效</string>
+    <string name="GIZ_SITE_DATAPOINTS_NOT_DEFINED" tools:ignore="ResourceName">产品数据点未定义</string>
+    <string name="GIZ_SITE_DATAPOINTS_NOT_MALFORME" tools:ignore="ResourceName">产品数据点无效</string>
+
+    <string name="GIZ_OPENAPI_MAC_ALREADY_REGISTERED" tools:ignore="ResourceName">设备MAC已经注册</string>
+    <string name="GIZ_OPENAPI_PRODUCT_KEY_INVALID" tools:ignore="ResourceName">产品类型标识码无效</string>
+    <string name="GIZ_OPENAPI_APPID_INVALID" tools:ignore="ResourceName">AppID无效</string>
+    <string name="GIZ_OPENAPI_TOKEN_INVALID" tools:ignore="ResourceName">用户token无效</string>
+    <string name="GIZ_OPENAPI_USER_NOT_EXIST" tools:ignore="ResourceName">用户不存在</string>
+    <string name="GIZ_OPENAPI_TOKEN_EXPIRED" tools:ignore="ResourceName">用户token已过期</string>
+    <string name="GIZ_OPENAPI_M2M_ID_INVALID" tools:ignore="ResourceName">M2M ID无效</string>
+    <string name="GIZ_OPENAPI_SERVER_ERROR" tools:ignore="ResourceName">服务发生错误</string>
+    <string name="GIZ_OPENAPI_CODE_EXPIRED" tools:ignore="ResourceName">验证码已过期</string>
+    <string name="GIZ_OPENAPI_CODE_INVALID" tools:ignore="ResourceName">验证码无效</string>
+    <string name="GIZ_OPENAPI_SANDBOX_SCALE_QUOTA_EXHAUSTED" tools:ignore="ResourceName">未发布状态下没有配额</string>
+    <string name="GIZ_OPENAPI_PRODUCTION_SCALE_QUOTA_EXHAUSTED" tools:ignore="ResourceName">发布状态下没有配额</string>
+
+    <string name="GIZ_OPENAPI_PRODUCT_HAS_NO_REQUEST_SCALE" tools:ignore="ResourceName">发布状态下没有设置配额</string>
+    <string name="GIZ_OPENAPI_DEVICE_NOT_FOUND" tools:ignore="ResourceName">找不到对应的设备</string>
+    <string name="GIZ_OPENAPI_FORM_INVALID" tools:ignore="ResourceName">请求数据格式无效</string>
+    <string name="GIZ_OPENAPI_DID_PASSCODE_INVALID" tools:ignore="ResourceName">设备的DID或验证码无效</string>
+    <string name="GIZ_OPENAPI_DEVICE_NOT_BOUND" tools:ignore="ResourceName">设备未绑定</string>
+    <string name="GIZ_OPENAPI_PHONE_UNAVALIABLE" tools:ignore="ResourceName">手机号已注册</string>
+    <string name="GIZ_OPENAPI_USERNAME_UNAVALIABLE" tools:ignore="ResourceName">用户名已注册</string>
+    <string name="GIZ_OPENAPI_USERNAME_PASSWORD_ERROR" tools:ignore="ResourceName">用户名或密码错误</string>
+    <string name="GIZ_OPENAPI_SEND_COMMAND_FAILED" tools:ignore="ResourceName">指令发送失败</string>
+    <string name="GIZ_OPENAPI_EMAIL_UNAVALIABLE" tools:ignore="ResourceName">邮箱已注册</string>
+    <string name="GIZ_OPENAPI_DEVICE_DISABLED" tools:ignore="ResourceName">设备已注销</string>
+    <string name="GIZ_OPENAPI_FAILED_NOTIFY_M2M" tools:ignore="ResourceName">M2M通知失败</string>
+    <string name="GIZ_OPENAPI_ATTR_INVALID" tools:ignore="ResourceName">属性无效</string>
+    <string name="GIZ_OPENAPI_USER_INVALID" tools:ignore="ResourceName">用户名无效</string>
+    <string name="GIZ_OPENAPI_FIRMWARE_NOT_FOUND" tools:ignore="ResourceName">找不到设备固件</string>
+    <string name="GIZ_OPENAPI_JD_PRODUCT_NOT_FOUND" tools:ignore="ResourceName">找不到京东产品信息</string>
+    <string name="GIZ_OPENAPI_DATAPOINT_DATA_NOT_FOUND" tools:ignore="ResourceName">找不到对应的设备数据点数据</string>
+    <string name="GIZ_OPENAPI_SCHEDULER_NOT_FOUND" tools:ignore="ResourceName">找不到计划任务</string>
+    <string name="GIZ_OPENAPI_QQ_OAUTH_KEY_INVALID" tools:ignore="ResourceName">QQ登录授权key无效</string>
+    <string name="GIZ_OPENAPI_OTA_SERVICE_OK_BUT_IN_IDLE" tools:ignore="ResourceName">OTA升级服务闲置或被禁用</string>
+    <string name="GIZ_OPENAPI_BT_FIRMWARE_UNVERIFIED" tools:ignore="ResourceName">BT固件未验证</string>
+    <string name="GIZ_OPENAPI_SAVE_KAIROSDB_ERROR" tools:ignore="ResourceName">kairosdb存储错误</string>
+    <string name="GIZ_OPENAPI_EVENT_NOT_DEFINED" tools:ignore="ResourceName">事件未定义</string>
+    <string name="GIZ_OPENAPI_SEND_SMS_FAILED" tools:ignore="ResourceName">验证码发送失败</string>
+    <string name="GIZ_OPENAPI_NOT_ALLOWED_CALL_API" tools:ignore="ResourceName">不允许使用已废弃的API</string>
+    <string name="GIZ_OPENAPI_BAD_QRCODE_CONTENT" tools:ignore="ResourceName">QRCode内容已损坏</string>
+    <string name="GIZ_OPENAPI_REQUEST_THROTTLED" tools:ignore="ResourceName">请求频率过高，请稍后再试</string>
+    <string name="GIZ_OPENAPI_DEVICE_OFFLINE" tools:ignore="ResourceName">设备已离线</string>
+    <string name="GIZ_OPENAPI_TIMESTAMP_INVALID" tools:ignore="ResourceName">时间戳无效</string>
+    <string name="GIZ_OPENAPI_SIGNATURE_INVALID" tools:ignore="ResourceName">应用签名无效</string>
+    <string name="GIZ_OPENAPI_DEPRECATED_API" tools:ignore="ResourceName">API已废弃</string>
+    <string name="GIZ_OPENAPI_GUEST_NOT_BIND" tools:ignore="ResourceName">Guest账号没有绑定设备</string>
+    <string name="GIZ_OPENAPI_CANNOT_TRANSFER_OWNER_TO_SELF" tools:ignore="ResourceName">不能把owner身份转移给owner自己</string>
+    <string name="GIZ_OPENAPI_TRANSFER_OWNER_TO_LIMIT_GUEST" tools:ignore="ResourceName">不能把owner身份转移给已超期的guest用户</string>
+    <string name="GIZ_OPENAPI_RESERVED" tools:ignore="ResourceName">保留的错误字</string>
+    <string name="GIZ_PUSHAPI_BODY_JSON_INVALID" tools:ignore="ResourceName">数据体无效</string>
+    <string name="GIZ_PUSHAPI_DATA_NOT_EXIST" tools:ignore="ResourceName">数据不存在</string>
+    <string name="GIZ_PUSHAPI_NO_CLIENT_CONFIG" tools:ignore="ResourceName">客户端没有配置推送ID</string>
+    <string name="GIZ_PUSHAPI_NO_SERVER_DATA" tools:ignore="ResourceName">没有服务端数据</string>
+    <string name="GIZ_PUSHAPI_GIZWITS_APPID_EXIST" tools:ignore="ResourceName">机智云AppID已经存在</string>
+    <string name="GIZ_PUSHAPI_PARAM_ERROR" tools:ignore="ResourceName">参数错误</string>
+    <string name="GIZ_PUSHAPI_AUTH_KEY_INVALID" tools:ignore="ResourceName">授权无效</string>
+    <string name="GIZ_PUSHAPI_APPID_OR_TOKEN_ERROR" tools:ignore="ResourceName">AppID或用户token错误</string>
+    <string name="GIZ_PUSHAPI_TYPE_PARAM_ERROR" tools:ignore="ResourceName">参数类型错误</string>
+    <string name="GIZ_PUSHAPI_ID_PARAM_ERROR" tools:ignore="ResourceName">ID参数错误</string>
+    <string name="GIZ_PUSHAPI_APPKEY_SECRETKEY_INVALID" tools:ignore="ResourceName">APIKey或者SecretKey无效</string>
+    <string name="GIZ_PUSHAPI_CHANNELID_ERROR_INVALID" tools:ignore="ResourceName">Channel ID 错误</string>
+    <string name="GIZ_PUSHAPI_PUSH_ERROR" tools:ignore="ResourceName">推送错误</string>
+    <string name="UNKNOWN_ERROR" tools:ignore="ResourceName">未知错误</string>
+    <string name="GIZ_OPENAPI_REGISTER_IS_BUSY" tools:ignore="ResourceName">正在注册</string>
+    <string name="GIZ_OPENAPI_ALTER_PASSWORD_FAILED" tools:ignore="ResourceName">修改密码失败</string>
+    <string name="GIZ_OPENAPI_APPID_PK_NOT_RELATION" tools:ignore="ResourceName">App ID与产品没有关联</string>
+    <string name="GIZ_OPENAPI_CALL_INNER_FAILED" tools:ignore="ResourceName">api内部调用错误</string>
+    <string name="GIZ_OPENAPI_DEVICE_SHARING_NOT_ENABLED" tools:ignore="ResourceName">此设备品类没有开启分享功能，无法分享</string>
+    <string name="GIZ_OPENAPI_NOT_FIRST_USER_OF_DEVICE" tools:ignore="ResourceName">您不是最先绑定设备的用户，无法分享</string>
+    <string name="GIZ_OPENAPI_PRODUCT_KEY_AUTHEN_FAULT" tools:ignore="ResourceName">App关联产品标识时签名校验错误</string>
+    <string name="GIZ_OPENAPI_BUSY_NOW" tools:ignore="ResourceName">用户操作太频繁，请稍后再试</string>
+    <string name="GIZ_OPENAPI_TWITTER_CONSUMER_KEY_INVALID" tools:ignore="ResourceName">推特账号无效</string>
+    <string name="GIZ_OPENAPI_NOT_ALLOW_WEEK_PASSWORD" tools:ignore="ResourceName">禁止使用弱密码</string>
+    <string name="GIZ_OPENAPI_CANNOT_SHARE_TO_SELF" tools:ignore="ResourceName">不能把设备分享给自己</string>
+    <string name="GIZ_OPENAPI_ONLY_OWNER_CAN_SHARE" tools:ignore="ResourceName">只有主账号才能分享设备</string>
+    <string name="GIZ_OPENAPI_NOT_FOUND_GUEST" tools:ignore="ResourceName">找不到子账号</string>
+    <string name="GIZ_OPENAPI_GUEST_ALREADY_BOUND" tools:ignore="ResourceName">子账号已经绑定</string>
+    <string name="GIZ_OPENAPI_NOT_FOUND_SHARING_INFO" tools:ignore="ResourceName">找不到分享记录</string>
+    <string name="GIZ_OPENAPI_NOT_FOUND_THE_MESSAGE" tools:ignore="ResourceName">找不到消息记录</string>
+    <string name="GIZ_OPENAPI_SHARING_IS_WAITING_FOR_ACCEPT" tools:ignore="ResourceName">等待被分享者接受分享邀请</string>
+    <string name="GIZ_OPENAPI_SHARING_IS_EXPIRED" tools:ignore="ResourceName">分享邀请已过期</string>
+    <string name="GIZ_OPENAPI_SHARING_IS_COMPLETED" tools:ignore="ResourceName">分享邀请已被接受或拒绝了</string>
+    <string name="GIZ_OPENAPI_INVALID_SHARING_BECAUSE_UNBINDING" tools:ignore="ResourceName">设备已被解绑，设备分享已无效</string>
+    <string name="GIZ_OPENAPI_ONLY_OWNER_CAN_BIND" tools:ignore="ResourceName">只有主账号才能绑定设备</string>
+    <string name="GIZ_OPENAPI_ONLY_OWNER_CAN_OPERATE" tools:ignore="ResourceName">只有主账号才能解绑其他用户或者取消共享</string>
+    <string name="GIZ_OPENAPI_SHARING_ALREADY_CANCELLED" tools:ignore="ResourceName">分享邀请已经被取消</string>
+    <string name="GIZ_OPENAPI_OWNER_CANNOT_UNBIND_SELF" tools:ignore="ResourceName">主账号不能解绑自己</string>
+    <string name="GIZ_OPENAPI_ONLY_GUEST_CAN_CHECK_QRCODE" tools:ignore="ResourceName">只有受邀请者才能查询二维码信息</string>
+    <string name="GIZ_OPENAPI_MESSAGE_ALREADY_DELETED" tools:ignore="ResourceName">消息已经被删除</string>
+    <string name="GIZ_OPENAPI_BINDING_NOTIFY_FAILED" tools:ignore="ResourceName">绑定通知失败</string>
+    <string name="GIZ_OPENAPI_ONLY_SELF_CAN_MODIFY_ALIAS" tools:ignore="ResourceName">不能修改其他人的分享备注</string>
+    <string name="GIZ_OPENAPI_ONLY_RECEIVER_CAN_MARK_MESSAGE" tools:ignore="ResourceName">不能标记其他人的消息</string>
+    <string name="GIZ_SDK_ADD_SUBDEVICE_FAILED" tools:ignore="ResourceName">添加子设备失败</string>
+    <string name="GIZ_SDK_DELETE_SUBDEVICE_FAILED" tools:ignore="ResourceName">删除子设备失败</string>
+    <string name="GIZ_SDK_GET_SUBDEVICES_FAILED" tools:ignore="ResourceName">获取子设备列表失败</string>
 </resources>

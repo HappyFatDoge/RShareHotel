@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.commonres.R;
 
@@ -17,6 +18,7 @@ import com.example.commonres.R;
  */
 public class PasswordConfirmDialog extends Dialog {
 
+    private TextView title;
     private EditText password;
     private Button confirm;
     private Button cancel;
@@ -46,7 +48,7 @@ public class PasswordConfirmDialog extends Dialog {
     }
 
     private void initView(){
-
+        title = findViewById(R.id.title);
         password = findViewById(R.id.password);
         confirm = findViewById(R.id.confirm);
         cancel = findViewById(R.id.cancel);
@@ -99,5 +101,13 @@ public class PasswordConfirmDialog extends Dialog {
 
     public void resetPassword(){
         password.setText("");
+    }
+
+    public void setTitle(String title) {
+        this.title.setText(title);
+    }
+
+    public void setHint(String hint){
+        this.password.setHint(hint);
     }
 }

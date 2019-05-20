@@ -29,6 +29,20 @@
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
 
+    <!-- 乐鑫配置库中使用的权限（WIFI组播） -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <!-- SDK 使用权限 -->
+    <uses-permission android:name="android.permission.READ_LOGS"
+                     tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
             android:name="com.jess.arms.base.BaseApplication"
             android:allowBackup="true"
@@ -37,6 +51,7 @@
             android:supportsRtl="true"
             android:theme="@style/public_AppTheme"
             tools:replace="android:label">
+
         <activity
                 android:name=".mvp.view.activity.SplashActivity"
                 android:configChanges="orientation|screenSize"

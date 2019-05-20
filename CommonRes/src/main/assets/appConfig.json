@@ -1,0 +1,56 @@
+{
+    "appInfo": {
+        "cloudService": {
+            "api": "api.gizwits.com:80",
+            "site": "site.gizwits.com:80"
+        },
+        "gizwitsInfo": {
+            "appId": "83ca5b6f100f45cf963d9d673b05ac14",
+            "appSecret": "b6cc758314a04941b057d6a70e2717d3"
+        },
+        "productInfo": [{
+                        "productKey": "21236424dcb344afb004c38af30a28af",
+                        "productSecret": "1037f1f9fb9e41f0b3fb6c5f50fd42d2"
+                        }],
+        "tencentInfo": {
+            "appId": "your_tencent_app_id"
+        },
+        "weChatInfo": {
+            "appId": "your_wechat_app_id",
+            "appSecret": "your_wechat_app_secret"
+        },
+        "pushInfo": {
+            "jpushAppKey": "your_jpush_app_key",
+            "bpushAppKey": "your_bpush_app_key"
+        }
+    },
+    "templateSelect": {
+        "deviceList": {
+            "unbindDevice": true,
+            "displayMac": true
+        }
+    },
+    "functionConfig": {
+        "bindDevice_qrcode": true,
+        "deviceOnboarding": {
+            "config_softap": true,
+            "config_airlink": true,
+            "wifiModuleType": []
+        },
+        "login_anonymous": true,
+        "login_qq": false,
+        "login_weChat": false,
+        "register_phoneUser": true,
+        "resetPassword_phoneUser": true,
+        "personalCenter_changePassword": true,
+        "push_baidu": false,
+        "push_jiguang": false
+    },
+    "viewConfig": {
+        "viewColor": {
+            "background": "FBDA51",
+            "contrast": "333333"
+        },
+        "statusBarStyle": "default"
+    }
+}
