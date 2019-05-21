@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:joker="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:id="@+id/more_control_layout"
+              tools:ignore="ResourceName">
+
+    <com.example.commonres.view.CommonToolBar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_45_0dp"
+            joker:title="更多操作"
+            joker:backVisible="true">
+    </com.example.commonres.view.CommonToolBar>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <!--第一行-->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@mipmap/white_background"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:id="@+id/thermometer"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/operate_water_heater_selector" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="3dp"
+                            android:text="客房环境"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/public_15_0dp"
+
+                            />
+                </LinearLayout>
+
+                <ImageView
+                        android:layout_width="2dip"
+                        android:layout_height="90dp"
+                        android:src="@mipmap/fence" />
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+                    <ImageView
+                            android:id="@+id/close_or_open_bedroom_bulb"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/operate_bedroom_bulb_selector" />
+
+                    <TextView
+                            android:id="@+id/bedroom_light"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="3dip"
+                            android:text="开启卧室灯"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/public_15_0dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!--第二行-->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@mipmap/white_background"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:id="@+id/air_conditioning"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/operate_air_conditioning_selector" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="3dip"
+                            android:text="空调"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/public_15_0dp" />
+                </LinearLayout>
+
+                <ImageView
+                        android:layout_width="2dip"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/fence" />
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:id="@+id/close_or_open_kitchen_bulb"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/operate_bedroom_bulb_selector" />
+
+                    <TextView
+                            android:id="@+id/kitchen_light"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="3dip"
+                            android:text="开启厨房灯"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/public_15_0dp"
+
+                            />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--第三行-->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="@dimen/public_40_0dp"
+                    android:background="@mipmap/white_background"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:id="@+id/television"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/operate_television_selector" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="3dip"
+                            android:text="电视机"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/public_15_0dp"
+
+                            />
+                </LinearLayout>
+
+                <ImageView
+                        android:layout_width="2dip"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/fence" />
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:id="@+id/close_or_open_toilet_bulb"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/operate_bedroom_bulb_selector" />
+
+                    <TextView
+                            android:id="@+id/toilet_light_control"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="3dip"
+                            android:text="开启厕所灯"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/public_15_0dp"
+
+                            />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--第四行-->
+            <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@mipmap/white_background"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:id="@+id/water_heater"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/operate_water_heater_selector" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="3dip"
+                            android:text="热水器"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/public_15_0dp"
+
+                            />
+                </LinearLayout>
+
+                <ImageView
+                        android:layout_width="2dip"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/fence" />
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:id="@+id/curtain"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/operate_curtain_selector" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="3dip"
+                            android:text="窗帘布"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/public_15_0dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--第五行-->
+            <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@mipmap/white_background"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:id="@+id/window"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/operate_window_selector" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="3dip"
+                            android:text="窗"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/public_15_0dp"
+
+                            />
+                </LinearLayout>
+
+                <ImageView
+                        android:layout_width="2dip"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/fence" />
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:id="@+id/electric"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/operate_dianbiao_selector"
+
+                            />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="3dp"
+                            android:text="电表"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/public_15_0dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--第六行-->
+            <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@mipmap/white_background"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
+                    <ImageView
+                            android:id="@+id/operate_mode"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/operate_mode_selector" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="3dip"
+                            android:text="模式"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/public_15_0dp" />
+                </LinearLayout>
+
+                <ImageView
+                        android:layout_width="2dip"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/fence" />
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:orientation="vertical">
+                    <ImageView
+                            android:id="@+id/sleep_mode"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/operate_air_conditioning_selector" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="3dip"
+                            android:text="睡眠模式"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/public_15_0dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+    <Button
+            android:id="@+id/check_out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:background="@drawable/public_login_out_bt_bg_selector"
+            android:text="退房"
+            android:textColor="#fefefe"
+            android:textSize="@dimen/public_font_15sp"/>
+
+</LinearLayout>

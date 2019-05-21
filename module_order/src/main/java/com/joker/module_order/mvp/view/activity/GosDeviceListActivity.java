@@ -266,7 +266,7 @@ public class GosDeviceListActivity
                     //更多操作
                     GizWifiDevice device = (GizWifiDevice) msg.obj;
                     ARouter.getInstance()
-                        .build(RouterHub.ORDER_MOREOPERATIONACTIVITY)
+                        .build(RouterHub.ORDER_MORECONTROLACTIVITY)
                         .withSerializable("order",mOrder)
                         .withParcelable("GizWifiDevice", device)
                         .navigation(GosDeviceListActivity.this, 1);
@@ -730,7 +730,7 @@ public class GosDeviceListActivity
                     }
                 });
             } else {
-//                Intent intent = new Intent(getViewContext(), GosChooseDeviceWorkWiFiActivity.class);
+                Intent intent = new Intent(getViewContext(), GosChooseDeviceWorkWiFiActivity.class);
                 startActivity(intent);
             }
         } else {

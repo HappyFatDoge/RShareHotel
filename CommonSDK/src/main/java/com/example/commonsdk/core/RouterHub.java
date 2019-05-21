@@ -84,6 +84,7 @@ public interface RouterHub {
     String ORDER_PUBLISHCOMMENTACTIVITY = ORDER + "/PublishCommentActivity";
     String ORDER_ORDERDETAILACTIVITY = ORDER + "/OrderDetailActivity";
     String ORDER_GOSDEVICELISTACTIVITY = ORDER + "/GosDeviceListActivity";
+    String ORDER_MORECONTROLACTIVITY = ORDER + "/MoreControlActivity";
 
 
     /**

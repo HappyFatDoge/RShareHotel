@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="@dimen/public_40_0dp"
+              android:layout_marginRight="@dimen/public_40_0dp"
+              android:background="@drawable/public_tips_dialog_shape">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="@dimen/public_10_0dp">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="室内环境实时查询"
+                    android:gravity="center"
+                    android:textSize="@dimen/public_22_0dp"
+                    android:textColor="@color/public_gray"
+                    />
+
+        </LinearLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/public_10_0dp">
+
+            <LinearLayout
+                    android:id="@+id/temperature_layout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/public_2_0dp"
+                    android:gravity="center">
+                <ImageView
+                        android:layout_width="@dimen/public_45_0dp"
+                        android:layout_height="@dimen/public_45_0dp"
+                        app:srcCompat="@mipmap/temperature"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="温度："
+                        android:textSize="@dimen/public_font_18sp"
+                        android:textColor="@color/public_black"/>
+
+                <TextView
+                        android:id="@+id/temperature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="26"
+                        android:textSize="@dimen/public_font_18sp"
+                        android:textColor="@android:color/holo_red_light"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="℃"
+                        android:textSize="@dimen/public_font_18sp"
+                        android:textColor="@android:color/holo_red_light"/>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                    android:id="@+id/humidity_layout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignLeft="@+id/temperature_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/temperature_layout"
+                    android:padding="@dimen/public_2_0dp"
+                    android:gravity="center">
+                <ImageView
+                        android:layout_width="@dimen/public_45_0dp"
+                        android:layout_height="@dimen/public_45_0dp"
+                        app:srcCompat="@mipmap/humidity"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="湿度："
+                        android:textSize="@dimen/public_font_18sp"
+                        android:textColor="@color/public_black"/>
+
+                <TextView
+                        android:id="@+id/humidity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="26"
+                        android:textSize="@dimen/public_font_18sp"
+                        android:textColor="@color/public_colorAccent"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="%"
+                        android:textSize="@dimen/public_font_18sp"
+                        android:textColor="@color/public_colorAccent"/>
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_below="@+id/humidity_layout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignLeft="@+id/humidity_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/public_2_0dp"
+                    android:gravity="center">
+                <ImageView
+                        android:layout_width="@dimen/public_45_0dp"
+                        android:layout_height="@dimen/public_45_0dp"
+                        app:srcCompat="@mipmap/light"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="光照："
+                        android:textSize="@dimen/public_font_18sp"
+                        android:textColor="@color/public_black"/>
+
+                <TextView
+                        android:id="@+id/light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="26"
+                        android:textSize="@dimen/public_font_18sp"
+                        android:textColor="@android:color/holo_orange_light"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Lx"
+                        android:textSize="@dimen/public_font_18sp"
+                        android:textColor="@android:color/holo_orange_light"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

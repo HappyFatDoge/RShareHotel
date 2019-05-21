@@ -5,8 +5,6 @@ import android.content.Intent;
 
 import com.example.commonres.dialog.TipsDialog;
 import com.gizwits.gizwifisdk.api.GizWifiSDK;
-import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
-import com.gizwits.gizwifisdk.listener.GizWifiSDKListener;
 import com.jess.arms.mvp.IPresenter;
 
 import java.util.Timer;
@@ -17,27 +15,6 @@ import java.util.Timer;
  */
 public abstract class GosConfigModuleBaseActivity<P extends IPresenter>
     extends GosBaseActivity<P>{
-
-    private GizWifiSDKListener gizWifiSDKListener = new GizWifiSDKListener() {
-
-        /** 用于设备配置 */
-        public void didSetDeviceOnboarding(GizWifiErrorCode result, String mac, String did, String productKey) {
-            GosConfigModuleBaseActivity.this.didSetDeviceOnboarding(result, mac, did, productKey);
-        }
-
-    };
-
-    /**
-     * 设备配置回调
-     *
-     * @param result     错误码
-     * @param mac        MAC
-     * @param did        DID
-     * @param productKey PK
-     */
-    protected void didSetDeviceOnboarding(GizWifiErrorCode result, String mac, String did, String productKey) {
-    }
-
 
     /**
      * 推出提示

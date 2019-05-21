@@ -30,13 +30,29 @@
                     android:background="@drawable/operate_television_down_voice_or_channel_selector" />
 
             <TextView
-                    android:id="@+id/temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="5dp"
+                    android:text="当前温度"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/public_15_0dp"/>
+
+            <TextView
+                    android:id="@+id/temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="26"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/public_15_0dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginRight="5dp"
-                    android:text="当前温度:26℃"
+                    android:text="℃"
                     android:textColor="#999999"
                     android:textSize="@dimen/public_15_0dp"/>
 

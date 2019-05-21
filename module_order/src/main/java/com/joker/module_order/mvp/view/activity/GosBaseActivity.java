@@ -105,6 +105,11 @@ public abstract class GosBaseActivity<P extends IPresenter> extends BaseActivity
             GosBaseActivity.this.didChannelIDBind(result);
         }
 
+        /** 用于设备配置 */
+        public void didSetDeviceOnboarding(GizWifiErrorCode result, String mac, String did, String productKey) {
+            GosBaseActivity.this.didSetDeviceOnboarding(result, mac, did, productKey);
+        }
+
     };
 
 
@@ -867,7 +872,17 @@ public abstract class GosBaseActivity<P extends IPresenter> extends BaseActivity
     protected void didBindDevice(int error, String errorMessage, String did) {
     }
 
-    ;
+
+    /**
+     * 设备配置回调
+     *
+     * @param result     错误码
+     * @param mac        MAC
+     * @param did        DID
+     * @param productKey PK
+     */
+    protected void didSetDeviceOnboarding(GizWifiErrorCode result, String mac, String did, String productKey) {
+    }
 
     /**
      * 设备绑定回调
@@ -891,12 +906,32 @@ public abstract class GosBaseActivity<P extends IPresenter> extends BaseActivity
      */
     protected GizWifiDeviceListener gizWifiDeviceListener = new GizWifiDeviceListener() {
 
-        // 用于设备订阅
+        /** 用于设备订阅 */
         public void didSetSubscribe(GizWifiErrorCode result, GizWifiDevice device, boolean isSubscribed) {
-            this.didSetSubscribe(result, device, isSubscribed);
+            GosBaseActivity.this.didSetSubscribe(result, device, isSubscribed);
         }
 
-        ;
+        /** 用于获取设备状态 */
+        public void didReceiveData(GizWifiErrorCode result, GizWifiDevice device,
+                                   java.util.concurrent.ConcurrentHashMap<String, Object> dataMap, int sn) {
+            GosBaseActivity.this.didReceiveData(result, device, dataMap, sn);
+        }
+
+        /** 用于设备硬件信息 */
+        public void didGetHardwareInfo(GizWifiErrorCode result, GizWifiDevice device,
+                                       java.util.concurrent.ConcurrentHashMap<String, String> hardwareInfo) {
+            GosBaseActivity.this.didGetHardwareInfo(result, device, hardwareInfo);
+        }
+
+        /** 用于修改设备信息 */
+        public void didSetCustomInfo(GizWifiErrorCode result, GizWifiDevice device) {
+            GosBaseActivity.this.didSetCustomInfo(result, device);
+        }
+
+        /** 用于设备状态变化 */
+        public void didUpdateNetStatus(GizWifiDevice device, GizWifiDeviceNetStatus netStatus) {
+            GosBaseActivity.this.didUpdateNetStatusD(device, netStatus);
+        }
 
     };
 
@@ -904,22 +939,20 @@ public abstract class GosBaseActivity<P extends IPresenter> extends BaseActivity
 
         // 用于设备订阅
         public void didSetSubscribe(GizWifiErrorCode result, GizWifiDevice device, boolean isSubscribed) {
-            this.didSetSubscribe(result, device, isSubscribed);
+            GosBaseActivity.this.didSetSubscribe(result, device, isSubscribed);
         }
 
         //同步更新子设备列表
         @Override
         public void didUpdateSubDevices(GizWifiCentralControlDevice device, GizWifiErrorCode result, List<GizWifiDevice> subDeviceList) {
-            this.didUpdateSubDevices(device, result, subDeviceList);
+            GosBaseActivity.this.didUpdateSubDevices(device, result, subDeviceList);
         }
 
         //设备网络状态变化通知
         @Override
         public void didUpdateNetStatus(GizWifiDevice device, GizWifiDeviceNetStatus netStatus) {
-            this.didUpdateNetStatus(device, netStatus);
+            GosBaseActivity.this.didUpdateNetStatus(device, netStatus);
         }
-
-        ;
 
     };
 
@@ -957,11 +990,64 @@ public abstract class GosBaseActivity<P extends IPresenter> extends BaseActivity
      * 设备订阅回调
      *
      * @param result
+     *            错误码
      * @param device
+     *            被订阅设备
      * @param isSubscribed
+     *            订阅状态
      */
     protected void didSetSubscribe(GizWifiErrorCode result, GizWifiDevice device, boolean isSubscribed) {
     }
+
+    /**
+     * 设备状态回调
+     *
+     * @param result
+     *            错误码
+     * @param device
+     *            当前设备
+     * @param dataMap
+     *            当前设备状态
+     * @param sn
+     *            命令序号
+     */
+    protected void didReceiveData(GizWifiErrorCode result, GizWifiDevice device,
+                                  java.util.concurrent.ConcurrentHashMap<String, Object> dataMap, int sn) {
+    }
+
+    /**
+     * 设备硬件信息回调
+     *
+     * @param result
+     *            错误码
+     * @param device
+     *            当前设备
+     * @param hardwareInfo
+     *            当前设备硬件信息
+     */
+    protected void didGetHardwareInfo(GizWifiErrorCode result, GizWifiDevice device,
+                                      java.util.concurrent.ConcurrentHashMap<String, String> hardwareInfo) {
+    }
+
+    /**
+     * 修改设备信息回调
+     *
+     * @param result
+     *            错误码
+     * @param device
+     *            当前设备
+     */
+    protected void didSetCustomInfo(GizWifiErrorCode result, GizWifiDevice device) {
+    }
+
+    /**
+     * 设备状态变化回调
+     */
+    protected void didUpdateNetStatusD(GizWifiDevice device, GizWifiDeviceNetStatus netStatus) {
+    }
+
+
+
 
     @Override
     public void onResume() {
