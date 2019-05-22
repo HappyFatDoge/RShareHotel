@@ -270,6 +270,7 @@ public class GosDeviceListActivity
                         .withSerializable("order",mOrder)
                         .withParcelable("GizWifiDevice", device)
                         .navigation(GosDeviceListActivity.this, 1);
+                    finish();
 //                    intent = null;
 //                    Bundle bundle = new Bundle();
 //                    if (intent == null) {
